@@ -8,22 +8,36 @@
 
 /* Begin PBXBuildFile section */
 		552D940A20BB22E90041872B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552D940920BB22E90041872B /* AppDelegate.swift */; };
-		552D940F20BB22E90041872B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 552D940D20BB22E90041872B /* Main.storyboard */; };
 		552D941120BB22F30041872B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 552D941020BB22F30041872B /* Assets.xcassets */; };
 		552D941F20BB2B9F0041872B /* PortfolioMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552D941E20BB2B9F0041872B /* PortfolioMainController.swift */; };
 		552D942120BB2BB20041872B /* PortfolioMainController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 552D942020BB2BB20041872B /* PortfolioMainController.xib */; };
 		552D942320BB300A0041872B /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552D942220BB300A0041872B /* NavigationController.swift */; };
+		552D942520BB85400041872B /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552D942420BB85400041872B /* MainMenu.swift */; };
+		552D942720BB85550041872B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 552D942620BB85550041872B /* MainMenu.xib */; };
+		5540A85320BCC2BB0087498B /* KYDrawerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5540A84E20BCC2BB0087498B /* KYDrawerController.swift */; };
+		5540A85420BCC2BB0087498B /* KYEmbedDrawerControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5540A84F20BCC2BB0087498B /* KYEmbedDrawerControllerSegue.swift */; };
+		5540A85520BCC2BB0087498B /* KYEmbedMainControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5540A85020BCC2BB0087498B /* KYEmbedMainControllerSegue.swift */; };
+		5540A85820BCC2ED0087498B /* DrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5540A85720BCC2ED0087498B /* DrawerViewController.swift */; };
+		5540A85B20BCC6E00087498B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5540A85920BCC6E00087498B /* Main.storyboard */; };
+		5540A85D20BCD3780087498B /* DrawerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5540A85C20BCD3780087498B /* DrawerViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		552D940620BB22E90041872B /* Guia Investimento.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Guia Investimento.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		552D940920BB22E90041872B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		552D940E20BB22E90041872B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		552D941020BB22F30041872B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		552D941520BB22F30041872B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		552D941E20BB2B9F0041872B /* PortfolioMainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioMainController.swift; sourceTree = "<group>"; };
 		552D942020BB2BB20041872B /* PortfolioMainController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PortfolioMainController.xib; sourceTree = "<group>"; };
 		552D942220BB300A0041872B /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		552D942420BB85400041872B /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
+		552D942620BB85550041872B /* MainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		5540A84E20BCC2BB0087498B /* KYDrawerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KYDrawerController.swift; sourceTree = "<group>"; };
+		5540A84F20BCC2BB0087498B /* KYEmbedDrawerControllerSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KYEmbedDrawerControllerSegue.swift; sourceTree = "<group>"; };
+		5540A85020BCC2BB0087498B /* KYEmbedMainControllerSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KYEmbedMainControllerSegue.swift; sourceTree = "<group>"; };
+		5540A85720BCC2ED0087498B /* DrawerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerViewController.swift; sourceTree = "<group>"; };
+		5540A85A20BCC6E00087498B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5540A85C20BCD3780087498B /* DrawerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrawerViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +72,8 @@
 			children = (
 				552D941B20BB2B010041872B /* Code */,
 				552D940920BB22E90041872B /* AppDelegate.swift */,
-				552D940D20BB22E90041872B /* Main.storyboard */,
 				552D941020BB22F30041872B /* Assets.xcassets */,
+				5540A85920BCC6E00087498B /* Main.storyboard */,
 				552D941520BB22F30041872B /* Info.plist */,
 			);
 			path = "Guia Investimento";
@@ -68,11 +82,34 @@
 		552D941B20BB2B010041872B /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				5540A84C20BCC2BB0087498B /* KYDrawerController */,
 				552D942220BB300A0041872B /* NavigationController.swift */,
 				552D941E20BB2B9F0041872B /* PortfolioMainController.swift */,
 				552D942020BB2BB20041872B /* PortfolioMainController.xib */,
+				552D942420BB85400041872B /* MainMenu.swift */,
+				552D942620BB85550041872B /* MainMenu.xib */,
 			);
 			path = Code;
+			sourceTree = "<group>";
+		};
+		5540A84C20BCC2BB0087498B /* KYDrawerController */ = {
+			isa = PBXGroup;
+			children = (
+				5540A84D20BCC2BB0087498B /* Classes */,
+				5540A85720BCC2ED0087498B /* DrawerViewController.swift */,
+				5540A85C20BCD3780087498B /* DrawerViewController.xib */,
+			);
+			path = KYDrawerController;
+			sourceTree = "<group>";
+		};
+		5540A84D20BCC2BB0087498B /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				5540A84E20BCC2BB0087498B /* KYDrawerController.swift */,
+				5540A84F20BCC2BB0087498B /* KYEmbedDrawerControllerSegue.swift */,
+				5540A85020BCC2BB0087498B /* KYEmbedMainControllerSegue.swift */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,7 +172,9 @@
 			files = (
 				552D942120BB2BB20041872B /* PortfolioMainController.xib in Resources */,
 				552D941120BB22F30041872B /* Assets.xcassets in Resources */,
-				552D940F20BB22E90041872B /* Main.storyboard in Resources */,
+				5540A85D20BCD3780087498B /* DrawerViewController.xib in Resources */,
+				552D942720BB85550041872B /* MainMenu.xib in Resources */,
+				5540A85B20BCC6E00087498B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,19 +185,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5540A85420BCC2BB0087498B /* KYEmbedDrawerControllerSegue.swift in Sources */,
+				5540A85820BCC2ED0087498B /* DrawerViewController.swift in Sources */,
+				5540A85520BCC2BB0087498B /* KYEmbedMainControllerSegue.swift in Sources */,
 				552D941F20BB2B9F0041872B /* PortfolioMainController.swift in Sources */,
 				552D942320BB300A0041872B /* NavigationController.swift in Sources */,
 				552D940A20BB22E90041872B /* AppDelegate.swift in Sources */,
+				552D942520BB85400041872B /* MainMenu.swift in Sources */,
+				5540A85320BCC2BB0087498B /* KYDrawerController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		552D940D20BB22E90041872B /* Main.storyboard */ = {
+		5540A85920BCC6E00087498B /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				552D940E20BB22E90041872B /* Base */,
+				5540A85A20BCC6E00087498B /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

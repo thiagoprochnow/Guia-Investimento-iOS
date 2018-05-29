@@ -26,13 +26,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
         
         // PortfolioMain Controller
-        let portfolioController = PortfolioMainController(nibName: "PortfolioMainController", bundle: nil)
-        // Navigation Controller
-        let nav = NavigationController()
+        let mainMenu = MainMenu(nibName: "MainMenu", bundle: nil)
         
-        nav.pushViewController(portfolioController, animated: false)
-        self.window!.rootViewController = nav
-        self.window!.makeKeyAndVisible()
+        let drawerViewController = DrawerViewController()
+        let drawerController     = KYDrawerController(drawerDirection: .left, drawerWidth: 300)
+        drawerController.mainViewController = UINavigationController(
+            rootViewController: mainMenu
+        )
+        drawerController.drawerViewController = drawerViewController
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = drawerController
+        window?.makeKeyAndVisible()
         
         return true
     }
