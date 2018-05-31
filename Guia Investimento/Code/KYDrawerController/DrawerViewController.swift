@@ -22,56 +22,21 @@ SOFTWARE.
 
 import UIKit
 
-class DrawerViewController: UIViewController, UITableViewDataSource {
+class DrawerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet var mainMenu: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
         self.mainMenu.dataSource = self
+        self.mainMenu.delegate = self
         self.mainMenu.rowHeight = 65
         self.mainMenu.register(UITableViewCell.self, forCellReuseIdentifier: "mainMenu")
         self.mainMenu.separatorStyle = UITableViewCellSeparatorStyle.none
-        // Do any additional setup after loading the view.
-        /*
-        let closeButton    = UIButton()
-        closeButton.translatesAutoresizingMaskIntoConstraints = false
-        closeButton.setTitle("Carteira Completa", for: UIControlState())
-        closeButton.addTarget(self,
-            action: #selector(didTapCloseButton),
-            for: .touchUpInside
-       )
-        closeButton.sizeToFit()
-        closeButton.setTitleColor(UIColor.black, for: UIControlState())
-        view.addSubview(closeButton)
-        view.addConstraint(
-            NSLayoutConstraint(
-                item: closeButton,
-                attribute: .centerX,
-                relatedBy: .equal,
-                toItem: view,
-                attribute: .centerX,
-                multiplier: 1,
-                constant: 0
-            )
-        )
-        view.addConstraint(
-            NSLayoutConstraint(
-                item: closeButton,
-                attribute: .centerY,
-                relatedBy: .equal,
-                toItem: view,
-                attribute: .centerY,
-                multiplier: 1,
-                constant: 0
-            )
-        )
-        view.backgroundColor = UIColor.white
-         */
     }
     
     // Number of Table View cells, number of Main Menu itens
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 9
+        return 10
     }
     
     // Creates the Main Menu itens
@@ -89,30 +54,34 @@ class DrawerViewController: UIViewController, UITableViewDataSource {
             cell.textLabel?.textAlignment = .left
             return cell
         case 2:
-            cell.textLabel!.text = "Ações"
+            cell.textLabel!.text = "Renda Fixa"
             cell.textLabel?.textAlignment = .left
             return cell
         case 3:
-            cell.textLabel!.text = "Fundos Imobiliários"
+            cell.textLabel!.text = "Ações"
             cell.textLabel?.textAlignment = .left
             return cell
         case 4:
-            cell.textLabel!.text = "Moedas"
+            cell.textLabel!.text = "Fundos Imobiliários"
             cell.textLabel?.textAlignment = .left
             return cell
         case 5:
-            cell.textLabel!.text = "Outros"
+            cell.textLabel!.text = "Moedas"
             cell.textLabel?.textAlignment = .left
             return cell
         case 6:
-            cell.textLabel!.text = "Versão Premium"
+            cell.textLabel!.text = "Outros"
             cell.textLabel?.textAlignment = .left
             return cell
         case 7:
-            cell.textLabel!.text = "Cópia e Restauração"
+            cell.textLabel!.text = "Versão Premium"
             cell.textLabel?.textAlignment = .left
             return cell
         case 8:
+            cell.textLabel!.text = "Copia e Restauração"
+            cell.textLabel?.textAlignment = .left
+            return cell
+        case 9:
             cell.textLabel!.text = "Sobre"
             cell.textLabel?.textAlignment = .left
             return cell
@@ -121,12 +90,45 @@ class DrawerViewController: UIViewController, UITableViewDataSource {
         }
     }
     
-    @objc func didTapCloseButton(_ sender: UIButton) {
+    // When clicking in option of Navigation Drawer
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let linha = indexPath.row
+        openViewAndCloseDrawer(linha)
+    }
+    
+    // Open the correct UIViewController when option selected and closes Navigation Drawer
+    @objc func openViewAndCloseDrawer(_ linha: Int) {
         if let drawerController = parent as? KYDrawerController {
             drawerController.setDrawerState(.closed, animated: true)
-            let portfolioMain = PortfolioMainController()
+            var view: UIViewController
+            view = PortfolioMainController()
+            switch linha{
+            case 0:
+                view = PortfolioMainController()
+                break
+            case 1:
+                view = TreasuryPortfolio()
+                break
+            case 2:
+                view = FixedPortfolio()
+                break
+            case 3:
+                view = StockPortfolio()
+                break
+            case 4:
+                view = FiiPortfolio()
+                break
+            case 5:
+                view = CurrencyPortfolio()
+                break
+            case 6:
+                view = OthersPortfolio()
+                break
+            default:
+                view = PortfolioMainController()
+            }
             drawerController.mainViewController = UINavigationController(
-                rootViewController: portfolioMain
+                rootViewController: view
             )
         }
     }

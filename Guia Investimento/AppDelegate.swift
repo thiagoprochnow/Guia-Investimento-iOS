@@ -25,13 +25,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationBarAppearace.titleTextAttributes =  [NSAttributedStringKey.foregroundColor: UIColor.white]
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
         
-        // PortfolioMain Controller
-        let mainMenu = MainMenu(nibName: "MainMenu", bundle: nil)
+        // Load PortfolioMain Controller as initial view
+        let portfolioMain = PortfolioMainController(nibName: "PortfolioMainController", bundle: nil)
         
+        // Load Navigation Drawer as Navigation Controller
         let drawerViewController = DrawerViewController()
         let drawerController     = KYDrawerController(drawerDirection: .left, drawerWidth: 300)
         drawerController.mainViewController = UINavigationController(
-            rootViewController: mainMenu
+            rootViewController: portfolioMain
         )
         drawerController.drawerViewController = drawerViewController
         
