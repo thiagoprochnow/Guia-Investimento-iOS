@@ -98,38 +98,27 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
     
     // Open the correct UIViewController when option selected and closes Navigation Drawer
     @objc func openViewAndCloseDrawer(_ linha: Int) {
+        var view: UITabBarController
+        view = TabController()
+        
         if let drawerController = parent as? KYDrawerController {
             drawerController.setDrawerState(.closed, animated: true)
-            var view: UIViewController
-            view = PortfolioMainController()
             switch linha{
-            case 0:
-                view = PortfolioMainController()
-                break
-            case 1:
-                view = TreasuryPortfolio()
-                break
-            case 2:
-                view = FixedPortfolio()
-                break
             case 3:
-                view = StockPortfolio()
-                break
-            case 4:
-                view = FiiPortfolio()
-                break
-            case 5:
-                view = CurrencyPortfolio()
-                break
-            case 6:
-                view = OthersPortfolio()
+                let portfolio = StockPortfolio()
+                let data = StockData()
+                portfolio.tabBarItem.title = "Visão Geral"
+                data.tabBarItem.title = "Carteira"
+                
+                view.title = "Ações"
+                view.viewControllers = [portfolio, data]
                 break
             default:
-                view = PortfolioMainController()
+                view.title = "Carteira Completa"
             }
-            drawerController.mainViewController = UINavigationController(
-                rootViewController: view
-            )
+            
+            let nav = drawerController.mainViewController as! UINavigationController
+            nav.pushViewController(view, animated: true)
         }
     }
 

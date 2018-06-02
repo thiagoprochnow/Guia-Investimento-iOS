@@ -13,17 +13,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         
-        // Change Navigation Bar Color
-        let navigationBarAppearace = UINavigationBar.appearance()
-        
-        navigationBarAppearace.tintColor = UIColor(red: 63/255, green: 81/255, blue: 181/255, alpha: 1)
-        navigationBarAppearace.barTintColor = UIColor(red: 63/255, green: 81/255, blue: 181/255, alpha: 1)
-        navigationBarAppearace.titleTextAttributes =  [NSAttributedStringKey.foregroundColor: UIColor.white]
-        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
+        Utils.changeStatusBar()
         
         // Load PortfolioMain Controller as initial view
         let portfolioMain = PortfolioMainController(nibName: "PortfolioMainController", bundle: nil)
@@ -43,4 +36,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 }
-

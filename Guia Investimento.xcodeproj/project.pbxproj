@@ -17,6 +17,8 @@
 		5540A85820BCC2ED0087498B /* DrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5540A85720BCC2ED0087498B /* DrawerViewController.swift */; };
 		5540A85B20BCC6E00087498B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5540A85920BCC6E00087498B /* Main.storyboard */; };
 		5540A85D20BCD3780087498B /* DrawerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5540A85C20BCD3780087498B /* DrawerViewController.xib */; };
+		5568A71220C1CCF000689EBA /* StockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5568A71120C1CCF000689EBA /* StockData.swift */; };
+		5568A71420C1CCFF00689EBA /* StockData.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5568A71320C1CCFF00689EBA /* StockData.xib */; };
 		559F12FA20C04353006BC844 /* StockPortfolio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559F12F920C04353006BC844 /* StockPortfolio.swift */; };
 		559F12FC20C0436C006BC844 /* StockPortfolio.xib in Resources */ = {isa = PBXBuildFile; fileRef = 559F12FB20C0436C006BC844 /* StockPortfolio.xib */; };
 		559F12FE20C044A5006BC844 /* FixedPortfolio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559F12FD20C044A5006BC844 /* FixedPortfolio.swift */; };
@@ -29,6 +31,8 @@
 		559F130E20C0467E006BC844 /* CurrencyPortfolio.xib in Resources */ = {isa = PBXBuildFile; fileRef = 559F130D20C0467E006BC844 /* CurrencyPortfolio.xib */; };
 		559F131020C046B1006BC844 /* TreasuryPortfolio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559F130F20C046B1006BC844 /* TreasuryPortfolio.swift */; };
 		559F131220C046EE006BC844 /* TreasuryPortfolio.xib in Resources */ = {isa = PBXBuildFile; fileRef = 559F131120C046EE006BC844 /* TreasuryPortfolio.xib */; };
+		559F131420C09D37006BC844 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559F131320C09D37006BC844 /* Utils.swift */; };
+		559F131620C0A3AC006BC844 /* TabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559F131520C0A3AC006BC844 /* TabController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +48,8 @@
 		5540A85720BCC2ED0087498B /* DrawerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerViewController.swift; sourceTree = "<group>"; };
 		5540A85A20BCC6E00087498B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5540A85C20BCD3780087498B /* DrawerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrawerViewController.xib; sourceTree = "<group>"; };
+		5568A71120C1CCF000689EBA /* StockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockData.swift; sourceTree = "<group>"; };
+		5568A71320C1CCFF00689EBA /* StockData.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StockData.xib; sourceTree = "<group>"; };
 		559F12F920C04353006BC844 /* StockPortfolio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockPortfolio.swift; sourceTree = "<group>"; };
 		559F12FB20C0436C006BC844 /* StockPortfolio.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StockPortfolio.xib; sourceTree = "<group>"; };
 		559F12FD20C044A5006BC844 /* FixedPortfolio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedPortfolio.swift; sourceTree = "<group>"; };
@@ -56,6 +62,8 @@
 		559F130D20C0467E006BC844 /* CurrencyPortfolio.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyPortfolio.xib; sourceTree = "<group>"; };
 		559F130F20C046B1006BC844 /* TreasuryPortfolio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreasuryPortfolio.swift; sourceTree = "<group>"; };
 		559F131120C046EE006BC844 /* TreasuryPortfolio.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TreasuryPortfolio.xib; sourceTree = "<group>"; };
+		559F131320C09D37006BC844 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		559F131520C0A3AC006BC844 /* TabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +108,7 @@
 		552D941B20BB2B010041872B /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				5568A70E20C18DAC00689EBA /* General */,
 				5540A84C20BCC2BB0087498B /* KYDrawerController */,
 				559F12F320C03527006BC844 /* Stock */,
 				559F12F420C037FD006BC844 /* FixedIncome */,
@@ -109,6 +118,7 @@
 				559F12F720C0382F006BC844 /* Treasury */,
 				552D942020BB2BB20041872B /* PortfolioMainController.xib */,
 				552D941E20BB2B9F0041872B /* PortfolioMainController.swift */,
+				559F131320C09D37006BC844 /* Utils.swift */,
 			);
 			path = Code;
 			sourceTree = "<group>";
@@ -133,11 +143,21 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
+		5568A70E20C18DAC00689EBA /* General */ = {
+			isa = PBXGroup;
+			children = (
+				559F131520C0A3AC006BC844 /* TabController.swift */,
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
 		559F12F320C03527006BC844 /* Stock */ = {
 			isa = PBXGroup;
 			children = (
 				559F12F920C04353006BC844 /* StockPortfolio.swift */,
 				559F12FB20C0436C006BC844 /* StockPortfolio.xib */,
+				5568A71120C1CCF000689EBA /* StockData.swift */,
+				5568A71320C1CCFF00689EBA /* StockData.xib */,
 			);
 			path = Stock;
 			sourceTree = "<group>";
@@ -253,6 +273,7 @@
 				559F130E20C0467E006BC844 /* CurrencyPortfolio.xib in Resources */,
 				559F131220C046EE006BC844 /* TreasuryPortfolio.xib in Resources */,
 				5540A85D20BCD3780087498B /* DrawerViewController.xib in Resources */,
+				5568A71420C1CCFF00689EBA /* StockData.xib in Resources */,
 				5540A85B20BCC6E00087498B /* Main.storyboard in Resources */,
 				559F130420C04526006BC844 /* FiiPortfolio.xib in Resources */,
 			);
@@ -270,12 +291,15 @@
 				5540A85820BCC2ED0087498B /* DrawerViewController.swift in Sources */,
 				559F130820C04591006BC844 /* OthersPortfolio.swift in Sources */,
 				5540A85520BCC2BB0087498B /* KYEmbedMainControllerSegue.swift in Sources */,
+				559F131420C09D37006BC844 /* Utils.swift in Sources */,
 				552D941F20BB2B9F0041872B /* PortfolioMainController.swift in Sources */,
 				559F131020C046B1006BC844 /* TreasuryPortfolio.swift in Sources */,
+				5568A71220C1CCF000689EBA /* StockData.swift in Sources */,
 				552D940A20BB22E90041872B /* AppDelegate.swift in Sources */,
 				559F130C20C045F4006BC844 /* CurrencyPortfolio.swift in Sources */,
 				559F130220C04514006BC844 /* FiiPortolfio.swift in Sources */,
 				5540A85320BCC2BB0087498B /* KYDrawerController.swift in Sources */,
+				559F131620C0A3AC006BC844 /* TabController.swift in Sources */,
 				559F12FA20C04353006BC844 /* StockPortfolio.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

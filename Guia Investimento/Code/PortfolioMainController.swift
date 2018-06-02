@@ -13,9 +13,9 @@ class PortfolioMainController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Titulo
-        self.title = "Carros"
+        self.title = "Carteira Completa"
         self.view.backgroundColor = UIColor(red: 237/255, green: 237/255, blue: 237/255, alpha: 1)
-        
+        Utils.changeStatusBar()
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             title: "Menu",
             style: UIBarButtonItemStyle.plain,
@@ -23,6 +23,11 @@ class PortfolioMainController: UIViewController {
             action: #selector(didTapOpenButton)
         )
         navigationItem.leftBarButtonItem?.tintColor = UIColor.white
+        
+        // Create custom Back Button
+        let backButton = UIBarButtonItem(title: "Voltar", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = backButton
+        navigationItem.backBarButtonItem?.tintColor = UIColor.white
     }
     
     @objc func didTapOpenButton(_ sender: UIBarButtonItem) {
