@@ -11,6 +11,8 @@ import UIKit
 
 class StockData: UIViewController, UITableViewDataSource{
     @IBOutlet var stockTable: UITableView!
+    @IBOutlet var fab: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Background Color
@@ -20,6 +22,12 @@ class StockData: UIViewController, UITableViewDataSource{
         self.stockTable.dataSource = self
         let xib = UINib(nibName: "StockDataCell", bundle: nil)
         self.stockTable.register(xib, forCellReuseIdentifier: "cell")
+        
+        // Load fab (Floating action button)
+        // Set images for each icon
+        let fabImg = UIImage(named: "fab")
+        fab.image = fabImg
+        
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
