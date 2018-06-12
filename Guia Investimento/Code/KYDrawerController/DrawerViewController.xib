@@ -22,16 +22,16 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Fxm-tL-bvB">
-                    <rect key="frame" x="0.0" y="0.0" width="240" height="554"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="Fxm-tL-bvB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="0Pq-jI-mB8"/>
-                <constraint firstItem="Fxm-tL-bvB" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="L8F-RQ-YDt"/>
-                <constraint firstItem="Fxm-tL-bvB" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="fpX-ri-eOJ"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Fxm-tL-bvB" secondAttribute="trailing" constant="135" id="rE4-UB-80k"/>
+                <constraint firstItem="Fxm-tL-bvB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="4Tb-l5-GTi"/>
+                <constraint firstItem="Fxm-tL-bvB" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="7az-ey-u7B"/>
+                <constraint firstItem="Fxm-tL-bvB" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="L1z-FH-CLU"/>
+                <constraint firstAttribute="trailing" secondItem="Fxm-tL-bvB" secondAttribute="trailing" id="kEp-bx-bfd"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
             <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>

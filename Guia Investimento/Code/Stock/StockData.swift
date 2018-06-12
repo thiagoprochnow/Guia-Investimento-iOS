@@ -18,7 +18,8 @@ class StockData: UIViewController, UITableViewDataSource{
         
         // Table View
         self.stockTable.dataSource = self
-        self.stockTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        let xib = UINib(nibName: "StockDataCell", bundle: nil)
+        self.stockTable.register(xib, forCellReuseIdentifier: "cell")
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
@@ -27,7 +28,6 @@ class StockData: UIViewController, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.stockTable.dequeueReusableCell(withIdentifier: "cell")
         let linha = indexPath.row
-        cell?.textLabel!.text = "Carro \(linha)"
         return cell!
     }
 }
