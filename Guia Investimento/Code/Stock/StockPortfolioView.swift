@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StockPortfolio: UIViewController {
+class StockPortfolioView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

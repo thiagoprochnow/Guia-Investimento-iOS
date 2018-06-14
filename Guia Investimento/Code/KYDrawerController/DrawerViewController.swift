@@ -105,12 +105,16 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
             drawerController.setDrawerState(.closed, animated: true)
             switch linha{
             case 3:
-                let portfolio = StockPortfolio()
-                let data = StockData()
+                let portfolio = StockPortfolioView()
+                let data = StockDataView()
                 portfolio.tabBarItem.title = "Visão Geral"
                 data.tabBarItem.title = "Carteira"
                 
                 view.title = "Ações"
+                // Create custom Back Button
+                let backButton = UIBarButtonItem(title: "Voltar", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
+                view.navigationItem.backBarButtonItem = backButton
+                view.navigationItem.backBarButtonItem?.tintColor = UIColor.white
                 view.viewControllers = [portfolio, data]
                 break
             default:

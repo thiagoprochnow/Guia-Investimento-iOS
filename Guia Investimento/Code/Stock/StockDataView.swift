@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class StockData: UIViewController, UITableViewDataSource, UITableViewDelegate{
+class StockDataView: UIViewController, UITableViewDataSource, UITableViewDelegate{
     @IBOutlet var stockTable: UITableView!
     @IBOutlet var fab: UIImageView!
     
@@ -28,6 +28,10 @@ class StockData: UIViewController, UITableViewDataSource, UITableViewDelegate{
         // Set images for each icon
         let fabImg = UIImage(named: "fab")
         fab.image = fabImg
+        // Add action to open buy form when tapped
+        fab.isUserInteractionEnabled = true
+        let tapBuyStock = UITapGestureRecognizer(target: self, action: #selector(StockDataView.buyStock))
+        fab.addGestureRecognizer(tapBuyStock)
         
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -69,4 +73,9 @@ class StockData: UIViewController, UITableViewDataSource, UITableViewDelegate{
         self.present(alertController, animated: false, completion: nil)
     }
     
+    // Open form to buy stocks
+    @IBAction func buyStock(){
+        let buyStockForm = BuyStockForm()
+        self.navigationController?.pushViewController(buyStockForm, animated: true)
+    }
 }
