@@ -11,10 +11,10 @@ class StockTransaction{
     var id = 0
     var symbol = ""
     var quantity = 0
-    var price = 0
+    var price = 0.0
     var timestamp = 0
     var type = 0
-    var tax = 0
-    var brokerage = 0
+    var tax = 0.0
+    var brokerage = 0.0
     var lastUpdate = 0
 }
