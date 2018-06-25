@@ -71,6 +71,14 @@ class BuyStockForm: UIViewController, UITextFieldDelegate{
                             stockTransaction.quantity = Int(quantity!)!
                             stockTransaction.brokerage = Double(brokerage!)!
                             stockTransaction.timestamp = Int(timestamp)
+                            stockTransaction.type = Constants.TypeOp.BUY
+                            
+                            // Save StockTransaction
+                            let db = StockTransactionDB()
+                            db.save(stockTransaction)
+                            db.close()
+                            
+                            
                             
                             // Dismiss current view
                             self.navigationController?.popViewController(animated: true)

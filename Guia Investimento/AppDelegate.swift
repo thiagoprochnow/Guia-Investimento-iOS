@@ -33,6 +33,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = drawerController
         window?.makeKeyAndVisible()
         
+        // Initialize Database
+        initializeDB()
+        
         return true
+    }
+    
+    func initializeDB(){
+        let stockTransactionDB = StockTransactionDB()
+        stockTransactionDB.createTable()
+        stockTransactionDB.close()
     }
 }

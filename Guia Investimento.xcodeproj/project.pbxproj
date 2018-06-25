@@ -19,6 +19,12 @@
 		5540A85D20BCD3780087498B /* DrawerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5540A85C20BCD3780087498B /* DrawerViewController.xib */; };
 		5542245B20C4BDD5001B2734 /* StockDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5542245A20C4BDD5001B2734 /* StockDataCell.swift */; };
 		5542245E20C4BE36001B2734 /* StockDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5542245D20C4BE36001B2734 /* StockDataCell.xib */; };
+		5566030620E0365E0041FC8B /* SQLiteHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5566030520E0365E0041FC8B /* SQLiteHelper.swift */; };
+		5566030920E037680041FC8B /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5566030820E037680041FC8B /* libsqlite3.tbd */; };
+		5566030C20E039D50041FC8B /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5566030B20E039D50041FC8B /* StringUtils.swift */; };
+		5566030F20E03E0E0041FC8B /* StockTransactionDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5566030E20E03E0E0041FC8B /* StockTransactionDB.swift */; };
+		5566031120E06A170041FC8B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5566031020E06A170041FC8B /* Constants.swift */; };
+		5566031420E06EAE0041FC8B /* StockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5566031320E06EAE0041FC8B /* StockService.swift */; };
 		5568A71220C1CCF000689EBA /* StockDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5568A71120C1CCF000689EBA /* StockDataView.swift */; };
 		5568A71420C1CCFF00689EBA /* StockDataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5568A71320C1CCFF00689EBA /* StockDataView.xib */; };
 		559F12FA20C04353006BC844 /* StockPortfolioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559F12F920C04353006BC844 /* StockPortfolioView.swift */; };
@@ -46,6 +52,13 @@
 		5540A85C20BCD3780087498B /* DrawerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrawerViewController.xib; sourceTree = "<group>"; };
 		5542245A20C4BDD5001B2734 /* StockDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDataCell.swift; sourceTree = "<group>"; };
 		5542245D20C4BE36001B2734 /* StockDataCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StockDataCell.xib; sourceTree = "<group>"; };
+		5566030520E0365E0041FC8B /* SQLiteHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteHelper.swift; sourceTree = "<group>"; };
+		5566030820E037680041FC8B /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		5566030A20E038490041FC8B /* Guia-Investimento-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Guia-Investimento-Bridging-Header.h"; sourceTree = "<group>"; };
+		5566030B20E039D50041FC8B /* StringUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
+		5566030E20E03E0E0041FC8B /* StockTransactionDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockTransactionDB.swift; sourceTree = "<group>"; };
+		5566031020E06A170041FC8B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		5566031320E06EAE0041FC8B /* StockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockService.swift; sourceTree = "<group>"; };
 		5568A71120C1CCF000689EBA /* StockDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDataView.swift; sourceTree = "<group>"; };
 		5568A71320C1CCFF00689EBA /* StockDataView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StockDataView.xib; sourceTree = "<group>"; };
 		559F12F920C04353006BC844 /* StockPortfolioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockPortfolioView.swift; sourceTree = "<group>"; };
@@ -63,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5566030920E037680041FC8B /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +88,7 @@
 			children = (
 				552D940820BB22E90041872B /* Guia Investimento */,
 				552D940720BB22E90041872B /* Products */,
+				5566030720E037680041FC8B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -93,6 +108,7 @@
 				552D941020BB22F30041872B /* Assets.xcassets */,
 				5540A85920BCC6E00087498B /* Main.storyboard */,
 				552D941520BB22F30041872B /* Info.plist */,
+				5566030A20E038490041FC8B /* Guia-Investimento-Bridging-Header.h */,
 			);
 			path = "Guia Investimento";
 			sourceTree = "<group>";
@@ -144,10 +160,37 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		5566030720E037680041FC8B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5566030820E037680041FC8B /* libsqlite3.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5566030D20E03DD20041FC8B /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				5566030E20E03E0E0041FC8B /* StockTransactionDB.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		5566031220E06E7F0041FC8B /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				5566031320E06EAE0041FC8B /* StockService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		5568A70E20C18DAC00689EBA /* General */ = {
 			isa = PBXGroup;
 			children = (
+				5566030B20E039D50041FC8B /* StringUtils.swift */,
+				5566030520E0365E0041FC8B /* SQLiteHelper.swift */,
 				559F131520C0A3AC006BC844 /* TabController.swift */,
+				5566031020E06A170041FC8B /* Constants.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -155,6 +198,8 @@
 		559F12F320C03527006BC844 /* Stock */ = {
 			isa = PBXGroup;
 			children = (
+				5566031220E06E7F0041FC8B /* Service */,
+				5566030D20E03DD20041FC8B /* Database */,
 				55A3915820D1E50300244FC2 /* Forms */,
 				55A3915320D1E18900244FC2 /* Object */,
 				5542245C20C4BE09001B2734 /* Cell */,
@@ -295,11 +340,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5566031420E06EAE0041FC8B /* StockService.swift in Sources */,
+				5566030F20E03E0E0041FC8B /* StockTransactionDB.swift in Sources */,
 				5540A85420BCC2BB0087498B /* KYEmbedDrawerControllerSegue.swift in Sources */,
 				5540A85820BCC2ED0087498B /* DrawerViewController.swift in Sources */,
 				5540A85520BCC2BB0087498B /* KYEmbedMainControllerSegue.swift in Sources */,
 				559F131420C09D37006BC844 /* Utils.swift in Sources */,
+				5566030C20E039D50041FC8B /* StringUtils.swift in Sources */,
 				552D941F20BB2B9F0041872B /* PortfolioMainController.swift in Sources */,
+				5566030620E0365E0041FC8B /* SQLiteHelper.swift in Sources */,
 				5568A71220C1CCF000689EBA /* StockDataView.swift in Sources */,
 				552D940A20BB22E90041872B /* AppDelegate.swift in Sources */,
 				5542245B20C4BDD5001B2734 /* StockDataCell.swift in Sources */,
@@ -309,6 +358,7 @@
 				5540A85320BCC2BB0087498B /* KYDrawerController.swift in Sources */,
 				559F131620C0A3AC006BC844 /* TabController.swift in Sources */,
 				559F12FA20C04353006BC844 /* StockPortfolioView.swift in Sources */,
+				5566031120E06A170041FC8B /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,6 +504,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "guiainvestimento.com.br.Guia-Investimento";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Guia Investimento/Guia-Investimento-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -473,6 +524,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "guiainvestimento.com.br.Guia-Investimento";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Guia Investimento/Guia-Investimento-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
