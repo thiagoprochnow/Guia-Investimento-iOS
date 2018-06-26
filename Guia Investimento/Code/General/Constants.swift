@@ -21,4 +21,10 @@ struct Constants {
         static let EDIT_TRANSACTION = 7
         static let EDIT_INCOME = 8
     }
+    
+    struct Status {
+        static let INVALID = -1
+        static let ACTIVE = 0
+        static let SOLD = 1
+    }
 }

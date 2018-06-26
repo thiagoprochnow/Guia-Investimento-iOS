@@ -78,7 +78,8 @@ class BuyStockForm: UIViewController, UITextFieldDelegate{
                             db.save(stockTransaction)
                             db.close()
                             
-                            
+                            let general = StockGeneral()
+                            let updateStockData = general.updateStockData(symbol!, type: Constants.TypeOp.BUY)
                             
                             // Dismiss current view
                             self.navigationController?.popViewController(animated: true)

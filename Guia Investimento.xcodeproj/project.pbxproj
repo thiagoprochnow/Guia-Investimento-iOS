@@ -25,8 +25,10 @@
 		5566030F20E03E0E0041FC8B /* StockTransactionDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5566030E20E03E0E0041FC8B /* StockTransactionDB.swift */; };
 		5566031120E06A170041FC8B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5566031020E06A170041FC8B /* Constants.swift */; };
 		5566031420E06EAE0041FC8B /* StockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5566031320E06EAE0041FC8B /* StockService.swift */; };
+		5566031620E070600041FC8B /* StockDataDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5566031520E070600041FC8B /* StockDataDB.swift */; };
 		5568A71220C1CCF000689EBA /* StockDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5568A71120C1CCF000689EBA /* StockDataView.swift */; };
 		5568A71420C1CCFF00689EBA /* StockDataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5568A71320C1CCFF00689EBA /* StockDataView.xib */; };
+		55811DE820E1B486006BCE0C /* StockGeneral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55811DE720E1B486006BCE0C /* StockGeneral.swift */; };
 		559F12FA20C04353006BC844 /* StockPortfolioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559F12F920C04353006BC844 /* StockPortfolioView.swift */; };
 		559F12FC20C0436C006BC844 /* StockPortfolioView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 559F12FB20C0436C006BC844 /* StockPortfolioView.xib */; };
 		559F131420C09D37006BC844 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559F131320C09D37006BC844 /* Utils.swift */; };
@@ -59,8 +61,10 @@
 		5566030E20E03E0E0041FC8B /* StockTransactionDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockTransactionDB.swift; sourceTree = "<group>"; };
 		5566031020E06A170041FC8B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5566031320E06EAE0041FC8B /* StockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockService.swift; sourceTree = "<group>"; };
+		5566031520E070600041FC8B /* StockDataDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDataDB.swift; sourceTree = "<group>"; };
 		5568A71120C1CCF000689EBA /* StockDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDataView.swift; sourceTree = "<group>"; };
 		5568A71320C1CCFF00689EBA /* StockDataView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StockDataView.xib; sourceTree = "<group>"; };
+		55811DE720E1B486006BCE0C /* StockGeneral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockGeneral.swift; sourceTree = "<group>"; };
 		559F12F920C04353006BC844 /* StockPortfolioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockPortfolioView.swift; sourceTree = "<group>"; };
 		559F12FB20C0436C006BC844 /* StockPortfolioView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StockPortfolioView.xib; sourceTree = "<group>"; };
 		559F131320C09D37006BC844 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -172,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				5566030E20E03E0E0041FC8B /* StockTransactionDB.swift */,
+				5566031520E070600041FC8B /* StockDataDB.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -195,9 +200,18 @@
 			path = General;
 			sourceTree = "<group>";
 		};
+		55811DE620E1B46F006BCE0C /* General */ = {
+			isa = PBXGroup;
+			children = (
+				55811DE720E1B486006BCE0C /* StockGeneral.swift */,
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
 		559F12F320C03527006BC844 /* Stock */ = {
 			isa = PBXGroup;
 			children = (
+				55811DE620E1B46F006BCE0C /* General */,
 				5566031220E06E7F0041FC8B /* Service */,
 				5566030D20E03DD20041FC8B /* Database */,
 				55A3915820D1E50300244FC2 /* Forms */,
@@ -348,9 +362,11 @@
 				559F131420C09D37006BC844 /* Utils.swift in Sources */,
 				5566030C20E039D50041FC8B /* StringUtils.swift in Sources */,
 				552D941F20BB2B9F0041872B /* PortfolioMainController.swift in Sources */,
+				5566031620E070600041FC8B /* StockDataDB.swift in Sources */,
 				5566030620E0365E0041FC8B /* SQLiteHelper.swift in Sources */,
 				5568A71220C1CCF000689EBA /* StockDataView.swift in Sources */,
 				552D940A20BB22E90041872B /* AppDelegate.swift in Sources */,
+				55811DE820E1B486006BCE0C /* StockGeneral.swift in Sources */,
 				5542245B20C4BDD5001B2734 /* StockDataCell.swift in Sources */,
 				55A3915720D1E3C800244FC2 /* StockTransaction.swift in Sources */,
 				55A3915A20D1FB2C00244FC2 /* BuyStockForm.swift in Sources */,
