@@ -19,6 +19,10 @@
 		5540A85D20BCD3780087498B /* DrawerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5540A85C20BCD3780087498B /* DrawerViewController.xib */; };
 		5542245B20C4BDD5001B2734 /* StockDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5542245A20C4BDD5001B2734 /* StockDataCell.swift */; };
 		5542245E20C4BE36001B2734 /* StockDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5542245D20C4BE36001B2734 /* StockDataCell.xib */; };
+		554E16E720E44542006B864D /* SoldStockDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 554E16E520E44542006B864D /* SoldStockDataCell.xib */; };
+		554E16E820E44542006B864D /* SoldStockDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554E16E620E44542006B864D /* SoldStockDataCell.swift */; };
+		554E16EB20E4459B006B864D /* SoldStockDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554E16E920E4459A006B864D /* SoldStockDataView.swift */; };
+		554E16EC20E4459B006B864D /* SoldStockDataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 554E16EA20E4459A006B864D /* SoldStockDataView.xib */; };
 		5566030620E0365E0041FC8B /* SQLiteHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5566030520E0365E0041FC8B /* SQLiteHelper.swift */; };
 		5566030920E037680041FC8B /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5566030820E037680041FC8B /* libsqlite3.tbd */; };
 		5566030C20E039D50041FC8B /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5566030B20E039D50041FC8B /* StringUtils.swift */; };
@@ -54,6 +58,10 @@
 		5540A85C20BCD3780087498B /* DrawerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrawerViewController.xib; sourceTree = "<group>"; };
 		5542245A20C4BDD5001B2734 /* StockDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDataCell.swift; sourceTree = "<group>"; };
 		5542245D20C4BE36001B2734 /* StockDataCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StockDataCell.xib; sourceTree = "<group>"; };
+		554E16E520E44542006B864D /* SoldStockDataCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SoldStockDataCell.xib; sourceTree = "<group>"; };
+		554E16E620E44542006B864D /* SoldStockDataCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoldStockDataCell.swift; sourceTree = "<group>"; };
+		554E16E920E4459A006B864D /* SoldStockDataView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoldStockDataView.swift; sourceTree = "<group>"; };
+		554E16EA20E4459A006B864D /* SoldStockDataView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SoldStockDataView.xib; sourceTree = "<group>"; };
 		5566030520E0365E0041FC8B /* SQLiteHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteHelper.swift; sourceTree = "<group>"; };
 		5566030820E037680041FC8B /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		5566030A20E038490041FC8B /* Guia-Investimento-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Guia-Investimento-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -130,7 +138,6 @@
 				559F12F720C0382F006BC844 /* Treasury */,
 				552D942020BB2BB20041872B /* PortfolioMainController.xib */,
 				552D941E20BB2B9F0041872B /* PortfolioMainController.swift */,
-				559F131320C09D37006BC844 /* Utils.swift */,
 			);
 			path = Code;
 			sourceTree = "<group>";
@@ -158,6 +165,8 @@
 		5542245C20C4BE09001B2734 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				554E16E620E44542006B864D /* SoldStockDataCell.swift */,
+				554E16E520E44542006B864D /* SoldStockDataCell.xib */,
 				5542245A20C4BDD5001B2734 /* StockDataCell.swift */,
 				5542245D20C4BE36001B2734 /* StockDataCell.xib */,
 			);
@@ -192,6 +201,7 @@
 		5568A70E20C18DAC00689EBA /* General */ = {
 			isa = PBXGroup;
 			children = (
+				559F131320C09D37006BC844 /* Utils.swift */,
 				5566030B20E039D50041FC8B /* StringUtils.swift */,
 				5566030520E0365E0041FC8B /* SQLiteHelper.swift */,
 				559F131520C0A3AC006BC844 /* TabController.swift */,
@@ -221,6 +231,8 @@
 				559F12FB20C0436C006BC844 /* StockPortfolioView.xib */,
 				5568A71120C1CCF000689EBA /* StockDataView.swift */,
 				5568A71320C1CCFF00689EBA /* StockDataView.xib */,
+				554E16E920E4459A006B864D /* SoldStockDataView.swift */,
+				554E16EA20E4459A006B864D /* SoldStockDataView.xib */,
 			);
 			path = Stock;
 			sourceTree = "<group>";
@@ -336,6 +348,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				554E16E720E44542006B864D /* SoldStockDataCell.xib in Resources */,
+				554E16EC20E4459B006B864D /* SoldStockDataView.xib in Resources */,
 				552D942120BB2BB20041872B /* PortfolioMainController.xib in Resources */,
 				55A3915C20D1FBD400244FC2 /* BuyStockForm.xib in Resources */,
 				559F12FC20C0436C006BC844 /* StockPortfolioView.xib in Resources */,
@@ -368,7 +382,9 @@
 				552D940A20BB22E90041872B /* AppDelegate.swift in Sources */,
 				55811DE820E1B486006BCE0C /* StockGeneral.swift in Sources */,
 				5542245B20C4BDD5001B2734 /* StockDataCell.swift in Sources */,
+				554E16E820E44542006B864D /* SoldStockDataCell.swift in Sources */,
 				55A3915720D1E3C800244FC2 /* StockTransaction.swift in Sources */,
+				554E16EB20E4459B006B864D /* SoldStockDataView.swift in Sources */,
 				55A3915A20D1FB2C00244FC2 /* BuyStockForm.swift in Sources */,
 				55A3915520D1E1A100244FC2 /* StockData.swift in Sources */,
 				5540A85320BCC2BB0087498B /* KYDrawerController.swift in Sources */,

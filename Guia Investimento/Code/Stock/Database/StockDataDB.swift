@@ -96,6 +96,38 @@ class StockDataDB{
         return data
     }
     
+    // Load StockData by its status
+    // Used to get all StockData as Active or Sold
+    func getDataByStatus(_ status: Int) -> Array<StockData> {
+        var stockDatas : Array<StockData> = []
+        let stmt = db.query("SELECT * FROM stock_data where status = ?",params: [status])
+        while (db.nextRow(stmt)){
+            let data = StockData()
+            data.id = db.getInt(stmt, index: 0)
+            data.symbol = db.getString(stmt, index: 1)
+            data.quantity = db.getInt(stmt, index: 2)
+            data.buyValue = db.getDouble(stmt, index: 3)
+            data.netIncome = db.getDouble(stmt, index: 4)
+            data.incomeTax = db.getDouble(stmt, index: 5)
+            data.variation = db.getDouble(stmt, index: 6)
+            data.totalGain = db.getDouble(stmt, index: 7)
+            data.objectivePercent = db.getDouble(stmt, index: 8)
+            data.currentPercent = db.getDouble(stmt, index: 9)
+            data.mediumPrice = db.getDouble(stmt, index: 10)
+            data.currentPrice = db.getDouble(stmt, index: 11)
+            data.currentTotal = db.getDouble(stmt, index: 12)
+            data.status = db.getInt(stmt, index: 13)
+            data.tax = db.getDouble(stmt, index: 14)
+            data.brokerage = db.getDouble(stmt, index: 15)
+            data.lastUpdate = db.getInt(stmt, index: 16)
+            data.updateStatus = db.getInt(stmt, index: 17)
+            data.closingPrice = db.getDouble(stmt, index: 18)
+            stockDatas.append(data)
+        }
+        db.closeStatement(stmt)
+        return stockDatas
+    }
+    
     // Save or update a StockData
     func save(_ data: StockData){
         if(data.id == 0){

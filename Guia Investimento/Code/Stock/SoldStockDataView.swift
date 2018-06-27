@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class StockDataView: UIViewController, UITableViewDataSource, UITableViewDelegate{
+class SoldStockDataView: UIViewController, UITableViewDataSource, UITableViewDelegate{
     @IBOutlet var stockTable: UITableView!
     @IBOutlet var fab: UIImageView!
     var stockDatas: Array<StockData> = []

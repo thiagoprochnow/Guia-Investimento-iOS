@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class StockDataCell: UITableViewCell {
+class SoldStockDataCell: UITableViewCell {
     @IBOutlet var bgView: UIView!
     @IBOutlet var bgHeader: UIView!
     @IBOutlet var alocationImg: UIImageView!
