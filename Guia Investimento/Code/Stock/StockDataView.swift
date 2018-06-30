@@ -13,6 +13,9 @@ class StockDataView: UIViewController, UITableViewDataSource, UITableViewDelegat
     @IBOutlet var stockTable: UITableView!
     @IBOutlet var fab: UIImageView!
     var stockDatas: Array<StockData> = []
+    var selectedSymbol: String = ""
+    var mediumBuy: String = ""
+    var mediumSell: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,13 +101,17 @@ class StockDataView: UIViewController, UITableViewDataSource, UITableViewDelegat
         // When a stock is selected in the table view, it will show menu asking for action
         // View details, Buy, Sell, Delete
         let linha = indexPath.row
+        let data = stockDatas[linha]
+        selectedSymbol = data.symbol
+        mediumBuy = String(data.mediumPrice)
+        mediumSell = ""
         let alertController = UIAlertController(title: "", message: "", preferredStyle: .alert)
         if(linha < (stockDatas.count)){
             let detailAction = UIAlertAction(title: NSLocalizedString("Mais Detalhes", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
-                //Add your code
+                self.stockDetails()
             })
             let buyAction = UIAlertAction(title: NSLocalizedString("Comprar", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
-                //Add your code
+                self.buyStock()
             })
             let sellAction = UIAlertAction(title: NSLocalizedString("Vender", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
                 //Add your code
@@ -113,6 +120,9 @@ class StockDataView: UIViewController, UITableViewDataSource, UITableViewDelegat
                 //Add your code
             })
             let cancelAction = UIAlertAction(title: NSLocalizedString("Cancelar", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
+                self.selectedSymbol = ""
+                self.mediumBuy = ""
+                self.mediumSell = ""
             })
             alertController.addAction(detailAction)
             alertController.addAction(buyAction)
@@ -123,9 +133,40 @@ class StockDataView: UIViewController, UITableViewDataSource, UITableViewDelegat
         }
     }
     
-    // Open form to buy stocks
+    // Open stock details view
     @IBAction func buyStock(){
         let buyStockForm = BuyStockForm()
+        if(selectedSymbol != ""){
+            buyStockForm.symbol = selectedSymbol
+        }
         self.navigationController?.pushViewController(buyStockForm, animated: true)
+    }
+    
+    // Open form to buy stocks
+    @IBAction func stockDetails(){
+        let stockDetails = StockDetailsView()
+        let stockIncomes = StockIncomesView()
+        let tabController = TabController()
+
+        stockDetails.tabBarItem.title = ""
+        stockDetails.tabBarItem.image =  Utils.makeThumbnailFromText(text: "Operações")
+        stockIncomes.tabBarItem.title = ""
+        stockIncomes.tabBarItem.image = Utils.makeThumbnailFromText(text: "Rendimentos")
+        
+        if(selectedSymbol != ""){
+            stockDetails.symbol = selectedSymbol
+            stockDetails.mediumBuy = mediumBuy
+            stockDetails.mediumSell = mediumSell
+            stockIncomes.symbol = selectedSymbol
+            tabController.title = selectedSymbol
+        }
+        
+        // Create custom Back Button
+        let backButton = UIBarButtonItem(title: "Voltar", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
+        tabController.navigationItem.backBarButtonItem = backButton
+        tabController.navigationItem.backBarButtonItem?.tintColor = UIColor.white
+        tabController.viewControllers = [stockDetails, stockIncomes]
+        
+        self.navigationController?.pushViewController(tabController, animated: true)
     }
 }

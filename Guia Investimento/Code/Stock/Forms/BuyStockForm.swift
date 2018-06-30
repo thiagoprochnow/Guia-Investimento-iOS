@@ -14,6 +14,9 @@ class BuyStockForm: UIViewController, UITextFieldDelegate{
     @IBOutlet var priceTextField: UITextField!
     @IBOutlet var brokerageTextField: UITextField!
     @IBOutlet var datePicker: UIDatePicker!
+    var symbol: String = ""
+    var id: Int = 0
+    var prealodedTransaction: StockTransaction!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +35,24 @@ class BuyStockForm: UIViewController, UITextFieldDelegate{
         quantityTextField.keyboardType = UIKeyboardType.numberPad
         priceTextField.keyboardType = UIKeyboardType.decimalPad
         brokerageTextField.keyboardType = UIKeyboardType.decimalPad
+        
+        // Buying a repeated stock, already shows symbol of the new buy
+        if(symbol != ""){
+            symbolTextField.text = symbol
+        }
+        
+        // It is a Edit mode, preload inserted information to be edited and saved
+        if(id != 0){
+            let transactionDB = StockTransactionDB()
+            prealodedTransaction = transactionDB.getTransactionById(id)
+            symbolTextField.text = prealodedTransaction.symbol
+            quantityTextField.text = String(prealodedTransaction.quantity)
+            priceTextField.text = String(prealodedTransaction.price)
+            brokerageTextField.text = String(prealodedTransaction.brokerage)
+            let date = Date(timeIntervalSince1970: TimeInterval(prealodedTransaction.timestamp))
+            datePicker.setDate(date, animated: false)
+            transactionDB.close()
+        }
     }
     
     @IBAction func insertStock(){
@@ -66,6 +87,10 @@ class BuyStockForm: UIViewController, UITextFieldDelegate{
                         if(!isFutureDate){
                             // Sucesso em todos os casos, inserir a ação
                             let stockTransaction = StockTransaction()
+                            // In case it is editing to update stockTransaction
+                            if(id != 0){
+                                stockTransaction.id = id
+                            }
                             stockTransaction.symbol = symbol!
                             stockTransaction.price = Double(price!)!
                             stockTransaction.quantity = Int(quantity!)!

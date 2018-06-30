@@ -98,6 +98,10 @@ class SQLiteHelper :NSObject {
                     sqlite3_bind_int(stmt, toCInt(i), number)
                     
                     // println("bind int \(i) -> \(value)")
+                } else if(value is Double){
+                    let number:Double = value as! Double
+                    
+                    sqlite3_bind_double(stmt, Int32(i), number)
                 } else {
                     
                     let text: String = value as! String

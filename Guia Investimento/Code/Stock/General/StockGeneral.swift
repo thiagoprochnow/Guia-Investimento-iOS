@@ -39,7 +39,7 @@ class StockGeneral {
             stockTransactions.forEach{ transaction in
                 currentType = transaction.type
                 
-                switch(type){
+                switch(currentType){
                 case Constants.TypeOp.BUY:
                     buyQuantity += Double(transaction.quantity)
                     buyTotal += Double(transaction.quantity) * transaction.price

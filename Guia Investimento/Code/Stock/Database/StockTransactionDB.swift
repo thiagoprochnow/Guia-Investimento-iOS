@@ -64,6 +64,7 @@ class StockTransactionDB{
             transaction.brokerage = db.getDouble(stmt, index: 7)
             transaction.lastUpdate = db.getInt(stmt, index: 8)
         }
+        db.closeStatement(stmt)
         return transaction
     }
     

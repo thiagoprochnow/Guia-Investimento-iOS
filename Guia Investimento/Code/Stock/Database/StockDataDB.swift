@@ -138,7 +138,7 @@ class StockDataDB{
             _ = db.execSql(sql, params: params as Array<AnyObject>)
         } else {
             // Update
-            let sql = "update stock_data set symbol=?,quantity=?,value_total=?,income_total=?,income_tax=?,variation=?,total_gain=?,objective_percent=?,current_percent=?,medium_price=?,current_price=?,current_total=?,status=?,tax=?,last_update=?,update_status=?,closing_price=? where _id=?;"
+            let sql = "update stock_data set symbol=?,quantity_total=?,value_total=?,income_total=?,income_tax=?,variation=?,total_gain=?,objective_percent=?,current_percent=?,medium_price=?,current_price=?,current_total=?,status=?,tax=?,brokerage=?,last_update=?,update_status=?,closing_price=? where _id=?;"
             let params = [data.symbol,data.quantity,data.buyValue,data.netIncome,data.incomeTax,data.variation,data.totalGain,data.objectivePercent,data.currentPercent,data.mediumPrice,data.currentPrice,data.currentTotal,data.status,data.tax,data.brokerage,data.lastUpdate,data.updateStatus,data.closingPrice,data.id] as [Any]
             _ = db.execSql(sql,params: params as Array<AnyObject>)
         }

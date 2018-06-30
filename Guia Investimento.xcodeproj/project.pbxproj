@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		551D525520E70FFA00B4A37F /* StockDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551D525420E70FFA00B4A37F /* StockDetailsView.swift */; };
+		551D525720E7102100B4A37F /* StockDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 551D525620E7102100B4A37F /* StockDetailsView.xib */; };
+		551D525920E7112C00B4A37F /* StockIncomesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551D525820E7112C00B4A37F /* StockIncomesView.swift */; };
+		551D525B20E7115200B4A37F /* StockIncomesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 551D525A20E7115200B4A37F /* StockIncomesView.xib */; };
+		551D525D20E7282E00B4A37F /* StockTransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551D525C20E7282E00B4A37F /* StockTransactionCell.swift */; };
+		551D525F20E7283F00B4A37F /* StockTransactionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 551D525E20E7283F00B4A37F /* StockTransactionCell.xib */; };
 		552D940A20BB22E90041872B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552D940920BB22E90041872B /* AppDelegate.swift */; };
 		552D941120BB22F30041872B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 552D941020BB22F30041872B /* Assets.xcassets */; };
 		552D941F20BB2B9F0041872B /* PortfolioMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552D941E20BB2B9F0041872B /* PortfolioMainController.swift */; };
@@ -44,6 +50,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		551D525420E70FFA00B4A37F /* StockDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailsView.swift; sourceTree = "<group>"; };
+		551D525620E7102100B4A37F /* StockDetailsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StockDetailsView.xib; sourceTree = "<group>"; };
+		551D525820E7112C00B4A37F /* StockIncomesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockIncomesView.swift; sourceTree = "<group>"; };
+		551D525A20E7115200B4A37F /* StockIncomesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StockIncomesView.xib; sourceTree = "<group>"; };
+		551D525C20E7282E00B4A37F /* StockTransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockTransactionCell.swift; sourceTree = "<group>"; };
+		551D525E20E7283F00B4A37F /* StockTransactionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StockTransactionCell.xib; sourceTree = "<group>"; };
 		552D940620BB22E90041872B /* Guia Investimento.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Guia Investimento.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		552D940920BB22E90041872B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		552D941020BB22F30041872B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -169,6 +181,8 @@
 				554E16E520E44542006B864D /* SoldStockDataCell.xib */,
 				5542245A20C4BDD5001B2734 /* StockDataCell.swift */,
 				5542245D20C4BE36001B2734 /* StockDataCell.xib */,
+				551D525C20E7282E00B4A37F /* StockTransactionCell.swift */,
+				551D525E20E7283F00B4A37F /* StockTransactionCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -233,6 +247,10 @@
 				5568A71320C1CCFF00689EBA /* StockDataView.xib */,
 				554E16E920E4459A006B864D /* SoldStockDataView.swift */,
 				554E16EA20E4459A006B864D /* SoldStockDataView.xib */,
+				551D525420E70FFA00B4A37F /* StockDetailsView.swift */,
+				551D525620E7102100B4A37F /* StockDetailsView.xib */,
+				551D525820E7112C00B4A37F /* StockIncomesView.swift */,
+				551D525A20E7115200B4A37F /* StockIncomesView.xib */,
 			);
 			path = Stock;
 			sourceTree = "<group>";
@@ -358,6 +376,9 @@
 				5540A85D20BCD3780087498B /* DrawerViewController.xib in Resources */,
 				5568A71420C1CCFF00689EBA /* StockDataView.xib in Resources */,
 				5540A85B20BCC6E00087498B /* Main.storyboard in Resources */,
+				551D525B20E7115200B4A37F /* StockIncomesView.xib in Resources */,
+				551D525F20E7283F00B4A37F /* StockTransactionCell.xib in Resources */,
+				551D525720E7102100B4A37F /* StockDetailsView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,13 +396,16 @@
 				5540A85520BCC2BB0087498B /* KYEmbedMainControllerSegue.swift in Sources */,
 				559F131420C09D37006BC844 /* Utils.swift in Sources */,
 				5566030C20E039D50041FC8B /* StringUtils.swift in Sources */,
+				551D525D20E7282E00B4A37F /* StockTransactionCell.swift in Sources */,
 				552D941F20BB2B9F0041872B /* PortfolioMainController.swift in Sources */,
 				5566031620E070600041FC8B /* StockDataDB.swift in Sources */,
 				5566030620E0365E0041FC8B /* SQLiteHelper.swift in Sources */,
 				5568A71220C1CCF000689EBA /* StockDataView.swift in Sources */,
 				552D940A20BB22E90041872B /* AppDelegate.swift in Sources */,
+				551D525920E7112C00B4A37F /* StockIncomesView.swift in Sources */,
 				55811DE820E1B486006BCE0C /* StockGeneral.swift in Sources */,
 				5542245B20C4BDD5001B2734 /* StockDataCell.swift in Sources */,
+				551D525520E70FFA00B4A37F /* StockDetailsView.swift in Sources */,
 				554E16E820E44542006B864D /* SoldStockDataCell.swift in Sources */,
 				55A3915720D1E3C800244FC2 /* StockTransaction.swift in Sources */,
 				554E16EB20E4459B006B864D /* SoldStockDataView.swift in Sources */,
