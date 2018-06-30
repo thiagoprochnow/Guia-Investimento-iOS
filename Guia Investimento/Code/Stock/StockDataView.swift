@@ -83,13 +83,14 @@ class StockDataView: UIViewController, UITableViewDataSource, UITableViewDelegat
             // Load each Stock Data information on cell
             let data = stockDatas[linha]
             cell.symbolLabel.text = data.symbol
+            let totalValue = data.currentPrice * Double(data.quantity)
             cell.quantityLabel.text = "Quantidade: " + String(data.quantity)
-            cell.currentLabel.text = "R$" + String(data.currentPrice * Double(data.quantity))
-            cell.boughtLabel.text = "R$" + String(data.buyValue)
-            cell.variationLabel.text = "R$" + String(data.variation)
-            cell.incomeLabel.text = "R$" + String(data.netIncome)
-            cell.brokerageLabel.text = "R$" + String(data.brokerage)
-            cell.gainLabel.text = "R$" + String(data.totalGain)
+            cell.currentLabel.text = Utils.doubleToRealCurrency(value: totalValue)
+            cell.boughtLabel.text = Utils.doubleToRealCurrency(value: data.buyValue)
+            cell.variationLabel.text = Utils.doubleToRealCurrency(value: data.variation)
+            cell.incomeLabel.text = Utils.doubleToRealCurrency(value: data.netIncome)
+            cell.brokerageLabel.text = Utils.doubleToRealCurrency(value: data.brokerage)
+            cell.gainLabel.text = Utils.doubleToRealCurrency(value: data.totalGain)
             return cell
         } else {
             cell.isHidden = true

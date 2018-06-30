@@ -29,8 +29,8 @@ class StockDetailsView: UIViewController, UITableViewDataSource, UITableViewDele
         bgView.layer.shadowRadius = 5
         
         // Overview
-        self.mediumBuyLabel.text = "R$" + mediumBuy
-        self.mediumSellLabel.text = "R$" + mediumSell
+        self.mediumBuyLabel.text = Utils.doubleToRealCurrency(value: Double(mediumBuy)!)
+        self.mediumSellLabel.text = Utils.doubleToRealCurrency(value: 0)
         
         // Table View
         self.transactionTable.dataSource = self
@@ -124,8 +124,8 @@ class StockDetailsView: UIViewController, UITableViewDataSource, UITableViewDele
             let dateString = formatter.string(from: date)
             cell.date.text = dateString
             
-            cell.price.text = "R$" + String(transaction.price)
-            cell.total.text = "R$" + String(transaction.price * Double(transaction.quantity))
+            cell.price.text = Utils.doubleToRealCurrency(value: transaction.price)
+            cell.total.text = Utils.doubleToRealCurrency(value: transaction.price * Double(transaction.quantity))
         } else {
             cell.isHidden = true
         }
@@ -158,7 +158,7 @@ class StockDetailsView: UIViewController, UITableViewDataSource, UITableViewDele
         let dataDB = StockDataDB()
         let stockData = dataDB.getDataBySymbol(symbol)
         dataDB.close()
-        self.mediumSellLabel.text = "R$"
-        self.mediumBuyLabel.text = "R$" + String(stockData.mediumPrice)
+        self.mediumSellLabel.text = Utils.doubleToRealCurrency(value: 0)
+        self.mediumBuyLabel.text = Utils.doubleToRealCurrency(value: stockData.mediumPrice)
     }
 }

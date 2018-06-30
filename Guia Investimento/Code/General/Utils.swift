@@ -63,6 +63,17 @@ class Utils {
         return false
     }
     
+    // Convert from Double to string as real currency
+    class func doubleToRealCurrency(value: Double) -> String {
+        let currencyFormatter = NumberFormatter()
+        currencyFormatter.usesGroupingSeparator = true
+        currencyFormatter.numberStyle = .currency
+        // localize to Brazil
+        currencyFormatter.locale = Locale(identifier: "pt_BR")
+        let currency = currencyFormatter.string(from: NSNumber(value: value))
+        return currency!
+    }
+    
     class func makeThumbnailFromText(text: String) -> UIImage {
         // some variables that control the size of the image we create, what font to use, etc.
         
