@@ -117,13 +117,21 @@ class StockDataView: UIViewController, UITableViewDataSource, UITableViewDelegat
             let sellAction = UIAlertAction(title: NSLocalizedString("Vender", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
                 //Add your code
             })
-            let deleteAction = UIAlertAction(title: NSLocalizedString("Deletar", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
-                //Add your code
-            })
             let cancelAction = UIAlertAction(title: NSLocalizedString("Cancelar", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
                 self.selectedSymbol = ""
                 self.mediumBuy = ""
                 self.mediumSell = ""
+            })
+            let deleteAction = UIAlertAction(title: NSLocalizedString("Deletar", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
+                let deleteAlertController = UIAlertController(title: "Deletar ação da sua carteira?", message: "Se vendeu a ação, escolha Vender no menu de opções. Deletar essa ação irá remover todos os dados sobre ela, inclusive proventos recebidos.", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: NSLocalizedString("Deletar", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
+                    self.deleteData(self.selectedSymbol)
+                    self.stockTable.reloadData()
+                })
+                
+                deleteAlertController.addAction(cancelAction)
+                deleteAlertController.addAction(okAction)
+                self.present(deleteAlertController, animated: false, completion: nil)
             })
             alertController.addAction(detailAction)
             alertController.addAction(buyAction)
@@ -141,6 +149,18 @@ class StockDataView: UIViewController, UITableViewDataSource, UITableViewDelegat
             buyStockForm.symbol = selectedSymbol
         }
         self.navigationController?.pushViewController(buyStockForm, animated: true)
+    }
+    
+    // Delete stock data, all its transactions and incomes
+    func deleteData(_ symbol: String){
+        let dataDB = StockDataDB()
+        let transactionDB = StockTransactionDB()
+        
+        dataDB.deleteBySymbol(symbol)
+        transactionDB.deleteBySymbol(symbol)
+        stockDatas = dataDB.getDataByStatus(Constants.Status.ACTIVE)
+        dataDB.close()
+        transactionDB.close()
     }
     
     // Open form to buy stocks
