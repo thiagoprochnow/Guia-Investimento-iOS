@@ -27,4 +27,15 @@ struct Constants {
         static let ACTIVE = 0
         static let SOLD = 1
     }
+    
+    struct ProductType {
+        static let INVALID = -1
+        static let STOCK = 0
+        static let FII = 1
+        static let CURRENCY = 2
+        static let FIXED = 3
+        static let TREASURY = 4
+        static let OTHERS = 5
+        static let PORTFOLIO = 6
+    }
 }

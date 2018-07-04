@@ -40,13 +40,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func initializeDB(){
-        // Stock Data
-        let stockDataDB = StockDataDB()
-        stockDataDB.createTable()
-        stockDataDB.close()
         // Stock Transaction
         let stockTransactionDB = StockTransactionDB()
         stockTransactionDB.createTable()
         stockTransactionDB.close()
+        // Stock Data
+        let stockDataDB = StockDataDB()
+        stockDataDB.createTable()
+        stockDataDB.close()
+        // Sold Stock Data
+        let soldStockDataDB = SoldStockDataDB()
+        soldStockDataDB.createTable()
+        soldStockDataDB.close()
     }
 }

@@ -12,7 +12,10 @@ import UIKit
 class SoldStockDataView: UIViewController, UITableViewDataSource, UITableViewDelegate{
     @IBOutlet var stockTable: UITableView!
     @IBOutlet var fab: UIImageView!
-    var stockDatas: Array<StockData> = []
+    var soldStockDatas: Array<SoldStockData> = []
+    var selectedSymbol: String = ""
+    var mediumBuy: String = ""
+    var mediumSell: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +26,7 @@ class SoldStockDataView: UIViewController, UITableViewDataSource, UITableViewDel
         self.stockTable.dataSource = self
         self.stockTable.delegate = self
         self.stockTable.separatorStyle = .none
-        let xib = UINib(nibName: "StockDataCell", bundle: nil)
+        let xib = UINib(nibName: "SoldStockDataCell", bundle: nil)
         self.stockTable.register(xib, forCellReuseIdentifier: "cell")
         
         // Load fab (Floating action button)
@@ -32,13 +35,13 @@ class SoldStockDataView: UIViewController, UITableViewDataSource, UITableViewDel
         fab.image = fabImg
         // Add action to open buy form when tapped
         fab.isUserInteractionEnabled = true
-        let tapBuyStock = UITapGestureRecognizer(target: self, action: #selector(StockDataView.buyStock))
+        let tapBuyStock = UITapGestureRecognizer(target: self, action: #selector(SoldStockDataView.buyStock))
         fab.addGestureRecognizer(tapBuyStock)
         
         // Load all Active Stock Datas to show on this list
-        let dataDB = StockDataDB()
-        stockDatas = dataDB.getDataByStatus(Constants.Status.ACTIVE)
-        if (stockDatas.isEmpty){
+        let dataDB = SoldStockDataDB()
+        soldStockDatas = dataDB.getSoldData()
+        if (soldStockDatas.isEmpty){
             self.stockTable.isHidden = true
         } else {
             self.stockTable.isHidden = false
@@ -48,10 +51,10 @@ class SoldStockDataView: UIViewController, UITableViewDataSource, UITableViewDel
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        // Load all Active Stock Datas to show on this list
-        let dataDB = StockDataDB()
-        stockDatas = dataDB.getDataByStatus(Constants.Status.ACTIVE)
-        if (stockDatas.isEmpty){
+        // Load all Sold Stock Datas to show on this list
+        let dataDB = SoldStockDataDB()
+        soldStockDatas = dataDB.getSoldData()
+        if (soldStockDatas.isEmpty){
             self.stockTable.isHidden = true
         } else {
             self.stockTable.isHidden = false
@@ -62,31 +65,30 @@ class SoldStockDataView: UIViewController, UITableViewDataSource, UITableViewDel
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (stockDatas.isEmpty){
+        if (soldStockDatas.isEmpty){
             return 0
         } else {
             // +1 to leave a empty field for Floating Button to scroll
-            return stockDatas.count + 1
+            return soldStockDatas.count + 1
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let linha = indexPath.row
-        let cell = self.stockTable.dequeueReusableCell(withIdentifier: "cell") as! StockDataCell
+        let cell = self.stockTable.dequeueReusableCell(withIdentifier: "cell") as! SoldStockDataCell
         // Do not show highlight when selected
         cell.selectionStyle = .none
         
-        if(linha < (stockDatas.count)){
-            // Load each Stock Data information on cell
-            let data = stockDatas[linha]
+        if(linha < (soldStockDatas.count)){
+            // Load each Sold Stock Data information on cell
+            let data = soldStockDatas[linha]
             cell.symbolLabel.text = data.symbol
+            let totalValue = data.mediumPrice * Double(data.quantity)
             cell.quantityLabel.text = "Quantidade: " + String(data.quantity)
-            cell.currentLabel.text = "R$" + String(data.currentPrice * Double(data.quantity))
-            cell.boughtLabel.text = "R$" + String(data.buyValue)
-            cell.variationLabel.text = "R$" + String(data.variation)
-            cell.incomeLabel.text = "R$" + String(data.netIncome)
-            cell.brokerageLabel.text = "R$" + String(data.brokerage)
-            cell.gainLabel.text = "R$" + String(data.totalGain)
+            cell.soldLabel.text = Utils.doubleToRealCurrency(value: data.currentTotal)
+            cell.boughtLabel.text = Utils.doubleToRealCurrency(value: data.buyValue)
+            cell.brokerageLabel.text = Utils.doubleToRealCurrency(value: data.brokerage)
+            cell.gainLabel.text = Utils.doubleToRealCurrency(value: data.sellGain)
             return cell
         } else {
             cell.isHidden = true
@@ -98,21 +100,39 @@ class SoldStockDataView: UIViewController, UITableViewDataSource, UITableViewDel
         // When a stock is selected in the table view, it will show menu asking for action
         // View details, Buy, Sell, Delete
         let linha = indexPath.row
+        let data = soldStockDatas[linha]
+        selectedSymbol = data.symbol
+        let dataDB = StockDataDB()
+        let buyData = dataDB.getDataBySymbol(selectedSymbol)
+        mediumBuy = String(buyData.mediumPrice)
+        dataDB.close()
+        mediumSell = String(data.mediumPrice)
         let alertController = UIAlertController(title: "", message: "", preferredStyle: .alert)
-        if(linha < (stockDatas.count)){
+        if(linha < (soldStockDatas.count)){
             let detailAction = UIAlertAction(title: NSLocalizedString("Mais Detalhes", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
-                //Add your code
+                self.stockDetails()
             })
             let buyAction = UIAlertAction(title: NSLocalizedString("Comprar", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
-                //Add your code
+                self.buyStock()
             })
             let sellAction = UIAlertAction(title: NSLocalizedString("Vender", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
                 //Add your code
             })
-            let deleteAction = UIAlertAction(title: NSLocalizedString("Deletar", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
-                //Add your code
-            })
             let cancelAction = UIAlertAction(title: NSLocalizedString("Cancelar", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
+                self.selectedSymbol = ""
+                self.mediumBuy = ""
+                self.mediumSell = ""
+            })
+            let deleteAction = UIAlertAction(title: NSLocalizedString("Deletar", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
+                let deleteAlertController = UIAlertController(title: "Deletar ação da sua carteira?", message: "Se vendeu a ação, escolha Vender no menu de opções. Deletar essa ação irá remover todos os dados sobre ela, inclusive proventos recebidos.", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: NSLocalizedString("Deletar", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
+                    self.deleteData(self.selectedSymbol)
+                    self.stockTable.reloadData()
+                })
+                
+                deleteAlertController.addAction(cancelAction)
+                deleteAlertController.addAction(okAction)
+                self.present(deleteAlertController, animated: false, completion: nil)
             })
             alertController.addAction(detailAction)
             alertController.addAction(buyAction)
@@ -123,9 +143,55 @@ class SoldStockDataView: UIViewController, UITableViewDataSource, UITableViewDel
         }
     }
     
-    // Open form to buy stocks
+    // Open stock details view
     @IBAction func buyStock(){
         let buyStockForm = BuyStockForm()
+        if(selectedSymbol != ""){
+            buyStockForm.symbol = selectedSymbol
+        }
         self.navigationController?.pushViewController(buyStockForm, animated: true)
+    }
+    
+    // Delete stock data, all its transactions and incomes
+    func deleteData(_ symbol: String){
+        let dataDB = StockDataDB()
+        let transactionDB = StockTransactionDB()
+        let soldDataDB = SoldStockDataDB()
+        
+        dataDB.deleteBySymbol(symbol)
+        transactionDB.deleteBySymbol(symbol)
+        soldDataDB.deleteBySymbol(symbol)
+        soldStockDatas = soldDataDB.getSoldData()
+        dataDB.close()
+        transactionDB.close()
+        soldDataDB.close()
+    }
+    
+    // Open form to buy stocks
+    @IBAction func stockDetails(){
+        let stockDetails = StockDetailsView()
+        let stockIncomes = StockIncomesView()
+        let tabController = TabController()
+        
+        stockDetails.tabBarItem.title = ""
+        stockDetails.tabBarItem.image =  Utils.makeThumbnailFromText(text: "Operações")
+        stockIncomes.tabBarItem.title = ""
+        stockIncomes.tabBarItem.image = Utils.makeThumbnailFromText(text: "Rendimentos")
+        
+        if(selectedSymbol != ""){
+            stockDetails.symbol = selectedSymbol
+            stockDetails.mediumBuy = mediumBuy
+            stockDetails.mediumSell = mediumSell
+            stockIncomes.symbol = selectedSymbol
+            tabController.title = selectedSymbol
+        }
+        
+        // Create custom Back Button
+        let backButton = UIBarButtonItem(title: "Voltar", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
+        tabController.navigationItem.backBarButtonItem = backButton
+        tabController.navigationItem.backBarButtonItem?.tintColor = UIColor.white
+        tabController.viewControllers = [stockDetails, stockIncomes]
+        
+        self.navigationController?.pushViewController(tabController, animated: true)
     }
 }

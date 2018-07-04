@@ -12,13 +12,10 @@ import UIKit
 class SoldStockDataCell: UITableViewCell {
     @IBOutlet var bgView: UIView!
     @IBOutlet var bgHeader: UIView!
-    @IBOutlet var alocationImg: UIImageView!
     @IBOutlet var symbolLabel : UILabel!
     @IBOutlet var quantityLabel: UILabel!
-    @IBOutlet var currentLabel: UILabel!
+    @IBOutlet var soldLabel: UILabel!
     @IBOutlet var boughtLabel: UILabel!
-    @IBOutlet var variationLabel: UILabel!
-    @IBOutlet var incomeLabel: UILabel!
     @IBOutlet var brokerageLabel: UILabel!
     @IBOutlet var gainLabel: UILabel!
     
@@ -32,9 +29,5 @@ class SoldStockDataCell: UITableViewCell {
         bgView.layer.shadowOpacity = 0.5
         bgView.layer.shadowOffset = CGSize(width: -1, height: 1)
         bgView.layer.shadowRadius = 5
-        
-        // Set images for each icon
-        let alocationIcon = UIImage(named: "current_small")
-        alocationImg.image = alocationIcon
     }
 }

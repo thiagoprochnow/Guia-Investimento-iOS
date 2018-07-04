@@ -54,6 +54,17 @@ class Utils {
         return matches(regex: regex, text: text)
     }
     
+    // Check if inputted selling quantity us valid and there was enough buy, so it will not generate negative quantity value
+    class func isValidSellStock(quantity:Int, symbol:String) -> Bool{
+        let dataDB = StockDataDB()
+        let quantityBought = dataDB.getDataBySymbol(symbol)
+        if(quantityBought.quantity >= quantity){
+            return true
+        } else {
+            return false
+        }
+    }
+    
     // Check if selected date is a date in future from current time
     class func isFutureDate(timestamp: Int) -> Bool {
         let current = Date().timeIntervalSince1970

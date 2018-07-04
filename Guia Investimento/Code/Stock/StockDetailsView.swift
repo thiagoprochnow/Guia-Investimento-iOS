@@ -29,8 +29,18 @@ class StockDetailsView: UIViewController, UITableViewDataSource, UITableViewDele
         bgView.layer.shadowRadius = 5
         
         // Overview
-        self.mediumBuyLabel.text = Utils.doubleToRealCurrency(value: Double(mediumBuy)!)
-        self.mediumSellLabel.text = Utils.doubleToRealCurrency(value: 0)
+        if(mediumBuy != ""){
+            self.mediumBuyLabel.text = Utils.doubleToRealCurrency(value: Double(mediumBuy)!)
+        } else {
+            self.mediumBuyLabel.text = ""
+        }
+        
+        let medium = mediumSell
+        if(mediumSell != ""){
+            self.mediumSellLabel.text = Utils.doubleToRealCurrency(value: Double(mediumSell)!)
+        } else {
+            self.mediumSellLabel.text = ""
+        }
         
         // Table View
         self.transactionTable.dataSource = self
@@ -158,7 +168,10 @@ class StockDetailsView: UIViewController, UITableViewDataSource, UITableViewDele
         let dataDB = StockDataDB()
         let stockData = dataDB.getDataBySymbol(symbol)
         dataDB.close()
-        self.mediumSellLabel.text = Utils.doubleToRealCurrency(value: 0)
+        let soldDataDB = SoldStockDataDB()
+        let soldData = soldDataDB.getDataBySymbol(symbol)
+        soldDataDB.close()
+        self.mediumSellLabel.text = Utils.doubleToRealCurrency(value: soldData.mediumPrice)
         self.mediumBuyLabel.text = Utils.doubleToRealCurrency(value: stockData.mediumPrice)
     }
 }

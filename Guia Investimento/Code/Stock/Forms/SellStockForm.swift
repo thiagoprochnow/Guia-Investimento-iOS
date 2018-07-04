@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-class BuyStockForm: UIViewController, UITextFieldDelegate{
+class SellStockForm: UIViewController, UITextFieldDelegate{
     @IBOutlet var symbolTextField: UITextField!
     @IBOutlet var quantityTextField: UITextField!
     @IBOutlet var priceTextField: UITextField!
@@ -22,7 +22,7 @@ class BuyStockForm: UIViewController, UITextFieldDelegate{
         super.viewDidLoad()
         
         // Insert stock button added on the right side of the bar menu
-        let btInsert = UIBarButtonItem(title: "Inserir", style: UIBarButtonItemStyle.plain, target: self, action: #selector(BuyStockForm.insertStock))
+        let btInsert = UIBarButtonItem(title: "Vender", style: UIBarButtonItemStyle.plain, target: self, action: #selector(SellStockForm.sellStock))
         self.navigationItem.rightBarButtonItem = btInsert
         self.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
         
@@ -36,10 +36,8 @@ class BuyStockForm: UIViewController, UITextFieldDelegate{
         priceTextField.keyboardType = UIKeyboardType.decimalPad
         brokerageTextField.keyboardType = UIKeyboardType.decimalPad
         
-        // Buying a repeated stock, already shows symbol of the new buy
-        if(symbol != ""){
-            symbolTextField.text = symbol
-        }
+        // Always selling a already bougth stock
+        symbolTextField.text = symbol
         
         // It is a Edit mode, preload inserted information to be edited and saved
         if(id != 0){
@@ -55,7 +53,7 @@ class BuyStockForm: UIViewController, UITextFieldDelegate{
         }
     }
     
-    @IBAction func insertStock(){
+    @IBAction func sellStock(){
         let symbol = symbolTextField.text
         let price = priceTextField.text
         let quantity = quantityTextField.text
@@ -79,52 +77,59 @@ class BuyStockForm: UIViewController, UITextFieldDelegate{
         if(isValidSymbol){
             let isValidQuantity = Utils.isValidInt(text: quantity!)
             if(isValidQuantity){
+                let isQuantityEnough = Utils.isValidSellStock(quantity: Int(quantity!)!, symbol: symbol!)
+                if(isQuantityEnough){
                 let isValidPrice = Utils.isValidDouble(text: price!)
-                if(isValidPrice){
-                    let isValidBrokerage = Utils.isValidDouble(text: brokerage!)
-                    if(isValidBrokerage){
-                        let isFutureDate = Utils.isFutureDate(timestamp: Int(timestamp))
-                        if(!isFutureDate){
-                            // Sucesso em todos os casos, inserir a ação
-                            let stockTransaction = StockTransaction()
-                            // In case it is editing to update stockTransaction
-                            if(id != 0){
-                                stockTransaction.id = id
+                    if(isValidPrice){
+                        let isValidBrokerage = Utils.isValidDouble(text: brokerage!)
+                        if(isValidBrokerage){
+                            let isFutureDate = Utils.isFutureDate(timestamp: Int(timestamp))
+                            if(!isFutureDate){
+                                // Sucesso em todos os casos, inserir a ação
+                                let stockTransaction = StockTransaction()
+                                // In case it is editing to update stockTransaction
+                                if(id != 0){
+                                    stockTransaction.id = id
+                                }
+                                stockTransaction.symbol = symbol!
+                                stockTransaction.price = Double(price!)!
+                                stockTransaction.quantity = Int(quantity!)!
+                                stockTransaction.brokerage = Double(brokerage!)!
+                                stockTransaction.timestamp = Int(timestamp)
+                                stockTransaction.type = Constants.TypeOp.SELL
+                                
+                                // Save StockTransaction
+                                let db = StockTransactionDB()
+                                db.save(stockTransaction)
+                                db.close()
+                                
+                                let general = StockGeneral()
+                                _ = general.updateStockData(symbol!, type: Constants.TypeOp.BUY)
+                                
+                                // Dismiss current view
+                                self.navigationController?.popViewController(animated: true)
+                                // Show Alert
+                                alert.title = ""
+                                alert.message = "Ação vendida com sucesso"
+                                alert.show()
+                            } else {
+                                // Show Alert
+                                alert.message = "Data de venda não pode ser futura a data atual"
+                                alert.show()
                             }
-                            stockTransaction.symbol = symbol!
-                            stockTransaction.price = Double(price!)!
-                            stockTransaction.quantity = Int(quantity!)!
-                            stockTransaction.brokerage = Double(brokerage!)!
-                            stockTransaction.timestamp = Int(timestamp)
-                            stockTransaction.type = Constants.TypeOp.BUY
-                            
-                            // Save StockTransaction
-                            let db = StockTransactionDB()
-                            db.save(stockTransaction)
-                            db.close()
-                            
-                            let general = StockGeneral()
-                            _ = general.updateStockData(symbol!, type: Constants.TypeOp.BUY)
-                            
-                            // Dismiss current view
-                            self.navigationController?.popViewController(animated: true)
-                            // Show Alert
-                            alert.title = ""
-                            alert.message = "Ação comprada com sucesso"
-                            alert.show()
                         } else {
                             // Show Alert
-                            alert.message = "Data de compra não pode ser futura a data atual"
+                            alert.message = "Corretagem da ação deve conter apenas números e ponto"
                             alert.show()
                         }
                     } else {
                         // Show Alert
-                        alert.message = "Corretagem da ação deve conter apenas números e ponto"
+                        alert.message = "Preço da ação deve conter apenas números e ponto"
                         alert.show()
                     }
                 } else {
                     // Show Alert
-                    alert.message = "Preço da ação deve conter apenas números e ponto"
+                    alert.message = "Quantidade deve ter o suficiente dessa ação na carteira"
                     alert.show()
                 }
             } else {

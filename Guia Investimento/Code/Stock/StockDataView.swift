@@ -105,7 +105,10 @@ class StockDataView: UIViewController, UITableViewDataSource, UITableViewDelegat
         let data = stockDatas[linha]
         selectedSymbol = data.symbol
         mediumBuy = String(data.mediumPrice)
-        mediumSell = ""
+        let soldDataDB = SoldStockDataDB()
+        let soldData = soldDataDB.getDataBySymbol(selectedSymbol)
+        soldDataDB.close()
+        mediumSell = String(soldData.mediumPrice)
         let alertController = UIAlertController(title: "", message: "", preferredStyle: .alert)
         if(linha < (stockDatas.count)){
             let detailAction = UIAlertAction(title: NSLocalizedString("Mais Detalhes", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
@@ -115,7 +118,7 @@ class StockDataView: UIViewController, UITableViewDataSource, UITableViewDelegat
                 self.buyStock()
             })
             let sellAction = UIAlertAction(title: NSLocalizedString("Vender", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
-                //Add your code
+                self.sellStock()
             })
             let cancelAction = UIAlertAction(title: NSLocalizedString("Cancelar", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
                 self.selectedSymbol = ""
@@ -142,7 +145,7 @@ class StockDataView: UIViewController, UITableViewDataSource, UITableViewDelegat
         }
     }
     
-    // Open stock details view
+    // Open form to buy stocks
     @IBAction func buyStock(){
         let buyStockForm = BuyStockForm()
         if(selectedSymbol != ""){
@@ -151,19 +154,31 @@ class StockDataView: UIViewController, UITableViewDataSource, UITableViewDelegat
         self.navigationController?.pushViewController(buyStockForm, animated: true)
     }
     
+    // Open form to sell stocks
+    @IBAction func sellStock(){
+        let sellStockForm = SellStockForm()
+        if(selectedSymbol != ""){
+            sellStockForm.symbol = selectedSymbol
+        }
+        self.navigationController?.pushViewController(sellStockForm, animated: true)
+    }
+    
     // Delete stock data, all its transactions and incomes
     func deleteData(_ symbol: String){
         let dataDB = StockDataDB()
         let transactionDB = StockTransactionDB()
+        let soldDataDB = SoldStockDataDB()
         
         dataDB.deleteBySymbol(symbol)
         transactionDB.deleteBySymbol(symbol)
+        soldDataDB.deleteBySymbol(symbol)
         stockDatas = dataDB.getDataByStatus(Constants.Status.ACTIVE)
         dataDB.close()
         transactionDB.close()
+        soldDataDB.close()
     }
     
-    // Open form to buy stocks
+    // Open stock details view
     @IBAction func stockDetails(){
         let stockDetails = StockDetailsView()
         let stockIncomes = StockIncomesView()

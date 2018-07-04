@@ -15,6 +15,7 @@ class StockGeneral {
         let dataDB = StockDataDB()
         let transactionDB = StockTransactionDB()
         let stockTransactions = transactionDB.getTransactionsBySymbol(symbol)
+        transactionDB.close()
 
         if(stockTransactions.count > 0 ){
             // Final value to be inserted in StockData
@@ -120,9 +121,51 @@ class StockGeneral {
             
             dataDB.save(stockData)
             dataDB.close()
+            updateSoldStockData(symbol, soldBuyValue: soldBuyValue, sellBrokerage: sellBrokerage)
             return true
         } else {
+            dataDB.close()
             return false
         }
+    }
+    
+    // Reads the StockTransaction entries and calculates value for SoldStockData for this symbol
+    func updateSoldStockData(_ symbol:String, soldBuyValue: Double, sellBrokerage: Double){
+        let soldDataDB = SoldStockDataDB()
+        let transactionDB = StockTransactionDB()
+        let stockTransactions = transactionDB.getTransactionsBySymbol(symbol)
+        transactionDB.close()
+        
+        if(stockTransactions.count > 0){
+            var quantityTotal: Int = 0
+            var soldTotal: Double = 0.0
+            var sellMediumPrice: Double = 0.0
+            
+            stockTransactions.forEach{ transaction in
+                let currentyType = transaction.type
+                
+                if(currentyType == Constants.TypeOp.SELL){
+                    quantityTotal += transaction.quantity
+                    soldTotal += Double(transaction.quantity) * transaction.price
+                    sellMediumPrice = soldTotal/Double(quantityTotal)
+                }
+            }
+            
+            // If there is any sold stock
+            if (quantityTotal > 0){
+                let soldStockData = soldDataDB.getDataBySymbol(symbol)
+                let sellGain = soldTotal - soldBuyValue - sellBrokerage
+                
+                soldStockData.symbol = symbol
+                soldStockData.quantity = quantityTotal
+                soldStockData.buyValue = soldBuyValue
+                soldStockData.mediumPrice = sellMediumPrice
+                soldStockData.currentTotal = soldTotal
+                soldStockData.sellGain = sellGain
+                soldStockData.brokerage = sellBrokerage
+                soldDataDB.save(soldStockData)
+            }
+        }
+        soldDataDB.close()
     }
 }
