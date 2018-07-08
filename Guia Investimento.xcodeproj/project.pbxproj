@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5501D8F520ED972500C7D4E5 /* StockDividendForm.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5501D8F320ED972400C7D4E5 /* StockDividendForm.xib */; };
+		5501D8F620ED972500C7D4E5 /* StockDividendForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5501D8F420ED972500C7D4E5 /* StockDividendForm.swift */; };
+		5503A81020F1048D0039ACCD /* StockIncome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5503A80F20F1048D0039ACCD /* StockIncome.swift */; };
+		5503A81220F107680039ACCD /* StockIncomeDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5503A81120F107680039ACCD /* StockIncomeDB.swift */; };
+		5503A81520F24C510039ACCD /* StockIncomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5503A81320F24C500039ACCD /* StockIncomeCell.xib */; };
+		5503A81620F24C510039ACCD /* StockIncomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5503A81420F24C510039ACCD /* StockIncomeCell.swift */; };
+		5503A81920F2A2F70039ACCD /* StockBonificationForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5503A81720F2A2F70039ACCD /* StockBonificationForm.swift */; };
+		5503A81A20F2A2F70039ACCD /* StockBonificationForm.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5503A81820F2A2F70039ACCD /* StockBonificationForm.xib */; };
 		5518596B20E9860900BFB445 /* SoldStockDataDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5518596A20E9860900BFB445 /* SoldStockDataDB.swift */; };
 		5518596D20E9879700BFB445 /* SoldStockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5518596C20E9879600BFB445 /* SoldStockData.swift */; };
 		5518597020EAEE2900BFB445 /* SellStockForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5518596E20EAEE2900BFB445 /* SellStockForm.swift */; };
@@ -54,6 +62,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5501D8F320ED972400C7D4E5 /* StockDividendForm.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StockDividendForm.xib; sourceTree = "<group>"; };
+		5501D8F420ED972500C7D4E5 /* StockDividendForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockDividendForm.swift; sourceTree = "<group>"; };
+		5503A80F20F1048D0039ACCD /* StockIncome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockIncome.swift; sourceTree = "<group>"; };
+		5503A81120F107680039ACCD /* StockIncomeDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockIncomeDB.swift; sourceTree = "<group>"; };
+		5503A81320F24C500039ACCD /* StockIncomeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StockIncomeCell.xib; sourceTree = "<group>"; };
+		5503A81420F24C510039ACCD /* StockIncomeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockIncomeCell.swift; sourceTree = "<group>"; };
+		5503A81720F2A2F70039ACCD /* StockBonificationForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockBonificationForm.swift; sourceTree = "<group>"; };
+		5503A81820F2A2F70039ACCD /* StockBonificationForm.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StockBonificationForm.xib; sourceTree = "<group>"; };
 		5518596A20E9860900BFB445 /* SoldStockDataDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoldStockDataDB.swift; sourceTree = "<group>"; };
 		5518596C20E9879600BFB445 /* SoldStockData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoldStockData.swift; sourceTree = "<group>"; };
 		5518596E20EAEE2900BFB445 /* SellStockForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SellStockForm.swift; sourceTree = "<group>"; };
@@ -185,6 +201,8 @@
 		5542245C20C4BE09001B2734 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				5503A81420F24C510039ACCD /* StockIncomeCell.swift */,
+				5503A81320F24C500039ACCD /* StockIncomeCell.xib */,
 				554E16E620E44542006B864D /* SoldStockDataCell.swift */,
 				554E16E520E44542006B864D /* SoldStockDataCell.xib */,
 				5542245A20C4BDD5001B2734 /* StockDataCell.swift */,
@@ -209,6 +227,7 @@
 				5518596A20E9860900BFB445 /* SoldStockDataDB.swift */,
 				5566030E20E03E0E0041FC8B /* StockTransactionDB.swift */,
 				5566031520E070600041FC8B /* StockDataDB.swift */,
+				5503A81120F107680039ACCD /* StockIncomeDB.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -305,6 +324,7 @@
 				5518596C20E9879600BFB445 /* SoldStockData.swift */,
 				55A3915420D1E1A100244FC2 /* StockData.swift */,
 				55A3915620D1E3C800244FC2 /* StockTransaction.swift */,
+				5503A80F20F1048D0039ACCD /* StockIncome.swift */,
 			);
 			path = Object;
 			sourceTree = "<group>";
@@ -312,6 +332,10 @@
 		55A3915820D1E50300244FC2 /* Forms */ = {
 			isa = PBXGroup;
 			children = (
+				5503A81720F2A2F70039ACCD /* StockBonificationForm.swift */,
+				5503A81820F2A2F70039ACCD /* StockBonificationForm.xib */,
+				5501D8F420ED972500C7D4E5 /* StockDividendForm.swift */,
+				5501D8F320ED972400C7D4E5 /* StockDividendForm.xib */,
 				5518596E20EAEE2900BFB445 /* SellStockForm.swift */,
 				5518596F20EAEE2900BFB445 /* SellStockForm.xib */,
 				55A3915920D1FB2C00244FC2 /* BuyStockForm.swift */,
@@ -381,11 +405,14 @@
 				554E16E720E44542006B864D /* SoldStockDataCell.xib in Resources */,
 				554E16EC20E4459B006B864D /* SoldStockDataView.xib in Resources */,
 				552D942120BB2BB20041872B /* PortfolioMainController.xib in Resources */,
+				5503A81520F24C510039ACCD /* StockIncomeCell.xib in Resources */,
 				55A3915C20D1FBD400244FC2 /* BuyStockForm.xib in Resources */,
 				559F12FC20C0436C006BC844 /* StockPortfolioView.xib in Resources */,
 				552D941120BB22F30041872B /* Assets.xcassets in Resources */,
 				5542245E20C4BE36001B2734 /* StockDataCell.xib in Resources */,
 				5540A85D20BCD3780087498B /* DrawerViewController.xib in Resources */,
+				5503A81A20F2A2F70039ACCD /* StockBonificationForm.xib in Resources */,
+				5501D8F520ED972500C7D4E5 /* StockDividendForm.xib in Resources */,
 				5518597120EAEE2900BFB445 /* SellStockForm.xib in Resources */,
 				5568A71420C1CCFF00689EBA /* StockDataView.xib in Resources */,
 				5540A85B20BCC6E00087498B /* Main.storyboard in Resources */,
@@ -403,22 +430,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				5566031420E06EAE0041FC8B /* StockService.swift in Sources */,
+				5503A81020F1048D0039ACCD /* StockIncome.swift in Sources */,
 				5566030F20E03E0E0041FC8B /* StockTransactionDB.swift in Sources */,
 				5540A85420BCC2BB0087498B /* KYEmbedDrawerControllerSegue.swift in Sources */,
 				5540A85820BCC2ED0087498B /* DrawerViewController.swift in Sources */,
 				5540A85520BCC2BB0087498B /* KYEmbedMainControllerSegue.swift in Sources */,
 				559F131420C09D37006BC844 /* Utils.swift in Sources */,
+				5503A81920F2A2F70039ACCD /* StockBonificationForm.swift in Sources */,
 				5566030C20E039D50041FC8B /* StringUtils.swift in Sources */,
+				5503A81620F24C510039ACCD /* StockIncomeCell.swift in Sources */,
 				551D525D20E7282E00B4A37F /* StockTransactionCell.swift in Sources */,
 				5518597020EAEE2900BFB445 /* SellStockForm.swift in Sources */,
 				5518596B20E9860900BFB445 /* SoldStockDataDB.swift in Sources */,
 				552D941F20BB2B9F0041872B /* PortfolioMainController.swift in Sources */,
 				5518596D20E9879700BFB445 /* SoldStockData.swift in Sources */,
+				5501D8F620ED972500C7D4E5 /* StockDividendForm.swift in Sources */,
 				5566031620E070600041FC8B /* StockDataDB.swift in Sources */,
 				5566030620E0365E0041FC8B /* SQLiteHelper.swift in Sources */,
 				5568A71220C1CCF000689EBA /* StockDataView.swift in Sources */,
 				552D940A20BB22E90041872B /* AppDelegate.swift in Sources */,
 				551D525920E7112C00B4A37F /* StockIncomesView.swift in Sources */,
+				5503A81220F107680039ACCD /* StockIncomeDB.swift in Sources */,
 				55811DE820E1B486006BCE0C /* StockGeneral.swift in Sources */,
 				5542245B20C4BDD5001B2734 /* StockDataCell.swift in Sources */,
 				551D525520E70FFA00B4A37F /* StockDetailsView.swift in Sources */,

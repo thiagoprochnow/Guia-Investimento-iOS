@@ -104,6 +104,7 @@ class BuyStockForm: UIViewController, UITextFieldDelegate{
                             db.close()
                             
                             let general = StockGeneral()
+                            general.updateStockIncomes(symbol!, timestamp: timestamp)
                             _ = general.updateStockData(symbol!, type: Constants.TypeOp.BUY)
                             
                             // Dismiss current view

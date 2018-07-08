@@ -52,5 +52,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let soldStockDataDB = SoldStockDataDB()
         soldStockDataDB.createTable()
         soldStockDataDB.close()
+        // Stock Incomes
+        let stockIncomesDB = StockIncomeDB()
+        stockIncomesDB.createTable()
+        stockIncomesDB.close()
     }
 }

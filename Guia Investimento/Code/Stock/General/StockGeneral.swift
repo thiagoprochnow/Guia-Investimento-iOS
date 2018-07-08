@@ -94,10 +94,12 @@ class StockGeneral {
                 variation = currentTotal - buyTotal
             }
             
-            
-            
-            // INCOME CODE HERE
-            
+            let incomeDB = StockIncomeDB()
+            let incomes = incomeDB.getIncomesBySymbol(symbol)
+            incomes.forEach{ income in
+                receiveIncome += income.liquidIncome
+                taxIncome += income.tax
+            }
             
             stockData.symbol = symbol
             stockData.quantity = Int(quantityTotal)
@@ -167,5 +169,90 @@ class StockGeneral {
             }
         }
         soldDataDB.close()
+    }
+    
+    // Get stock quantity that will receive the dividend per stock
+    // symbol is to query by specific symbol only
+    // income timestamp is to query only the quantity of stocks transactions before the timestamp
+    func getStockQuantity(symbol: String, incomeTimestamp: Int) -> Double {
+        let stockTransactionDB = StockTransactionDB()
+        let stockTransactions = stockTransactionDB.getTransactionsByTimestamp(symbol, timestamp: incomeTimestamp)
+        stockTransactionDB.close()
+        
+        if(stockTransactions.count > 0 ){
+            var quantityTotal: Double = 0.0
+            stockTransactions.forEach{ transaction in
+                let currentType = transaction.type
+                switch(currentType){
+                    case Constants.TypeOp.BUY:
+                        quantityTotal += Double(transaction.quantity)
+                        break
+                    case Constants.TypeOp.SELL:
+                        quantityTotal -= Double(transaction.quantity)
+                        break
+                    case Constants.TypeOp.BONIFICATION:
+                        quantityTotal += Double(transaction.quantity)
+                        break
+                    case Constants.TypeOp.SPLIT:
+                        quantityTotal = quantityTotal*Double(transaction.quantity)
+                        break
+                    case Constants.TypeOp.GROUPING:
+                        quantityTotal = quantityTotal/Double(transaction.quantity)
+                        break
+                    default: break
+                }
+            }
+            return quantityTotal
+        } else {
+            return 0.0
+        }
+        return 0.0
+    }
+    
+    // Update Total Income on Stock Data by new income added
+    func updateStockDataIncome(_ symbol: String, valueReceived: Double, tax: Double){
+        let dataDB = StockDataDB()
+        let stockData = dataDB.getDataBySymbol(symbol)
+        let dbIncome = stockData.netIncome
+        let dbTax = stockData.tax
+        let totalIncome = dbIncome + valueReceived
+        let totalTax = dbTax + tax
+        
+        stockData.netIncome = totalIncome
+        stockData.tax = totalTax
+        
+        dataDB.save(stockData)
+        
+        dataDB.close()
+    }
+    
+    // By using the timestamp of bought/sold stock, function will check if any added income
+    // is affected by this buy/sell stock
+    // If any income if affected, it will update income line with new value by using
+    // getStockQuantity function for each affected line
+    func updateStockIncomes(_ symbol:String, timestamp:Int){
+        let incomeDB = StockIncomeDB()
+        let stockIncomes = incomeDB.getIncomesByTimestamp(symbol, timestamp: timestamp)
+        
+        stockIncomes.forEach{ income in
+            let incomeTimestamp = income.exdividendTimestamp
+            let quantity = getStockQuantity(symbol: symbol, incomeTimestamp: incomeTimestamp)
+            let perStock = income.perStock
+            let incomeType = income.type
+            let receiveTotal = Double(quantity) * perStock
+            
+            income.affectedQuantity = Int(quantity)
+            income.grossIncome = receiveTotal
+            if(incomeType == Constants.IncomeType.DIVIDEND){
+                income.liquidIncome = receiveTotal
+            } else {
+                let tax = receiveTotal * 0.15
+                let receiveLiquid = receiveTotal - tax
+                income.tax = tax
+                income.liquidIncome = receiveLiquid
+            }
+            incomeDB.save(income)
+        }
+        incomeDB.close()
     }
 }

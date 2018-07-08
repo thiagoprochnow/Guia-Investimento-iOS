@@ -38,4 +38,31 @@ struct Constants {
         static let OTHERS = 5
         static let PORTFOLIO = 6
     }
+    
+    struct IncomeType {
+        static let INVALID = -1
+        static let DIVIDEND = 0
+        static let JCP = 1
+        static let BONIFICATION = 2
+        static let GROUPING = 3
+        static let SPLIT = 4
+        static let FII = 5
+        static let FIXED = 6
+        static let TREASURY = 7
+        static let OTHERS = 8
+        static let FII_SPLIT = 9
+    }
+    
+    struct UpdateStatus {
+        static let INVALID = -1
+        static let UPDATED = 0
+        static let NOT_UPDATED = 1
+    }
+    
+    struct FixedType {
+        static let INVALID = -1
+        static let CDI = 0
+        static let IPCA = 1
+        static let PRE = 2
+    }
 }

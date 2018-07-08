@@ -49,6 +49,27 @@ class StockTransactionDB{
         return stockTransactions
     }
     
+    // Load all Transaction of a specific Stock Symbol
+    func getTransactionsByTimestamp(_ symbol: String, timestamp: Int) -> Array<StockTransaction> {
+        var stockTransactions : Array<StockTransaction> = []
+        let stmt = db.query("SELECT * FROM stock_transaction where symbol = ? AND timestamp < ?  ORDER BY timestamp ASC",params: [symbol, timestamp])
+        while (db.nextRow(stmt)){
+            let transaction = StockTransaction()
+            transaction.id = db.getInt(stmt, index: 0)
+            transaction.symbol = db.getString(stmt, index: 1)
+            transaction.quantity = db.getInt(stmt, index: 2)
+            transaction.price = db.getDouble(stmt, index: 3)
+            transaction.timestamp = db.getInt(stmt, index: 4)
+            transaction.type = db.getInt(stmt, index: 5)
+            transaction.tax = db.getDouble(stmt, index: 6)
+            transaction.brokerage = db.getDouble(stmt, index: 7)
+            transaction.lastUpdate = db.getInt(stmt, index: 8)
+            stockTransactions.append(transaction)
+        }
+        db.closeStatement(stmt)
+        return stockTransactions
+    }
+    
     // Load StockTransaction with a specific id
     func getTransactionById(_ id: Int) -> StockTransaction {
         let transaction = StockTransaction()

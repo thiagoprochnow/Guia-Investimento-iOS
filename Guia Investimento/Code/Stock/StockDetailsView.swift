@@ -13,6 +13,7 @@ class StockDetailsView: UIViewController, UITableViewDataSource, UITableViewDele
     @IBOutlet var bgView: UIView!
     @IBOutlet var mediumSellLabel: UILabel!
     @IBOutlet var mediumBuyLabel: UILabel!
+    @IBOutlet var fab: UIImageView!
     var symbol: String = ""
     var mediumBuy: String = ""
     var mediumSell: String = ""
@@ -27,6 +28,15 @@ class StockDetailsView: UIViewController, UITableViewDataSource, UITableViewDele
         bgView.layer.shadowOpacity = 0.5
         bgView.layer.shadowOffset = CGSize(width: -1, height: 1)
         bgView.layer.shadowRadius = 5
+        
+        // Load fab (Floating action button)
+        // Set images for each icon
+        let fabImg = UIImage(named: "fab")
+        fab.image = fabImg
+        // Add action to open buy form when tapped
+        fab.isUserInteractionEnabled = true
+        let tapBuyStock = UITapGestureRecognizer(target: self, action: #selector(StockDetailsView.incomeMenu))
+        fab.addGestureRecognizer(tapBuyStock)
         
         // Overview
         if(mediumBuy != ""){
@@ -130,6 +140,7 @@ class StockDetailsView: UIViewController, UITableViewDataSource, UITableViewDele
             let timestamp = transaction.timestamp
             let date = Date(timeIntervalSince1970: TimeInterval(timestamp))
             let formatter = DateFormatter()
+            formatter.timeZone = TimeZone(identifier: "UTC")
             formatter.dateFormat = "dd/MM/yyyy"
             let dateString = formatter.string(from: date)
             cell.date.text = dateString
@@ -156,6 +167,7 @@ class StockDetailsView: UIViewController, UITableViewDataSource, UITableViewDele
         let stockGeneral = StockGeneral()
         
         transactionDB.delete(transaction)
+        _ = stockGeneral.updateStockIncomes(transaction.symbol, timestamp: transaction.timestamp)
         _ = stockGeneral.updateStockData(transaction.symbol, type: Constants.TypeOp.DELETE_TRANSACTION)
         stockTransactions = transactionDB.getTransactionsBySymbol(symbol)
         transactionDB.close()
@@ -173,5 +185,61 @@ class StockDetailsView: UIViewController, UITableViewDataSource, UITableViewDele
         soldDataDB.close()
         self.mediumSellLabel.text = Utils.doubleToRealCurrency(value: soldData.mediumPrice)
         self.mediumBuyLabel.text = Utils.doubleToRealCurrency(value: stockData.mediumPrice)
+    }
+    
+    //Shows alert yo choose income type
+    @IBAction func incomeMenu(){
+        let alertController = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        let dividendAction = UIAlertAction(title: NSLocalizedString("Dividendo", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
+                self.addIncome(Constants.IncomeType.DIVIDEND)
+            })
+        let jcpAction = UIAlertAction(title: NSLocalizedString("Juros sobre Capital", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
+                self.addIncome(Constants.IncomeType.JCP)
+            })
+        let bonificationAction = UIAlertAction(title: NSLocalizedString("Bonificação", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
+                self.addIncome(Constants.IncomeType.BONIFICATION)
+            })
+        let splitAction = UIAlertAction(title: NSLocalizedString("Desdobramento", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
+                self.addIncome(Constants.IncomeType.SPLIT)
+            })
+        let groupingAction = UIAlertAction(title: NSLocalizedString("Grupamento", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
+                self.addIncome(Constants.IncomeType.GROUPING)
+            })
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancelar", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
+
+        })
+
+        alertController.addAction(dividendAction)
+        alertController.addAction(jcpAction)
+        alertController.addAction(bonificationAction)
+        alertController.addAction(splitAction)
+        alertController.addAction(groupingAction)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: false, completion: nil)
+    }
+    
+    func addIncome(_ type: Int){
+        switch (type) {
+        case Constants.IncomeType.DIVIDEND:
+            let dividendForm = StockDividendForm()
+            dividendForm.symbol = symbol
+            dividendForm.incomeType = type
+            self.navigationController?.pushViewController(dividendForm, animated: true)
+            break
+        case Constants.IncomeType.JCP:
+            let dividendForm = StockDividendForm()
+            dividendForm.symbol = symbol
+            dividendForm.incomeType = type
+            self.navigationController?.pushViewController(dividendForm, animated: true)
+            break
+        case Constants.IncomeType.BONIFICATION:
+            let dividendForm = StockDividendForm()
+            dividendForm.symbol = symbol
+            dividendForm.incomeType = type
+            self.navigationController?.pushViewController(dividendForm, animated: true)
+            break
+        default:
+            break
+        }
     }
 }
