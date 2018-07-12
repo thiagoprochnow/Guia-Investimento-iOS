@@ -108,7 +108,7 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
                 let portfolio = StockPortfolioView()
                 let data = StockDataView()
                 let soldData = SoldStockDataView()
-                let income = StockDataView()
+                let income = StockMainIncomesView()
                 portfolio.tabBarItem.title = ""
                 portfolio.tabBarItem.image =  Utils.makeThumbnailFromText(text: "Visão Geral")
                 data.tabBarItem.title = ""

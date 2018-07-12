@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-class StockIncomesView: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class StockMainIncomesView: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet var bgView: UIView!
     @IBOutlet var boughtLabel: UILabel!
     @IBOutlet var grossLabel: UILabel!
@@ -18,7 +18,6 @@ class StockIncomesView: UIViewController, UITableViewDataSource, UITableViewDele
     @IBOutlet var incomeTable: UITableView!
     var stockIncomes: Array<StockIncome> = []
     
-    var symbol: String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -48,23 +47,16 @@ class StockIncomesView: UIViewController, UITableViewDataSource, UITableViewDele
         
         // Load Stock Incomes values
         let incomeDB = StockIncomeDB()
-        stockIncomes = incomeDB.getIncomesBySymbol(symbol)
+        stockIncomes = incomeDB.getIncomes()
         incomeDB.close()
         
-        // Load Stock Data
-        let dataDB = StockDataDB()
-        let stockData = dataDB.getDataBySymbol(symbol)
-        dataDB.close()
-        boughtLabel.text = Utils.doubleToRealCurrency(value: stockData.buyValue)
-        grossLabel.text = Utils.doubleToRealCurrency(value: stockData.netIncome + stockData.incomeTax)
-        taxLabel.text = Utils.doubleToRealCurrency(value: stockData.incomeTax)
-        liquidLabel.text = Utils.doubleToRealCurrency(value: stockData.netIncome)
+        // Load Stock Portfolio
     }
     
     override func viewWillAppear(_ animated: Bool) {
         // Load all Stock Incomes of a symbol to show on this list
         let incomeDB = StockIncomeDB()
-        stockIncomes = incomeDB.getIncomesBySymbol(symbol)
+        stockIncomes = incomeDB.getIncomes()
         if (stockIncomes.isEmpty){
             self.incomeTable.isHidden = true
         } else {
@@ -72,14 +64,7 @@ class StockIncomesView: UIViewController, UITableViewDataSource, UITableViewDele
         }
         incomeDB.close()
         
-        // Load Stock Data
-        let dataDB = StockDataDB()
-        let stockData = dataDB.getDataBySymbol(symbol)
-        dataDB.close()
-        boughtLabel.text = Utils.doubleToRealCurrency(value: stockData.buyValue)
-        grossLabel.text = Utils.doubleToRealCurrency(value: stockData.netIncome + stockData.incomeTax)
-        taxLabel.text = Utils.doubleToRealCurrency(value: stockData.incomeTax)
-        liquidLabel.text = Utils.doubleToRealCurrency(value: stockData.netIncome)
+        // Load Stock Portfolio
         // Reload data every time StockDataView is shown
         self.incomeTable.reloadData()
     }
@@ -175,7 +160,7 @@ class StockIncomesView: UIViewController, UITableViewDataSource, UITableViewDele
         stockGeneral.deleteStockIncome(String(income.id), symbol: income.symbol)
         
         let incomeDB = StockIncomeDB()
-        stockIncomes = incomeDB.getIncomesBySymbol(symbol)
+        stockIncomes = incomeDB.getIncomes()
         if (stockIncomes.isEmpty){
             self.incomeTable.isHidden = true
         } else {
@@ -183,15 +168,7 @@ class StockIncomesView: UIViewController, UITableViewDataSource, UITableViewDele
         }
         incomeDB.close()
         
-        // Load Stock Data
-        let dataDB = StockDataDB()
-        let stockData = dataDB.getDataBySymbol(symbol)
-        dataDB.close()
-        boughtLabel.text = Utils.doubleToRealCurrency(value: stockData.buyValue)
-        grossLabel.text = Utils.doubleToRealCurrency(value: stockData.netIncome + stockData.incomeTax)
-        taxLabel.text = Utils.doubleToRealCurrency(value: stockData.incomeTax)
-        liquidLabel.text = Utils.doubleToRealCurrency(value: stockData.netIncome)
-        
+        // Load Stock Portfolio
         self.incomeTable.reloadData()
     }
     
@@ -211,24 +188,12 @@ class StockIncomesView: UIViewController, UITableViewDataSource, UITableViewDele
         let jcpAction = UIAlertAction(title: NSLocalizedString("Juros sobre Capital", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
             self.addIncome(Constants.IncomeType.JCP)
         })
-        let bonificationAction = UIAlertAction(title: NSLocalizedString("Bonificação", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
-            self.addIncome(Constants.IncomeType.BONIFICATION)
-        })
-        let splitAction = UIAlertAction(title: NSLocalizedString("Desdobramento", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
-            self.addIncome(Constants.IncomeType.SPLIT)
-        })
-        let groupingAction = UIAlertAction(title: NSLocalizedString("Grupamento", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
-            self.addIncome(Constants.IncomeType.GROUPING)
-        })
         let cancelAction = UIAlertAction(title: NSLocalizedString("Cancelar", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
             
         })
         
         alertController.addAction(dividendAction)
         alertController.addAction(jcpAction)
-        alertController.addAction(bonificationAction)
-        alertController.addAction(splitAction)
-        alertController.addAction(groupingAction)
         alertController.addAction(cancelAction)
         self.present(alertController, animated: false, completion: nil)
     }
@@ -237,30 +202,13 @@ class StockIncomesView: UIViewController, UITableViewDataSource, UITableViewDele
         switch (type) {
         case Constants.IncomeType.DIVIDEND:
             let dividendForm = StockDividendForm()
-            dividendForm.symbol = symbol
             dividendForm.incomeType = type
             self.navigationController?.pushViewController(dividendForm, animated: true)
             break
         case Constants.IncomeType.JCP:
             let dividendForm = StockDividendForm()
-            dividendForm.symbol = symbol
             dividendForm.incomeType = type
             self.navigationController?.pushViewController(dividendForm, animated: true)
-            break
-        case Constants.IncomeType.BONIFICATION:
-            let bonificationForm = StockBonificationForm()
-            bonificationForm.symbol = symbol
-            self.navigationController?.pushViewController(bonificationForm, animated: true)
-            break
-        case Constants.IncomeType.SPLIT:
-            let splitForm = StockSplitForm()
-            splitForm.symbol = symbol
-            self.navigationController?.pushViewController(splitForm, animated: true)
-            break
-        case Constants.IncomeType.GROUPING:
-            let groupingForm = StockGroupingForm()
-            groupingForm.symbol = symbol
-            self.navigationController?.pushViewController(groupingForm, animated: true)
             break
         default:
             break

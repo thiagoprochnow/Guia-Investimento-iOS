@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 class StockDividendForm: UIViewController, UITextFieldDelegate{
+    @IBOutlet var symbolTextField: UITextField!
     @IBOutlet var perTextField: UITextField!
     @IBOutlet var datePicker: UIDatePicker!
     var symbol: String = ""
@@ -25,13 +26,20 @@ class StockDividendForm: UIViewController, UITextFieldDelegate{
         self.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
         
         // Delegade UITextFieldDelagate to self
+        symbolTextField.delegate = self
+        symbolTextField.autocapitalizationType = UITextAutocapitalizationType.allCharacters
         perTextField.delegate = self
         perTextField.keyboardType = UIKeyboardType.decimalPad
+        
+        if(symbol != ""){
+            symbolTextField.text = symbol
+        }
         
         // It is a Edit mode, preload inserted information to be edited and saved
         if(id != 0){
             let incomeDB = StockIncomeDB()
             prealodedIncome = incomeDB.getIncomesById(id)
+            symbolTextField.text = prealodedIncome.symbol
             perTextField.text = String(prealodedIncome.perStock)
             let date = Date(timeIntervalSince1970: TimeInterval(prealodedIncome.exdividendTimestamp))
             datePicker.setDate(date, animated: false)
@@ -42,6 +50,7 @@ class StockDividendForm: UIViewController, UITextFieldDelegate{
     
     @IBAction func insertJcpDiv(){
         let perStock = perTextField.text
+        let stockSymbol = symbolTextField.text
         
         // Get selected date as 00:00
         let date = datePicker.date
@@ -57,54 +66,61 @@ class StockDividendForm: UIViewController, UITextFieldDelegate{
         alert.addButton(withTitle: "OK")
         
         // Check if inserted values are valid, if all are valid, insert the new stock
-        let isValidPer = Utils.isValidDouble(text: perStock!)
-        if(isValidPer){
-            // Sucesso em todos os casos, inserir o provento
-            let stockIncome = StockIncome()
-            // In case it is editing to update stockTransaction
-            if(id != 0){
-                stockIncome.id = id
-            }
-            let general = StockGeneral()
-            let stockQuantity = Int(general.getStockQuantity(symbol: symbol, incomeTimestamp: Int(timestamp)))
-            var grossIncome: Double = 0.0
-            var liquidIncome: Double = 0.0
-            var tax: Double = 0.0
-            stockIncome.affectedQuantity = stockQuantity
-            stockIncome.symbol = symbol
-            stockIncome.perStock = Double(perStock!)!
-            grossIncome = Double(stockQuantity) * Double(perStock!)!
-            liquidIncome = grossIncome
-            if(incomeType == Constants.IncomeType.JCP){
-                tax = grossIncome * 0.15
-                liquidIncome -= tax
-            }
-            stockIncome.grossIncome = grossIncome
-            stockIncome.tax = tax
-            stockIncome.liquidIncome = liquidIncome
-            stockIncome.exdividendTimestamp = Int(timestamp)
-            stockIncome.type = incomeType
-                            
-            // Save StockTransaction
-            let db = StockIncomeDB()
-            db.save(stockIncome)
-            db.close()
-            
-            general.updateStockDataIncome(symbol, valueReceived: liquidIncome, tax: tax)
-            
-            // Dismiss current view
-            self.navigationController?.popViewController(animated: true)
-            // Show Alert
-            alert.title = ""
-            if(incomeType == Constants.IncomeType.DIVIDEND){
-                alert.message = "Dividendo inserido com sucesso"
+        let isValidSymbol = Utils.isValidStockSymbol(symbol: stockSymbol!)
+        if(isValidSymbol){
+            let isValidPer = Utils.isValidDouble(text: perStock!)
+            if(isValidPer){
+                // Sucesso em todos os casos, inserir o provento
+                let stockIncome = StockIncome()
+                // In case it is editing to update stockTransaction
+                if(id != 0){
+                    stockIncome.id = id
+                }
+                let general = StockGeneral()
+                let stockQuantity = Int(general.getStockQuantity(symbol: symbol, incomeTimestamp: Int(timestamp)))
+                var grossIncome: Double = 0.0
+                var liquidIncome: Double = 0.0
+                var tax: Double = 0.0
+                stockIncome.affectedQuantity = stockQuantity
+                stockIncome.symbol = stockSymbol!
+                stockIncome.perStock = Double(perStock!)!
+                grossIncome = Double(stockQuantity) * Double(perStock!)!
+                liquidIncome = grossIncome
+                if(incomeType == Constants.IncomeType.JCP){
+                    tax = grossIncome * 0.15
+                    liquidIncome -= tax
+                }
+                stockIncome.grossIncome = grossIncome
+                stockIncome.tax = tax
+                stockIncome.liquidIncome = liquidIncome
+                stockIncome.exdividendTimestamp = Int(timestamp)
+                stockIncome.type = incomeType
+                
+                // Save StockTransaction
+                let db = StockIncomeDB()
+                db.save(stockIncome)
+                db.close()
+                
+                general.updateStockDataIncome(symbol, valueReceived: liquidIncome, tax: tax)
+                
+                // Dismiss current view
+                self.navigationController?.popViewController(animated: true)
+                // Show Alert
+                alert.title = ""
+                if(incomeType == Constants.IncomeType.DIVIDEND){
+                    alert.message = "Dividendo inserido com sucesso"
+                } else {
+                    alert.message = "Juros Sobre Capital inserido com sucesso"
+                }
+                alert.show()
             } else {
-                alert.message = "Juros Sobre Capital inserido com sucesso"
+                // Show Alert
+                alert.message = "Valor do dividendo deve conter apenas números e ponto"
+                alert.show()
             }
-            alert.show()
         } else {
             // Show Alert
-            alert.message = "Valor do dividendo deve conter apenas números e ponto"
+            alert.message = "Código da Ação inválido"
             alert.show()
         }
     }

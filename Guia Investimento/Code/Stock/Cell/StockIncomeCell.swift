@@ -13,6 +13,7 @@ class StockIncomeCell: UITableViewCell {
     @IBOutlet var date: UILabel!
     @IBOutlet var total: UILabel!
     @IBOutlet var type: UILabel!
+    @IBOutlet var symbol: UILabel!
     
     // Customize the Cell
     override func layoutSubviews() {
