@@ -8,11 +8,11 @@
 
 import Foundation
 import UIKit
-class StockBonificationForm: UIViewController, UITextFieldDelegate{
+class StockGroupingForm: UIViewController, UITextFieldDelegate{
     @IBOutlet var quantityField: UITextField!
     @IBOutlet var datePicker: UIDatePicker!
     var symbol: String = ""
-    var transactionType: Int = Constants.TypeOp.BONIFICATION
+    var transactionType: Int = Constants.TypeOp.GROUPING
     var id: Int = 0
     var prealodedTransaction: StockTransaction!
     
@@ -20,13 +20,13 @@ class StockBonificationForm: UIViewController, UITextFieldDelegate{
         super.viewDidLoad()
         
         // Add Dividend button added on the right side of the bar menu
-        let btInsert = UIBarButtonItem(title: "Inserir", style: UIBarButtonItemStyle.plain, target: self, action: #selector(StockBonificationForm.insertBonification))
+        let btInsert = UIBarButtonItem(title: "Inserir", style: UIBarButtonItemStyle.plain, target: self, action: #selector(StockGroupingForm.insertGrouping))
         self.navigationItem.rightBarButtonItem = btInsert
         self.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
         
         // Delegade UITextFieldDelagate to self
         quantityField.delegate = self
-        quantityField.keyboardType = UIKeyboardType.numberPad
+        quantityField.keyboardType = UIKeyboardType.decimalPad
         
         // It is a Edit mode, preload inserted information to be edited and saved
         if(id != 0){
@@ -40,7 +40,7 @@ class StockBonificationForm: UIViewController, UITextFieldDelegate{
         }
     }
     
-    @IBAction func insertBonification(){
+    @IBAction func insertGrouping(){
         let quantity = quantityField.text
         
         // Get selected date as 00:00
@@ -57,7 +57,7 @@ class StockBonificationForm: UIViewController, UITextFieldDelegate{
         alert.addButton(withTitle: "OK")
         
         // Check if inserted values are valid, if all are valid, insert the new stock
-        let isValidQuantity = Utils.isValidInt(text: quantity!)
+        let isValidQuantity = Utils.isValidDouble(text: quantity!)
         if(isValidQuantity){
             // Sucesso em todos os casos, inserir o provento
             let stockTransaction = StockTransaction()
@@ -69,7 +69,7 @@ class StockBonificationForm: UIViewController, UITextFieldDelegate{
             stockTransaction.quantity = Double(quantity!)!
             stockTransaction.price = 0.0
             stockTransaction.timestamp = Int(timestamp)
-            stockTransaction.type = Constants.TypeOp.BONIFICATION
+            stockTransaction.type = Constants.TypeOp.GROUPING
                             
             // Save StockTransaction
             let db = StockTransactionDB()
@@ -78,13 +78,13 @@ class StockBonificationForm: UIViewController, UITextFieldDelegate{
             
             let general = StockGeneral()
             general.updateStockIncomes(symbol, timestamp: Int(timestamp))
-            general.updateStockData(symbol, type: Constants.TypeOp.BONIFICATION)
+            general.updateStockData(symbol, type: Constants.TypeOp.GROUPING)
             
             // Dismiss current view
             self.navigationController?.popViewController(animated: true)
             // Show Alert
             alert.title = ""
-            alert.message = "Bonificação inserida com sucesso"
+            alert.message = "Grupamento inserido com sucesso"
             alert.show()
         } else {
             // Show Alert

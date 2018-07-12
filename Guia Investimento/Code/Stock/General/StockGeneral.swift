@@ -139,7 +139,7 @@ class StockGeneral {
         transactionDB.close()
         
         if(stockTransactions.count > 0){
-            var quantityTotal: Int = 0
+            var quantityTotal: Double = 0.0
             var soldTotal: Double = 0.0
             var sellMediumPrice: Double = 0.0
             
@@ -147,7 +147,7 @@ class StockGeneral {
                 let currentyType = transaction.type
                 
                 if(currentyType == Constants.TypeOp.SELL){
-                    quantityTotal += transaction.quantity
+                    quantityTotal += Double(transaction.quantity)
                     soldTotal += Double(transaction.quantity) * transaction.price
                     sellMediumPrice = soldTotal/Double(quantityTotal)
                 }
@@ -159,7 +159,7 @@ class StockGeneral {
                 let sellGain = soldTotal - soldBuyValue - sellBrokerage
                 
                 soldStockData.symbol = symbol
-                soldStockData.quantity = quantityTotal
+                soldStockData.quantity = Int(quantityTotal)
                 soldStockData.buyValue = soldBuyValue
                 soldStockData.mediumPrice = sellMediumPrice
                 soldStockData.currentTotal = soldTotal
@@ -214,12 +214,12 @@ class StockGeneral {
         let dataDB = StockDataDB()
         let stockData = dataDB.getDataBySymbol(symbol)
         let dbIncome = stockData.netIncome
-        let dbTax = stockData.tax
+        let dbTax = stockData.incomeTax
         let totalIncome = dbIncome + valueReceived
         let totalTax = dbTax + tax
         
         stockData.netIncome = totalIncome
-        stockData.tax = totalTax
+        stockData.incomeTax = totalTax
         
         dataDB.save(stockData)
         
@@ -254,5 +254,14 @@ class StockGeneral {
             incomeDB.save(income)
         }
         incomeDB.close()
+    }
+    
+    // Delete stock income from table by using its id
+    // symbol is used to update Stock Data table
+    func deleteStockIncome(_ id:String, symbol:String){
+        let incomeDB = StockIncomeDB()
+        incomeDB.deleteById(Int(id)!)
+        incomeDB.close()
+        _ = updateStockData(symbol, type: -1)
     }
 }

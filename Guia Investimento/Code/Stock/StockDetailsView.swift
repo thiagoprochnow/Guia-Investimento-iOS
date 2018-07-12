@@ -133,7 +133,20 @@ class StockDetailsView: UIViewController, UITableViewDataSource, UITableViewDele
                 cell.type.text = "Compra"
             } else if (transaction.type == Constants.TypeOp.SELL){
                 cell.type.text = "Venda"
+            } else if (transaction.type == Constants.TypeOp.BONIFICATION){
+                cell.type.text = "Bonificação"
+                cell.price.isHidden = true
+                cell.total.isHidden = true
+            } else if (transaction.type == Constants.TypeOp.SPLIT){
+                cell.type.text = "Desdobramento"
+                cell.price.isHidden = true
+                cell.total.isHidden = true
+            } else if (transaction.type == Constants.TypeOp.GROUPING){
+                cell.type.text = "Grupamento"
+                cell.price.isHidden = true
+                cell.total.isHidden = true
             }
+            
             cell.quantity.text = String(transaction.quantity)
             
             //Get Date
@@ -155,10 +168,32 @@ class StockDetailsView: UIViewController, UITableViewDataSource, UITableViewDele
     
     func editTransaction(_ transaction: StockTransaction){
         // Sets id of already existing transaction to be edited in BuyForm
-        let buyStockForm = BuyStockForm()
-        buyStockForm.symbol = transaction.symbol
-        buyStockForm.id = transaction.id
-        self.navigationController?.pushViewController(buyStockForm, animated: true)
+        if(transaction.type == Constants.TypeOp.BUY){
+            let buyStockForm = BuyStockForm()
+            buyStockForm.symbol = transaction.symbol
+            buyStockForm.id = transaction.id
+            self.navigationController?.pushViewController(buyStockForm, animated: true)
+        } else if (transaction.type == Constants.TypeOp.SELL){
+            let sellStockForm = SellStockForm()
+            sellStockForm.symbol = transaction.symbol
+            sellStockForm.id = transaction.id
+            self.navigationController?.pushViewController(sellStockForm, animated: true)
+        } else if (transaction.type == Constants.TypeOp.BONIFICATION){
+            let bonificationStockForm = StockBonificationForm()
+            bonificationStockForm.symbol = transaction.symbol
+            bonificationStockForm.id = transaction.id
+            self.navigationController?.pushViewController(bonificationStockForm, animated: true)
+        } else if (transaction.type == Constants.TypeOp.GROUPING){
+            let groupinStockForm = StockGroupingForm()
+            groupinStockForm.symbol = transaction.symbol
+            groupinStockForm.id = transaction.id
+            self.navigationController?.pushViewController(groupinStockForm, animated: true)
+        } else if (transaction.type == Constants.TypeOp.SPLIT){
+            let splitStockForm = StockSplitForm()
+            splitStockForm.symbol = transaction.symbol
+            splitStockForm.id = transaction.id
+            self.navigationController?.pushViewController(splitStockForm, animated: true)
+        }
     }
     
     // Delete Transaction and update StockData
@@ -233,10 +268,19 @@ class StockDetailsView: UIViewController, UITableViewDataSource, UITableViewDele
             self.navigationController?.pushViewController(dividendForm, animated: true)
             break
         case Constants.IncomeType.BONIFICATION:
-            let dividendForm = StockDividendForm()
-            dividendForm.symbol = symbol
-            dividendForm.incomeType = type
-            self.navigationController?.pushViewController(dividendForm, animated: true)
+            let bonificationForm = StockBonificationForm()
+            bonificationForm.symbol = symbol
+            self.navigationController?.pushViewController(bonificationForm, animated: true)
+            break
+        case Constants.IncomeType.SPLIT:
+            let splitForm = StockSplitForm()
+            splitForm.symbol = symbol
+            self.navigationController?.pushViewController(splitForm, animated: true)
+            break
+        case Constants.IncomeType.GROUPING:
+            let groupingForm = StockGroupingForm()
+            groupingForm.symbol = symbol
+            self.navigationController?.pushViewController(groupingForm, animated: true)
             break
         default:
             break

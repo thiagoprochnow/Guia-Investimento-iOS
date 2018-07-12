@@ -96,7 +96,11 @@ class StockDividendForm: UIViewController, UITextFieldDelegate{
             self.navigationController?.popViewController(animated: true)
             // Show Alert
             alert.title = ""
-            alert.message = "Dividendo inserido com sucesso"
+            if(incomeType == Constants.IncomeType.DIVIDEND){
+                alert.message = "Dividendo inserido com sucesso"
+            } else {
+                alert.message = "Juros Sobre Capital inserido com sucesso"
+            }
             alert.show()
         } else {
             // Show Alert

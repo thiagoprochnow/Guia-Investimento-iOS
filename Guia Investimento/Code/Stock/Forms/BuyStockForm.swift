@@ -93,7 +93,7 @@ class BuyStockForm: UIViewController, UITextFieldDelegate{
                             }
                             stockTransaction.symbol = symbol!
                             stockTransaction.price = Double(price!)!
-                            stockTransaction.quantity = Int(quantity!)!
+                            stockTransaction.quantity = Double(quantity!)!
                             stockTransaction.brokerage = Double(brokerage!)!
                             stockTransaction.timestamp = Int(timestamp)
                             stockTransaction.type = Constants.TypeOp.BUY
@@ -104,7 +104,7 @@ class BuyStockForm: UIViewController, UITextFieldDelegate{
                             db.close()
                             
                             let general = StockGeneral()
-                            general.updateStockIncomes(symbol!, timestamp: timestamp)
+                            general.updateStockIncomes(symbol!, timestamp: Int(timestamp))
                             _ = general.updateStockData(symbol!, type: Constants.TypeOp.BUY)
                             
                             // Dismiss current view

@@ -129,7 +129,7 @@ class StockIncomeDB{
             _ = db.execSql(sql, params: params as Array<AnyObject>)
         } else {
             // Update
-            let sql = "update stock_incomes set symbol=?,income_type=?,per_stock=?,timestamp=?,receive_total=?,tax=?,receive_liquid=?,affedcted_quantity=?,brokerage=?,last_update=? where _id=?;"
+            let sql = "update stock_incomes set symbol=?,income_type=?,per_stock=?,timestamp=?,receive_total=?,tax=?,receive_liquid=?,affected_quantity=?,brokerage=?,last_update=? where _id=?;"
             let params = [income.symbol,income.type,income.perStock,income.exdividendTimestamp,income.grossIncome,income.tax,income.liquidIncome,income.affectedQuantity,income.brokerage,income.lastUpdate,income.id] as [Any]
             _ = db.execSql(sql,params: params as Array<AnyObject>)
         }

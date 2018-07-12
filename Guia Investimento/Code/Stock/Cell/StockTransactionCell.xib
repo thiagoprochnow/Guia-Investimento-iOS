@@ -20,9 +20,9 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Compra" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hph-wX-iCH">
-                        <rect key="frame" x="9" y="7" width="110" height="27"/>
+                        <rect key="frame" x="9" y="7" width="160" height="27"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="110" id="NR1-LN-n5p"/>
+                            <constraint firstAttribute="width" constant="160" id="NR1-LN-n5p"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <nil key="textColor"/>
@@ -82,8 +82,8 @@
                     <constraint firstItem="Hph-wX-iCH" firstAttribute="leading" secondItem="bh2-nw-N1E" secondAttribute="leading" id="VGt-SP-Rkt"/>
                     <constraint firstAttribute="trailingMargin" secondItem="V8o-f3-Adz" secondAttribute="trailing" constant="-8" id="aTc-d1-WBT"/>
                     <constraint firstItem="bh2-nw-N1E" firstAttribute="baseline" secondItem="HCv-wg-Clk" secondAttribute="baseline" id="bnf-jF-pUP"/>
-                    <constraint firstItem="Hph-wX-iCH" firstAttribute="trailing" secondItem="bh2-nw-N1E" secondAttribute="trailing" id="geW-ee-EFp"/>
-                    <constraint firstItem="HCv-wg-Clk" firstAttribute="leading" secondItem="Hph-wX-iCH" secondAttribute="trailing" constant="-1" id="tls-iZ-7c1"/>
+                    <constraint firstItem="Hph-wX-iCH" firstAttribute="trailing" secondItem="bh2-nw-N1E" secondAttribute="trailing" constant="50" id="geW-ee-EFp"/>
+                    <constraint firstItem="HCv-wg-Clk" firstAttribute="leading" secondItem="Hph-wX-iCH" secondAttribute="trailing" constant="-51" id="tls-iZ-7c1"/>
                     <constraint firstItem="Hph-wX-iCH" firstAttribute="leading" secondItem="Tki-xO-AZ2" secondAttribute="leadingMargin" constant="-7" id="yA6-A2-UM9"/>
                     <constraint firstItem="bh2-nw-N1E" firstAttribute="bottom" secondItem="Tki-xO-AZ2" secondAttribute="bottomMargin" constant="-9" id="zSX-cC-Gs7"/>
                 </constraints>
