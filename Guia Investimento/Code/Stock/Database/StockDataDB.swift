@@ -128,6 +128,37 @@ class StockDataDB{
         return stockDatas
     }
     
+    // Load All StockData
+    func getData() -> Array<StockData> {
+        var stockDatas : Array<StockData> = []
+        let stmt = db.query("SELECT * FROM stock_data")
+        while (db.nextRow(stmt)){
+            let data = StockData()
+            data.id = db.getInt(stmt, index: 0)
+            data.symbol = db.getString(stmt, index: 1)
+            data.quantity = db.getInt(stmt, index: 2)
+            data.buyValue = db.getDouble(stmt, index: 3)
+            data.netIncome = db.getDouble(stmt, index: 4)
+            data.incomeTax = db.getDouble(stmt, index: 5)
+            data.variation = db.getDouble(stmt, index: 6)
+            data.totalGain = db.getDouble(stmt, index: 7)
+            data.objectivePercent = db.getDouble(stmt, index: 8)
+            data.currentPercent = db.getDouble(stmt, index: 9)
+            data.mediumPrice = db.getDouble(stmt, index: 10)
+            data.currentPrice = db.getDouble(stmt, index: 11)
+            data.currentTotal = db.getDouble(stmt, index: 12)
+            data.status = db.getInt(stmt, index: 13)
+            data.tax = db.getDouble(stmt, index: 14)
+            data.brokerage = db.getDouble(stmt, index: 15)
+            data.lastUpdate = db.getInt(stmt, index: 16)
+            data.updateStatus = db.getInt(stmt, index: 17)
+            data.closingPrice = db.getDouble(stmt, index: 18)
+            stockDatas.append(data)
+        }
+        db.closeStatement(stmt)
+        return stockDatas
+    }
+    
     // Save or update a StockData
     func save(_ data: StockData){
         if(data.id == 0){
@@ -141,6 +172,12 @@ class StockDataDB{
             let sql = "update stock_data set symbol=?,quantity_total=?,value_total=?,income_total=?,income_tax=?,variation=?,total_gain=?,objective_percent=?,current_percent=?,medium_price=?,current_price=?,current_total=?,status=?,tax=?,brokerage=?,last_update=?,update_status=?,closing_price=? where _id=?;"
             let params = [data.symbol,data.quantity,data.buyValue,data.netIncome,data.incomeTax,data.variation,data.totalGain,data.objectivePercent,data.currentPercent,data.mediumPrice,data.currentPrice,data.currentTotal,data.status,data.tax,data.brokerage,data.lastUpdate,data.updateStatus,data.closingPrice,data.id] as [Any]
             _ = db.execSql(sql,params: params as Array<AnyObject>)
+        }
+    }
+    
+    func bulkSave(_ stocks: Array<StockData>){
+        stocks.forEach{ stock in
+            save(stock)
         }
     }
     

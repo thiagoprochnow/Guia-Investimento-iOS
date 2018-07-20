@@ -40,6 +40,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func initializeDB(){
+        // Stock
+        
+        // Stock Portfolio
+        let stockPortfolioDB = StockPortfolioDB()
+        stockPortfolioDB.createTable()
+        stockPortfolioDB.close()
         // Stock Transaction
         let stockTransactionDB = StockTransactionDB()
         stockTransactionDB.createTable()

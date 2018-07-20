@@ -24,6 +24,7 @@ import UIKit
 
 class DrawerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet var mainMenu: UITableView!
+    var nav: UINavigationController!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
@@ -46,42 +47,38 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
         // Main Menu Structure
         switch linha {
         case 0:
-            cell.textLabel!.text = "Carteira Completa"
-            cell.textLabel?.textAlignment = .left
-            return cell
-        case 1:
             cell.textLabel!.text = "Tesouro"
             cell.textLabel?.textAlignment = .left
             return cell
-        case 2:
+        case 1:
             cell.textLabel!.text = "Renda Fixa"
             cell.textLabel?.textAlignment = .left
             return cell
-        case 3:
+        case 2:
             cell.textLabel!.text = "Ações"
             cell.textLabel?.textAlignment = .left
             return cell
-        case 4:
+        case 3:
             cell.textLabel!.text = "Fundos Imobiliários"
             cell.textLabel?.textAlignment = .left
             return cell
-        case 5:
+        case 4:
             cell.textLabel!.text = "Moedas"
             cell.textLabel?.textAlignment = .left
             return cell
-        case 6:
+        case 5:
             cell.textLabel!.text = "Outros"
             cell.textLabel?.textAlignment = .left
             return cell
-        case 7:
+        case 6:
             cell.textLabel!.text = "Versão Premium"
             cell.textLabel?.textAlignment = .left
             return cell
-        case 8:
+        case 7:
             cell.textLabel!.text = "Copia e Restauração"
             cell.textLabel?.textAlignment = .left
             return cell
-        case 9:
+        case 8:
             cell.textLabel!.text = "Sobre"
             cell.textLabel?.textAlignment = .left
             return cell
@@ -101,10 +98,20 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
         var view: UITabBarController
         view = TabController()
         
+        // Create custom Back Button
+        let backButton = UIBarButtonItem(title: "Voltar", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
+        view.navigationItem.backBarButtonItem = backButton
+        view.navigationItem.backBarButtonItem?.tintColor = UIColor.white
+        
+        // Update portfolio button
+        let updateBtn = UIBarButtonItem(title: "Atualizar", style: UIBarButtonItemStyle.plain, target: self, action: #selector(DrawerViewController.updateQuotes))
+        view.navigationItem.rightBarButtonItem = updateBtn
+        view.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
+        
         if let drawerController = parent as? KYDrawerController {
             drawerController.setDrawerState(.closed, animated: true)
             switch linha{
-            case 3:
+            case 2:
                 let portfolio = StockPortfolioView()
                 let data = StockDataView()
                 let soldData = SoldStockDataView()
@@ -119,18 +126,48 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
                 income.tabBarItem.image = Utils.makeThumbnailFromText(text: "Rendimentos")
                 
                 view.title = "Ações"
-                // Create custom Back Button
-                let backButton = UIBarButtonItem(title: "Voltar", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
-                view.navigationItem.backBarButtonItem = backButton
-                view.navigationItem.backBarButtonItem?.tintColor = UIColor.white
                 view.viewControllers = [portfolio, data, soldData, income]
                 break
             default:
                 view.title = "Carteira Completa"
             }
             
-            let nav = drawerController.mainViewController as! UINavigationController
+            nav = drawerController.mainViewController as! UINavigationController
             nav.pushViewController(view, animated: true)
         }
+    }
+    
+    @IBAction func updateQuotes(){
+        // Stocks
+        StockService.updateStockQuotes({(_ stocks:Array<StockData>,error:Bool) -> Void in
+            let stockDB = StockDataDB()
+            stocks.forEach{ stock in
+                let currentTotal = Double(stock.quantity) * stock.currentPrice
+                let variation = currentTotal - stock.buyValue
+                let totalGain = currentTotal + stock.netIncome - stock.buyValue - stock.brokerage
+                stock.currentTotal = currentTotal
+                stock.variation = variation
+                stock.totalGain = totalGain
+                stockDB.save(stock)
+            }
+            stockDB.close()
+            Utils.updateStockPortfolio()
+            DispatchQueue.main.async {
+                self.updateView()
+            }
+        })
+        // FII
+    }
+    
+    func updateView(){
+        nav.topViewController?.viewWillAppear(false)
+        
+        let alert = UIAlertView()
+        alert.delegate = self
+        alert.addButton(withTitle: "OK")
+        // Show Alert
+        alert.title = ""
+        alert.message = "Atualização feita com sucesso"
+        alert.show()
     }
 }

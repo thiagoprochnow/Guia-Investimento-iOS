@@ -33,6 +33,8 @@
 		55338AA820F6CFAF002AEFEA /* StockIncomeDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55338AA720F6CFAF002AEFEA /* StockIncomeDetailsView.xib */; };
 		55338AAB20F80D5A002AEFEA /* StockMainIncomesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55338AA920F80D5A002AEFEA /* StockMainIncomesView.swift */; };
 		55338AAC20F80D5A002AEFEA /* StockMainIncomesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55338AAA20F80D5A002AEFEA /* StockMainIncomesView.xib */; };
+		55338AAE20F81E53002AEFEA /* StockPortfolio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55338AAD20F81E53002AEFEA /* StockPortfolio.swift */; };
+		55338AB020F81F3B002AEFEA /* StockPortfolioDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55338AAF20F81F3B002AEFEA /* StockPortfolioDB.swift */; };
 		5540A85320BCC2BB0087498B /* KYDrawerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5540A84E20BCC2BB0087498B /* KYDrawerController.swift */; };
 		5540A85420BCC2BB0087498B /* KYEmbedDrawerControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5540A84F20BCC2BB0087498B /* KYEmbedDrawerControllerSegue.swift */; };
 		5540A85520BCC2BB0087498B /* KYEmbedMainControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5540A85020BCC2BB0087498B /* KYEmbedMainControllerSegue.swift */; };
@@ -98,6 +100,8 @@
 		55338AA720F6CFAF002AEFEA /* StockIncomeDetailsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StockIncomeDetailsView.xib; sourceTree = "<group>"; };
 		55338AA920F80D5A002AEFEA /* StockMainIncomesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockMainIncomesView.swift; sourceTree = "<group>"; };
 		55338AAA20F80D5A002AEFEA /* StockMainIncomesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StockMainIncomesView.xib; sourceTree = "<group>"; };
+		55338AAD20F81E53002AEFEA /* StockPortfolio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockPortfolio.swift; sourceTree = "<group>"; };
+		55338AAF20F81F3B002AEFEA /* StockPortfolioDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockPortfolioDB.swift; sourceTree = "<group>"; };
 		5540A84E20BCC2BB0087498B /* KYDrawerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KYDrawerController.swift; sourceTree = "<group>"; };
 		5540A84F20BCC2BB0087498B /* KYEmbedDrawerControllerSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KYEmbedDrawerControllerSegue.swift; sourceTree = "<group>"; };
 		5540A85020BCC2BB0087498B /* KYEmbedMainControllerSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KYEmbedMainControllerSegue.swift; sourceTree = "<group>"; };
@@ -244,6 +248,7 @@
 				5566030E20E03E0E0041FC8B /* StockTransactionDB.swift */,
 				5566031520E070600041FC8B /* StockDataDB.swift */,
 				5503A81120F107680039ACCD /* StockIncomeDB.swift */,
+				55338AAF20F81F3B002AEFEA /* StockPortfolioDB.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -345,6 +350,7 @@
 				55A3915420D1E1A100244FC2 /* StockData.swift */,
 				55A3915620D1E3C800244FC2 /* StockTransaction.swift */,
 				5503A80F20F1048D0039ACCD /* StockIncome.swift */,
+				55338AAD20F81E53002AEFEA /* StockPortfolio.swift */,
 			);
 			path = Object;
 			sourceTree = "<group>";
@@ -466,6 +472,7 @@
 				559F131420C09D37006BC844 /* Utils.swift in Sources */,
 				5503A81920F2A2F70039ACCD /* StockBonificationForm.swift in Sources */,
 				5566030C20E039D50041FC8B /* StringUtils.swift in Sources */,
+				55338AB020F81F3B002AEFEA /* StockPortfolioDB.swift in Sources */,
 				5503A81620F24C510039ACCD /* StockIncomeCell.swift in Sources */,
 				551D525D20E7282E00B4A37F /* StockTransactionCell.swift in Sources */,
 				5518597020EAEE2900BFB445 /* SellStockForm.swift in Sources */,
@@ -495,6 +502,7 @@
 				559F131620C0A3AC006BC844 /* TabController.swift in Sources */,
 				559F12FA20C04353006BC844 /* StockPortfolioView.swift in Sources */,
 				5566031120E06A170041FC8B /* Constants.swift in Sources */,
+				55338AAE20F81E53002AEFEA /* StockPortfolio.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

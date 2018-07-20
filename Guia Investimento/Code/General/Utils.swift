@@ -85,6 +85,57 @@ class Utils {
         return currency!
     }
     
+    // Updates stock portfolio after stock data quotes have been updated
+    class func updateStockPortfolio(){
+        // Sold Stock Data
+        let soldStockDB = SoldStockDataDB()
+        let soldStocks = soldStockDB.getSoldData()
+        soldStockDB.close()
+
+        var buyTotal: Double = 0.0
+        var totalGain: Double = 0.0
+        var variationTotal: Double = 0.0
+        var sellTotal: Double = 0.0
+        var brokerage: Double = 0.0
+        var mCurrentTotal: Double = 0.0
+        var incomeTotal: Double = 0.0
+        
+        soldStocks.forEach{ soldStock in
+            buyTotal += soldStock.buyValue
+            sellTotal += soldStock.currentTotal
+            brokerage += soldStock.brokerage
+            variationTotal += soldStock.brokerage + soldStock.sellGain
+            totalGain += soldStock.sellGain
+        }
+        
+        // Stock Data
+        let stockDB = StockDataDB()
+        let stocks = stockDB.getData()
+        stockDB.close()
+        
+        stocks.forEach{ stock in
+            variationTotal += stock.variation
+            buyTotal += stock.buyValue
+            incomeTotal += stock.netIncome
+            mCurrentTotal += stock.currentTotal
+            brokerage += stock.brokerage
+            totalGain += stock.totalGain
+        }
+        
+        let portfolioDB = StockPortfolioDB()
+        var portfolio = portfolioDB.getPortfolio()
+        portfolio.variationTotal = variationTotal
+        portfolio.buyTotal = buyTotal
+        portfolio.soldTotal = sellTotal
+        portfolio.incomeTotal = incomeTotal
+        portfolio.brokerage = brokerage
+        portfolio.totalGain = totalGain
+        portfolio.currentTotal = mCurrentTotal
+        
+        portfolioDB.save(portfolio)
+        portfolioDB.close()
+    }
+    
     class func makeThumbnailFromText(text: String) -> UIImage {
         // some variables that control the size of the image we create, what font to use, etc.
         

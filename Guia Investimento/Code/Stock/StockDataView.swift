@@ -130,6 +130,9 @@ class StockDataView: UIViewController, UITableViewDataSource, UITableViewDelegat
                 let okAction = UIAlertAction(title: NSLocalizedString("Deletar", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
                     self.deleteData(self.selectedSymbol)
                     self.stockTable.reloadData()
+                    self.selectedSymbol = ""
+                    self.mediumBuy = ""
+                    self.mediumSell = ""
                 })
                 
                 deleteAlertController.addAction(cancelAction)

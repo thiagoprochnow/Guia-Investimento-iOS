@@ -15,6 +15,7 @@
             <connections>
                 <outlet property="bgView" destination="5zz-ys-W5S" id="s95-e9-fxU"/>
                 <outlet property="boughtLabel" destination="gLd-wq-Fev" id="Rb5-Dw-MoQ"/>
+                <outlet property="fab" destination="WNK-Ph-OsK" id="bru-rJ-ncL"/>
                 <outlet property="grossLabel" destination="Ecw-UA-FzG" id="2Bs-n8-gv6"/>
                 <outlet property="incomeTable" destination="2gL-DE-u5Z" id="e8M-jZ-KrQ"/>
                 <outlet property="liquidLabel" destination="wgM-V1-kO7" id="lNz-JV-JEc"/>
