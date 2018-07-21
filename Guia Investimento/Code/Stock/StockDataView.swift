@@ -91,6 +91,24 @@ class StockDataView: UIViewController, UITableViewDataSource, UITableViewDelegat
             cell.incomeLabel.text = Utils.doubleToRealCurrency(value: data.netIncome)
             cell.brokerageLabel.text = Utils.doubleToRealCurrency(value: data.brokerage)
             cell.gainLabel.text = Utils.doubleToRealCurrency(value: data.totalGain)
+            if(data.updateStatus == Constants.UpdateStatus.NOT_UPDATED){
+                cell.errorIconView.isHidden = false
+                cell.currentPriceLabel.isHidden = true
+            } else {
+                cell.errorIconView.isHidden = true
+                cell.currentPriceLabel.isHidden = false
+                let locale = Locale.current
+                let dailyGain = (data.currentPrice - data.closingPrice)/data.closingPrice * 100
+                let currentPrice = Utils.doubleToRealCurrency(value: data.currentPrice) + "(" + String(format: "%.2f", locale: locale, arguments: [dailyGain]) + ")"
+                cell.currentPriceLabel.text = currentPrice
+                
+                // Set color depending on value
+                if(dailyGain >= 0){
+                    cell.currentPriceLabel.textColor = UIColor(red: 139/255, green: 195/255, blue: 74/255, alpha: 1)
+                } else {
+                    cell.currentPriceLabel.textColor = UIColor(red: 253/255, green: 143/255, blue: 134/255, alpha: 1)
+                }
+            }
             return cell
         } else {
             cell.isHidden = true

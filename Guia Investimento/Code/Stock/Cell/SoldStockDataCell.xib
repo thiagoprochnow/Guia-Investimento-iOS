@@ -26,24 +26,24 @@
                             <view clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LKf-h8-zmu">
                                 <rect key="frame" x="0.0" y="0.0" width="343" height="20"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QUANTIDADE: 3000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZDd-LI-ecw">
-                                        <rect key="frame" x="142" y="-1" width="193" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="193" id="kJw-OO-9MM"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="|" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rO6-9k-cCN">
-                                        <rect key="frame" x="61" y="-1" width="6" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="48" y="-1" width="5" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PETR3" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cPi-D3-uXh">
-                                        <rect key="frame" x="8" y="0.0" width="52" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="4" y="2" width="43.5" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QUANTIDADE: 3000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZDd-LI-ecw">
+                                        <rect key="frame" x="147" y="1" width="193" height="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="193" id="kJw-OO-9MM"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -53,14 +53,14 @@
                                     <constraint firstItem="rO6-9k-cCN" firstAttribute="leading" secondItem="cPi-D3-uXh" secondAttribute="trailing" constant="1" id="BaM-G1-JlK"/>
                                     <constraint firstItem="rO6-9k-cCN" firstAttribute="leading" secondItem="cPi-D3-uXh" secondAttribute="trailing" constant="1" id="FlK-KJ-XIM"/>
                                     <constraint firstAttribute="height" constant="20" id="N2B-lZ-Xnr"/>
-                                    <constraint firstItem="cPi-D3-uXh" firstAttribute="leading" secondItem="LKf-h8-zmu" secondAttribute="leading" constant="8" id="Pym-jX-w0k"/>
-                                    <constraint firstItem="cPi-D3-uXh" firstAttribute="leading" secondItem="LKf-h8-zmu" secondAttribute="leading" constant="8" id="ay7-ac-uAQ"/>
+                                    <constraint firstItem="cPi-D3-uXh" firstAttribute="leading" secondItem="LKf-h8-zmu" secondAttribute="leading" constant="4" id="Pym-jX-w0k"/>
+                                    <constraint firstItem="cPi-D3-uXh" firstAttribute="leading" secondItem="LKf-h8-zmu" secondAttribute="leading" constant="4" id="ay7-ac-uAQ"/>
                                     <constraint firstItem="rO6-9k-cCN" firstAttribute="top" secondItem="LKf-h8-zmu" secondAttribute="top" constant="-1" id="cEL-gm-NYU"/>
-                                    <constraint firstItem="cPi-D3-uXh" firstAttribute="top" secondItem="LKf-h8-zmu" secondAttribute="top" id="cF6-u4-GTC"/>
-                                    <constraint firstAttribute="trailing" secondItem="ZDd-LI-ecw" secondAttribute="trailing" constant="8" id="cOo-xp-HUD"/>
+                                    <constraint firstItem="cPi-D3-uXh" firstAttribute="top" secondItem="LKf-h8-zmu" secondAttribute="top" constant="2" id="cF6-u4-GTC"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZDd-LI-ecw" secondAttribute="trailing" constant="3" id="cOo-xp-HUD"/>
                                     <constraint firstAttribute="bottom" secondItem="rO6-9k-cCN" secondAttribute="bottom" id="dSc-gz-xGd"/>
-                                    <constraint firstAttribute="bottom" secondItem="ZDd-LI-ecw" secondAttribute="bottom" id="u5E-7I-e0P"/>
-                                    <constraint firstAttribute="trailing" secondItem="ZDd-LI-ecw" secondAttribute="trailing" constant="8" id="xXd-3M-5AK"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZDd-LI-ecw" secondAttribute="bottom" constant="2" id="u5E-7I-e0P"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZDd-LI-ecw" secondAttribute="trailing" constant="3" id="xXd-3M-5AK"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vendido" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L9v-ft-hLf">

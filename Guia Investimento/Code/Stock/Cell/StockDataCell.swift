@@ -21,6 +21,8 @@ class StockDataCell: UITableViewCell {
     @IBOutlet var incomeLabel: UILabel!
     @IBOutlet var brokerageLabel: UILabel!
     @IBOutlet var gainLabel: UILabel!
+    @IBOutlet var errorIconView: UIImageView!
+    @IBOutlet var currentPriceLabel: UILabel!
     
     // Customize the Cell
     override func layoutSubviews() {
@@ -36,5 +38,7 @@ class StockDataCell: UITableViewCell {
         // Set images for each icon
         let alocationIcon = UIImage(named: "current_small")
         alocationImg.image = alocationIcon
+        let errorIcon = UIImage(named: "error_icon")
+        errorIconView.image = errorIcon
     }
 }
