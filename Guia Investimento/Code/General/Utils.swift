@@ -111,7 +111,6 @@ class Utils {
         // Stock Data
         let stockDB = StockDataDB()
         let stocks = stockDB.getData()
-        stockDB.close()
         
         stocks.forEach{ stock in
             variationTotal += stock.variation
@@ -121,6 +120,14 @@ class Utils {
             brokerage += stock.brokerage
             totalGain += stock.totalGain
         }
+        
+        // Updates current percent of each stock data
+        stocks.forEach{stock in
+            stock.currentPercent = stock.currentTotal/mCurrentTotal*100
+            stockDB.save(stock)
+        }
+        
+        stockDB.close()
         
         let portfolioDB = StockPortfolioDB()
         var portfolio = portfolioDB.getPortfolio()

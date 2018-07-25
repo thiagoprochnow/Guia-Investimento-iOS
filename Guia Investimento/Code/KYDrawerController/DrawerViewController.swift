@@ -138,29 +138,44 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     @IBAction func updateQuotes(){
+        // Place Loading indication on place of refresh button
+        let activity = UIActivityIndicatorView()
+        activity.startAnimating()
+        let button = UIBarButtonItem.init(customView: activity)
+        nav.topViewController?.navigationItem.rightBarButtonItem = button
+        let general = StockGeneral()
+        
         // Stocks
-        StockService.updateStockQuotes({(_ stocks:Array<StockData>,error:Bool) -> Void in
-            let stockDB = StockDataDB()
-            stocks.forEach{ stock in
-                let currentTotal = Double(stock.quantity) * stock.currentPrice
-                let variation = currentTotal - stock.buyValue
-                let totalGain = currentTotal + stock.netIncome - stock.buyValue - stock.brokerage
-                stock.currentTotal = currentTotal
-                stock.variation = variation
-                stock.totalGain = totalGain
-                stockDB.save(stock)
-            }
-            stockDB.close()
-            Utils.updateStockPortfolio()
-            DispatchQueue.main.async {
-                self.updateView()
-            }
+        StockService.updateStockIncomes({(_ error:Bool) -> Void in
+            StockService.updateStockQuotes({(_ stocks:Array<StockData>,error:Bool) -> Void in
+                let stockDB = StockDataDB()
+                stocks.forEach{ stock in
+                    let currentTotal = Double(stock.quantity) * stock.currentPrice
+                    let variation = currentTotal - stock.buyValue
+                    let totalGain = currentTotal + stock.netIncome - stock.buyValue - stock.brokerage
+                    stock.currentTotal = currentTotal
+                    stock.variation = variation
+                    stock.totalGain = totalGain
+                    stockDB.save(stock)
+                }
+                stockDB.close()
+                Utils.updateStockPortfolio()
+                DispatchQueue.main.async {
+                    self.updateView()
+                }
+            })
         })
+        
         // FII
     }
     
     func updateView(){
         nav.topViewController?.viewWillAppear(false)
+        
+        // Place Button back after finish loading in place of loading view
+        let updateBtn = UIBarButtonItem(title: "Atualizar", style: UIBarButtonItemStyle.plain, target: self, action: #selector(DrawerViewController.updateQuotes))
+        nav.topViewController?.navigationItem.rightBarButtonItem = updateBtn
+        nav.topViewController?.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
         
         let alert = UIAlertView()
         alert.delegate = self

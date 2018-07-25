@@ -18,6 +18,7 @@ class SoldStockDataCell: UITableViewCell {
     @IBOutlet var boughtLabel: UILabel!
     @IBOutlet var brokerageLabel: UILabel!
     @IBOutlet var gainLabel: UILabel!
+    @IBOutlet var gainPercent: UILabel!
     
     // Customize the Cell
     override func layoutSubviews() {

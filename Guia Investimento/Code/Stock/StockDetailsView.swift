@@ -208,6 +208,13 @@ class StockDetailsView: UIViewController, UITableViewDataSource, UITableViewDele
         transactionDB.close()
         self.transactionTable.reloadData()
         updateMediumPrices()
+        
+        // If there is no more buy transaction for this symbol, delete the stock and finish activity
+        if(stockTransactions.count == 0){
+            stockGeneral.deleteStock(symbol)
+            // Dismiss current view
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     // Update medium buy and sell after a change in transactions

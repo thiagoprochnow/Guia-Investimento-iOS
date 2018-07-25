@@ -81,23 +81,58 @@ class StockDataView: UIViewController, UITableViewDataSource, UITableViewDelegat
         
         if(linha < (stockDatas.count)){
             // Load each Stock Data information on cell
+            let locale = Locale(identifier: "pt_BR")
             let data = stockDatas[linha]
+            let stockAppreciation = data.variation
+            let totalIncome = data.netIncome
+            let brokerage = data.brokerage
+            let totalGain = data.totalGain
+            let buyTotal = data.buyValue
+            let variationPercent = "(" + String(format: "%.2f", locale: locale, arguments: [stockAppreciation/buyTotal * 100]) + "%)"
+            let netIncomePercent = "(" + String(format: "%.2f", locale: locale, arguments: [totalIncome/buyTotal * 100]) + "%)"
+            let brokeragePercent = "(" + String(format: "%.2f", locale: locale, arguments: [brokerage/buyTotal * 100]) + "%)"
+            let totalGainPercent = "(" + String(format: "%.2f", locale: locale, arguments: [totalGain/buyTotal * 100]) + "%)"
+            let currentPercent = String(format: "%.2f", locale: locale, arguments: [data.currentPercent]) + "%"
+            
             cell.symbolLabel.text = data.symbol
             let totalValue = data.currentPrice * Double(data.quantity)
             cell.quantityLabel.text = "Quantidade: " + String(data.quantity)
             cell.currentLabel.text = Utils.doubleToRealCurrency(value: totalValue)
-            cell.boughtLabel.text = Utils.doubleToRealCurrency(value: data.buyValue)
-            cell.variationLabel.text = Utils.doubleToRealCurrency(value: data.variation)
-            cell.incomeLabel.text = Utils.doubleToRealCurrency(value: data.netIncome)
-            cell.brokerageLabel.text = Utils.doubleToRealCurrency(value: data.brokerage)
-            cell.gainLabel.text = Utils.doubleToRealCurrency(value: data.totalGain)
+            cell.boughtLabel.text = Utils.doubleToRealCurrency(value: buyTotal)
+            cell.variationLabel.text = Utils.doubleToRealCurrency(value: stockAppreciation)
+            cell.variationPercent.text = variationPercent
+            cell.currentPercent.text = currentPercent
+            if(data.variation >= 0){
+                cell.variationLabel.textColor = UIColor(red: 139/255, green: 195/255, blue: 74/255, alpha: 1)
+                cell.variationPercent.textColor = UIColor(red: 139/255, green: 195/255, blue: 74/255, alpha: 1)
+            } else {
+                cell.variationLabel.textColor = UIColor(red: 244/255, green: 67/255, blue: 54/255, alpha: 1)
+                cell.variationPercent.textColor = UIColor(red: 244/255, green: 67/255, blue: 54/255, alpha: 1)
+            }
+            cell.incomeLabel.text = Utils.doubleToRealCurrency(value: totalIncome)
+            cell.incomeLabel.textColor = UIColor(red: 139/255, green: 195/255, blue: 74/255, alpha: 1)
+            cell.incomePercent.text = netIncomePercent
+            cell.incomePercent.textColor = UIColor(red: 139/255, green: 195/255, blue: 74/255, alpha: 1)
+            cell.brokerageLabel.text = Utils.doubleToRealCurrency(value: brokerage)
+            cell.brokerageLabel.textColor = UIColor(red: 244/255, green: 67/255, blue: 54/255, alpha: 1)
+            cell.brokeragePercent.text = brokeragePercent
+            cell.brokeragePercent.textColor = UIColor(red: 244/255, green: 67/255, blue: 54/255, alpha: 1)
+            cell.gainLabel.text = Utils.doubleToRealCurrency(value: totalGain)
+            cell.gainPercent.text = totalGainPercent
+            if(data.totalGain >= 0){
+                cell.gainLabel.textColor = UIColor(red: 139/255, green: 195/255, blue: 74/255, alpha: 1)
+                cell.gainPercent.textColor = UIColor(red: 139/255, green: 195/255, blue: 74/255, alpha: 1)
+            } else {
+                cell.gainLabel.textColor = UIColor(red: 244/255, green: 67/255, blue: 54/255, alpha: 1)
+                cell.gainPercent.textColor = UIColor(red: 244/255, green: 67/255, blue: 54/255, alpha: 1)
+            }
             if(data.updateStatus == Constants.UpdateStatus.NOT_UPDATED){
                 cell.errorIconView.isHidden = false
                 cell.currentPriceLabel.isHidden = true
             } else {
                 cell.errorIconView.isHidden = true
                 cell.currentPriceLabel.isHidden = false
-                let locale = Locale.current
+                let locale = Locale(identifier: "pt_BR")
                 let dailyGain = (data.currentPrice - data.closingPrice)/data.closingPrice * 100
                 let currentPrice = Utils.doubleToRealCurrency(value: data.currentPrice) + "(" + String(format: "%.2f", locale: locale, arguments: [dailyGain]) + ")"
                 cell.currentPriceLabel.text = currentPrice
@@ -189,14 +224,18 @@ class StockDataView: UIViewController, UITableViewDataSource, UITableViewDelegat
         let dataDB = StockDataDB()
         let transactionDB = StockTransactionDB()
         let soldDataDB = SoldStockDataDB()
+        let incomeDB = StockIncomeDB()
         
         dataDB.deleteBySymbol(symbol)
         transactionDB.deleteBySymbol(symbol)
         soldDataDB.deleteBySymbol(symbol)
+        incomeDB.deleteBySymbol(symbol)
         stockDatas = dataDB.getDataByStatus(Constants.Status.ACTIVE)
+        Utils.updateStockPortfolio()
         dataDB.close()
         transactionDB.close()
         soldDataDB.close()
+        incomeDB.close()
     }
     
     // Open stock details view

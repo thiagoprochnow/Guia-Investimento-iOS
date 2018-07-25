@@ -17,9 +17,12 @@
                 <outlet property="boughtLabel" destination="gLd-wq-Fev" id="Rb5-Dw-MoQ"/>
                 <outlet property="fab" destination="rrl-dm-f1Q" id="gxG-mS-UnP"/>
                 <outlet property="grossLabel" destination="Ecw-UA-FzG" id="2Bs-n8-gv6"/>
+                <outlet property="grossPercentLabel" destination="M7U-f2-67a" id="Dih-aN-8OX"/>
                 <outlet property="incomeTable" destination="2gL-DE-u5Z" id="e8M-jZ-KrQ"/>
                 <outlet property="liquidLabel" destination="wgM-V1-kO7" id="lNz-JV-JEc"/>
+                <outlet property="netPercentLabel" destination="jfk-cg-B3m" id="bjA-1O-MSz"/>
                 <outlet property="taxLabel" destination="Lwk-Kw-8qE" id="hed-ha-Rdy"/>
+                <outlet property="taxPercentLabel" destination="Prd-g6-LA3" id="zwW-hv-V75"/>
                 <outlet property="view" destination="iN0-l3-epB" id="8Dp-IT-bst"/>
             </connections>
         </placeholder>

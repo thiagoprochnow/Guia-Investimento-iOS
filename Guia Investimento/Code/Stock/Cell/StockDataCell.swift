@@ -23,6 +23,11 @@ class StockDataCell: UITableViewCell {
     @IBOutlet var gainLabel: UILabel!
     @IBOutlet var errorIconView: UIImageView!
     @IBOutlet var currentPriceLabel: UILabel!
+    @IBOutlet var variationPercent: UILabel!
+    @IBOutlet var incomePercent: UILabel!
+    @IBOutlet var brokeragePercent: UILabel!
+    @IBOutlet var gainPercent: UILabel!
+    @IBOutlet var currentPercent: UILabel!
     
     // Customize the Cell
     override func layoutSubviews() {

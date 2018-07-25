@@ -18,6 +18,10 @@ class StockPortfolioCell: UITableViewCell {
     @IBOutlet var incomeTotal: UILabel!
     @IBOutlet var brokerageTotal: UILabel!
     @IBOutlet var totalGain: UILabel!
+    @IBOutlet var variationPercent: UILabel!
+    @IBOutlet var incomePercent: UILabel!
+    @IBOutlet var brokeragePercent: UILabel!
+    @IBOutlet var totalPercent: UILabel!
     
     // Customize the Cell
     override func layoutSubviews() {

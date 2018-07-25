@@ -82,6 +82,8 @@ class SoldStockDataView: UIViewController, UITableViewDataSource, UITableViewDel
         if(linha < (soldStockDatas.count)){
             // Load each Sold Stock Data information on cell
             let data = soldStockDatas[linha]
+            let locale = Locale(identifier: "pt_BR")
+            let sellGainPercent = "(" + String(format: "%.2f", locale: locale, arguments: [data.sellGain/data.buyValue * 100]) + "%)"
             cell.symbolLabel.text = data.symbol
             let totalValue = data.mediumPrice * Double(data.quantity)
             cell.quantityLabel.text = "Quantidade: " + String(data.quantity)
@@ -89,6 +91,14 @@ class SoldStockDataView: UIViewController, UITableViewDataSource, UITableViewDel
             cell.boughtLabel.text = Utils.doubleToRealCurrency(value: data.buyValue)
             cell.brokerageLabel.text = Utils.doubleToRealCurrency(value: data.brokerage)
             cell.gainLabel.text = Utils.doubleToRealCurrency(value: data.sellGain)
+            cell.gainPercent.text = sellGainPercent
+            if(data.sellGain > 0){
+                cell.gainLabel.textColor = UIColor(red: 139/255, green: 195/255, blue: 74/255, alpha: 1)
+                cell.gainPercent.textColor = UIColor(red: 139/255, green: 195/255, blue: 74/255, alpha: 1)
+            } else {
+                cell.gainPercent.textColor = UIColor(red: 244/255, green: 67/255, blue: 54/255, alpha: 1)
+                cell.gainLabel.textColor = UIColor(red: 244/255, green: 67/255, blue: 54/255, alpha: 1)
+            }
             return cell
         } else {
             cell.isHidden = true
@@ -160,14 +170,18 @@ class SoldStockDataView: UIViewController, UITableViewDataSource, UITableViewDel
         let dataDB = StockDataDB()
         let transactionDB = StockTransactionDB()
         let soldDataDB = SoldStockDataDB()
+        let incomeDB = StockIncomeDB()
         
         dataDB.deleteBySymbol(symbol)
         transactionDB.deleteBySymbol(symbol)
         soldDataDB.deleteBySymbol(symbol)
+        incomeDB.deleteBySymbol(symbol)
         soldStockDatas = soldDataDB.getSoldData()
+        Utils.updateStockPortfolio()
         dataDB.close()
         transactionDB.close()
         soldDataDB.close()
+        incomeDB.close()
     }
     
     // Open form to buy stocks

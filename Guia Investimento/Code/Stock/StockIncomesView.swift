@@ -16,6 +16,10 @@ class StockIncomesView: UIViewController, UITableViewDataSource, UITableViewDele
     @IBOutlet var liquidLabel: UILabel!
     @IBOutlet var fab: UIImageView!
     @IBOutlet var incomeTable: UITableView!
+    @IBOutlet var grossPercentLabel: UILabel!
+    @IBOutlet var taxPercentLabel: UILabel!
+    @IBOutlet var netPercentLabel: UILabel!
+    
     var stockIncomes: Array<StockIncome> = []
     
     var symbol: String = ""
@@ -55,6 +59,21 @@ class StockIncomesView: UIViewController, UITableViewDataSource, UITableViewDele
         let dataDB = StockDataDB()
         let stockData = dataDB.getDataBySymbol(symbol)
         dataDB.close()
+        let locale = Locale(identifier: "pt_BR")
+        let grossIncome = stockData.netIncome + stockData.incomeTax
+        let netIncome = stockData.netIncome
+        let grossPercent = "(" + String(format: "%.2f", locale: locale, arguments: [grossIncome/stockData.buyValue*100]) + "%)"
+        let taxPercent = "(" + String(format: "%.2f", locale: locale, arguments: [stockData.incomeTax/stockData.buyValue*100]) + "%)"
+        let netPercent = "(" + String(format: "%.2f", locale: locale, arguments: [netIncome/stockData.buyValue*100]) + "%)"
+        grossPercentLabel.textColor = UIColor(red: 139/255, green: 195/255, blue: 74/255, alpha: 1)
+        taxPercentLabel.textColor = UIColor(red: 244/255, green: 67/255, blue: 54/255, alpha: 1)
+        netPercentLabel.textColor = UIColor(red: 139/255, green: 195/255, blue: 74/255, alpha: 1)
+        grossLabel.textColor = UIColor(red: 139/255, green: 195/255, blue: 74/255, alpha: 1)
+        taxLabel.textColor = UIColor(red: 244/255, green: 67/255, blue: 54/255, alpha: 1)
+        liquidLabel.textColor = UIColor(red: 139/255, green: 195/255, blue: 74/255, alpha: 1)
+        grossPercentLabel.text = grossPercent
+        taxPercentLabel.text = taxPercent
+        netPercentLabel.text = netPercent
         boughtLabel.text = Utils.doubleToRealCurrency(value: stockData.buyValue)
         grossLabel.text = Utils.doubleToRealCurrency(value: stockData.netIncome + stockData.incomeTax)
         taxLabel.text = Utils.doubleToRealCurrency(value: stockData.incomeTax)
@@ -76,6 +95,15 @@ class StockIncomesView: UIViewController, UITableViewDataSource, UITableViewDele
         let dataDB = StockDataDB()
         let stockData = dataDB.getDataBySymbol(symbol)
         dataDB.close()
+        let locale = Locale(identifier: "pt_BR")
+        let grossIncome = stockData.netIncome + stockData.incomeTax
+        let netIncome = stockData.netIncome
+        let grossPercent = "(" + String(format: "%.2f", locale: locale, arguments: [grossIncome/stockData.buyValue*100]) + "%)"
+        let taxPercent = "(" + String(format: "%.2f", locale: locale, arguments: [stockData.incomeTax/stockData.buyValue*100]) + "%)"
+        let netPercent = "(" + String(format: "%.2f", locale: locale, arguments: [netIncome/stockData.buyValue*100]) + "%)"
+        grossPercentLabel.text = grossPercent
+        taxPercentLabel.text = taxPercent
+        netPercentLabel.text = netPercent
         boughtLabel.text = Utils.doubleToRealCurrency(value: stockData.buyValue)
         grossLabel.text = Utils.doubleToRealCurrency(value: stockData.netIncome + stockData.incomeTax)
         taxLabel.text = Utils.doubleToRealCurrency(value: stockData.incomeTax)

@@ -64,7 +64,13 @@ class StockPortfolioView: UIViewController, UITableViewDataSource, UITableViewDe
         cell.selectionStyle = .none
         
         if(linha == 0){
-            // Load each Stock Data information on cell
+            // Load Stock Portfolio information on cell
+            let locale = Locale(identifier: "pt_BR")
+            let buyTotal = portfolio.buyTotal
+            let stockAppreciationPercent = "(" + String(format: "%.2f", locale: locale, arguments: [portfolio.variationTotal/buyTotal * 100]) + "%)"
+            let incomePercent = "(" + String(format: "%.2f", locale: locale, arguments: [portfolio.incomeTotal/buyTotal * 100]) + "%)"
+            let brokeragePercent = "(" + String(format: "%.2f", locale: locale, arguments: [portfolio.brokerage/buyTotal * 100]) + "%)"
+            let totalGainPercent = "(" + String(format: "%.2f", locale: locale, arguments: [portfolio.totalGain/buyTotal * 100]) + "%)"
             cell.currentTotal.text = Utils.doubleToRealCurrency(value: portfolio.currentTotal)
             cell.soldTotal.text = Utils.doubleToRealCurrency(value: portfolio.soldTotal)
             cell.buyTotal.text = Utils.doubleToRealCurrency(value: portfolio.buyTotal)
@@ -72,6 +78,33 @@ class StockPortfolioView: UIViewController, UITableViewDataSource, UITableViewDe
             cell.incomeTotal.text = Utils.doubleToRealCurrency(value: portfolio.incomeTotal)
             cell.brokerageTotal.text = Utils.doubleToRealCurrency(value: portfolio.brokerage)
             cell.totalGain.text = Utils.doubleToRealCurrency(value: portfolio.totalGain)
+            cell.variationPercent.text = stockAppreciationPercent
+            cell.incomePercent.text = incomePercent
+            cell.brokeragePercent.text = brokeragePercent
+            cell.totalPercent.text = totalGainPercent
+            
+            if(portfolio.variationTotal >= 0){
+                cell.variationTotal.textColor = UIColor(red: 139/255, green: 195/255, blue: 74/255, alpha: 1)
+                cell.variationPercent.textColor = UIColor(red: 139/255, green: 195/255, blue: 74/255, alpha: 1)
+            } else {
+                cell.variationTotal.textColor = UIColor(red: 244/255, green: 67/255, blue: 54/255, alpha: 1)
+                cell.variationPercent.textColor = UIColor(red: 244/255, green: 67/255, blue: 54/255, alpha: 1)
+            }
+            
+            cell.incomeTotal.textColor = UIColor(red: 139/255, green: 195/255, blue: 74/255, alpha: 1)
+            cell.incomePercent.textColor = UIColor(red: 139/255, green: 195/255, blue: 74/255, alpha: 1)
+            
+            cell.brokerageTotal.textColor = UIColor(red: 244/255, green: 67/255, blue: 54/255, alpha: 1)
+            cell.brokeragePercent.textColor = UIColor(red: 244/255, green: 67/255, blue: 54/255, alpha: 1)
+            
+            if(portfolio.totalGain >= 0){
+                cell.totalGain.textColor = UIColor(red: 139/255, green: 195/255, blue: 74/255, alpha: 1)
+                cell.totalPercent.textColor = UIColor(red: 139/255, green: 195/255, blue: 74/255, alpha: 1)
+            } else {
+                cell.totalGain.textColor = UIColor(red: 244/255, green: 67/255, blue: 54/255, alpha: 1)
+                cell.totalPercent.textColor = UIColor(red: 244/255, green: 67/255, blue: 54/255, alpha: 1)
+            }
+            
             return cell
         } else {
             cell.isHidden = true

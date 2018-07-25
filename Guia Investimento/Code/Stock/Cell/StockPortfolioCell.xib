@@ -251,12 +251,16 @@
             <color key="backgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
                 <outlet property="bgView" destination="3XH-rU-FPE" id="c3b-gq-qj0"/>
+                <outlet property="brokeragePercent" destination="BSq-GW-vTz" id="2K2-Cu-zcZ"/>
                 <outlet property="brokerageTotal" destination="xxf-3a-bm8" id="lVF-dB-G0J"/>
                 <outlet property="buyTotal" destination="7uT-IA-7hV" id="1GJ-TE-ixd"/>
                 <outlet property="currentTotal" destination="Jg1-al-Ehu" id="ZnK-ig-Kcr"/>
+                <outlet property="incomePercent" destination="BPr-Mq-CjY" id="KeM-TU-M1W"/>
                 <outlet property="incomeTotal" destination="7D5-fX-UG9" id="Z11-jW-J5O"/>
                 <outlet property="soldTotal" destination="84R-Vd-Sxe" id="3mu-kb-eUt"/>
                 <outlet property="totalGain" destination="rja-0M-OsA" id="SHe-CT-pLz"/>
+                <outlet property="totalPercent" destination="Bza-Pf-tgd" id="GUz-Mh-jFf"/>
+                <outlet property="variationPercent" destination="MH3-lG-osx" id="dwy-Jv-Fyx"/>
                 <outlet property="variationTotal" destination="dtS-gf-nXw" id="BYd-4P-9TL"/>
             </connections>
             <point key="canvasLocation" x="-86.5" y="170"/>

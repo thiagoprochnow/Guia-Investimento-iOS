@@ -16,6 +16,10 @@ class StockMainIncomesView: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet var liquidLabel: UILabel!
     @IBOutlet var fab: UIImageView!
     @IBOutlet var incomeTable: UITableView!
+    @IBOutlet var grossPercentLabel: UILabel!
+    @IBOutlet var taxPercentLabel: UILabel!
+    @IBOutlet var liquidPercentLabel: UILabel!
+    
     var stockIncomes: Array<StockIncome> = []
     
     override func viewDidLoad() {
@@ -50,7 +54,39 @@ class StockMainIncomesView: UIViewController, UITableViewDataSource, UITableView
         stockIncomes = incomeDB.getIncomes()
         incomeDB.close()
         
+        // Load Stock Data
+        let dataDB = StockDataDB()
+        let stockDatas = dataDB.getData()
+        dataDB.close()
+        var tax = 0.0
+        
+        stockDatas.forEach{stock in
+            tax += stock.incomeTax
+        }
+        
         // Load Stock Portfolio
+        let portfolioDB = StockPortfolioDB()
+        let stockPortfolio = portfolioDB.getPortfolio()
+        portfolioDB.close()
+        let locale = Locale(identifier: "pt_BR")
+        let grossIncome = stockPortfolio.incomeTotal + tax
+        let netIncome = stockPortfolio.incomeTotal
+        let grossPercent = "(" + String(format: "%.2f", locale: locale, arguments: [grossIncome/stockPortfolio.buyTotal*100]) + "%)"
+        let taxPercent = "(" + String(format: "%.2f", locale: locale, arguments: [tax/stockPortfolio.buyTotal*100]) + "%)"
+        let netPercent = "(" + String(format: "%.2f", locale: locale, arguments: [netIncome/stockPortfolio.buyTotal*100]) + "%)"
+        grossPercentLabel.textColor = UIColor(red: 139/255, green: 195/255, blue: 74/255, alpha: 1)
+        taxPercentLabel.textColor = UIColor(red: 244/255, green: 67/255, blue: 54/255, alpha: 1)
+        liquidPercentLabel.textColor = UIColor(red: 139/255, green: 195/255, blue: 74/255, alpha: 1)
+        grossLabel.textColor = UIColor(red: 139/255, green: 195/255, blue: 74/255, alpha: 1)
+        taxLabel.textColor = UIColor(red: 244/255, green: 67/255, blue: 54/255, alpha: 1)
+        liquidLabel.textColor = UIColor(red: 139/255, green: 195/255, blue: 74/255, alpha: 1)
+        grossPercentLabel.text = grossPercent
+        taxPercentLabel.text = taxPercent
+        liquidPercentLabel.text = netPercent
+        boughtLabel.text = Utils.doubleToRealCurrency(value: stockPortfolio.buyTotal)
+        grossLabel.text = Utils.doubleToRealCurrency(value: stockPortfolio.incomeTotal + tax)
+        taxLabel.text = Utils.doubleToRealCurrency(value: tax)
+        liquidLabel.text = Utils.doubleToRealCurrency(value: stockPortfolio.incomeTotal)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,6 +99,40 @@ class StockMainIncomesView: UIViewController, UITableViewDataSource, UITableView
             self.incomeTable.isHidden = false
         }
         incomeDB.close()
+        
+        // Load Stock Data
+        let dataDB = StockDataDB()
+        let stockDatas = dataDB.getData()
+        dataDB.close()
+        var tax = 0.0
+        
+        stockDatas.forEach{stock in
+            tax += stock.incomeTax
+        }
+        
+        // Load Stock Portfolio
+        let portfolioDB = StockPortfolioDB()
+        let stockPortfolio = portfolioDB.getPortfolio()
+        portfolioDB.close()
+        let locale = Locale(identifier: "pt_BR")
+        let grossIncome = stockPortfolio.incomeTotal + tax
+        let netIncome = stockPortfolio.incomeTotal
+        let grossPercent = "(" + String(format: "%.2f", locale: locale, arguments: [grossIncome/stockPortfolio.buyTotal*100]) + "%)"
+        let taxPercent = "(" + String(format: "%.2f", locale: locale, arguments: [tax/stockPortfolio.buyTotal*100]) + "%)"
+        let netPercent = "(" + String(format: "%.2f", locale: locale, arguments: [netIncome/stockPortfolio.buyTotal*100]) + "%)"
+        grossPercentLabel.textColor = UIColor(red: 139/255, green: 195/255, blue: 74/255, alpha: 1)
+        taxPercentLabel.textColor = UIColor(red: 244/255, green: 67/255, blue: 54/255, alpha: 1)
+        liquidPercentLabel.textColor = UIColor(red: 139/255, green: 195/255, blue: 74/255, alpha: 1)
+        grossLabel.textColor = UIColor(red: 139/255, green: 195/255, blue: 74/255, alpha: 1)
+        taxLabel.textColor = UIColor(red: 244/255, green: 67/255, blue: 54/255, alpha: 1)
+        liquidLabel.textColor = UIColor(red: 139/255, green: 195/255, blue: 74/255, alpha: 1)
+        grossPercentLabel.text = grossPercent
+        taxPercentLabel.text = taxPercent
+        liquidPercentLabel.text = netPercent
+        boughtLabel.text = Utils.doubleToRealCurrency(value: stockPortfolio.buyTotal)
+        grossLabel.text = Utils.doubleToRealCurrency(value: stockPortfolio.incomeTotal + tax)
+        taxLabel.text = Utils.doubleToRealCurrency(value: tax)
+        liquidLabel.text = Utils.doubleToRealCurrency(value: stockPortfolio.incomeTotal)
         
         // Load Stock Portfolio
         // Reload data every time StockDataView is shown

@@ -264,4 +264,29 @@ class StockGeneral {
         incomeDB.close()
         _ = updateStockData(symbol, type: -1)
     }
+    
+    // Delete stock data, all its transactions and incomes
+    func deleteStock(_ symbol: String){
+        let dataDB = StockDataDB()
+        let transactionDB = StockTransactionDB()
+        let soldDataDB = SoldStockDataDB()
+        let incomeDB = StockIncomeDB()
+        
+        dataDB.deleteBySymbol(symbol)
+        transactionDB.deleteBySymbol(symbol)
+        soldDataDB.deleteBySymbol(symbol)
+        incomeDB.deleteBySymbol(symbol)
+        Utils.updateStockPortfolio()
+        dataDB.close()
+        transactionDB.close()
+        soldDataDB.close()
+        incomeDB.close()
+    }
+    
+    // Get last inserted income timestamp
+    func getLastIncomeTime(_ symbol:String) -> String {
+        let incomeDB = StockIncomeDB()
+        let income = incomeDB.getLastIncome(symbol)
+        return String(income.exdividendTimestamp)
+    }
 }

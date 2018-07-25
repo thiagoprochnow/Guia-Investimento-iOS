@@ -98,4 +98,86 @@ class StockService{
                 }.resume()
         }
     }
+    
+    class func updateStockIncomes(_ callback: @escaping(_ error:Bool) -> Void){
+        let stockDataDB = StockDataDB()
+        let stocks = stockDataDB.getDataByStatus(Constants.Status.ACTIVE)
+        var returnIncomes: Array<StockIncome> = []
+        var success: Bool = true
+        var result = false
+        
+        let http = URLSession.shared
+        let username = "mainuser"
+        let password = "user1133"
+        let loginData = String(format: "%@:%@", username, password).data(using: String.Encoding.utf8)!
+        let base64LoginData = loginData.base64EncodedString()
+        
+        if(stocks.count > 0){
+            let general = StockGeneral()
+            for (index, stock) in stocks.enumerated() {
+                let lastTimestamp = general.getLastIncomeTime(stock.symbol)
+                let url = URL(string: "http://35.199.123.90/getprovento/"+stock.symbol.uppercased()+"/"+lastTimestamp)!
+                var request = URLRequest(url: url)
+                request.httpMethod = "GET"
+                request.setValue("Basic \(base64LoginData)", forHTTPHeaderField: "Authorization")
+                http.dataTask(with: request){(data, response, error) in
+                    if let data = data {
+                        var stockIncomes: Array<NSDictionary> = []
+                        do{
+                            print(String(data: data, encoding: String.Encoding.utf8))
+                            stockIncomes = try JSONSerialization.jsonObject(with: data, options: [JSONSerialization.ReadingOptions.mutableContainers,.allowFragments]) as! Array<NSDictionary>
+                            
+                            let incomeDB = StockIncomeDB()
+                            stockIncomes.forEach{ income in
+                                var stockIncome = StockIncome()
+                                let perStock = income["valor"] as! Double
+                                let exdividend = Int(income["timestamp"] as! Int64)
+                                let affected = general.getStockQuantity(symbol: stock.symbol, incomeTimestamp: exdividend)
+                                let receivedValue = affected * perStock
+                                var liquidValue = receivedValue
+                                var tax = 0.0
+                                
+                                if(income["tipo"] as! String == "JCP"){
+                                    stockIncome.type = Constants.IncomeType.JCP
+                                    tax = receivedValue*0.15
+                                    liquidValue = receivedValue - tax
+                                } else {
+                                    stockIncome.type = Constants.IncomeType.DIVIDEND
+                                }
+                                
+                                stockIncome.symbol = stock.symbol
+                                stockIncome.perStock = perStock
+                                stockIncome.exdividendTimestamp = exdividend
+                                stockIncome.affectedQuantity = Int(affected)
+                                stockIncome.grossIncome = receivedValue
+                                stockIncome.tax = tax
+                                stockIncome.liquidIncome = liquidValue
+                                
+                                let isInserted = incomeDB.isIncomeInserted(stockIncome)
+                                // Check if it not already inserted
+                                if(!isInserted){
+                                    incomeDB.save(stockIncome)
+                                    if(stockIncome.affectedQuantity > 0){
+                                    general.updateStockDataIncome(stockIncome.symbol, valueReceived: stockIncome.liquidIncome, tax: stockIncome.tax)
+                                    }
+                                }
+                            }
+                            incomeDB.close()
+                            result = true
+                        } catch {
+                            print(error)
+                        }
+                    } 
+                    if let error = error {
+                        // Return fail to main thread
+                        result = false
+                    }
+                    // only calls callback for last item
+                    if(index == (stocks.count - 1)){
+                        callback(result)
+                    }
+                }.resume()
+            }
+        }
+    }
 }
