@@ -48,6 +48,7 @@ class SellStockForm: UIViewController, UITextFieldDelegate{
             priceTextField.text = String(prealodedTransaction.price)
             brokerageTextField.text = String(prealodedTransaction.brokerage)
             let date = Date(timeIntervalSince1970: TimeInterval(prealodedTransaction.timestamp))
+            datePicker.timeZone = TimeZone(abbreviation: "UTC")
             datePicker.setDate(date, animated: false)
             transactionDB.close()
         }

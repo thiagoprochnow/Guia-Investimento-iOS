@@ -22,10 +22,10 @@ class StockData {
     var mediumPrice = 0.0
     var currentPrice = 0.0
     var currentTotal = 0.0
-    var status = Constants.UpdateStatus.NOT_UPDATED
+    var status = 0
     var tax = 0.0
     var brokerage = 0.0
     var lastUpdate = 0
-    var updateStatus = 0
+    var updateStatus = Constants.UpdateStatus.NOT_UPDATED
     var closingPrice = 0.0
 }

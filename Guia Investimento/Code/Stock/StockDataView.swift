@@ -173,6 +173,9 @@ class StockDataView: UIViewController, UITableViewDataSource, UITableViewDelegat
             let sellAction = UIAlertAction(title: NSLocalizedString("Vender", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
                 self.sellStock()
             })
+            let editAction = UIAlertAction(title: NSLocalizedString("Editar Preço", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
+                self.editStock(stock: data)
+            })
             let cancelAction = UIAlertAction(title: NSLocalizedString("Cancelar", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
                 self.selectedSymbol = ""
                 self.mediumBuy = ""
@@ -195,6 +198,9 @@ class StockDataView: UIViewController, UITableViewDataSource, UITableViewDelegat
             alertController.addAction(detailAction)
             alertController.addAction(buyAction)
             alertController.addAction(sellAction)
+            if(data.updateStatus != Constants.UpdateStatus.UPDATED){
+                alertController.addAction(editAction)
+            }
             alertController.addAction(deleteAction)
             alertController.addAction(cancelAction)
             self.present(alertController, animated: false, completion: nil)
@@ -217,6 +223,12 @@ class StockDataView: UIViewController, UITableViewDataSource, UITableViewDelegat
             sellStockForm.symbol = selectedSymbol
         }
         self.navigationController?.pushViewController(sellStockForm, animated: true)
+    }
+    
+    func editStock(stock:StockData){
+        let editStockForm = StockEditPriceForm()
+        editStockForm.prealodedData = stock
+        self.navigationController?.pushViewController(editStockForm, animated: true)
     }
     
     // Delete stock data, all its transactions and incomes

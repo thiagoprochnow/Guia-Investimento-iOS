@@ -39,6 +39,7 @@ class StockIncomeDetailsView: UIViewController{
         let timestamp = income.exdividendTimestamp
         let date = Date(timeIntervalSince1970: TimeInterval(timestamp))
         let formatter = DateFormatter()
+        formatter.timeZone = TimeZone(abbreviation: "UTC")
         formatter.dateFormat = "dd/MM/yyyy"
         let dateString = formatter.string(from: date)
         dateLabel.text = dateString

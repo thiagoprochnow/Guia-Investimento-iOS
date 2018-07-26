@@ -34,6 +34,7 @@ class StockGroupingForm: UIViewController, UITextFieldDelegate{
             prealodedTransaction = transactionDB.getTransactionById(id)
             quantityField.text = String(prealodedTransaction.quantity)
             let date = Date(timeIntervalSince1970: TimeInterval(prealodedTransaction.timestamp))
+            datePicker.timeZone = TimeZone(abbreviation: "UTC")
             datePicker.setDate(date, animated: false)
             transactionType = prealodedTransaction.type
             transactionDB.close()
