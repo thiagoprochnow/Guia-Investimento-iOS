@@ -37,6 +37,7 @@
 		55338AB020F81F3B002AEFEA /* StockPortfolioDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55338AAF20F81F3B002AEFEA /* StockPortfolioDB.swift */; };
 		553397772109428E00798033 /* StockEditPriceForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553397752109428D00798033 /* StockEditPriceForm.swift */; };
 		553397782109428E00798033 /* StockEditPriceForm.xib in Resources */ = {isa = PBXBuildFile; fileRef = 553397762109428D00798033 /* StockEditPriceForm.xib */; };
+		5533977A21094C3B00798033 /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5533977921094C3900798033 /* SearchTextField.swift */; };
 		5540A85320BCC2BB0087498B /* KYDrawerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5540A84E20BCC2BB0087498B /* KYDrawerController.swift */; };
 		5540A85420BCC2BB0087498B /* KYEmbedDrawerControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5540A84F20BCC2BB0087498B /* KYEmbedDrawerControllerSegue.swift */; };
 		5540A85520BCC2BB0087498B /* KYEmbedMainControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5540A85020BCC2BB0087498B /* KYEmbedMainControllerSegue.swift */; };
@@ -108,6 +109,7 @@
 		55338AAF20F81F3B002AEFEA /* StockPortfolioDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockPortfolioDB.swift; sourceTree = "<group>"; };
 		553397752109428D00798033 /* StockEditPriceForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockEditPriceForm.swift; sourceTree = "<group>"; };
 		553397762109428D00798033 /* StockEditPriceForm.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StockEditPriceForm.xib; sourceTree = "<group>"; };
+		5533977921094C3900798033 /* SearchTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
 		5540A84E20BCC2BB0087498B /* KYDrawerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KYDrawerController.swift; sourceTree = "<group>"; };
 		5540A84F20BCC2BB0087498B /* KYEmbedDrawerControllerSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KYEmbedDrawerControllerSegue.swift; sourceTree = "<group>"; };
 		5540A85020BCC2BB0087498B /* KYEmbedMainControllerSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KYEmbedMainControllerSegue.swift; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 		5568A70E20C18DAC00689EBA /* General */ = {
 			isa = PBXGroup;
 			children = (
+				5533977921094C3900798033 /* SearchTextField.swift */,
 				559F131320C09D37006BC844 /* Utils.swift */,
 				5566030B20E039D50041FC8B /* StringUtils.swift */,
 				5566030520E0365E0041FC8B /* SQLiteHelper.swift */,
@@ -493,6 +496,7 @@
 				5518597020EAEE2900BFB445 /* SellStockForm.swift in Sources */,
 				5518596B20E9860900BFB445 /* SoldStockDataDB.swift in Sources */,
 				552D941F20BB2B9F0041872B /* PortfolioMainController.swift in Sources */,
+				5533977A21094C3B00798033 /* SearchTextField.swift in Sources */,
 				5518596D20E9879700BFB445 /* SoldStockData.swift in Sources */,
 				55338AAB20F80D5A002AEFEA /* StockMainIncomesView.swift in Sources */,
 				5501D8F620ED972500C7D4E5 /* StockDividendForm.swift in Sources */,

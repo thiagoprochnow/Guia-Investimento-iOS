@@ -8,8 +8,9 @@
 
 import Foundation
 import UIKit
+
 class BuyStockForm: UIViewController, UITextFieldDelegate{
-    @IBOutlet var symbolTextField: UITextField!
+    @IBOutlet var symbolTextField: SearchTextField!
     @IBOutlet var quantityTextField: UITextField!
     @IBOutlet var priceTextField: UITextField!
     @IBOutlet var brokerageTextField: UITextField!
@@ -35,6 +36,12 @@ class BuyStockForm: UIViewController, UITextFieldDelegate{
         quantityTextField.keyboardType = UIKeyboardType.numberPad
         priceTextField.keyboardType = UIKeyboardType.decimalPad
         brokerageTextField.keyboardType = UIKeyboardType.decimalPad
+        
+        // Insert Autocomplete
+        symbolTextField.filterStrings(Constants.Symbols.STOCKS)
+        symbolTextField.theme.bgColor = UIColor (red: 1, green: 1, blue: 1, alpha: 1)
+        symbolTextField.maxNumberOfResults = 5
+        symbolTextField.theme.font = UIFont.systemFont(ofSize: 14)
         
         // Buying a repeated stock, already shows symbol of the new buy
         if(symbol != ""){
