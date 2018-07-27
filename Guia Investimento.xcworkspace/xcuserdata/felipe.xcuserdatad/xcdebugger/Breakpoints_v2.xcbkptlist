@@ -170,7 +170,7 @@
                   moduleName = "Guia Investimento"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/felipe/Desktop/iOS/Guia%20Investimento/Pods/Charts/Source/Charts/Charts/ChartViewBase.swift"
-                  timestampString = "554349688.93636"
+                  timestampString = "554424414.3087"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "227"
@@ -185,7 +185,7 @@
                   moduleName = "Charts"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/felipe/Desktop/iOS/Guia%20Investimento/Pods/Charts/Source/Charts/Charts/ChartViewBase.swift"
-                  timestampString = "554349689.693308"
+                  timestampString = "554424415.113206"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "227"
@@ -218,7 +218,7 @@
                   moduleName = "Guia Investimento"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/felipe/Desktop/iOS/Guia%20Investimento/Pods/Charts/Source/Charts/Charts/ChartViewBase.swift"
-                  timestampString = "554349688.944622"
+                  timestampString = "554424414.316819"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "238"
@@ -233,7 +233,7 @@
                   moduleName = "Charts"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/felipe/Desktop/iOS/Guia%20Investimento/Pods/Charts/Source/Charts/Charts/ChartViewBase.swift"
-                  timestampString = "554349689.701121"
+                  timestampString = "554424415.119383"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "238"
@@ -241,6 +241,38 @@
                   offsetFromSymbolStart = "21">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Guia Investimento/Code/Stock/Cell/StockPieChartCell.swift"
+            timestampString = "554424414.0989521"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "layoutSubviews()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Guia Investimento/Code/Stock/Cell/StockPieChartCell.swift"
+            timestampString = "554424414.0999531"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "layoutSubviews()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

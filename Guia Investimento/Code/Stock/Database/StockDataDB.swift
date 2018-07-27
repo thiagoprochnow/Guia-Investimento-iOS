@@ -67,6 +67,21 @@ class StockDataDB{
         return data
     }
     
+    // Load Active StockData ordered by percent
+    func getDataPercent() -> Array<StockData> {
+        var stockDatas : Array<StockData> = []
+        let stmt = db.query("SELECT _id,symbol,current_percent FROM stock_data where status = ? ORDER BY current_percent DESC",params: [Constants.Status.ACTIVE])
+        while (db.nextRow(stmt)){
+            let data = StockData()
+            data.id = db.getInt(stmt, index: 0)
+            data.symbol = db.getString(stmt, index: 1)
+            data.currentPercent = db.getDouble(stmt, index: 2)
+            stockDatas.append(data)
+        }
+        db.closeStatement(stmt)
+        return stockDatas
+    }
+    
     // Load StockData of a specific Stock Symbol
     func getDataById(_ id: Int) -> StockData {
         let data = StockData()
