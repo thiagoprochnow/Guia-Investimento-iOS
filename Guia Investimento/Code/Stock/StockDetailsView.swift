@@ -147,7 +147,7 @@ class StockDetailsView: UIViewController, UITableViewDataSource, UITableViewDele
                 cell.total.isHidden = true
             }
             
-            cell.quantity.text = String(transaction.quantity)
+            cell.quantity.text = String(format: "%.0f",transaction.quantity)
             
             //Get Date
             let timestamp = transaction.timestamp

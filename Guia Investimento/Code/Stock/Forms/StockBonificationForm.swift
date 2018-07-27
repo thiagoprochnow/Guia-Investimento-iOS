@@ -32,7 +32,7 @@ class StockBonificationForm: UIViewController, UITextFieldDelegate{
         if(id != 0){
             let transactionDB = StockTransactionDB()
             prealodedTransaction = transactionDB.getTransactionById(id)
-            quantityField.text = String(prealodedTransaction.quantity)
+            quantityField.text = String(format: "%.0f",prealodedTransaction.quantity)
             let date = Date(timeIntervalSince1970: TimeInterval(prealodedTransaction.timestamp))
             datePicker.timeZone = TimeZone(abbreviation: "UTC")
             datePicker.setDate(date, animated: false)

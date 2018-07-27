@@ -44,7 +44,7 @@ class SellStockForm: UIViewController, UITextFieldDelegate{
             let transactionDB = StockTransactionDB()
             prealodedTransaction = transactionDB.getTransactionById(id)
             symbolTextField.text = prealodedTransaction.symbol
-            quantityTextField.text = String(prealodedTransaction.quantity)
+            quantityTextField.text = String(format: "%.0f",prealodedTransaction.quantity)
             priceTextField.text = String(prealodedTransaction.price)
             brokerageTextField.text = String(prealodedTransaction.brokerage)
             let date = Date(timeIntervalSince1970: TimeInterval(prealodedTransaction.timestamp))
