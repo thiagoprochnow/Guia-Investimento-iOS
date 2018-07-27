@@ -23,8 +23,10 @@ class StockPortfolioView: UIViewController, UITableViewDataSource, UITableViewDe
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.separatorStyle = .none
-        let xib = UINib(nibName: "StockPortfolioCell", bundle: nil)
-        self.tableView.register(xib, forCellReuseIdentifier: "cell")
+        let xibPortfolio = UINib(nibName: "StockPortfolioCell", bundle: nil)
+        let xibPie = UINib(nibName: "StockPieChartCell", bundle: nil)
+        self.tableView.register(xibPortfolio, forCellReuseIdentifier: "cellPortfolio")
+        self.tableView.register(xibPie, forCellReuseIdentifier: "cellPie")
         
         // Load fab (Floating action button)
         // Set images for each icon
@@ -59,12 +61,12 @@ class StockPortfolioView: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let linha = indexPath.row
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: "cell") as! StockPortfolioCell
-        // Do not show highlight when selected
-        cell.selectionStyle = .none
         
         if(linha == 0){
             // Load Stock Portfolio information on cell
+            let cell = self.tableView.dequeueReusableCell(withIdentifier: "cellPortfolio") as! StockPortfolioCell
+            // Do not show highlight when selected
+            cell.selectionStyle = .none
             let locale = Locale(identifier: "pt_BR")
             let buyTotal = portfolio.buyTotal
             let stockAppreciationPercent = "(" + String(format: "%.2f", locale: locale, arguments: [portfolio.variationTotal/buyTotal * 100]) + "%)"
@@ -106,17 +108,23 @@ class StockPortfolioView: UIViewController, UITableViewDataSource, UITableViewDe
             }
             
             return cell
+        } else if(linha == 1){
+            let cell = self.tableView.dequeueReusableCell(withIdentifier: "cellPie") as! StockPieChartCell
+            // Do not show highlight when selected
+            cell.selectionStyle = .none
+            return cell
         } else {
+            let cell = UITableViewCell()
             cell.isHidden = true
+            return cell
         }
-        return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (portfolio.buyTotal == 0.0){
             return 0
         } else {
-            return 1
+            return 2
         }
     }
     

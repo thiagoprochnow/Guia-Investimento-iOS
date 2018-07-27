@@ -250,7 +250,7 @@
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
-                <outlet property="bgView" destination="3XH-rU-FPE" id="c3b-gq-qj0"/>
+                <outlet property="bgView" destination="3XH-rU-FPE" id="ldb-DA-slT"/>
                 <outlet property="brokeragePercent" destination="BSq-GW-vTz" id="2K2-Cu-zcZ"/>
                 <outlet property="brokerageTotal" destination="xxf-3a-bm8" id="lVF-dB-G0J"/>
                 <outlet property="buyTotal" destination="7uT-IA-7hV" id="1GJ-TE-ixd"/>
