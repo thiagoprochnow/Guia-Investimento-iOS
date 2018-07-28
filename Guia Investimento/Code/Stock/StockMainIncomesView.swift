@@ -19,6 +19,7 @@ class StockMainIncomesView: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet var grossPercentLabel: UILabel!
     @IBOutlet var taxPercentLabel: UILabel!
     @IBOutlet var liquidPercentLabel: UILabel!
+    @IBOutlet var emptyListView: UILabel!
     
     var stockIncomes: Array<StockIncome> = []
     
@@ -63,30 +64,6 @@ class StockMainIncomesView: UIViewController, UITableViewDataSource, UITableView
         stockDatas.forEach{stock in
             tax += stock.incomeTax
         }
-        
-        // Load Stock Portfolio
-        let portfolioDB = StockPortfolioDB()
-        let stockPortfolio = portfolioDB.getPortfolio()
-        portfolioDB.close()
-        let locale = Locale(identifier: "pt_BR")
-        let grossIncome = stockPortfolio.incomeTotal + tax
-        let netIncome = stockPortfolio.incomeTotal
-        let grossPercent = "(" + String(format: "%.2f", locale: locale, arguments: [grossIncome/stockPortfolio.buyTotal*100]) + "%)"
-        let taxPercent = "(" + String(format: "%.2f", locale: locale, arguments: [tax/stockPortfolio.buyTotal*100]) + "%)"
-        let netPercent = "(" + String(format: "%.2f", locale: locale, arguments: [netIncome/stockPortfolio.buyTotal*100]) + "%)"
-        grossPercentLabel.textColor = UIColor(red: 139/255, green: 195/255, blue: 74/255, alpha: 1)
-        taxPercentLabel.textColor = UIColor(red: 244/255, green: 67/255, blue: 54/255, alpha: 1)
-        liquidPercentLabel.textColor = UIColor(red: 139/255, green: 195/255, blue: 74/255, alpha: 1)
-        grossLabel.textColor = UIColor(red: 139/255, green: 195/255, blue: 74/255, alpha: 1)
-        taxLabel.textColor = UIColor(red: 244/255, green: 67/255, blue: 54/255, alpha: 1)
-        liquidLabel.textColor = UIColor(red: 139/255, green: 195/255, blue: 74/255, alpha: 1)
-        grossPercentLabel.text = grossPercent
-        taxPercentLabel.text = taxPercent
-        liquidPercentLabel.text = netPercent
-        boughtLabel.text = Utils.doubleToRealCurrency(value: stockPortfolio.buyTotal)
-        grossLabel.text = Utils.doubleToRealCurrency(value: stockPortfolio.incomeTotal + tax)
-        taxLabel.text = Utils.doubleToRealCurrency(value: tax)
-        liquidLabel.text = Utils.doubleToRealCurrency(value: stockPortfolio.incomeTotal)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -95,8 +72,12 @@ class StockMainIncomesView: UIViewController, UITableViewDataSource, UITableView
         stockIncomes = incomeDB.getIncomes()
         if (stockIncomes.isEmpty){
             self.incomeTable.isHidden = true
+            self.bgView.isHidden = true
+            self.emptyListView.isHidden = false
         } else {
             self.incomeTable.isHidden = false
+            self.bgView.isHidden = false
+            self.emptyListView.isHidden = true
         }
         incomeDB.close()
         

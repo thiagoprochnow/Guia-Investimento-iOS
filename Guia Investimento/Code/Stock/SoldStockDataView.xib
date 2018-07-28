@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SoldStockDataView" customModule="Guia_Investimento" customModuleProvider="target">
             <connections>
+                <outlet property="emptyListView" destination="qx2-WU-bps" id="3uG-He-n1a"/>
                 <outlet property="fab" destination="Ozf-3p-U4g" id="ijL-uL-pXj"/>
                 <outlet property="stockTable" destination="8RB-fv-qyM" id="9tK-4W-Kre"/>
                 <outlet property="view" destination="iN0-l3-epB" id="wEe-gI-OAx"/>
@@ -34,19 +35,29 @@
                         <constraint firstAttribute="height" constant="75" id="tRe-d4-MwW"/>
                     </constraints>
                 </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sem itens para exibir" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qx2-WU-bps">
+                    <rect key="frame" x="0.0" y="322" width="375" height="23"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="8RB-fv-qyM" secondAttribute="trailing" id="EAa-9G-qKW"/>
+                <constraint firstItem="qx2-WU-bps" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="TZd-hI-gaL"/>
                 <constraint firstAttribute="bottom" secondItem="Ozf-3p-U4g" secondAttribute="bottom" constant="64" id="a3i-PJ-CEa"/>
                 <constraint firstAttribute="bottom" secondItem="8RB-fv-qyM" secondAttribute="bottom" id="bdi-9X-zln"/>
                 <constraint firstItem="Ozf-3p-U4g" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailingMargin" id="doH-cv-2sb"/>
                 <constraint firstItem="8RB-fv-qyM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="fmQ-91-N09"/>
                 <constraint firstItem="8RB-fv-qyM" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="kH8-JP-v5V"/>
+                <constraint firstItem="qx2-WU-bps" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="m7G-w8-BdP"/>
+                <constraint firstItem="qx2-WU-bps" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="plK-CQ-ht1"/>
+                <constraint firstAttribute="trailing" secondItem="qx2-WU-bps" secondAttribute="trailing" id="yfb-Wy-UNq"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-            <point key="canvasLocation" x="32.5" y="72.5"/>
+            <point key="canvasLocation" x="24.5" y="53.5"/>
         </view>
     </objects>
 </document>

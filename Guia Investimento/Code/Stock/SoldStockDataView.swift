@@ -12,6 +12,7 @@ import UIKit
 class SoldStockDataView: UIViewController, UITableViewDataSource, UITableViewDelegate{
     @IBOutlet var stockTable: UITableView!
     @IBOutlet var fab: UIImageView!
+    @IBOutlet var emptyListView: UILabel!
     var soldStockDatas: Array<SoldStockData> = []
     var selectedSymbol: String = ""
     var mediumBuy: String = ""
@@ -38,16 +39,6 @@ class SoldStockDataView: UIViewController, UITableViewDataSource, UITableViewDel
         let tapBuyStock = UITapGestureRecognizer(target: self, action: #selector(SoldStockDataView.buyStock))
         fab.addGestureRecognizer(tapBuyStock)
         
-        // Load all Active Stock Datas to show on this list
-        let dataDB = SoldStockDataDB()
-        soldStockDatas = dataDB.getSoldData()
-        if (soldStockDatas.isEmpty){
-            self.stockTable.isHidden = true
-        } else {
-            self.stockTable.isHidden = false
-        }
-        dataDB.close()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,8 +47,10 @@ class SoldStockDataView: UIViewController, UITableViewDataSource, UITableViewDel
         soldStockDatas = dataDB.getSoldData()
         if (soldStockDatas.isEmpty){
             self.stockTable.isHidden = true
+            self.emptyListView.isHidden = false
         } else {
             self.stockTable.isHidden = false
+            self.emptyListView.isHidden = true
         }
         dataDB.close()
         // Reload data every time StockDataView is shown

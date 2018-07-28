@@ -12,6 +12,7 @@ class StockPortfolioView: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet var fab: UIImageView!
     @IBOutlet var bgView: UIView!
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var emptyListView: UILabel!
     var portfolio: StockPortfolio!
     
     override func viewDidLoad() {
@@ -36,15 +37,6 @@ class StockPortfolioView: UIViewController, UITableViewDataSource, UITableViewDe
         fab.isUserInteractionEnabled = true
         let tapBuyStock = UITapGestureRecognizer(target: self, action: #selector(StockDataView.buyStock))
         fab.addGestureRecognizer(tapBuyStock)
-        
-        let portfolioDB = StockPortfolioDB()
-        portfolio = portfolioDB.getPortfolio()
-        if (portfolio.buyTotal == 0.0){
-            self.tableView.isHidden = true
-        } else {
-            self.tableView.isHidden = false
-        }
-        portfolioDB.close()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,8 +44,10 @@ class StockPortfolioView: UIViewController, UITableViewDataSource, UITableViewDe
         portfolio = portfolioDB.getPortfolio()
         if (portfolio.buyTotal == 0.0){
             self.tableView.isHidden = true
+            self.emptyListView.isHidden = false
         } else {
             self.tableView.isHidden = false
+            self.emptyListView.isHidden = true
         }
         portfolioDB.close()
         self.tableView.reloadData()
