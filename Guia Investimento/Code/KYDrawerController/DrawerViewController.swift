@@ -128,6 +128,23 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
                 view.title = "Ações"
                 view.viewControllers = [portfolio, data, soldData, income]
                 break
+            case 3:
+                let portfolio = FiiPortfolioView()
+                let data = FiiDataView()
+                let soldData = SoldFiiDataView()
+                let income = FiiMainIncomesView()
+                portfolio.tabBarItem.title = ""
+                portfolio.tabBarItem.image =  Utils.makeThumbnailFromText(text: "Visão Geral")
+                data.tabBarItem.title = ""
+                data.tabBarItem.image = Utils.makeThumbnailFromText(text: "Carteira")
+                soldData.tabBarItem.title = ""
+                soldData.tabBarItem.image = Utils.makeThumbnailFromText(text: "Histórico")
+                income.tabBarItem.title = ""
+                income.tabBarItem.image = Utils.makeThumbnailFromText(text: "Rendimentos")
+                
+                view.title = "Fundos Imobiliários"
+                view.viewControllers = [portfolio, data, soldData, income]
+                break
             default:
                 view.title = "Carteira Completa"
             }
@@ -143,7 +160,6 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
         activity.startAnimating()
         let button = UIBarButtonItem.init(customView: activity)
         nav.topViewController?.navigationItem.rightBarButtonItem = button
-        let general = StockGeneral()
         
         // Stocks
         StockService.updateStockIncomes({(_ error:Bool) -> Void in
@@ -167,10 +183,32 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
         })
         
         // FII
+        FiiService.updateFiiIncomes({(_ error:Bool) -> Void in
+            FiiService.updateFiiQuotes({(_ fiis:Array<FiiData>,error:Bool) -> Void in
+                let fiiDB = FiiDataDB()
+                fiis.forEach{ fii in
+                    let currentTotal = Double(fii.quantity) * fii.currentPrice
+                    let variation = currentTotal - fii.buyValue
+                    let totalGain = currentTotal + fii.netIncome - fii.buyValue - fii.brokerage
+                    fii.currentTotal = currentTotal
+                    fii.variation = variation
+                    fii.totalGain = totalGain
+                    fiiDB.save(fii)
+                }
+                fiiDB.close()
+                Utils.updateFiiPortfolio()
+                DispatchQueue.main.async {
+                    self.updateView()
+                }
+            })
+        })
     }
     
     func updateView(){
+        nav.navigationController?.visibleViewController?.viewWillAppear(false)
         nav.topViewController?.viewWillAppear(false)
+        nav.navigationController?.topViewController?.viewWillAppear(false)
+        nav.visibleViewController?.viewWillAppear(false)
         
         // Place Button back after finish loading in place of loading view
         let updateBtn = UIBarButtonItem(title: "Atualizar", style: UIBarButtonItemStyle.plain, target: self, action: #selector(DrawerViewController.updateQuotes))

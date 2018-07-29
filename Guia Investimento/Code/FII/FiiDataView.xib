@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FiiDataView" customModule="Guia_Investimento" customModuleProvider="target">
+            <connections>
+                <outlet property="emptyListView" destination="L6j-9r-XAB" id="sgN-Pu-k7Q"/>
+                <outlet property="fab" destination="Ozf-3p-U4g" id="ijL-uL-pXj"/>
+                <outlet property="fiiTable" destination="8RB-fv-qyM" id="qbs-B5-msE"/>
+                <outlet property="view" destination="iN0-l3-epB" id="wEe-gI-OAx"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="270" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8RB-fv-qyM">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="sectionIndexBackgroundColor" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
+                </tableView>
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ozf-3p-U4g">
+                    <rect key="frame" x="284" y="528" width="75" height="75"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="75" id="cgF-j2-zGv"/>
+                        <constraint firstAttribute="height" constant="75" id="tRe-d4-MwW"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sem itens para exibir" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L6j-9r-XAB">
+                    <rect key="frame" x="0.0" y="322" width="375" height="23"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="L6j-9r-XAB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="A2N-W7-IUQ"/>
+                <constraint firstAttribute="trailing" secondItem="8RB-fv-qyM" secondAttribute="trailing" id="EAa-9G-qKW"/>
+                <constraint firstItem="L6j-9r-XAB" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="EEC-3D-ZxM"/>
+                <constraint firstAttribute="trailing" secondItem="L6j-9r-XAB" secondAttribute="trailing" id="KFg-si-TDV"/>
+                <constraint firstAttribute="bottom" secondItem="Ozf-3p-U4g" secondAttribute="bottom" constant="64" id="a3i-PJ-CEa"/>
+                <constraint firstAttribute="bottom" secondItem="8RB-fv-qyM" secondAttribute="bottom" id="bdi-9X-zln"/>
+                <constraint firstItem="Ozf-3p-U4g" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailingMargin" id="doH-cv-2sb"/>
+                <constraint firstItem="8RB-fv-qyM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="fmQ-91-N09"/>
+                <constraint firstItem="8RB-fv-qyM" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="kH8-JP-v5V"/>
+                <constraint firstItem="L6j-9r-XAB" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="zx5-f9-dgi"/>
+            </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+            <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+            <point key="canvasLocation" x="32.5" y="72.5"/>
+        </view>
+    </objects>
+</document>

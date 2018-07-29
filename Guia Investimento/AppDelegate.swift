@@ -62,5 +62,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let stockIncomesDB = StockIncomeDB()
         stockIncomesDB.createTable()
         stockIncomesDB.close()
+        
+        // FII
+        
+        // FII Portfolio
+        let fiiPortfolioDB = FiiPortfolioDB()
+        fiiPortfolioDB.createTable()
+        fiiPortfolioDB.close()
+        // Fii Transaction
+        let fiiTransactionDB = FiiTransactionDB()
+        fiiTransactionDB.createTable()
+        fiiTransactionDB.close()
+        // Fii Data
+        let fiiDataDB = FiiDataDB()
+        fiiDataDB.createTable()
+        fiiDataDB.close()
+        // Sold Fii Data
+        let soldFiiDataDB = SoldFiiDataDB()
+        soldFiiDataDB.createTable()
+        soldFiiDataDB.close()
+        // Fii Incomes
+        let fiiIncomesDB = FiiIncomeDB()
+        fiiIncomesDB.createTable()
+        fiiIncomesDB.close()
     }
 }

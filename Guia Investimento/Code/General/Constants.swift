@@ -50,7 +50,6 @@ struct Constants {
         static let FIXED = 6
         static let TREASURY = 7
         static let OTHERS = 8
-        static let FII_SPLIT = 9
     }
     
     struct UpdateStatus {

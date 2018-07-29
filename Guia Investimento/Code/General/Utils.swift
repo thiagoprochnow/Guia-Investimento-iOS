@@ -65,6 +65,17 @@ class Utils {
         }
     }
     
+    // Check if inputted selling quantity us valid and there was enough buy, so it will not generate negative quantity value
+    class func isValidSellFii(quantity:Int, symbol:String) -> Bool{
+        let dataDB = FiiDataDB()
+        let quantityBought = dataDB.getDataBySymbol(symbol)
+        if(quantityBought.quantity >= quantity){
+            return true
+        } else {
+            return false
+        }
+    }
+    
     // Check if selected date is a date in future from current time
     class func isFutureDate(timestamp: Int) -> Bool {
         let current = Date().timeIntervalSince1970
@@ -130,6 +141,64 @@ class Utils {
         stockDB.close()
         
         let portfolioDB = StockPortfolioDB()
+        var portfolio = portfolioDB.getPortfolio()
+        portfolio.variationTotal = variationTotal
+        portfolio.buyTotal = buyTotal
+        portfolio.soldTotal = sellTotal
+        portfolio.incomeTotal = incomeTotal
+        portfolio.brokerage = brokerage
+        portfolio.totalGain = totalGain
+        portfolio.currentTotal = mCurrentTotal
+        
+        portfolioDB.save(portfolio)
+        portfolioDB.close()
+    }
+    
+    // Updates fii portfolio after stock data quotes have been updated
+    class func updateFiiPortfolio(){
+        // Sold Fii Data
+        let soldFiiDB = SoldFiiDataDB()
+        let soldFiis = soldFiiDB.getSoldData()
+        soldFiiDB.close()
+        
+        var buyTotal: Double = 0.0
+        var totalGain: Double = 0.0
+        var variationTotal: Double = 0.0
+        var sellTotal: Double = 0.0
+        var brokerage: Double = 0.0
+        var mCurrentTotal: Double = 0.0
+        var incomeTotal: Double = 0.0
+        
+        soldFiis.forEach{ soldFii in
+            buyTotal += soldFii.buyValue
+            sellTotal += soldFii.currentTotal
+            brokerage += soldFii.brokerage
+            variationTotal += soldFii.brokerage + soldFii.sellGain
+            totalGain += soldFii.sellGain
+        }
+        
+        // Fii Data
+        let fiiDB = FiiDataDB()
+        let fiis = fiiDB.getData()
+        
+        fiis.forEach{ fii in
+            variationTotal += fii.variation
+            buyTotal += fii.buyValue
+            incomeTotal += fii.netIncome
+            mCurrentTotal += fii.currentTotal
+            brokerage += fii.brokerage
+            totalGain += fii.totalGain
+        }
+        
+        // Updates current percent of each fii data
+        fiis.forEach{fii in
+            fii.currentPercent = fii.currentTotal/mCurrentTotal*100
+            fiiDB.save(fii)
+        }
+        
+        fiiDB.close()
+        
+        let portfolioDB = FiiPortfolioDB()
         var portfolio = portfolioDB.getPortfolio()
         portfolio.variationTotal = variationTotal
         portfolio.buyTotal = buyTotal

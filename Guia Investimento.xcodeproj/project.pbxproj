@@ -15,6 +15,56 @@
 		5503A81620F24C510039ACCD /* StockIncomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5503A81420F24C510039ACCD /* StockIncomeCell.swift */; };
 		5503A81920F2A2F70039ACCD /* StockBonificationForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5503A81720F2A2F70039ACCD /* StockBonificationForm.swift */; };
 		5503A81A20F2A2F70039ACCD /* StockBonificationForm.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5503A81820F2A2F70039ACCD /* StockBonificationForm.xib */; };
+		550FCBF2210CF62F006E3FB8 /* SoldFiiDataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 550FCBB6210CF62A006E3FB8 /* SoldFiiDataView.xib */; };
+		550FCBF3210CF62F006E3FB8 /* SoldFiiDataDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550FCBBA210CF62B006E3FB8 /* SoldFiiDataDB.swift */; };
+		550FCBF4210CF62F006E3FB8 /* FiiDataDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550FCBBB210CF62B006E3FB8 /* FiiDataDB.swift */; };
+		550FCBF5210CF62F006E3FB8 /* FiiIncomeDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550FCBBC210CF62B006E3FB8 /* FiiIncomeDB.swift */; };
+		550FCBF6210CF62F006E3FB8 /* FiiPortfolioDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550FCBBD210CF62B006E3FB8 /* FiiPortfolioDB.swift */; };
+		550FCBF7210CF62F006E3FB8 /* FiiTransactionDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550FCBBE210CF62B006E3FB8 /* FiiTransactionDB.swift */; };
+		550FCBF8210CF62F006E3FB8 /* FiiIncomeDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550FCBBF210CF62B006E3FB8 /* FiiIncomeDetailsView.swift */; };
+		550FCBF9210CF62F006E3FB8 /* FiiMainIncomesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 550FCBC0210CF62B006E3FB8 /* FiiMainIncomesView.xib */; };
+		550FCBFA210CF62F006E3FB8 /* FiiMainIncomesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550FCBC1210CF62D006E3FB8 /* FiiMainIncomesView.swift */; };
+		550FCBFB210CF62F006E3FB8 /* FiiIncomesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550FCBC2210CF62D006E3FB8 /* FiiIncomesView.swift */; };
+		550FCBFC210CF62F006E3FB8 /* FiiDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550FCBC3210CF62E006E3FB8 /* FiiDataView.swift */; };
+		550FCBFD210CF62F006E3FB8 /* SoldFiiData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550FCBC5210CF62E006E3FB8 /* SoldFiiData.swift */; };
+		550FCBFE210CF62F006E3FB8 /* FiiData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550FCBC6210CF62E006E3FB8 /* FiiData.swift */; };
+		550FCBFF210CF62F006E3FB8 /* FiiIncome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550FCBC7210CF62E006E3FB8 /* FiiIncome.swift */; };
+		550FCC00210CF62F006E3FB8 /* FiiPortfolio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550FCBC8210CF62E006E3FB8 /* FiiPortfolio.swift */; };
+		550FCC01210CF62F006E3FB8 /* FiiTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550FCBC9210CF62E006E3FB8 /* FiiTransaction.swift */; };
+		550FCC02210CF62F006E3FB8 /* FiiDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550FCBCA210CF62E006E3FB8 /* FiiDetailsView.swift */; };
+		550FCC03210CF62F006E3FB8 /* FiiDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 550FCBCB210CF62E006E3FB8 /* FiiDetailsView.xib */; };
+		550FCC04210CF62F006E3FB8 /* FiiPortfolioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550FCBCC210CF62E006E3FB8 /* FiiPortfolioView.swift */; };
+		550FCC05210CF62F006E3FB8 /* SoldFiiDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550FCBCE210CF62E006E3FB8 /* SoldFiiDataCell.swift */; };
+		550FCC06210CF62F006E3FB8 /* SoldFiiDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 550FCBCF210CF62E006E3FB8 /* SoldFiiDataCell.xib */; };
+		550FCC07210CF62F006E3FB8 /* FiiDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550FCBD0210CF62E006E3FB8 /* FiiDataCell.swift */; };
+		550FCC08210CF62F006E3FB8 /* FiiDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 550FCBD1210CF62E006E3FB8 /* FiiDataCell.xib */; };
+		550FCC09210CF62F006E3FB8 /* FiiIncomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550FCBD2210CF62E006E3FB8 /* FiiIncomeCell.swift */; };
+		550FCC0A210CF62F006E3FB8 /* FiiIncomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 550FCBD3210CF62E006E3FB8 /* FiiIncomeCell.xib */; };
+		550FCC0B210CF62F006E3FB8 /* FiiPieChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550FCBD4210CF62E006E3FB8 /* FiiPieChartCell.swift */; };
+		550FCC0C210CF62F006E3FB8 /* FiiPieChartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 550FCBD5210CF62E006E3FB8 /* FiiPieChartCell.xib */; };
+		550FCC0D210CF62F006E3FB8 /* FiiPortfolioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550FCBD6210CF62E006E3FB8 /* FiiPortfolioCell.swift */; };
+		550FCC0E210CF62F006E3FB8 /* FiiPortfolioCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 550FCBD7210CF62E006E3FB8 /* FiiPortfolioCell.xib */; };
+		550FCC0F210CF62F006E3FB8 /* FiiTransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550FCBD8210CF62E006E3FB8 /* FiiTransactionCell.swift */; };
+		550FCC10210CF62F006E3FB8 /* FiiTransactionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 550FCBD9210CF62E006E3FB8 /* FiiTransactionCell.xib */; };
+		550FCC11210CF62F006E3FB8 /* FiiDataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 550FCBDA210CF62E006E3FB8 /* FiiDataView.xib */; };
+		550FCC12210CF62F006E3FB8 /* FiiPortfolioView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 550FCBDB210CF62E006E3FB8 /* FiiPortfolioView.xib */; };
+		550FCC13210CF62F006E3FB8 /* FiiIncomesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 550FCBDC210CF62E006E3FB8 /* FiiIncomesView.xib */; };
+		550FCC14210CF62F006E3FB8 /* FiiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550FCBDE210CF62F006E3FB8 /* FiiService.swift */; };
+		550FCC15210CF62F006E3FB8 /* BuyFiiForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550FCBE0210CF62F006E3FB8 /* BuyFiiForm.swift */; };
+		550FCC16210CF62F006E3FB8 /* BuyFiiForm.xib in Resources */ = {isa = PBXBuildFile; fileRef = 550FCBE1210CF62F006E3FB8 /* BuyFiiForm.xib */; };
+		550FCC17210CF62F006E3FB8 /* SellFiiForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550FCBE2210CF62F006E3FB8 /* SellFiiForm.swift */; };
+		550FCC18210CF62F006E3FB8 /* SellFiiForm.xib in Resources */ = {isa = PBXBuildFile; fileRef = 550FCBE3210CF62F006E3FB8 /* SellFiiForm.xib */; };
+		550FCC1B210CF62F006E3FB8 /* FiiDividendForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550FCBE6210CF62F006E3FB8 /* FiiDividendForm.swift */; };
+		550FCC1C210CF62F006E3FB8 /* FiiDividendForm.xib in Resources */ = {isa = PBXBuildFile; fileRef = 550FCBE7210CF62F006E3FB8 /* FiiDividendForm.xib */; };
+		550FCC1D210CF62F006E3FB8 /* FiiEditPriceForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550FCBE8210CF62F006E3FB8 /* FiiEditPriceForm.swift */; };
+		550FCC1E210CF62F006E3FB8 /* FiiEditPriceForm.xib in Resources */ = {isa = PBXBuildFile; fileRef = 550FCBE9210CF62F006E3FB8 /* FiiEditPriceForm.xib */; };
+		550FCC1F210CF62F006E3FB8 /* FiiGroupingForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550FCBEA210CF62F006E3FB8 /* FiiGroupingForm.swift */; };
+		550FCC20210CF62F006E3FB8 /* FiiGroupingForm.xib in Resources */ = {isa = PBXBuildFile; fileRef = 550FCBEB210CF62F006E3FB8 /* FiiGroupingForm.xib */; };
+		550FCC21210CF62F006E3FB8 /* FiiSplitForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550FCBEC210CF62F006E3FB8 /* FiiSplitForm.swift */; };
+		550FCC22210CF62F006E3FB8 /* FiiSplitForm.xib in Resources */ = {isa = PBXBuildFile; fileRef = 550FCBED210CF62F006E3FB8 /* FiiSplitForm.xib */; };
+		550FCC23210CF62F006E3FB8 /* FiiIncomeDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 550FCBEE210CF62F006E3FB8 /* FiiIncomeDetailsView.xib */; };
+		550FCC24210CF62F006E3FB8 /* SoldFiiDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550FCBEF210CF62F006E3FB8 /* SoldFiiDataView.swift */; };
+		550FCC25210CF62F006E3FB8 /* FiiGeneral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550FCBF1210CF62F006E3FB8 /* FiiGeneral.swift */; };
 		5518596B20E9860900BFB445 /* SoldStockDataDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5518596A20E9860900BFB445 /* SoldStockDataDB.swift */; };
 		5518596D20E9879700BFB445 /* SoldStockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5518596C20E9879600BFB445 /* SoldStockData.swift */; };
 		5518597020EAEE2900BFB445 /* SellStockForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5518596E20EAEE2900BFB445 /* SellStockForm.swift */; };
@@ -256,6 +306,56 @@
 		5503A81420F24C510039ACCD /* StockIncomeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockIncomeCell.swift; sourceTree = "<group>"; };
 		5503A81720F2A2F70039ACCD /* StockBonificationForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockBonificationForm.swift; sourceTree = "<group>"; };
 		5503A81820F2A2F70039ACCD /* StockBonificationForm.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StockBonificationForm.xib; sourceTree = "<group>"; };
+		550FCBB6210CF62A006E3FB8 /* SoldFiiDataView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SoldFiiDataView.xib; sourceTree = "<group>"; };
+		550FCBBA210CF62B006E3FB8 /* SoldFiiDataDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoldFiiDataDB.swift; sourceTree = "<group>"; };
+		550FCBBB210CF62B006E3FB8 /* FiiDataDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiiDataDB.swift; sourceTree = "<group>"; };
+		550FCBBC210CF62B006E3FB8 /* FiiIncomeDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiiIncomeDB.swift; sourceTree = "<group>"; };
+		550FCBBD210CF62B006E3FB8 /* FiiPortfolioDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiiPortfolioDB.swift; sourceTree = "<group>"; };
+		550FCBBE210CF62B006E3FB8 /* FiiTransactionDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiiTransactionDB.swift; sourceTree = "<group>"; };
+		550FCBBF210CF62B006E3FB8 /* FiiIncomeDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiiIncomeDetailsView.swift; sourceTree = "<group>"; };
+		550FCBC0210CF62B006E3FB8 /* FiiMainIncomesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FiiMainIncomesView.xib; sourceTree = "<group>"; };
+		550FCBC1210CF62D006E3FB8 /* FiiMainIncomesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiiMainIncomesView.swift; sourceTree = "<group>"; };
+		550FCBC2210CF62D006E3FB8 /* FiiIncomesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiiIncomesView.swift; sourceTree = "<group>"; };
+		550FCBC3210CF62E006E3FB8 /* FiiDataView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiiDataView.swift; sourceTree = "<group>"; };
+		550FCBC5210CF62E006E3FB8 /* SoldFiiData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoldFiiData.swift; sourceTree = "<group>"; };
+		550FCBC6210CF62E006E3FB8 /* FiiData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiiData.swift; sourceTree = "<group>"; };
+		550FCBC7210CF62E006E3FB8 /* FiiIncome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiiIncome.swift; sourceTree = "<group>"; };
+		550FCBC8210CF62E006E3FB8 /* FiiPortfolio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiiPortfolio.swift; sourceTree = "<group>"; };
+		550FCBC9210CF62E006E3FB8 /* FiiTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiiTransaction.swift; sourceTree = "<group>"; };
+		550FCBCA210CF62E006E3FB8 /* FiiDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiiDetailsView.swift; sourceTree = "<group>"; };
+		550FCBCB210CF62E006E3FB8 /* FiiDetailsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FiiDetailsView.xib; sourceTree = "<group>"; };
+		550FCBCC210CF62E006E3FB8 /* FiiPortfolioView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiiPortfolioView.swift; sourceTree = "<group>"; };
+		550FCBCE210CF62E006E3FB8 /* SoldFiiDataCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoldFiiDataCell.swift; sourceTree = "<group>"; };
+		550FCBCF210CF62E006E3FB8 /* SoldFiiDataCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SoldFiiDataCell.xib; sourceTree = "<group>"; };
+		550FCBD0210CF62E006E3FB8 /* FiiDataCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiiDataCell.swift; sourceTree = "<group>"; };
+		550FCBD1210CF62E006E3FB8 /* FiiDataCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FiiDataCell.xib; sourceTree = "<group>"; };
+		550FCBD2210CF62E006E3FB8 /* FiiIncomeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiiIncomeCell.swift; sourceTree = "<group>"; };
+		550FCBD3210CF62E006E3FB8 /* FiiIncomeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FiiIncomeCell.xib; sourceTree = "<group>"; };
+		550FCBD4210CF62E006E3FB8 /* FiiPieChartCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiiPieChartCell.swift; sourceTree = "<group>"; };
+		550FCBD5210CF62E006E3FB8 /* FiiPieChartCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FiiPieChartCell.xib; sourceTree = "<group>"; };
+		550FCBD6210CF62E006E3FB8 /* FiiPortfolioCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiiPortfolioCell.swift; sourceTree = "<group>"; };
+		550FCBD7210CF62E006E3FB8 /* FiiPortfolioCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FiiPortfolioCell.xib; sourceTree = "<group>"; };
+		550FCBD8210CF62E006E3FB8 /* FiiTransactionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiiTransactionCell.swift; sourceTree = "<group>"; };
+		550FCBD9210CF62E006E3FB8 /* FiiTransactionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FiiTransactionCell.xib; sourceTree = "<group>"; };
+		550FCBDA210CF62E006E3FB8 /* FiiDataView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FiiDataView.xib; sourceTree = "<group>"; };
+		550FCBDB210CF62E006E3FB8 /* FiiPortfolioView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FiiPortfolioView.xib; sourceTree = "<group>"; };
+		550FCBDC210CF62E006E3FB8 /* FiiIncomesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FiiIncomesView.xib; sourceTree = "<group>"; };
+		550FCBDE210CF62F006E3FB8 /* FiiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiiService.swift; sourceTree = "<group>"; };
+		550FCBE0210CF62F006E3FB8 /* BuyFiiForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyFiiForm.swift; sourceTree = "<group>"; };
+		550FCBE1210CF62F006E3FB8 /* BuyFiiForm.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BuyFiiForm.xib; sourceTree = "<group>"; };
+		550FCBE2210CF62F006E3FB8 /* SellFiiForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SellFiiForm.swift; sourceTree = "<group>"; };
+		550FCBE3210CF62F006E3FB8 /* SellFiiForm.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SellFiiForm.xib; sourceTree = "<group>"; };
+		550FCBE6210CF62F006E3FB8 /* FiiDividendForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiiDividendForm.swift; sourceTree = "<group>"; };
+		550FCBE7210CF62F006E3FB8 /* FiiDividendForm.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FiiDividendForm.xib; sourceTree = "<group>"; };
+		550FCBE8210CF62F006E3FB8 /* FiiEditPriceForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiiEditPriceForm.swift; sourceTree = "<group>"; };
+		550FCBE9210CF62F006E3FB8 /* FiiEditPriceForm.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FiiEditPriceForm.xib; sourceTree = "<group>"; };
+		550FCBEA210CF62F006E3FB8 /* FiiGroupingForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiiGroupingForm.swift; sourceTree = "<group>"; };
+		550FCBEB210CF62F006E3FB8 /* FiiGroupingForm.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FiiGroupingForm.xib; sourceTree = "<group>"; };
+		550FCBEC210CF62F006E3FB8 /* FiiSplitForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiiSplitForm.swift; sourceTree = "<group>"; };
+		550FCBED210CF62F006E3FB8 /* FiiSplitForm.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FiiSplitForm.xib; sourceTree = "<group>"; };
+		550FCBEE210CF62F006E3FB8 /* FiiIncomeDetailsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FiiIncomeDetailsView.xib; sourceTree = "<group>"; };
+		550FCBEF210CF62F006E3FB8 /* SoldFiiDataView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoldFiiDataView.swift; sourceTree = "<group>"; };
+		550FCBF1210CF62F006E3FB8 /* FiiGeneral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiiGeneral.swift; sourceTree = "<group>"; };
 		5518596A20E9860900BFB445 /* SoldStockDataDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoldStockDataDB.swift; sourceTree = "<group>"; };
 		5518596C20E9879600BFB445 /* SoldStockData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoldStockData.swift; sourceTree = "<group>"; };
 		5518596E20EAEE2900BFB445 /* SellStockForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SellStockForm.swift; sourceTree = "<group>"; };
@@ -491,6 +591,84 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		550FCBB9210CF62B006E3FB8 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				550FCBBA210CF62B006E3FB8 /* SoldFiiDataDB.swift */,
+				550FCBBB210CF62B006E3FB8 /* FiiDataDB.swift */,
+				550FCBBC210CF62B006E3FB8 /* FiiIncomeDB.swift */,
+				550FCBBD210CF62B006E3FB8 /* FiiPortfolioDB.swift */,
+				550FCBBE210CF62B006E3FB8 /* FiiTransactionDB.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		550FCBC4210CF62E006E3FB8 /* Object */ = {
+			isa = PBXGroup;
+			children = (
+				550FCBC5210CF62E006E3FB8 /* SoldFiiData.swift */,
+				550FCBC6210CF62E006E3FB8 /* FiiData.swift */,
+				550FCBC7210CF62E006E3FB8 /* FiiIncome.swift */,
+				550FCBC8210CF62E006E3FB8 /* FiiPortfolio.swift */,
+				550FCBC9210CF62E006E3FB8 /* FiiTransaction.swift */,
+			);
+			path = Object;
+			sourceTree = "<group>";
+		};
+		550FCBCD210CF62E006E3FB8 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				550FCBCE210CF62E006E3FB8 /* SoldFiiDataCell.swift */,
+				550FCBCF210CF62E006E3FB8 /* SoldFiiDataCell.xib */,
+				550FCBD0210CF62E006E3FB8 /* FiiDataCell.swift */,
+				550FCBD1210CF62E006E3FB8 /* FiiDataCell.xib */,
+				550FCBD2210CF62E006E3FB8 /* FiiIncomeCell.swift */,
+				550FCBD3210CF62E006E3FB8 /* FiiIncomeCell.xib */,
+				550FCBD4210CF62E006E3FB8 /* FiiPieChartCell.swift */,
+				550FCBD5210CF62E006E3FB8 /* FiiPieChartCell.xib */,
+				550FCBD6210CF62E006E3FB8 /* FiiPortfolioCell.swift */,
+				550FCBD7210CF62E006E3FB8 /* FiiPortfolioCell.xib */,
+				550FCBD8210CF62E006E3FB8 /* FiiTransactionCell.swift */,
+				550FCBD9210CF62E006E3FB8 /* FiiTransactionCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		550FCBDD210CF62F006E3FB8 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				550FCBDE210CF62F006E3FB8 /* FiiService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		550FCBDF210CF62F006E3FB8 /* Forms */ = {
+			isa = PBXGroup;
+			children = (
+				550FCBE0210CF62F006E3FB8 /* BuyFiiForm.swift */,
+				550FCBE1210CF62F006E3FB8 /* BuyFiiForm.xib */,
+				550FCBE2210CF62F006E3FB8 /* SellFiiForm.swift */,
+				550FCBE3210CF62F006E3FB8 /* SellFiiForm.xib */,
+				550FCBE6210CF62F006E3FB8 /* FiiDividendForm.swift */,
+				550FCBE7210CF62F006E3FB8 /* FiiDividendForm.xib */,
+				550FCBE8210CF62F006E3FB8 /* FiiEditPriceForm.swift */,
+				550FCBE9210CF62F006E3FB8 /* FiiEditPriceForm.xib */,
+				550FCBEA210CF62F006E3FB8 /* FiiGroupingForm.swift */,
+				550FCBEB210CF62F006E3FB8 /* FiiGroupingForm.xib */,
+				550FCBEC210CF62F006E3FB8 /* FiiSplitForm.swift */,
+				550FCBED210CF62F006E3FB8 /* FiiSplitForm.xib */,
+			);
+			path = Forms;
+			sourceTree = "<group>";
+		};
+		550FCBF0210CF62F006E3FB8 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				550FCBF1210CF62F006E3FB8 /* FiiGeneral.swift */,
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
 		5521AF1F210A8D5D00AB6345 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1021,6 +1199,26 @@
 		559F12F520C03815006BC844 /* FII */ = {
 			isa = PBXGroup;
 			children = (
+				550FCBCD210CF62E006E3FB8 /* Cell */,
+				550FCBB9210CF62B006E3FB8 /* Database */,
+				550FCBDF210CF62F006E3FB8 /* Forms */,
+				550FCBF0210CF62F006E3FB8 /* General */,
+				550FCBC4210CF62E006E3FB8 /* Object */,
+				550FCBDD210CF62F006E3FB8 /* Service */,
+				550FCBEF210CF62F006E3FB8 /* SoldFiiDataView.swift */,
+				550FCBB6210CF62A006E3FB8 /* SoldFiiDataView.xib */,
+				550FCBC3210CF62E006E3FB8 /* FiiDataView.swift */,
+				550FCBDA210CF62E006E3FB8 /* FiiDataView.xib */,
+				550FCBCA210CF62E006E3FB8 /* FiiDetailsView.swift */,
+				550FCBCB210CF62E006E3FB8 /* FiiDetailsView.xib */,
+				550FCBBF210CF62B006E3FB8 /* FiiIncomeDetailsView.swift */,
+				550FCBEE210CF62F006E3FB8 /* FiiIncomeDetailsView.xib */,
+				550FCBC2210CF62D006E3FB8 /* FiiIncomesView.swift */,
+				550FCBDC210CF62E006E3FB8 /* FiiIncomesView.xib */,
+				550FCBC1210CF62D006E3FB8 /* FiiMainIncomesView.swift */,
+				550FCBC0210CF62B006E3FB8 /* FiiMainIncomesView.xib */,
+				550FCBCC210CF62E006E3FB8 /* FiiPortfolioView.swift */,
+				550FCBDB210CF62E006E3FB8 /* FiiPortfolioView.xib */,
 			);
 			path = FII;
 			sourceTree = "<group>";
@@ -1171,25 +1369,38 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				550FCC1E210CF62F006E3FB8 /* FiiEditPriceForm.xib in Resources */,
 				554E16E720E44542006B864D /* SoldStockDataCell.xib in Resources */,
+				550FCC1C210CF62F006E3FB8 /* FiiDividendForm.xib in Resources */,
+				550FCC11210CF62F006E3FB8 /* FiiDataView.xib in Resources */,
+				550FCC22210CF62F006E3FB8 /* FiiSplitForm.xib in Resources */,
 				554E16EC20E4459B006B864D /* SoldStockDataView.xib in Resources */,
 				5521AF1D210A8D4A00AB6345 /* StockPieChartCell.xib in Resources */,
+				550FCC0C210CF62F006E3FB8 /* FiiPieChartCell.xib in Resources */,
 				552D942120BB2BB20041872B /* PortfolioMainController.xib in Resources */,
 				5521AFDB210A8D5E00AB6345 /* README.md in Resources */,
 				55338AA820F6CFAF002AEFEA /* StockIncomeDetailsView.xib in Resources */,
+				550FCC12210CF62F006E3FB8 /* FiiPortfolioView.xib in Resources */,
 				5503A81520F24C510039ACCD /* StockIncomeCell.xib in Resources */,
 				55338AAC20F80D5A002AEFEA /* StockMainIncomesView.xib in Resources */,
+				550FCC10210CF62F006E3FB8 /* FiiTransactionCell.xib in Resources */,
 				5521B06C210A8D5E00AB6345 /* Pods-Guia Investimento-resources.sh in Resources */,
 				5521B067210A8D5E00AB6345 /* Info.plist in Resources */,
+				550FCC16210CF62F006E3FB8 /* BuyFiiForm.xib in Resources */,
 				55A3915C20D1FBD400244FC2 /* BuyStockForm.xib in Resources */,
+				550FCC23210CF62F006E3FB8 /* FiiIncomeDetailsView.xib in Resources */,
 				5521B063210A8D5E00AB6345 /* Manifest.lock in Resources */,
+				550FCC20210CF62F006E3FB8 /* FiiGroupingForm.xib in Resources */,
 				559F12FC20C0436C006BC844 /* StockPortfolioView.xib in Resources */,
 				5521B065210A8D5E00AB6345 /* Charts.xcconfig in Resources */,
 				5521B069210A8D5E00AB6345 /* Pods-Guia Investimento-acknowledgements.plist in Resources */,
+				550FCBF9210CF62F006E3FB8 /* FiiMainIncomesView.xib in Resources */,
 				5521AFDA210A8D5E00AB6345 /* LICENSE in Resources */,
 				552D941120BB22F30041872B /* Assets.xcassets in Resources */,
 				5521B06B210A8D5E00AB6345 /* Pods-Guia Investimento-frameworks.sh in Resources */,
+				550FCBF2210CF62F006E3FB8 /* SoldFiiDataView.xib in Resources */,
 				5542245E20C4BE36001B2734 /* StockDataCell.xib in Resources */,
+				550FCC0A210CF62F006E3FB8 /* FiiIncomeCell.xib in Resources */,
 				5540A85D20BCD3780087498B /* DrawerViewController.xib in Resources */,
 				5521B066210A8D5E00AB6345 /* Info.plist in Resources */,
 				5503A81A20F2A2F70039ACCD /* StockBonificationForm.xib in Resources */,
@@ -1197,7 +1408,12 @@
 				5521B068210A8D5E00AB6345 /* Pods-Guia Investimento-acknowledgements.markdown in Resources */,
 				55CB063D20F6BEDB00085491 /* StockGroupingForm.xib in Resources */,
 				5518597120EAEE2900BFB445 /* SellStockForm.xib in Resources */,
+				550FCC03210CF62F006E3FB8 /* FiiDetailsView.xib in Resources */,
+				550FCC13210CF62F006E3FB8 /* FiiIncomesView.xib in Resources */,
+				550FCC08210CF62F006E3FB8 /* FiiDataCell.xib in Resources */,
 				5568A71420C1CCFF00689EBA /* StockDataView.xib in Resources */,
+				550FCC18210CF62F006E3FB8 /* SellFiiForm.xib in Resources */,
+				550FCC06210CF62F006E3FB8 /* SoldFiiDataCell.xib in Resources */,
 				5521B06D210A8D5E00AB6345 /* Pods-Guia Investimento.debug.xcconfig in Resources */,
 				5540A85B20BCC6E00087498B /* Main.storyboard in Resources */,
 				551D525B20E7115200B4A37F /* StockIncomesView.xib in Resources */,
@@ -1205,6 +1421,7 @@
 				557F72AB2102A006000758FE /* StockPortfolioCell.xib in Resources */,
 				553397782109428E00798033 /* StockEditPriceForm.xib in Resources */,
 				551D525F20E7283F00B4A37F /* StockTransactionCell.xib in Resources */,
+				550FCC0E210CF62F006E3FB8 /* FiiPortfolioCell.xib in Resources */,
 				551D525720E7102100B4A37F /* StockDetailsView.xib in Resources */,
 				5521B06E210A8D5E00AB6345 /* Pods-Guia Investimento.release.xcconfig in Resources */,
 			);
@@ -1259,8 +1476,10 @@
 				5521AFF5210A8D5E00AB6345 /* ChartBaseDataSet.swift in Sources */,
 				5566031420E06EAE0041FC8B /* StockService.swift in Sources */,
 				5521B055210A8D5E00AB6345 /* ScatterChartRenderer.swift in Sources */,
+				550FCBFD210CF62F006E3FB8 /* SoldFiiData.swift in Sources */,
 				5503A81020F1048D0039ACCD /* StockIncome.swift in Sources */,
 				5521B000210A8D5E00AB6345 /* CandleChartDataSet.swift in Sources */,
+				550FCBF7210CF62F006E3FB8 /* FiiTransactionDB.swift in Sources */,
 				5521B057210A8D5E00AB6345 /* XAxisRendererHorizontalBarChart.swift in Sources */,
 				5521B036210A8D5E00AB6345 /* LineChartDataProvider.swift in Sources */,
 				5521B060210A8D5E00AB6345 /* Transformer.swift in Sources */,
@@ -1275,10 +1494,13 @@
 				5521B01B210A8D5E00AB6345 /* IRadarChartDataSet.swift in Sources */,
 				5521B011210A8D5E00AB6345 /* ScatterChartDataSet.swift in Sources */,
 				5540A85420BCC2BB0087498B /* KYEmbedDrawerControllerSegue.swift in Sources */,
+				550FCC00210CF62F006E3FB8 /* FiiPortfolio.swift in Sources */,
+				550FCC04210CF62F006E3FB8 /* FiiPortfolioView.swift in Sources */,
 				5521B035210A8D5E00AB6345 /* CombinedChartDataProvider.swift in Sources */,
 				5521AFFF210A8D5E00AB6345 /* CandleChartDataEntry.swift in Sources */,
 				5521B001210A8D5E00AB6345 /* ChartData.swift in Sources */,
 				5521AFFE210A8D5E00AB6345 /* CandleChartData.swift in Sources */,
+				550FCC25210CF62F006E3FB8 /* FiiGeneral.swift in Sources */,
 				5540A85820BCC2ED0087498B /* DrawerViewController.swift in Sources */,
 				5521AFE8210A8D5E00AB6345 /* RadarChartView.swift in Sources */,
 				5521B030210A8D5E00AB6345 /* BarChartDataProvider.swift in Sources */,
@@ -1293,6 +1515,7 @@
 				5521B00E210A8D5E00AB6345 /* RadarChartDataEntry.swift in Sources */,
 				5521B01D210A8D5E00AB6345 /* DataApproximator+N.swift in Sources */,
 				5521AFE0210A8D5E00AB6345 /* BubbleChartView.swift in Sources */,
+				550FCC21210CF62F006E3FB8 /* FiiSplitForm.swift in Sources */,
 				5521B03F210A8D5E00AB6345 /* BarChartRenderer.swift in Sources */,
 				559F131420C09D37006BC844 /* Utils.swift in Sources */,
 				5503A81920F2A2F70039ACCD /* StockBonificationForm.swift in Sources */,
@@ -1304,6 +1527,7 @@
 				5521B015210A8D5E00AB6345 /* ICandleChartDataSet.swift in Sources */,
 				5521B002210A8D5E00AB6345 /* ChartDataEntry.swift in Sources */,
 				5521AFE7210A8D5E00AB6345 /* PieRadarChartViewBase.swift in Sources */,
+				550FCBF3210CF62F006E3FB8 /* SoldFiiDataDB.swift in Sources */,
 				5521B04A210A8D5E00AB6345 /* PieChartRenderer.swift in Sources */,
 				5521B009210A8D5E00AB6345 /* LineScatterCandleRadarChartDataSet.swift in Sources */,
 				5503A81620F24C510039ACCD /* StockIncomeCell.swift in Sources */,
@@ -1312,33 +1536,42 @@
 				551D525D20E7282E00B4A37F /* StockTransactionCell.swift in Sources */,
 				5521B025210A8D5E00AB6345 /* IValueFormatter.swift in Sources */,
 				5518597020EAEE2900BFB445 /* SellStockForm.swift in Sources */,
+				550FCC0F210CF62F006E3FB8 /* FiiTransactionCell.swift in Sources */,
 				5521B04C210A8D5E00AB6345 /* Renderer.swift in Sources */,
 				5521B040210A8D5E00AB6345 /* BarLineScatterCandleBubbleRenderer.swift in Sources */,
 				5521AFDC210A8D5E00AB6345 /* Animator.swift in Sources */,
 				5518596B20E9860900BFB445 /* SoldStockDataDB.swift in Sources */,
 				552D941F20BB2B9F0041872B /* PortfolioMainController.swift in Sources */,
 				5521B05A210A8D5E00AB6345 /* YAxisRendererHorizontalBarChart.swift in Sources */,
+				550FCBFF210CF62F006E3FB8 /* FiiIncome.swift in Sources */,
 				5521B010210A8D5E00AB6345 /* ScatterChartData.swift in Sources */,
+				550FCC0B210CF62F006E3FB8 /* FiiPieChartCell.swift in Sources */,
 				5521B064210A8D5E00AB6345 /* Charts-dummy.m in Sources */,
 				5521B026210A8D5E00AB6345 /* BarHighlighter.swift in Sources */,
 				5533977A21094C3B00798033 /* SearchTextField.swift in Sources */,
 				5521B053210A8D5E00AB6345 /* TriangleShapeRenderer.swift in Sources */,
 				5518596D20E9879700BFB445 /* SoldStockData.swift in Sources */,
 				5521AFF9210A8D5E00AB6345 /* BarLineScatterCandleBubbleChartData.swift in Sources */,
+				550FCC1F210CF62F006E3FB8 /* FiiGroupingForm.swift in Sources */,
+				550FCBFA210CF62F006E3FB8 /* FiiMainIncomesView.swift in Sources */,
 				55338AAB20F80D5A002AEFEA /* StockMainIncomesView.swift in Sources */,
 				5521B024210A8D5E00AB6345 /* IndexAxisValueFormatter.swift in Sources */,
 				5521AFDE210A8D5E00AB6345 /* BarChartView.swift in Sources */,
 				5521AFE2210A8D5E00AB6345 /* ChartViewBase.swift in Sources */,
+				550FCC05210CF62F006E3FB8 /* SoldFiiDataCell.swift in Sources */,
 				5521AFFD210A8D5E00AB6345 /* BubbleChartDataSet.swift in Sources */,
 				5501D8F620ED972500C7D4E5 /* StockDividendForm.swift in Sources */,
 				5521B042210A8D5E00AB6345 /* CandleStickChartRenderer.swift in Sources */,
 				5521B012210A8D5E00AB6345 /* IBarChartDataSet.swift in Sources */,
+				550FCC24210CF62F006E3FB8 /* SoldFiiDataView.swift in Sources */,
 				5521B021210A8D5E00AB6345 /* DefaultValueFormatter.swift in Sources */,
 				5521AFE6210A8D5E00AB6345 /* PieChartView.swift in Sources */,
 				5566031620E070600041FC8B /* StockDataDB.swift in Sources */,
+				550FCC01210CF62F006E3FB8 /* FiiTransaction.swift in Sources */,
 				5521AFE9210A8D5E00AB6345 /* ScatterChartView.swift in Sources */,
 				5521B037210A8D5E00AB6345 /* ScatterChartDataProvider.swift in Sources */,
 				5521AFEA210A8D5E00AB6345 /* AxisBase.swift in Sources */,
+				550FCBF6210CF62F006E3FB8 /* FiiPortfolioDB.swift in Sources */,
 				55CB063E20F6BEDB00085491 /* StockGroupingForm.swift in Sources */,
 				5521AFF7210A8D5E00AB6345 /* BarChartDataEntry.swift in Sources */,
 				5521B013210A8D5E00AB6345 /* IBarLineScatterCandleBubbleChartDataSet.swift in Sources */,
@@ -1355,7 +1588,9 @@
 				5521B051210A8D5E00AB6345 /* IShapeRenderer.swift in Sources */,
 				5521B05F210A8D5E00AB6345 /* Platform.swift in Sources */,
 				5521B01A210A8D5E00AB6345 /* IPieChartDataSet.swift in Sources */,
+				550FCBFE210CF62F006E3FB8 /* FiiData.swift in Sources */,
 				5521AFED210A8D5E00AB6345 /* Description.swift in Sources */,
+				550FCC1B210CF62F006E3FB8 /* FiiDividendForm.swift in Sources */,
 				5521B02A210A8D5E00AB6345 /* HorizontalBarHighlighter.swift in Sources */,
 				5521B017210A8D5E00AB6345 /* ILineChartDataSet.swift in Sources */,
 				5521B033210A8D5E00AB6345 /* CandleChartDataProvider.swift in Sources */,
@@ -1369,24 +1604,32 @@
 				5521B020210A8D5E00AB6345 /* DefaultFillFormatter.swift in Sources */,
 				5521B047210A8D5E00AB6345 /* LineChartRenderer.swift in Sources */,
 				551D525920E7112C00B4A37F /* StockIncomesView.swift in Sources */,
+				550FCC17210CF62F006E3FB8 /* SellFiiForm.swift in Sources */,
 				5503A81220F107680039ACCD /* StockIncomeDB.swift in Sources */,
 				5521B02B210A8D5E00AB6345 /* IHighlighter.swift in Sources */,
 				5521B01F210A8D5E00AB6345 /* DefaultAxisValueFormatter.swift in Sources */,
+				550FCC07210CF62F006E3FB8 /* FiiDataCell.swift in Sources */,
+				550FCC14210CF62F006E3FB8 /* FiiService.swift in Sources */,
 				5521B018210A8D5E00AB6345 /* ILineRadarChartDataSet.swift in Sources */,
 				55811DE820E1B486006BCE0C /* StockGeneral.swift in Sources */,
 				5521B02F210A8D5E00AB6345 /* Range.swift in Sources */,
 				5542245B20C4BDD5001B2734 /* StockDataCell.swift in Sources */,
 				5521AFEB210A8D5E00AB6345 /* ChartLimitLine.swift in Sources */,
+				550FCBFC210CF62F006E3FB8 /* FiiDataView.swift in Sources */,
 				551D525520E70FFA00B4A37F /* StockDetailsView.swift in Sources */,
 				554E16E820E44542006B864D /* SoldStockDataCell.swift in Sources */,
 				55A3915720D1E3C800244FC2 /* StockTransaction.swift in Sources */,
 				5521B003210A8D5E00AB6345 /* ChartDataEntryBase.swift in Sources */,
 				5521B039210A8D5E00AB6345 /* AnimatedViewPortJob.swift in Sources */,
 				5521AFE4210A8D5E00AB6345 /* HorizontalBarChartView.swift in Sources */,
+				550FCC0D210CF62F006E3FB8 /* FiiPortfolioCell.swift in Sources */,
 				554E16EB20E4459B006B864D /* SoldStockDataView.swift in Sources */,
 				5521B054210A8D5E00AB6345 /* XShapeRenderer.swift in Sources */,
 				5521B038210A8D5E00AB6345 /* AnimatedMoveViewJob.swift in Sources */,
+				550FCBF5210CF62F006E3FB8 /* FiiIncomeDB.swift in Sources */,
+				550FCBFB210CF62F006E3FB8 /* FiiIncomesView.swift in Sources */,
 				5521B031210A8D5E00AB6345 /* BarLineScatterCandleBubbleChartDataProvider.swift in Sources */,
+				550FCBF8210CF62F006E3FB8 /* FiiIncomeDetailsView.swift in Sources */,
 				553397772109428E00798033 /* StockEditPriceForm.swift in Sources */,
 				5521B06A210A8D5E00AB6345 /* Pods-Guia Investimento-dummy.m in Sources */,
 				5521B044210A8D5E00AB6345 /* CombinedChartRenderer.swift in Sources */,
@@ -1407,7 +1650,9 @@
 				5521B004210A8D5E00AB6345 /* ChartDataSet.swift in Sources */,
 				5521B059210A8D5E00AB6345 /* YAxisRenderer.swift in Sources */,
 				5521B022210A8D5E00AB6345 /* IAxisValueFormatter.swift in Sources */,
+				550FCC09210CF62F006E3FB8 /* FiiIncomeCell.swift in Sources */,
 				5521AFFC210A8D5E00AB6345 /* BubbleChartDataEntry.swift in Sources */,
+				550FCC1D210CF62F006E3FB8 /* FiiEditPriceForm.swift in Sources */,
 				5521B00C210A8D5E00AB6345 /* PieChartDataSet.swift in Sources */,
 				5521B014210A8D5E00AB6345 /* IBubbleChartDataSet.swift in Sources */,
 				5521B05D210A8D5E00AB6345 /* ChartUtils.swift in Sources */,
@@ -1417,6 +1662,7 @@
 				5521B046210A8D5E00AB6345 /* LegendRenderer.swift in Sources */,
 				5521B05C210A8D5E00AB6345 /* ChartColorTemplates.swift in Sources */,
 				5521AFDF210A8D5E00AB6345 /* BarLineChartViewBase.swift in Sources */,
+				550FCBF4210CF62F006E3FB8 /* FiiDataDB.swift in Sources */,
 				5521B062210A8D5E00AB6345 /* ViewPortHandler.swift in Sources */,
 				5540A85320BCC2BB0087498B /* KYDrawerController.swift in Sources */,
 				5521B01C210A8D5E00AB6345 /* IScatterChartDataSet.swift in Sources */,
@@ -1424,6 +1670,7 @@
 				5521AFE1210A8D5E00AB6345 /* CandleStickChartView.swift in Sources */,
 				5521AFEC210A8D5E00AB6345 /* ComponentBase.swift in Sources */,
 				5521AFEE210A8D5E00AB6345 /* IMarker.swift in Sources */,
+				550FCC02210CF62F006E3FB8 /* FiiDetailsView.swift in Sources */,
 				559F131620C0A3AC006BC844 /* TabController.swift in Sources */,
 				5521B00D210A8D5E00AB6345 /* RadarChartData.swift in Sources */,
 				5521AFF3210A8D5E00AB6345 /* XAxis.swift in Sources */,
@@ -1431,6 +1678,7 @@
 				5521B03B210A8D5E00AB6345 /* MoveViewJob.swift in Sources */,
 				559F12FA20C04353006BC844 /* StockPortfolioView.swift in Sources */,
 				5521B058210A8D5E00AB6345 /* XAxisRendererRadarChart.swift in Sources */,
+				550FCC15210CF62F006E3FB8 /* BuyFiiForm.swift in Sources */,
 				5521B02C210A8D5E00AB6345 /* PieHighlighter.swift in Sources */,
 				5521AFF0210A8D5E00AB6345 /* LegendEntry.swift in Sources */,
 				5521B028210A8D5E00AB6345 /* CombinedHighlighter.swift in Sources */,
