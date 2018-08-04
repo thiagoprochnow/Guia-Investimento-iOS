@@ -99,10 +99,10 @@
                                 <constraint firstAttribute="bottom" secondItem="1aj-xU-LeX" secondAttribute="bottom" constant="1" id="zls-sE-4ga"/>
                             </constraints>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recebido por Ação" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C0W-Pq-6vJ">
-                            <rect key="frame" x="8" y="28" width="149" height="18"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recebido por Fundo Imobiliário" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C0W-Pq-6vJ">
+                            <rect key="frame" x="8" y="28" width="225" height="18"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="149" id="DEq-2h-Kgm"/>
+                                <constraint firstAttribute="width" constant="225" id="DEq-2h-Kgm"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <nil key="textColor"/>

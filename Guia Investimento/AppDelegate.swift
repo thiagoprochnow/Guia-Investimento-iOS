@@ -85,5 +85,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let fiiIncomesDB = FiiIncomeDB()
         fiiIncomesDB.createTable()
         fiiIncomesDB.close()
+        
+        // TREASURY
+        
+        // TREASURY Portfolio
+        let treasuryPortfolioDB = TreasuryPortfolioDB()
+        treasuryPortfolioDB.createTable()
+        treasuryPortfolioDB.close()
+        // TREASURY Transaction
+        let treasuryTransactionDB = TreasuryTransactionDB()
+        treasuryTransactionDB.createTable()
+        treasuryTransactionDB.close()
+        // TREASURY Data
+        let treasuryDataDB = TreasuryDataDB()
+        treasuryDataDB.createTable()
+        treasuryDataDB.close()
+        // Sold TREASURY Data
+        let soldTreasuryDataDB = SoldTreasuryDataDB()
+        soldTreasuryDataDB.createTable()
+        soldTreasuryDataDB.close()
+        // TREASURY Incomes
+        let treasuryIncomesDB = TreasuryIncomeDB()
+        treasuryIncomesDB.createTable()
+        treasuryIncomesDB.close()
     }
 }

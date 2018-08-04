@@ -25,6 +25,9 @@ import UIKit
 class DrawerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet var mainMenu: UITableView!
     var nav: UINavigationController!
+    var stockRefresh = false
+    var fiiRefresh = false
+    var treasuryRefresh = false
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
@@ -111,6 +114,23 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
         if let drawerController = parent as? KYDrawerController {
             drawerController.setDrawerState(.closed, animated: true)
             switch linha{
+            case 0:
+                let portfolio = TreasuryPortfolioView()
+                let data = TreasuryDataView()
+                let soldData = SoldTreasuryDataView()
+                let income = TreasuryMainIncomesView()
+                portfolio.tabBarItem.title = ""
+                portfolio.tabBarItem.image =  Utils.makeThumbnailFromText(text: "Visão Geral")
+                data.tabBarItem.title = ""
+                data.tabBarItem.image = Utils.makeThumbnailFromText(text: "Carteira")
+                soldData.tabBarItem.title = ""
+                soldData.tabBarItem.image = Utils.makeThumbnailFromText(text: "Histórico")
+                income.tabBarItem.title = ""
+                income.tabBarItem.image = Utils.makeThumbnailFromText(text: "Rendimentos")
+                
+                view.title = "Tesouro"
+                view.viewControllers = [portfolio, data, soldData, income]
+                break
             case 2:
                 let portfolio = StockPortfolioView()
                 let data = StockDataView()
@@ -176,6 +196,7 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
                 }
                 stockDB.close()
                 Utils.updateStockPortfolio()
+                self.stockRefresh = true
                 DispatchQueue.main.async {
                     self.updateView()
                 }
@@ -197,30 +218,58 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
                 }
                 fiiDB.close()
                 Utils.updateFiiPortfolio()
+                self.fiiRefresh = true
                 DispatchQueue.main.async {
                     self.updateView()
                 }
             })
         })
+        
+        // TREASURY
+        TreasuryService.updateTreasuryQuotes({(_ treasuries:Array<TreasuryData>,error:Bool) -> Void in
+            let treasuryDB = TreasuryDataDB()
+            treasuries.forEach{ treasury in
+                let currentTotal = treasury.quantity * treasury.currentPrice
+                let variation = currentTotal - treasury.buyValue
+                let totalGain = currentTotal + treasury.netIncome - treasury.buyValue - treasury.brokerage
+                treasury.currentTotal = currentTotal
+                treasury.variation = variation
+                treasury.totalGain = totalGain
+                treasuryDB.save(treasury)
+            }
+            treasuryDB.close()
+            Utils.updateTreasuryPortfolio()
+            self.treasuryRefresh = true
+            DispatchQueue.main.async {
+                self.updateView()
+            }
+        })
     }
     
     func updateView(){
-        nav.navigationController?.visibleViewController?.viewWillAppear(false)
-        nav.topViewController?.viewWillAppear(false)
-        nav.navigationController?.topViewController?.viewWillAppear(false)
-        nav.visibleViewController?.viewWillAppear(false)
-        
-        // Place Button back after finish loading in place of loading view
-        let updateBtn = UIBarButtonItem(title: "Atualizar", style: UIBarButtonItemStyle.plain, target: self, action: #selector(DrawerViewController.updateQuotes))
-        nav.topViewController?.navigationItem.rightBarButtonItem = updateBtn
-        nav.topViewController?.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
-        
-        let alert = UIAlertView()
-        alert.delegate = self
-        alert.addButton(withTitle: "OK")
-        // Show Alert
-        alert.title = ""
-        alert.message = "Atualização feita com sucesso"
-        alert.show()
+        if(self.stockRefresh && self.fiiRefresh && self.treasuryRefresh){
+            nav.navigationController?.visibleViewController?.viewWillAppear(false)
+            nav.topViewController?.viewWillAppear(false)
+            nav.navigationController?.topViewController?.viewWillAppear(false)
+            nav.visibleViewController?.viewWillAppear(false)
+            
+            // Place Button back after finish loading in place of loading view
+            let updateBtn = UIBarButtonItem(title: "Atualizar", style: UIBarButtonItemStyle.plain, target: self, action: #selector(DrawerViewController.updateQuotes))
+            nav.topViewController?.navigationItem.rightBarButtonItem = updateBtn
+            nav.topViewController?.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
+            
+            let alert = UIAlertView()
+            alert.delegate = self
+            alert.addButton(withTitle: "OK")
+            // Show Alert
+            alert.title = ""
+            alert.message = "Atualização feita com sucesso"
+            alert.show()
+            
+            // Reset refresh status
+            self.stockRefresh = false
+            self.fiiRefresh = false
+            self.treasuryRefresh = false
+        }
     }
 }

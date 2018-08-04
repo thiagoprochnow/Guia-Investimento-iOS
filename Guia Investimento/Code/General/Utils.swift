@@ -41,7 +41,25 @@ class Utils {
         let regex = "^[A-Z0-9]{4}([0-9]|[0-9][A-Z]|[0-9][0-9])$"
         return matches(regex: regex, text: symbol)
     }
+    
+    // Check if inputted symbol is correct Treasury symbol
+    class func isValidTreasurySymbol(symbol: String) -> Bool{
+        let regex = "[a-zA-Z\\s0-9]*"
+        return matches(regex: regex, text: symbol)
+    }
+    
+    // Check if inputted symbol is correct Fixed symbol
+    class func isValidFixedSymbol(symbol: String) -> Bool{
+        let regex = "[a-zA-Z\\s0-9]*"
+        return matches(regex: regex, text: symbol)
+    }
 
+    // Check if inputted symbol is correct Others symbol
+    class func isValidOthersSymbol(symbol: String) -> Bool{
+        let regex = "[a-zA-Z\\s0-9]*"
+        return matches(regex: regex, text: symbol)
+    }
+    
     // Check if inputed text is a double
     class func isValidDouble(text: String) -> Bool{
         let regex = "^[0-9]+\\.?[0-9]*$"
@@ -68,6 +86,17 @@ class Utils {
     // Check if inputted selling quantity us valid and there was enough buy, so it will not generate negative quantity value
     class func isValidSellFii(quantity:Int, symbol:String) -> Bool{
         let dataDB = FiiDataDB()
+        let quantityBought = dataDB.getDataBySymbol(symbol)
+        if(quantityBought.quantity >= quantity){
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    // Check if inputted selling quantity us valid and there was enough buy, so it will not generate negative quantity value
+    class func isValidSellTreasury(quantity:Double, symbol:String) -> Bool{
+        let dataDB = TreasuryDataDB()
         let quantityBought = dataDB.getDataBySymbol(symbol)
         if(quantityBought.quantity >= quantity){
             return true
@@ -154,7 +183,7 @@ class Utils {
         portfolioDB.close()
     }
     
-    // Updates fii portfolio after stock data quotes have been updated
+    // Updates fii portfolio after fii data quotes have been updated
     class func updateFiiPortfolio(){
         // Sold Fii Data
         let soldFiiDB = SoldFiiDataDB()
@@ -199,6 +228,64 @@ class Utils {
         fiiDB.close()
         
         let portfolioDB = FiiPortfolioDB()
+        var portfolio = portfolioDB.getPortfolio()
+        portfolio.variationTotal = variationTotal
+        portfolio.buyTotal = buyTotal
+        portfolio.soldTotal = sellTotal
+        portfolio.incomeTotal = incomeTotal
+        portfolio.brokerage = brokerage
+        portfolio.totalGain = totalGain
+        portfolio.currentTotal = mCurrentTotal
+        
+        portfolioDB.save(portfolio)
+        portfolioDB.close()
+    }
+    
+    // Updates treasury portfolio after treasury data quotes have been updated
+    class func updateTreasuryPortfolio(){
+        // Sold Treasury Data
+        let soldTreasuryDB = SoldTreasuryDataDB()
+        let soldTreasuries = soldTreasuryDB.getSoldData()
+        soldTreasuryDB.close()
+        
+        var buyTotal: Double = 0.0
+        var totalGain: Double = 0.0
+        var variationTotal: Double = 0.0
+        var sellTotal: Double = 0.0
+        var brokerage: Double = 0.0
+        var mCurrentTotal: Double = 0.0
+        var incomeTotal: Double = 0.0
+        
+        soldTreasuries.forEach{ soldTreasury in
+            buyTotal += soldTreasury.buyValue
+            sellTotal += soldTreasury.currentTotal
+            brokerage += soldTreasury.brokerage
+            variationTotal += soldTreasury.brokerage + soldTreasury.sellGain
+            totalGain += soldTreasury.sellGain
+        }
+        
+        // Treasury Data
+        let treasuryDB = TreasuryDataDB()
+        let treasuries = treasuryDB.getData()
+        
+        treasuries.forEach{ treasury in
+            variationTotal += treasury.variation
+            buyTotal += treasury.buyValue
+            incomeTotal += treasury.netIncome
+            mCurrentTotal += treasury.currentTotal
+            brokerage += treasury.brokerage
+            totalGain += treasury.totalGain
+        }
+        
+        // Updates current percent of each treasury data
+        treasuries.forEach{treasury in
+            treasury.currentPercent = treasury.currentTotal/mCurrentTotal*100
+            treasuryDB.save(treasury)
+        }
+        
+        treasuryDB.close()
+        
+        let portfolioDB = TreasuryPortfolioDB()
         var portfolio = portfolioDB.getPortfolio()
         portfolio.variationTotal = variationTotal
         portfolio.buyTotal = buyTotal

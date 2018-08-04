@@ -107,6 +107,7 @@ class SellStockForm: UIViewController, UITextFieldDelegate{
                                 let general = StockGeneral()
                                 general.updateStockIncomes(symbol!, timestamp: Int(timestamp))
                                 _ = general.updateStockData(symbol!, type: Constants.TypeOp.BUY)
+                                Utils.updateStockPortfolio()
                                 
                                 // Dismiss current view
                                 self.navigationController?.popViewController(animated: true)
