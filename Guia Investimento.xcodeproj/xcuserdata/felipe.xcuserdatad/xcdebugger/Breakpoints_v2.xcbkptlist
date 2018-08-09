@@ -73,54 +73,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Guia Investimento/Code/KYDrawerController/DrawerViewController.swift"
-            timestampString = "555469869.79105"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "266"
-            endingLineNumber = "266"
-            landmarkName = "updateQuotes()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #4 (Swift.Array&lt;Guia_Investimento.CurrencyData&gt;, Swift.Bool) -&gt; () in Guia_Investimento.DrawerViewController.updateQuotes() -&gt; ()"
-                  moduleName = "Guia Investimento"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/felipe/Desktop/iOS/Guia%20Investimento/Guia%20Investimento/Code/KYDrawerController/DrawerViewController.swift"
-                  timestampString = "555467210.3697079"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "266"
-                  endingLineNumber = "266"
-                  offsetFromSymbolStart = "72">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Guia_Investimento.CurrencyData) -&gt; () in closure #4 (Swift.Array&lt;Guia_Investimento.CurrencyData&gt;, Swift.Bool) -&gt; () in Guia_Investimento.DrawerViewController.updateQuotes() -&gt; ()"
-                  moduleName = "Guia Investimento"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/felipe/Desktop/iOS/Guia%20Investimento/Guia%20Investimento/Code/KYDrawerController/DrawerViewController.swift"
-                  timestampString = "555467210.373567"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "267"
-                  endingLineNumber = "267"
-                  offsetFromSymbolStart = "18">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Guia Investimento/Code/Currency/Service/CurrencyService.swift"
             timestampString = "555469869.791306"
             startingColumnNumber = "9223372036854775807"
@@ -208,6 +160,166 @@
             startingLineNumber = "65"
             endingLineNumber = "65"
             landmarkName = "updateCurrencyQuotes(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Guia Investimento/Code/KYDrawerController/DrawerViewController.swift"
+            timestampString = "555541758.942535"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "252"
+            endingLineNumber = "252"
+            landmarkName = "updateView()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Guia_Investimento.DrawerViewController.updateView() -&gt; ()"
+                  moduleName = "Guia Investimento"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/felipe/Desktop/iOS/Guia%20Investimento/Guia%20Investimento/Code/KYDrawerController/DrawerViewController.swift"
+                  timestampString = "555541767.504715"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "252"
+                  endingLineNumber = "252"
+                  offsetFromSymbolStart = "489">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Guia_Investimento.StockData) -&gt; () in Guia_Investimento.DrawerViewController.updateView() -&gt; ()"
+                  moduleName = "Guia Investimento"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/felipe/Desktop/iOS/Guia%20Investimento/Guia%20Investimento/Code/KYDrawerController/DrawerViewController.swift"
+                  timestampString = "555541767.509186"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "253"
+                  endingLineNumber = "253"
+                  offsetFromSymbolStart = "18">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Guia Investimento/Code/KYDrawerController/DrawerViewController.swift"
+            timestampString = "555541761.629347"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "266"
+            endingLineNumber = "266"
+            landmarkName = "updateView()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Guia_Investimento.DrawerViewController.updateView() -&gt; ()"
+                  moduleName = "Guia Investimento"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/felipe/Desktop/iOS/Guia%20Investimento/Guia%20Investimento/Code/KYDrawerController/DrawerViewController.swift"
+                  timestampString = "555541767.520391"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "266"
+                  endingLineNumber = "266"
+                  offsetFromSymbolStart = "799">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Guia_Investimento.FiiData) -&gt; () in Guia_Investimento.DrawerViewController.updateView() -&gt; ()"
+                  moduleName = "Guia Investimento"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/felipe/Desktop/iOS/Guia%20Investimento/Guia%20Investimento/Code/KYDrawerController/DrawerViewController.swift"
+                  timestampString = "555541767.523098"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "267"
+                  endingLineNumber = "267"
+                  offsetFromSymbolStart = "18">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Guia Investimento/Code/KYDrawerController/DrawerViewController.swift"
+            timestampString = "555541778.792888"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "256"
+            endingLineNumber = "256"
+            landmarkName = "updateView()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Guia Investimento/Code/KYDrawerController/DrawerViewController.swift"
+            timestampString = "555541781.097492"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "271"
+            endingLineNumber = "271"
+            landmarkName = "updateView()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Guia Investimento/Code/KYDrawerController/DrawerViewController.swift"
+            timestampString = "555541792.0503629"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "285"
+            endingLineNumber = "285"
+            landmarkName = "updateView()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Guia Investimento/Code/KYDrawerController/DrawerViewController.swift"
+            timestampString = "555541796.532084"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "299"
+            endingLineNumber = "299"
+            landmarkName = "updateView()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

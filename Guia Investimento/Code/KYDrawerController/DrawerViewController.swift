@@ -29,6 +29,12 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
     var fiiRefresh = false
     var treasuryRefresh = false
     var currencyRefresh = false
+    
+    var stocks:Array<StockData> = []
+    var fiis:Array<FiiData> = []
+    var treasuries:Array<TreasuryData> = []
+    var currencies:Array<CurrencyData> = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
@@ -199,19 +205,8 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
         // Stocks
         StockService.updateStockIncomes({(_ error:Bool) -> Void in
             StockService.updateStockQuotes({(_ stocks:Array<StockData>,error:Bool) -> Void in
-                let stockDB = StockDataDB()
-                stocks.forEach{ stock in
-                    let currentTotal = Double(stock.quantity) * stock.currentPrice
-                    let variation = currentTotal - stock.buyValue
-                    let totalGain = currentTotal + stock.netIncome - stock.buyValue - stock.brokerage
-                    stock.currentTotal = currentTotal
-                    stock.variation = variation
-                    stock.totalGain = totalGain
-                    stockDB.save(stock)
-                }
-                stockDB.close()
-                Utils.updateStockPortfolio()
                 self.stockRefresh = true
+                self.stocks = stocks
                 DispatchQueue.main.async {
                     self.updateView()
                 }
@@ -221,19 +216,8 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
         // FII
         FiiService.updateFiiIncomes({(_ error:Bool) -> Void in
             FiiService.updateFiiQuotes({(_ fiis:Array<FiiData>,error:Bool) -> Void in
-                let fiiDB = FiiDataDB()
-                fiis.forEach{ fii in
-                    let currentTotal = Double(fii.quantity) * fii.currentPrice
-                    let variation = currentTotal - fii.buyValue
-                    let totalGain = currentTotal + fii.netIncome - fii.buyValue - fii.brokerage
-                    fii.currentTotal = currentTotal
-                    fii.variation = variation
-                    fii.totalGain = totalGain
-                    fiiDB.save(fii)
-                }
-                fiiDB.close()
-                Utils.updateFiiPortfolio()
                 self.fiiRefresh = true
+                self.fiis = fiis
                 DispatchQueue.main.async {
                     self.updateView()
                 }
@@ -242,6 +226,56 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
         
         // TREASURY
         TreasuryService.updateTreasuryQuotes({(_ treasuries:Array<TreasuryData>,error:Bool) -> Void in
+            self.treasuryRefresh = true
+            self.treasuries = treasuries
+            DispatchQueue.main.async {
+                self.updateView()
+            }
+        })
+        
+        // CURRENCY
+        CurrencyService.updateCurrencyQuotes({(_ currencies:Array<CurrencyData>,error:Bool) -> Void in
+            self.currencyRefresh = true
+            self.currencies = currencies
+            DispatchQueue.main.async {
+                self.updateView()
+            }
+        })
+    }
+    
+    func updateView(){
+        if(self.stockRefresh && self.fiiRefresh && self.treasuryRefresh && currencyRefresh){
+            // Update and save values
+            
+            //Stocks
+            let stockDB = StockDataDB()
+            stocks.forEach{ stock in
+                let currentTotal = Double(stock.quantity) * stock.currentPrice
+                let variation = currentTotal - stock.buyValue
+                let totalGain = currentTotal + stock.netIncome - stock.buyValue - stock.brokerage
+                stock.currentTotal = currentTotal
+                stock.variation = variation
+                stock.totalGain = totalGain
+                stockDB.save(stock)
+            }
+            stockDB.close()
+            Utils.updateStockPortfolio()
+            
+            // Fii
+            let fiiDB = FiiDataDB()
+            fiis.forEach{ fii in
+                let currentTotal = Double(fii.quantity) * fii.currentPrice
+                let variation = currentTotal - fii.buyValue
+                let totalGain = currentTotal + fii.netIncome - fii.buyValue - fii.brokerage
+                fii.currentTotal = currentTotal
+                fii.variation = variation
+                fii.totalGain = totalGain
+                fiiDB.save(fii)
+            }
+            fiiDB.close()
+            Utils.updateFiiPortfolio()
+          
+            // Treasury
             let treasuryDB = TreasuryDataDB()
             treasuries.forEach{ treasury in
                 let currentTotal = treasury.quantity * treasury.currentPrice
@@ -254,14 +288,8 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
             }
             treasuryDB.close()
             Utils.updateTreasuryPortfolio()
-            self.treasuryRefresh = true
-            DispatchQueue.main.async {
-                self.updateView()
-            }
-        })
-        
-        // CURRENCY
-        CurrencyService.updateCurrencyQuotes({(_ currencies:Array<CurrencyData>,error:Bool) -> Void in
+            
+            // Currency
             let currencyDB = CurrencyDataDB()
             currencies.forEach{ currency in
                 let currentTotal = currency.quantity * currency.currentPrice
@@ -274,15 +302,7 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
             }
             currencyDB.close()
             Utils.updateCurrencyPortfolio()
-            self.currencyRefresh = true
-            DispatchQueue.main.async {
-                self.updateView()
-            }
-        })
-    }
-    
-    func updateView(){
-        if(self.stockRefresh && self.fiiRefresh && self.treasuryRefresh && currencyRefresh){
+            
             nav.navigationController?.visibleViewController?.viewWillAppear(false)
             nav.topViewController?.viewWillAppear(false)
             nav.navigationController?.topViewController?.viewWillAppear(false)
@@ -306,6 +326,10 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
             self.fiiRefresh = false
             self.treasuryRefresh = false
             self.currencyRefresh = false
+            self.stocks = []
+            self.fiis = []
+            self.treasuries = []
+            self.currencies = []
         }
     }
 }
