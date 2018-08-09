@@ -28,6 +28,7 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
     var stockRefresh = false
     var fiiRefresh = false
     var treasuryRefresh = false
+    var currencyRefresh = false
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
@@ -165,6 +166,20 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
                 view.title = "Fundos Imobiliários"
                 view.viewControllers = [portfolio, data, soldData, income]
                 break
+            case 4:
+                let portfolio = CurrencyPortfolioView()
+                let data = CurrencyDataView()
+                let soldData = SoldCurrencyDataView()
+                portfolio.tabBarItem.title = ""
+                portfolio.tabBarItem.image =  Utils.makeThumbnailFromText(text: "Visão Geral")
+                data.tabBarItem.title = ""
+                data.tabBarItem.image = Utils.makeThumbnailFromText(text: "Carteira")
+                soldData.tabBarItem.title = ""
+                soldData.tabBarItem.image = Utils.makeThumbnailFromText(text: "Histórico")
+                
+                view.title = "Moedas"
+                view.viewControllers = [portfolio, data, soldData]
+                break
             default:
                 view.title = "Carteira Completa"
             }
@@ -244,10 +259,30 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
                 self.updateView()
             }
         })
+        
+        // CURRENCY
+        CurrencyService.updateCurrencyQuotes({(_ currencies:Array<CurrencyData>,error:Bool) -> Void in
+            let currencyDB = CurrencyDataDB()
+            currencies.forEach{ currency in
+                let currentTotal = currency.quantity * currency.currentPrice
+                let variation = currentTotal - currency.buyValue
+                let totalGain = currentTotal - currency.buyValue
+                currency.currentTotal = currentTotal
+                currency.variation = variation
+                currency.totalGain = totalGain
+                currencyDB.save(currency)
+            }
+            currencyDB.close()
+            Utils.updateCurrencyPortfolio()
+            self.currencyRefresh = true
+            DispatchQueue.main.async {
+                self.updateView()
+            }
+        })
     }
     
     func updateView(){
-        if(self.stockRefresh && self.fiiRefresh && self.treasuryRefresh){
+        if(self.stockRefresh && self.fiiRefresh && self.treasuryRefresh && currencyRefresh){
             nav.navigationController?.visibleViewController?.viewWillAppear(false)
             nav.topViewController?.viewWillAppear(false)
             nav.navigationController?.topViewController?.viewWillAppear(false)
@@ -270,6 +305,7 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
             self.stockRefresh = false
             self.fiiRefresh = false
             self.treasuryRefresh = false
+            self.currencyRefresh = false
         }
     }
 }

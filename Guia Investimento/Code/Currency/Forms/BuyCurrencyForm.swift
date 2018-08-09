@@ -1,5 +1,5 @@
 //
-//  BuyTreasuryForm.swift
+//  BuyCurrencyForm.swift
 //  Guia Investimento
 //
 //  Created by Felipe on 13/06/18.
@@ -9,46 +9,46 @@
 import Foundation
 import UIKit
 
-class BuyTreasuryForm: UIViewController, UITextFieldDelegate{
-    @IBOutlet var symbolTextField: SearchTextField!
+class BuyCurrencyForm: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource{
+    @IBOutlet var symbolTextField: UIPickerView!
     @IBOutlet var quantityTextField: UITextField!
     @IBOutlet var priceTextField: UITextField!
     @IBOutlet var datePicker: UIDatePicker!
-    var symbol: String = ""
+    var symbol: String = "USD"
     var id: Int = 0
-    var prealodedTransaction: TreasuryTransaction!
+    var prealodedTransaction: CurrencyTransaction!
+    let symbolKeys = ["USD","EUR","BTC","LTC"]
+    let symbolValues = ["Dolar","Euro","Bitcoin","Litecoin"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Insert treasury button added on the right side of the bar menu
-        let btInsert = UIBarButtonItem(title: "Inserir", style: UIBarButtonItemStyle.plain, target: self, action: #selector(BuyTreasuryForm.insertTreasury))
+        // Insert currency button added on the right side of the bar menu
+        let btInsert = UIBarButtonItem(title: "Inserir", style: UIBarButtonItemStyle.plain, target: self, action: #selector(BuyCurrencyForm.insertCurrency))
         self.navigationItem.rightBarButtonItem = btInsert
         self.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
         
         // Delegade UITextFieldDelagate to self
-        symbolTextField.delegate = self
         quantityTextField.delegate = self
         priceTextField.delegate = self
+        symbolTextField.delegate = self
+        symbolTextField.dataSource = self
         quantityTextField.keyboardType = UIKeyboardType.numberPad
         priceTextField.keyboardType = UIKeyboardType.decimalPad
         
-        // Insert Autocomplete
-        symbolTextField.filterStrings(Constants.Symbols.TREASURY)
-        symbolTextField.theme.bgColor = UIColor (red: 1, green: 1, blue: 1, alpha: 1)
-        symbolTextField.maxNumberOfResults = 5
-        symbolTextField.theme.font = UIFont.systemFont(ofSize: 14)
-        
-        // Buying a repeated treasury, already shows symbol of the new buy
+        // Buying a repeated currency, already shows symbol of the new buy
         if(symbol != ""){
-            symbolTextField.text = symbol
+            let row = Utils.getCurrencyPickerIndex(symbol: symbol)
+            symbolTextField.selectRow(row, inComponent: 0, animated: false)
         }
         
         // It is a Edit mode, preload inserted information to be edited and saved
         if(id != 0){
-            let transactionDB = TreasuryTransactionDB()
+            let transactionDB = CurrencyTransactionDB()
             prealodedTransaction = transactionDB.getTransactionById(id)
-            symbolTextField.text = prealodedTransaction.symbol
+            let row = Utils.getCurrencyPickerIndex(symbol: prealodedTransaction.symbol)
+            symbolTextField.selectRow(row, inComponent: 0, animated: false)
+            
             quantityTextField.text = String(prealodedTransaction.quantity)
             priceTextField.text = String(prealodedTransaction.price)
             let date = Date(timeIntervalSince1970: TimeInterval(prealodedTransaction.timestamp))
@@ -58,8 +58,28 @@ class BuyTreasuryForm: UIViewController, UITextFieldDelegate{
         }
     }
     
-    @IBAction func insertTreasury(){
-        let symbol = symbolTextField.text
+    // Sets number of columns in picker view
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    // Sets the number of rows in the picker view
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return symbolKeys.count
+    }
+    
+    // This function sets the text of the picker view to the content of the "salutations" array
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return symbolValues[row]
+    }
+    
+    // When user selects an option, this function will set the text of the text field to reflect
+    // the selected option.
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        symbol = symbolKeys[row]
+    }
+    
+    @IBAction func insertCurrency(){
         let price = priceTextField.text
         let quantity = quantityTextField.text
         
@@ -70,47 +90,45 @@ class BuyTreasuryForm: UIViewController, UITextFieldDelegate{
         let startOfDay = calendar.startOfDay(for: date)
         let timestamp = startOfDay.timeIntervalSince1970
         
-        // Create alert saying the treasury information is invalid
+        // Create alert saying the currency information is invalid
         let alert = UIAlertView()
         alert.title = "Campo Inválido"
         alert.delegate = self
         alert.addButton(withTitle: "OK")
         
-        // Check if inserted values are valid, if all are valid, insert the new treasury
-        let isValidSymbol = Utils.isValidTreasurySymbol(symbol: symbol!)
-        if(isValidSymbol){
-            let isValidQuantity = Utils.isValidDouble(text: quantity!)
+        // Check if inserted values are valid, if all are valid, insert the new currency
+        let isValidQuantity = Utils.isValidDouble(text: quantity!)
             if(isValidQuantity){
                 let isValidPrice = Utils.isValidDouble(text: price!)
                 if(isValidPrice){
                     let isFutureDate = Utils.isFutureDate(timestamp: Int(timestamp))
                         if(!isFutureDate){
-                            // Sucesso em todos os casos, inserir a treasury
-                            let treasuryTransaction = TreasuryTransaction()
-                            // In case it is editing to update treasuryTransaction
+                            // Sucesso em todos os casos, inserir a currency
+                            let currencyTransaction = CurrencyTransaction()
+                            // In case it is editing to update currencyTransaction
                             if(id != 0){
-                                treasuryTransaction.id = id
+                                currencyTransaction.id = id
                             }
-                            treasuryTransaction.symbol = symbol!
-                            treasuryTransaction.price = Double(price!)!
-                            treasuryTransaction.quantity = Double(quantity!)!
+                            currencyTransaction.symbol = symbol
+                            currencyTransaction.price = Double(price!)!
+                            currencyTransaction.quantity = Double(quantity!)!
 
-                            treasuryTransaction.timestamp = Int(timestamp)
-                            treasuryTransaction.type = Constants.TypeOp.BUY
+                            currencyTransaction.timestamp = Int(timestamp)
+                            currencyTransaction.type = Constants.TypeOp.BUY
                             
-                            // Save TreasuryTransaction
-                            let db = TreasuryTransactionDB()
-                            db.save(treasuryTransaction)
+                            // Save CurrencyTransaction
+                            let db = CurrencyTransactionDB()
+                            db.save(currencyTransaction)
                             db.close()
                             
-                            let general = TreasuryGeneral()
-                            _ = general.updateTreasuryData(symbol!, type: Constants.TypeOp.BUY)
+                            let general = CurrencyGeneral()
+                            _ = general.updateCurrencyData(symbol, type: Constants.TypeOp.BUY)
                             
                             // Dismiss current view
                             self.navigationController?.popViewController(animated: true)
                             // Show Alert
                             alert.title = ""
-                            alert.message = "Titulo do tesouro comprado com sucesso"
+                            alert.message = "Moeda comprada com sucesso"
                             alert.show()
                         } else {
                             // Show Alert
@@ -119,19 +137,14 @@ class BuyTreasuryForm: UIViewController, UITextFieldDelegate{
                         }
                     } else {
                     // Show Alert
-                    alert.message = "Preço do titulo deve conter apenas números e ponto"
+                    alert.message = "Preço da moeda deve conter apenas números e ponto"
                     alert.show()
                 }
             } else {
                 // Show Alert
-                alert.message = "Quantidade do titulo deve conter apenas números e ponto"
+                alert.message = "Quantidade da moeda deve conter apenas números e ponto"
                 alert.show()
             }
-        } else {
-            // Show Alert
-            alert.message = "Código do titulo é inválido"
-            alert.show()
-        }
     }
     
     // Gives first responder back to view and closes keyboard when clicking outside of text field

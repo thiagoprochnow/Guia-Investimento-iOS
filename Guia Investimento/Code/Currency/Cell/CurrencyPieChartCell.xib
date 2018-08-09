@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="458" id="fiO-vb-vgv" customClass="CurrencyPieChartCell" customModule="Guia_Investimento" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="458"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fiO-vb-vgv" id="VQC-cm-7eJ">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="457.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3XH-rU-FPE" customClass="PieChartView" customModule="Guia_Investimento" customModuleProvider="target">
+                        <rect key="frame" x="16" y="24" width="343" height="423"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Hl0-rB-hFh">
+                                <rect key="frame" x="258" y="114" width="77" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="423" id="G0s-bT-BeB"/>
+                        </constraints>
+                    </view>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Td2-xi-DG0">
+                        <rect key="frame" x="16" y="5" width="343" height="20"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Alocação de Ativos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sis-LX-mfw">
+                                <rect key="frame" x="0.0" y="0.0" width="343" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.2470588235" green="0.31764705879999999" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="76V-5K-rwh"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Td2-xi-DG0" firstAttribute="trailing" secondItem="3XH-rU-FPE" secondAttribute="trailing" id="Ajv-Yh-b0b"/>
+                    <constraint firstItem="Td2-xi-DG0" firstAttribute="top" secondItem="VQC-cm-7eJ" secondAttribute="topMargin" constant="-6" id="D3z-mM-ezT"/>
+                    <constraint firstItem="3XH-rU-FPE" firstAttribute="bottom" secondItem="VQC-cm-7eJ" secondAttribute="bottomMargin" id="EWN-OR-ZrU"/>
+                    <constraint firstItem="Td2-xi-DG0" firstAttribute="leading" secondItem="3XH-rU-FPE" secondAttribute="leading" id="HV1-jC-eOv"/>
+                    <constraint firstItem="3XH-rU-FPE" firstAttribute="trailing" secondItem="VQC-cm-7eJ" secondAttribute="trailingMargin" id="USP-J2-tch"/>
+                    <constraint firstItem="3XH-rU-FPE" firstAttribute="leading" secondItem="VQC-cm-7eJ" secondAttribute="leadingMargin" id="ZjZ-aL-nog"/>
+                    <constraint firstItem="3XH-rU-FPE" firstAttribute="top" secondItem="VQC-cm-7eJ" secondAttribute="topMargin" constant="13" id="fUQ-kC-22j"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
+            <connections>
+                <outlet property="chart" destination="3XH-rU-FPE" id="Za8-Oj-TDo"/>
+            </connections>
+            <point key="canvasLocation" x="-86.5" y="270"/>
+        </tableViewCell>
+    </objects>
+</document>

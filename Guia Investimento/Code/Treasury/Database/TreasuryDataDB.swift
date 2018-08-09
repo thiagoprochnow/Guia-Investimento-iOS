@@ -17,7 +17,7 @@ class TreasuryDataDB{
     func createTable(){
         let sql = "create table if not exists treasury_data (_id integer primary key autoincrement"
             + ", symbol text not null"
-            + ", quantity_total integer"
+            + ", quantity_total real"
             + ", value_total real"
             + ", income_total real"
             + ", income_tax real"

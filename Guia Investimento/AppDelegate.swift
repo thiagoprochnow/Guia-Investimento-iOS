@@ -108,5 +108,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let treasuryIncomesDB = TreasuryIncomeDB()
         treasuryIncomesDB.createTable()
         treasuryIncomesDB.close()
+        
+        // CURRENCY
+        
+        // CURRENCY Portfolio
+        let currencyPortfolioDB = CurrencyPortfolioDB()
+        currencyPortfolioDB.createTable()
+        currencyPortfolioDB.close()
+        // CURRENCY Transaction
+        let currencyTransactionDB = CurrencyTransactionDB()
+        currencyTransactionDB.createTable()
+        currencyTransactionDB.close()
+        // CURRENCY Data
+        let currencyDataDB = CurrencyDataDB()
+        currencyDataDB.createTable()
+        currencyDataDB.close()
+        // Sold CURRENCY Data
+        let soldCurrencyDataDB = SoldCurrencyDataDB()
+        soldCurrencyDataDB.createTable()
+        soldCurrencyDataDB.close()
     }
 }

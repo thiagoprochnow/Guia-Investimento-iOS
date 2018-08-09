@@ -105,6 +105,18 @@ class Utils {
         }
     }
     
+    
+    // Check if inputted selling quantity us valid and there was enough buy, so it will not generate negative quantity value
+    class func isValidSellCurrency(quantity:Double, symbol:String) -> Bool{
+        let dataDB = CurrencyDataDB()
+        let quantityBought = dataDB.getDataBySymbol(symbol)
+        if(quantityBought.quantity >= quantity){
+            return true
+        } else {
+            return false
+        }
+    }
+    
     // Check if selected date is a date in future from current time
     class func isFutureDate(timestamp: Int) -> Bool {
         let current = Date().timeIntervalSince1970
@@ -123,6 +135,36 @@ class Utils {
         currencyFormatter.locale = Locale(identifier: "pt_BR")
         let currency = currencyFormatter.string(from: NSNumber(value: value))
         return currency!
+    }
+    
+    // Get row index for a currency symbol to select in picker
+    class func getCurrencyPickerIndex(symbol: String) -> Int {
+        if(symbol == "USD"){
+            return 0
+        } else if(symbol == "EUR"){
+            return 1
+        } else if(symbol == "BTC"){
+            return 2
+        } else if(symbol == "LTC"){
+            return 3
+        }
+        //Default
+        return 0
+    }
+    
+    // Get row index for a currency symbol to select in picker
+    class func getCurrencyLabel(symbol: String) -> String {
+        if(symbol == "USD"){
+            return "Dolar"
+        } else if(symbol == "EUR"){
+            return "Euro"
+        } else if(symbol == "BTC"){
+            return "Bitcoin"
+        } else if(symbol == "LTC"){
+            return "Litecoin"
+        }
+        //Default
+        return "Dolar"
     }
     
     // Updates stock portfolio after stock data quotes have been updated
@@ -291,6 +333,61 @@ class Utils {
         portfolio.buyTotal = buyTotal
         portfolio.soldTotal = sellTotal
         portfolio.incomeTotal = incomeTotal
+        portfolio.brokerage = brokerage
+        portfolio.totalGain = totalGain
+        portfolio.currentTotal = mCurrentTotal
+        
+        portfolioDB.save(portfolio)
+        portfolioDB.close()
+    }
+    
+    // Updates currency portfolio after currency data quotes have been updated
+    class func updateCurrencyPortfolio(){
+        // Sold Currency Data
+        let soldCurrencyDB = SoldCurrencyDataDB()
+        let soldCurrencies = soldCurrencyDB.getSoldData()
+        soldCurrencyDB.close()
+        
+        var buyTotal: Double = 0.0
+        var totalGain: Double = 0.0
+        var variationTotal: Double = 0.0
+        var sellTotal: Double = 0.0
+        var brokerage: Double = 0.0
+        var mCurrentTotal: Double = 0.0
+        
+        soldCurrencies.forEach{ soldCurrency in
+            buyTotal += soldCurrency.buyValue
+            sellTotal += soldCurrency.currentTotal
+            brokerage += soldCurrency.brokerage
+            variationTotal += soldCurrency.brokerage + soldCurrency.sellGain
+            totalGain += soldCurrency.sellGain
+        }
+        
+        // Currency Data
+        let currencyDB = CurrencyDataDB()
+        let currencies = currencyDB.getData()
+        
+        currencies.forEach{ currency in
+            variationTotal += currency.variation
+            buyTotal += currency.buyValue
+            mCurrentTotal += currency.currentTotal
+            brokerage += currency.brokerage
+            totalGain += currency.totalGain
+        }
+        
+        // Updates current percent of each currency data
+        currencies.forEach{currency in
+            currency.currentPercent = currency.currentTotal/mCurrentTotal*100
+            currencyDB.save(currency)
+        }
+        
+        currencyDB.close()
+        
+        let portfolioDB = CurrencyPortfolioDB()
+        var portfolio = portfolioDB.getPortfolio()
+        portfolio.variationTotal = variationTotal
+        portfolio.buyTotal = buyTotal
+        portfolio.soldTotal = sellTotal
         portfolio.brokerage = brokerage
         portfolio.totalGain = totalGain
         portfolio.currentTotal = mCurrentTotal

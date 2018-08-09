@@ -20,7 +20,7 @@ class TreasuryService{
         let password = "user1133"
         let loginData = String(format: "%@:%@", username, password).data(using: String.Encoding.utf8)!
         let base64LoginData = loginData.base64EncodedString()
-        
+        var count = 0
         if(treasuries.count > 0){
             let general = TreasuryGeneral()
             for (index, treasury) in treasuries.enumerated() {
@@ -35,6 +35,7 @@ class TreasuryService{
                 request.httpMethod = "GET"
                 request.setValue("Basic \(base64LoginData)", forHTTPHeaderField: "Authorization")
                 http.dataTask(with: request){(data, response, error) in
+                    count = count + 1
                     if let data = data {
                         var treasuryIncomes: Array<NSDictionary> = []
                         do{
@@ -50,17 +51,18 @@ class TreasuryService{
                     } 
                     if let error = error {
                         // Return fail to main thread
-                        treasury.updateStatus = Constants.UpdateStatus.UPDATED
+                        treasury.updateStatus = Constants.UpdateStatus.NOT_UPDATED
                         returnTreasuries.append(treasury)
                         result = false
                     }
                     // only calls callback for last item
-                    if(index == (treasuries.count - 1)){
+                    if(count == (treasuries.count)){
                         callback(returnTreasuries,result)
                     }
                 }.resume()
             }
+        } else {
+            callback(returnTreasuries,false)
         }
-        callback(returnTreasuries,false)
     }
 }
