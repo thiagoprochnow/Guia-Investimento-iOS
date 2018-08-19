@@ -126,7 +126,7 @@ class SoldCurrencyDataView: UIViewController, UITableViewDataSource, UITableView
                 self.mediumSell = ""
             })
             let deleteAction = UIAlertAction(title: NSLocalizedString("Deletar", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
-                let deleteAlertController = UIAlertController(title: "Deletar fundo imobiliário da sua carteira?", message: "Se vendeu o fundo imobiliário, escolha Vender no menu de opções. Deletar esse fundo imobiliário irá remover todos os dados sobre ele, inclusive proventos recebidos.", preferredStyle: .alert)
+                let deleteAlertController = UIAlertController(title: "Deletar moeda da sua carteira?", message: "Se vendeu essa moeda, escolha Vender no menu de opções. Deletar essa moeda irá remover todos os dados sobre ela.", preferredStyle: .alert)
                 let okAction = UIAlertAction(title: NSLocalizedString("Deletar", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
                     self.deleteData(self.selectedSymbol)
                     self.currencyTable.reloadData()

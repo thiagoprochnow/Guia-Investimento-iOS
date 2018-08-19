@@ -98,7 +98,7 @@ class SellTreasuryForm: UIViewController, UITextFieldDelegate{
                                 db.close()
                                 
                                 let general = TreasuryGeneral()
-                                _ = general.updateTreasuryData(symbol!, type: Constants.TypeOp.BUY)
+                                _ = general.updateTreasuryData(symbol!, type: Constants.TypeOp.SELL)
                                 
                                 // Dismiss current view
                                 self.navigationController?.popViewController(animated: true)

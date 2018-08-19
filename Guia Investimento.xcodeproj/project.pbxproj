@@ -65,6 +65,33 @@
 		550FCC23210CF62F006E3FB8 /* FiiIncomeDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 550FCBEE210CF62F006E3FB8 /* FiiIncomeDetailsView.xib */; };
 		550FCC24210CF62F006E3FB8 /* SoldFiiDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550FCBEF210CF62F006E3FB8 /* SoldFiiDataView.swift */; };
 		550FCC25210CF62F006E3FB8 /* FiiGeneral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550FCBF1210CF62F006E3FB8 /* FiiGeneral.swift */; };
+		5512E9C1211CE94700A1FD76 /* FixedDataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5512E98B211CE94200A1FD76 /* FixedDataView.xib */; };
+		5512E9C2211CE94700A1FD76 /* FixedDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5512E98E211CE94200A1FD76 /* FixedDetailsView.swift */; };
+		5512E9C5211CE94700A1FD76 /* FixedDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5512E992211CE94200A1FD76 /* FixedDataCell.swift */; };
+		5512E9C6211CE94700A1FD76 /* FixedDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5512E993211CE94200A1FD76 /* FixedDataCell.xib */; };
+		5512E9C9211CE94700A1FD76 /* FixedPieChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5512E996211CE94200A1FD76 /* FixedPieChartCell.swift */; };
+		5512E9CA211CE94700A1FD76 /* FixedPieChartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5512E997211CE94200A1FD76 /* FixedPieChartCell.xib */; };
+		5512E9CB211CE94700A1FD76 /* FixedPortfolioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5512E998211CE94200A1FD76 /* FixedPortfolioCell.swift */; };
+		5512E9CC211CE94700A1FD76 /* FixedPortfolioCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5512E999211CE94200A1FD76 /* FixedPortfolioCell.xib */; };
+		5512E9CD211CE94700A1FD76 /* FixedTransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5512E99A211CE94200A1FD76 /* FixedTransactionCell.swift */; };
+		5512E9CE211CE94700A1FD76 /* FixedTransactionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5512E99B211CE94200A1FD76 /* FixedTransactionCell.xib */; };
+		5512E9D1211CE94700A1FD76 /* BuyFixedForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5512E99F211CE94500A1FD76 /* BuyFixedForm.swift */; };
+		5512E9D2211CE94700A1FD76 /* BuyFixedForm.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5512E9A0211CE94500A1FD76 /* BuyFixedForm.xib */; };
+		5512E9D3211CE94700A1FD76 /* SellFixedForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5512E9A1211CE94500A1FD76 /* SellFixedForm.swift */; };
+		5512E9D4211CE94700A1FD76 /* SellFixedForm.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5512E9A2211CE94500A1FD76 /* SellFixedForm.xib */; };
+		5512E9D8211CE94700A1FD76 /* FixedEditPriceForm.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5512E9A6211CE94500A1FD76 /* FixedEditPriceForm.xib */; };
+		5512E9D9211CE94700A1FD76 /* FixedGeneral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5512E9A8211CE94500A1FD76 /* FixedGeneral.swift */; };
+		5512E9DA211CE94700A1FD76 /* FixedDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5512E9A9211CE94500A1FD76 /* FixedDataView.swift */; };
+		5512E9DB211CE94700A1FD76 /* FixedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5512E9AB211CE94500A1FD76 /* FixedService.swift */; };
+		5512E9DE211CE94700A1FD76 /* FixedPortfolioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5512E9AE211CE94500A1FD76 /* FixedPortfolioView.swift */; };
+		5512E9E0211CE94700A1FD76 /* FixedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5512E9B1211CE94600A1FD76 /* FixedData.swift */; };
+		5512E9E2211CE94700A1FD76 /* FixedPortfolio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5512E9B3211CE94600A1FD76 /* FixedPortfolio.swift */; };
+		5512E9E3211CE94700A1FD76 /* FixedTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5512E9B4211CE94600A1FD76 /* FixedTransaction.swift */; };
+		5512E9E4211CE94700A1FD76 /* FixedDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5512E9B5211CE94600A1FD76 /* FixedDetailsView.xib */; };
+		5512E9E9211CE94700A1FD76 /* FixedPortfolioView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5512E9BA211CE94600A1FD76 /* FixedPortfolioView.xib */; };
+		5512E9EB211CE94700A1FD76 /* FixedDataDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5512E9BD211CE94600A1FD76 /* FixedDataDB.swift */; };
+		5512E9ED211CE94700A1FD76 /* FixedPortfolioDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5512E9BF211CE94600A1FD76 /* FixedPortfolioDB.swift */; };
+		5512E9EE211CE94700A1FD76 /* FixedTransactionDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5512E9C0211CE94600A1FD76 /* FixedTransactionDB.swift */; };
 		5518596B20E9860900BFB445 /* SoldStockDataDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5518596A20E9860900BFB445 /* SoldStockDataDB.swift */; };
 		5518596D20E9879700BFB445 /* SoldStockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5518596C20E9879600BFB445 /* SoldStockData.swift */; };
 		5518597020EAEE2900BFB445 /* SellStockForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5518596E20EAEE2900BFB445 /* SellStockForm.swift */; };
@@ -304,6 +331,7 @@
 		55A3915720D1E3C800244FC2 /* StockTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A3915620D1E3C800244FC2 /* StockTransaction.swift */; };
 		55A3915A20D1FB2C00244FC2 /* BuyStockForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A3915920D1FB2C00244FC2 /* BuyStockForm.swift */; };
 		55A3915C20D1FBD400244FC2 /* BuyStockForm.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55A3915B20D1FBD400244FC2 /* BuyStockForm.xib */; };
+		55BB958921223F9B00445875 /* FixedEditPriceForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BB958821223F9900445875 /* FixedEditPriceForm.swift */; };
 		55BE6BB3211BA4D40054499C /* SoldCurrencyDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55BE6BB2211BA4D20054499C /* SoldCurrencyDataCell.xib */; };
 		55CB063920F6BB8000085491 /* StockSplitForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55CB063720F6BB7F00085491 /* StockSplitForm.swift */; };
 		55CB063A20F6BB8000085491 /* StockSplitForm.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55CB063820F6BB7F00085491 /* StockSplitForm.xib */; };
@@ -355,6 +383,10 @@
 		55CCF48B210FC8D900D2E95B /* TreasuryTransactionDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55CCF457210FC8D900D2E95B /* TreasuryTransactionDB.swift */; };
 		55CCF48C210FC8D900D2E95B /* SoldTreasuryDataDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55CCF458210FC8D900D2E95B /* SoldTreasuryDataDB.swift */; };
 		55CCF48D210FC8D900D2E95B /* TreasuryDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55CCF459210FC8D900D2E95B /* TreasuryDataView.swift */; };
+		55F716692128B75800480EE3 /* Cdi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F716672128B75300480EE3 /* Cdi.swift */; };
+		55F7166A2128B75800480EE3 /* Ipca.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F716682128B75500480EE3 /* Ipca.swift */; };
+		55F7166D2128B9DF00480EE3 /* CdiDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F7166B2128B9DD00480EE3 /* CdiDB.swift */; };
+		55F7166E2128B9DF00480EE3 /* IpcaDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F7166C2128B9DF00480EE3 /* IpcaDB.swift */; };
 		7F8B27C97347494F1BD6D248 /* Pods_Guia_Investimento.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51EFC11D95A512F80EB9E222 /* Pods_Guia_Investimento.framework */; };
 /* End PBXBuildFile section */
 
@@ -436,6 +468,33 @@
 		550FCBEE210CF62F006E3FB8 /* FiiIncomeDetailsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FiiIncomeDetailsView.xib; sourceTree = "<group>"; };
 		550FCBEF210CF62F006E3FB8 /* SoldFiiDataView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoldFiiDataView.swift; sourceTree = "<group>"; };
 		550FCBF1210CF62F006E3FB8 /* FiiGeneral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiiGeneral.swift; sourceTree = "<group>"; };
+		5512E98B211CE94200A1FD76 /* FixedDataView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FixedDataView.xib; sourceTree = "<group>"; };
+		5512E98E211CE94200A1FD76 /* FixedDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixedDetailsView.swift; sourceTree = "<group>"; };
+		5512E992211CE94200A1FD76 /* FixedDataCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixedDataCell.swift; sourceTree = "<group>"; };
+		5512E993211CE94200A1FD76 /* FixedDataCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FixedDataCell.xib; sourceTree = "<group>"; };
+		5512E996211CE94200A1FD76 /* FixedPieChartCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixedPieChartCell.swift; sourceTree = "<group>"; };
+		5512E997211CE94200A1FD76 /* FixedPieChartCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FixedPieChartCell.xib; sourceTree = "<group>"; };
+		5512E998211CE94200A1FD76 /* FixedPortfolioCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixedPortfolioCell.swift; sourceTree = "<group>"; };
+		5512E999211CE94200A1FD76 /* FixedPortfolioCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FixedPortfolioCell.xib; sourceTree = "<group>"; };
+		5512E99A211CE94200A1FD76 /* FixedTransactionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixedTransactionCell.swift; sourceTree = "<group>"; };
+		5512E99B211CE94200A1FD76 /* FixedTransactionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FixedTransactionCell.xib; sourceTree = "<group>"; };
+		5512E99F211CE94500A1FD76 /* BuyFixedForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyFixedForm.swift; sourceTree = "<group>"; };
+		5512E9A0211CE94500A1FD76 /* BuyFixedForm.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BuyFixedForm.xib; sourceTree = "<group>"; };
+		5512E9A1211CE94500A1FD76 /* SellFixedForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SellFixedForm.swift; sourceTree = "<group>"; };
+		5512E9A2211CE94500A1FD76 /* SellFixedForm.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SellFixedForm.xib; sourceTree = "<group>"; };
+		5512E9A6211CE94500A1FD76 /* FixedEditPriceForm.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FixedEditPriceForm.xib; sourceTree = "<group>"; };
+		5512E9A8211CE94500A1FD76 /* FixedGeneral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixedGeneral.swift; sourceTree = "<group>"; };
+		5512E9A9211CE94500A1FD76 /* FixedDataView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixedDataView.swift; sourceTree = "<group>"; };
+		5512E9AB211CE94500A1FD76 /* FixedService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixedService.swift; sourceTree = "<group>"; };
+		5512E9AE211CE94500A1FD76 /* FixedPortfolioView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixedPortfolioView.swift; sourceTree = "<group>"; };
+		5512E9B1211CE94600A1FD76 /* FixedData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixedData.swift; sourceTree = "<group>"; };
+		5512E9B3211CE94600A1FD76 /* FixedPortfolio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixedPortfolio.swift; sourceTree = "<group>"; };
+		5512E9B4211CE94600A1FD76 /* FixedTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixedTransaction.swift; sourceTree = "<group>"; };
+		5512E9B5211CE94600A1FD76 /* FixedDetailsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FixedDetailsView.xib; sourceTree = "<group>"; };
+		5512E9BA211CE94600A1FD76 /* FixedPortfolioView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FixedPortfolioView.xib; sourceTree = "<group>"; };
+		5512E9BD211CE94600A1FD76 /* FixedDataDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixedDataDB.swift; sourceTree = "<group>"; };
+		5512E9BF211CE94600A1FD76 /* FixedPortfolioDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixedPortfolioDB.swift; sourceTree = "<group>"; };
+		5512E9C0211CE94600A1FD76 /* FixedTransactionDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixedTransactionDB.swift; sourceTree = "<group>"; };
 		5518596A20E9860900BFB445 /* SoldStockDataDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoldStockDataDB.swift; sourceTree = "<group>"; };
 		5518596C20E9879600BFB445 /* SoldStockData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoldStockData.swift; sourceTree = "<group>"; };
 		5518596E20EAEE2900BFB445 /* SellStockForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SellStockForm.swift; sourceTree = "<group>"; };
@@ -684,6 +743,7 @@
 		55A3915620D1E3C800244FC2 /* StockTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockTransaction.swift; sourceTree = "<group>"; };
 		55A3915920D1FB2C00244FC2 /* BuyStockForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyStockForm.swift; sourceTree = "<group>"; };
 		55A3915B20D1FBD400244FC2 /* BuyStockForm.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BuyStockForm.xib; sourceTree = "<group>"; };
+		55BB958821223F9900445875 /* FixedEditPriceForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixedEditPriceForm.swift; sourceTree = "<group>"; };
 		55BE6BB2211BA4D20054499C /* SoldCurrencyDataCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SoldCurrencyDataCell.xib; sourceTree = "<group>"; };
 		55CB063720F6BB7F00085491 /* StockSplitForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockSplitForm.swift; sourceTree = "<group>"; };
 		55CB063820F6BB7F00085491 /* StockSplitForm.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StockSplitForm.xib; sourceTree = "<group>"; };
@@ -735,6 +795,10 @@
 		55CCF457210FC8D900D2E95B /* TreasuryTransactionDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreasuryTransactionDB.swift; sourceTree = "<group>"; };
 		55CCF458210FC8D900D2E95B /* SoldTreasuryDataDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoldTreasuryDataDB.swift; sourceTree = "<group>"; };
 		55CCF459210FC8D900D2E95B /* TreasuryDataView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreasuryDataView.swift; sourceTree = "<group>"; };
+		55F716672128B75300480EE3 /* Cdi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cdi.swift; sourceTree = "<group>"; };
+		55F716682128B75500480EE3 /* Ipca.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ipca.swift; sourceTree = "<group>"; };
+		55F7166B2128B9DD00480EE3 /* CdiDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CdiDB.swift; sourceTree = "<group>"; };
+		55F7166C2128B9DF00480EE3 /* IpcaDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IpcaDB.swift; sourceTree = "<group>"; };
 		F105E380A464D400066CE82F /* Pods-Guia Investimento.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Guia Investimento.release.xcconfig"; path = "Pods/Target Support Files/Pods-Guia Investimento/Pods-Guia Investimento.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -827,6 +891,74 @@
 				550FCBF1210CF62F006E3FB8 /* FiiGeneral.swift */,
 			);
 			path = General;
+			sourceTree = "<group>";
+		};
+		5512E98F211CE94200A1FD76 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				5512E992211CE94200A1FD76 /* FixedDataCell.swift */,
+				5512E993211CE94200A1FD76 /* FixedDataCell.xib */,
+				5512E996211CE94200A1FD76 /* FixedPieChartCell.swift */,
+				5512E997211CE94200A1FD76 /* FixedPieChartCell.xib */,
+				5512E998211CE94200A1FD76 /* FixedPortfolioCell.swift */,
+				5512E999211CE94200A1FD76 /* FixedPortfolioCell.xib */,
+				5512E99A211CE94200A1FD76 /* FixedTransactionCell.swift */,
+				5512E99B211CE94200A1FD76 /* FixedTransactionCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		5512E99E211CE94500A1FD76 /* Forms */ = {
+			isa = PBXGroup;
+			children = (
+				5512E99F211CE94500A1FD76 /* BuyFixedForm.swift */,
+				5512E9A0211CE94500A1FD76 /* BuyFixedForm.xib */,
+				5512E9A1211CE94500A1FD76 /* SellFixedForm.swift */,
+				5512E9A2211CE94500A1FD76 /* SellFixedForm.xib */,
+				55BB958821223F9900445875 /* FixedEditPriceForm.swift */,
+				5512E9A6211CE94500A1FD76 /* FixedEditPriceForm.xib */,
+			);
+			path = Forms;
+			sourceTree = "<group>";
+		};
+		5512E9A7211CE94500A1FD76 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				5512E9A8211CE94500A1FD76 /* FixedGeneral.swift */,
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
+		5512E9AA211CE94500A1FD76 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				5512E9AB211CE94500A1FD76 /* FixedService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		5512E9AF211CE94600A1FD76 /* Object */ = {
+			isa = PBXGroup;
+			children = (
+				55F716672128B75300480EE3 /* Cdi.swift */,
+				55F716682128B75500480EE3 /* Ipca.swift */,
+				5512E9B1211CE94600A1FD76 /* FixedData.swift */,
+				5512E9B3211CE94600A1FD76 /* FixedPortfolio.swift */,
+				5512E9B4211CE94600A1FD76 /* FixedTransaction.swift */,
+			);
+			path = Object;
+			sourceTree = "<group>";
+		};
+		5512E9BB211CE94600A1FD76 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				55F7166B2128B9DD00480EE3 /* CdiDB.swift */,
+				55F7166C2128B9DF00480EE3 /* IpcaDB.swift */,
+				5512E9BD211CE94600A1FD76 /* FixedDataDB.swift */,
+				5512E9BF211CE94600A1FD76 /* FixedPortfolioDB.swift */,
+				5512E9C0211CE94600A1FD76 /* FixedTransactionDB.swift */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 		5521AF1F210A8D5D00AB6345 /* Pods */ = {
@@ -1420,6 +1552,18 @@
 		559F12F420C037FD006BC844 /* FixedIncome */ = {
 			isa = PBXGroup;
 			children = (
+				5512E98F211CE94200A1FD76 /* Cell */,
+				5512E9BB211CE94600A1FD76 /* Database */,
+				5512E99E211CE94500A1FD76 /* Forms */,
+				5512E9A7211CE94500A1FD76 /* General */,
+				5512E9AF211CE94600A1FD76 /* Object */,
+				5512E9AA211CE94500A1FD76 /* Service */,
+				5512E9A9211CE94500A1FD76 /* FixedDataView.swift */,
+				5512E98B211CE94200A1FD76 /* FixedDataView.xib */,
+				5512E98E211CE94200A1FD76 /* FixedDetailsView.swift */,
+				5512E9B5211CE94600A1FD76 /* FixedDetailsView.xib */,
+				5512E9AE211CE94500A1FD76 /* FixedPortfolioView.swift */,
+				5512E9BA211CE94600A1FD76 /* FixedPortfolioView.xib */,
 			);
 			path = FixedIncome;
 			sourceTree = "<group>";
@@ -1720,11 +1864,13 @@
 				550FCC0C210CF62F006E3FB8 /* FiiPieChartCell.xib in Resources */,
 				552D942120BB2BB20041872B /* PortfolioMainController.xib in Resources */,
 				552F5AA221165084002F3C1A /* CurrencyDetailsView.xib in Resources */,
+				5512E9C1211CE94700A1FD76 /* FixedDataView.xib in Resources */,
 				5521AFDB210A8D5E00AB6345 /* README.md in Resources */,
 				55338AA820F6CFAF002AEFEA /* StockIncomeDetailsView.xib in Resources */,
 				550FCC12210CF62F006E3FB8 /* FiiPortfolioView.xib in Resources */,
 				5503A81520F24C510039ACCD /* StockIncomeCell.xib in Resources */,
 				55338AAC20F80D5A002AEFEA /* StockMainIncomesView.xib in Resources */,
+				5512E9D8211CE94700A1FD76 /* FixedEditPriceForm.xib in Resources */,
 				550FCC10210CF62F006E3FB8 /* FiiTransactionCell.xib in Resources */,
 				5521B06C210A8D5E00AB6345 /* Pods-Guia Investimento-resources.sh in Resources */,
 				5521B067210A8D5E00AB6345 /* Info.plist in Resources */,
@@ -1735,17 +1881,22 @@
 				550FCC23210CF62F006E3FB8 /* FiiIncomeDetailsView.xib in Resources */,
 				5521B063210A8D5E00AB6345 /* Manifest.lock in Resources */,
 				55CCF487210FC8D900D2E95B /* SoldTreasuryDataCell.xib in Resources */,
+				5512E9E4211CE94700A1FD76 /* FixedDetailsView.xib in Resources */,
+				5512E9E9211CE94700A1FD76 /* FixedPortfolioView.xib in Resources */,
 				55CCF462210FC8D900D2E95B /* TreasuryDataView.xib in Resources */,
 				550FCC20210CF62F006E3FB8 /* FiiGroupingForm.xib in Resources */,
 				559F12FC20C0436C006BC844 /* StockPortfolioView.xib in Resources */,
 				5521B065210A8D5E00AB6345 /* Charts.xcconfig in Resources */,
 				5521B069210A8D5E00AB6345 /* Pods-Guia Investimento-acknowledgements.plist in Resources */,
 				550FCBF9210CF62F006E3FB8 /* FiiMainIncomesView.xib in Resources */,
+				5512E9D4211CE94700A1FD76 /* SellFixedForm.xib in Resources */,
+				5512E9C6211CE94700A1FD76 /* FixedDataCell.xib in Resources */,
 				55CCF460210FC8D900D2E95B /* TreasuryIncomesView.xib in Resources */,
 				5521AFDA210A8D5E00AB6345 /* LICENSE in Resources */,
 				552F5AB821165084002F3C1A /* CurrencyEditPriceForm.xib in Resources */,
 				552D941120BB22F30041872B /* Assets.xcassets in Resources */,
 				5521B06B210A8D5E00AB6345 /* Pods-Guia Investimento-frameworks.sh in Resources */,
+				5512E9CA211CE94700A1FD76 /* FixedPieChartCell.xib in Resources */,
 				552F5A9521165084002F3C1A /* CurrencyDataView.xib in Resources */,
 				550FCBF2210CF62F006E3FB8 /* SoldFiiDataView.xib in Resources */,
 				5542245E20C4BE36001B2734 /* StockDataCell.xib in Resources */,
@@ -1761,6 +1912,7 @@
 				552F5AAE21165084002F3C1A /* CurrencyTransactionCell.xib in Resources */,
 				55CCF479210FC8D900D2E95B /* SellTreasuryForm.xib in Resources */,
 				55CB063D20F6BEDB00085491 /* StockGroupingForm.xib in Resources */,
+				5512E9D2211CE94700A1FD76 /* BuyFixedForm.xib in Resources */,
 				5518597120EAEE2900BFB445 /* SellStockForm.xib in Resources */,
 				55CCF473210FC8D900D2E95B /* TreasuryEditPriceForm.xib in Resources */,
 				550FCC03210CF62F006E3FB8 /* FiiDetailsView.xib in Resources */,
@@ -1782,9 +1934,11 @@
 				55CCF47F210FC8D900D2E95B /* TreasuryIncomeCell.xib in Resources */,
 				553397782109428E00798033 /* StockEditPriceForm.xib in Resources */,
 				552F5AAA21165084002F3C1A /* CurrencyPieChartCell.xib in Resources */,
+				5512E9CE211CE94700A1FD76 /* FixedTransactionCell.xib in Resources */,
 				551D525F20E7283F00B4A37F /* StockTransactionCell.xib in Resources */,
 				550FCC0E210CF62F006E3FB8 /* FiiPortfolioCell.xib in Resources */,
 				55CCF483210FC8D900D2E95B /* TreasuryPortfolioCell.xib in Resources */,
+				5512E9CC211CE94700A1FD76 /* FixedPortfolioCell.xib in Resources */,
 				55CCF45B210FC8D900D2E95B /* TreasuryMainIncomesView.xib in Resources */,
 				55CCF46F210FC8D900D2E95B /* BuyTreasuryForm.xib in Resources */,
 				551D525720E7102100B4A37F /* StockDetailsView.xib in Resources */,
@@ -1838,6 +1992,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5512E9C5211CE94700A1FD76 /* FixedDataCell.swift in Sources */,
+				5512E9CB211CE94700A1FD76 /* FixedPortfolioCell.swift in Sources */,
 				5521AFF5210A8D5E00AB6345 /* ChartBaseDataSet.swift in Sources */,
 				5566031420E06EAE0041FC8B /* StockService.swift in Sources */,
 				5521B055210A8D5E00AB6345 /* ScatterChartRenderer.swift in Sources */,
@@ -1846,6 +2002,7 @@
 				55CCF484210FC8D900D2E95B /* TreasuryTransactionCell.swift in Sources */,
 				552F5AAF21165084002F3C1A /* CurrencyPortfolioView.swift in Sources */,
 				5503A81020F1048D0039ACCD /* StockIncome.swift in Sources */,
+				5512E9DB211CE94700A1FD76 /* FixedService.swift in Sources */,
 				5521B000210A8D5E00AB6345 /* CandleChartDataSet.swift in Sources */,
 				550FCBF7210CF62F006E3FB8 /* FiiTransactionDB.swift in Sources */,
 				5521B057210A8D5E00AB6345 /* XAxisRendererHorizontalBarChart.swift in Sources */,
@@ -1880,8 +2037,10 @@
 				552F5AA121165084002F3C1A /* CurrencyDataView.swift in Sources */,
 				5521B030210A8D5E00AB6345 /* BarChartDataProvider.swift in Sources */,
 				5521B061210A8D5E00AB6345 /* TransformerHorizontalBarChart.swift in Sources */,
+				55F7166E2128B9DF00480EE3 /* IpcaDB.swift in Sources */,
 				557F72A921029FD4000758FE /* StockPortfolioCell.swift in Sources */,
 				5521B034210A8D5E00AB6345 /* ChartDataProvider.swift in Sources */,
+				5512E9EE211CE94700A1FD76 /* FixedTransactionDB.swift in Sources */,
 				5521AFF4210A8D5E00AB6345 /* YAxis.swift in Sources */,
 				5521B04B210A8D5E00AB6345 /* RadarChartRenderer.swift in Sources */,
 				5540A85520BCC2BB0087498B /* KYEmbedMainControllerSegue.swift in Sources */,
@@ -1939,6 +2098,7 @@
 				552F5AB721165084002F3C1A /* CurrencyEditPriceForm.swift in Sources */,
 				5521B053210A8D5E00AB6345 /* TriangleShapeRenderer.swift in Sources */,
 				5518596D20E9879700BFB445 /* SoldStockData.swift in Sources */,
+				5512E9EB211CE94700A1FD76 /* FixedDataDB.swift in Sources */,
 				5521AFF9210A8D5E00AB6345 /* BarLineScatterCandleBubbleChartData.swift in Sources */,
 				550FCC1F210CF62F006E3FB8 /* FiiGroupingForm.swift in Sources */,
 				550FCBFA210CF62F006E3FB8 /* FiiMainIncomesView.swift in Sources */,
@@ -1953,9 +2113,11 @@
 				5521AFFD210A8D5E00AB6345 /* BubbleChartDataSet.swift in Sources */,
 				5501D8F620ED972500C7D4E5 /* StockDividendForm.swift in Sources */,
 				552F5AB321165084002F3C1A /* SellCurrencyForm.swift in Sources */,
+				5512E9ED211CE94700A1FD76 /* FixedPortfolioDB.swift in Sources */,
 				5521B042210A8D5E00AB6345 /* CandleStickChartRenderer.swift in Sources */,
 				5521B012210A8D5E00AB6345 /* IBarChartDataSet.swift in Sources */,
 				550FCC24210CF62F006E3FB8 /* SoldFiiDataView.swift in Sources */,
+				55BB958921223F9B00445875 /* FixedEditPriceForm.swift in Sources */,
 				5521B021210A8D5E00AB6345 /* DefaultValueFormatter.swift in Sources */,
 				5521AFE6210A8D5E00AB6345 /* PieChartView.swift in Sources */,
 				552F5AAB21165084002F3C1A /* CurrencyPortfolioCell.swift in Sources */,
@@ -1964,6 +2126,7 @@
 				5521AFE9210A8D5E00AB6345 /* ScatterChartView.swift in Sources */,
 				5521B037210A8D5E00AB6345 /* ScatterChartDataProvider.swift in Sources */,
 				5521AFEA210A8D5E00AB6345 /* AxisBase.swift in Sources */,
+				5512E9E3211CE94700A1FD76 /* FixedTransaction.swift in Sources */,
 				550FCBF6210CF62F006E3FB8 /* FiiPortfolioDB.swift in Sources */,
 				55CB063E20F6BEDB00085491 /* StockGroupingForm.swift in Sources */,
 				55CCF47E210FC8D900D2E95B /* TreasuryIncomeCell.swift in Sources */,
@@ -1975,6 +2138,7 @@
 				5521AFF8210A8D5E00AB6345 /* BarChartDataSet.swift in Sources */,
 				5521AFF2210A8D5E00AB6345 /* MarkerView.swift in Sources */,
 				55CCF489210FC8D900D2E95B /* TreasuryIncomeDB.swift in Sources */,
+				5512E9DA211CE94700A1FD76 /* FixedDataView.swift in Sources */,
 				55CCF47C210FC8D900D2E95B /* TreasuryDataCell.swift in Sources */,
 				5566030620E0365E0041FC8B /* SQLiteHelper.swift in Sources */,
 				5521B049210A8D5E00AB6345 /* LineScatterCandleRadarRenderer.swift in Sources */,
@@ -1988,6 +2152,7 @@
 				5521B01A210A8D5E00AB6345 /* IPieChartDataSet.swift in Sources */,
 				550FCBFE210CF62F006E3FB8 /* FiiData.swift in Sources */,
 				552F5ABE21165085002F3C1A /* CurrencyTransaction.swift in Sources */,
+				5512E9DE211CE94700A1FD76 /* FixedPortfolioView.swift in Sources */,
 				552F5ABA21165085002F3C1A /* SoldCurrencyData.swift in Sources */,
 				5521AFED210A8D5E00AB6345 /* Description.swift in Sources */,
 				550FCC1B210CF62F006E3FB8 /* FiiDividendForm.swift in Sources */,
@@ -2003,10 +2168,12 @@
 				552D940A20BB22E90041872B /* AppDelegate.swift in Sources */,
 				5521B04E210A8D5E00AB6345 /* ChevronUpShapeRenderer.swift in Sources */,
 				55CCF46C210FC8D900D2E95B /* TreasuryService.swift in Sources */,
+				55F7166A2128B75800480EE3 /* Ipca.swift in Sources */,
 				5521B04D210A8D5E00AB6345 /* ChevronDownShapeRenderer.swift in Sources */,
 				5521B006210A8D5E00AB6345 /* LineChartData.swift in Sources */,
 				5521B020210A8D5E00AB6345 /* DefaultFillFormatter.swift in Sources */,
 				5521B047210A8D5E00AB6345 /* LineChartRenderer.swift in Sources */,
+				5512E9E2211CE94700A1FD76 /* FixedPortfolio.swift in Sources */,
 				551D525920E7112C00B4A37F /* StockIncomesView.swift in Sources */,
 				550FCC17210CF62F006E3FB8 /* SellFiiForm.swift in Sources */,
 				5503A81220F107680039ACCD /* StockIncomeDB.swift in Sources */,
@@ -2015,17 +2182,21 @@
 				550FCC07210CF62F006E3FB8 /* FiiDataCell.swift in Sources */,
 				550FCC14210CF62F006E3FB8 /* FiiService.swift in Sources */,
 				5521B018210A8D5E00AB6345 /* ILineRadarChartDataSet.swift in Sources */,
+				55F716692128B75800480EE3 /* Cdi.swift in Sources */,
 				55811DE820E1B486006BCE0C /* StockGeneral.swift in Sources */,
 				5521B02F210A8D5E00AB6345 /* Range.swift in Sources */,
+				55F7166D2128B9DF00480EE3 /* CdiDB.swift in Sources */,
 				5542245B20C4BDD5001B2734 /* StockDataCell.swift in Sources */,
 				5521AFEB210A8D5E00AB6345 /* ChartLimitLine.swift in Sources */,
 				552F5AA521165084002F3C1A /* CurrencyDataCell.swift in Sources */,
 				550FCBFC210CF62F006E3FB8 /* FiiDataView.swift in Sources */,
 				551D525520E70FFA00B4A37F /* StockDetailsView.swift in Sources */,
 				55CCF46A210FC8D900D2E95B /* TreasuryMainIncomesView.swift in Sources */,
+				5512E9E0211CE94700A1FD76 /* FixedData.swift in Sources */,
 				554E16E820E44542006B864D /* SoldStockDataCell.swift in Sources */,
 				55A3915720D1E3C800244FC2 /* StockTransaction.swift in Sources */,
 				5521B003210A8D5E00AB6345 /* ChartDataEntryBase.swift in Sources */,
+				5512E9C2211CE94700A1FD76 /* FixedDetailsView.swift in Sources */,
 				5521B039210A8D5E00AB6345 /* AnimatedViewPortJob.swift in Sources */,
 				5521AFE4210A8D5E00AB6345 /* HorizontalBarChartView.swift in Sources */,
 				550FCC0D210CF62F006E3FB8 /* FiiPortfolioCell.swift in Sources */,
@@ -2052,8 +2223,10 @@
 				5521B016210A8D5E00AB6345 /* IChartDataSet.swift in Sources */,
 				55A3915A20D1FB2C00244FC2 /* BuyStockForm.swift in Sources */,
 				5521AFFB210A8D5E00AB6345 /* BubbleChartData.swift in Sources */,
+				5512E9CD211CE94700A1FD76 /* FixedTransactionCell.swift in Sources */,
 				55A3915520D1E1A100244FC2 /* StockData.swift in Sources */,
 				55CB063920F6BB8000085491 /* StockSplitForm.swift in Sources */,
+				5512E9C9211CE94700A1FD76 /* FixedPieChartCell.swift in Sources */,
 				5521AFE3210A8D5E00AB6345 /* CombinedChartView.swift in Sources */,
 				5521B004210A8D5E00AB6345 /* ChartDataSet.swift in Sources */,
 				5521B059210A8D5E00AB6345 /* YAxisRenderer.swift in Sources */,
@@ -2076,6 +2249,7 @@
 				5521AFDF210A8D5E00AB6345 /* BarLineChartViewBase.swift in Sources */,
 				550FCBF4210CF62F006E3FB8 /* FiiDataDB.swift in Sources */,
 				552F5A9221165084002F3C1A /* SoldCurrencyDataView.swift in Sources */,
+				5512E9D3211CE94700A1FD76 /* SellFixedForm.swift in Sources */,
 				5521B062210A8D5E00AB6345 /* ViewPortHandler.swift in Sources */,
 				5540A85320BCC2BB0087498B /* KYDrawerController.swift in Sources */,
 				5521B01C210A8D5E00AB6345 /* IScatterChartDataSet.swift in Sources */,
@@ -2089,6 +2263,7 @@
 				559F131620C0A3AC006BC844 /* TabController.swift in Sources */,
 				5521B00D210A8D5E00AB6345 /* RadarChartData.swift in Sources */,
 				5521AFF3210A8D5E00AB6345 /* XAxis.swift in Sources */,
+				5512E9D1211CE94700A1FD76 /* BuyFixedForm.swift in Sources */,
 				552F5AB021165084002F3C1A /* CurrencyService.swift in Sources */,
 				5521B005210A8D5E00AB6345 /* CombinedChartData.swift in Sources */,
 				5521B03B210A8D5E00AB6345 /* MoveViewJob.swift in Sources */,
@@ -2099,6 +2274,7 @@
 				5521AFF0210A8D5E00AB6345 /* LegendEntry.swift in Sources */,
 				5521B028210A8D5E00AB6345 /* CombinedHighlighter.swift in Sources */,
 				5566031120E06A170041FC8B /* Constants.swift in Sources */,
+				5512E9D9211CE94700A1FD76 /* FixedGeneral.swift in Sources */,
 				5521B045210A8D5E00AB6345 /* HorizontalBarChartRenderer.swift in Sources */,
 				55338AAE20F81E53002AEFEA /* StockPortfolio.swift in Sources */,
 			);

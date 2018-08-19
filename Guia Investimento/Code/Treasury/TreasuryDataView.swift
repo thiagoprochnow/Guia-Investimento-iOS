@@ -162,7 +162,7 @@ class TreasuryDataView: UIViewController, UITableViewDataSource, UITableViewDele
                 self.mediumSell = ""
             })
             let deleteAction = UIAlertAction(title: NSLocalizedString("Deletar", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
-                let deleteAlertController = UIAlertController(title: "Deletar fundo imobiliário da sua carteira?", message: "Se vendeu o fundo imobiliário, escolha Vender no menu de opções. Deletar esse fundo imobiliário irá remover todos os dados sobre ele, inclusive proventos recebidos.", preferredStyle: .alert)
+                let deleteAlertController = UIAlertController(title: "Deletar titulo do tesouro da sua carteira?", message: "Se vendeu esse titulo, escolha Vender no menu de opções. Deletar ele irá remover todos os dados sobre ele, inclusive cupons recebidos.", preferredStyle: .alert)
                 let okAction = UIAlertAction(title: NSLocalizedString("Deletar", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
                     self.deleteData(self.selectedSymbol)
                     self.treasuryTable.reloadData()

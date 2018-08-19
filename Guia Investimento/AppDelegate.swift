@@ -127,5 +127,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let soldCurrencyDataDB = SoldCurrencyDataDB()
         soldCurrencyDataDB.createTable()
         soldCurrencyDataDB.close()
+        
+        // FIXED
+        
+        // FIXED Portfolio
+        let fixedPortfolioDB = FixedPortfolioDB()
+        fixedPortfolioDB.createTable()
+        fixedPortfolioDB.close()
+        // FIXED Transaction
+        let fixedTransactionDB = FixedTransactionDB()
+        fixedTransactionDB.createTable()
+        fixedTransactionDB.close()
+        // FIXED Data
+        let fixedDataDB = FixedDataDB()
+        fixedDataDB.createTable()
+        fixedDataDB.close()
+        // CDI Table
+        let cdiDB = CdiDB()
+        cdiDB.createTable()
+        cdiDB.close()
+        // IPCA Table
+        let ipcaDB = IpcaDB()
+        ipcaDB.createTable()
+        ipcaDB.close()
+        
     }
 }

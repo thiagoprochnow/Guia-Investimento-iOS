@@ -11,6 +11,7 @@ class FiiService{
     class func updateFiiQuotes(_ callback: @escaping(_ fiisCallback:Array<FiiData>,_ error:Bool) -> Void){
         let fiiDataDB = FiiDataDB()
         let fiis = fiiDataDB.getDataByStatus(Constants.Status.ACTIVE)
+        fiiDataDB.close()
         var returnFiis: Array<FiiData> = []
         var success: Bool = true
         
@@ -96,12 +97,15 @@ class FiiService{
                         callback(returnFiis,false)
                     }
                 }.resume()
+        } else {
+            callback(returnFiis,false)
         }
     }
     
     class func updateFiiIncomes(_ callback: @escaping(_ error:Bool) -> Void){
         let fiiDataDB = FiiDataDB()
         let fiis = fiiDataDB.getDataByStatus(Constants.Status.ACTIVE)
+        fiiDataDB.close()
         var returnIncomes: Array<FiiIncome> = []
         var success: Bool = true
         var result = false
@@ -172,6 +176,8 @@ class FiiService{
                     }
                 }.resume()
             }
+        } else {
+            callback(true)
         }
     }
 }

@@ -11,6 +11,7 @@ class TreasuryService{
     class func updateTreasuryQuotes(_ callback: @escaping(_ treasuriesCallback:Array<TreasuryData>,_ error:Bool) -> Void){
         let treasuryDataDB = TreasuryDataDB()
         let treasuries = treasuryDataDB.getDataByStatus(Constants.Status.ACTIVE)
+        treasuryDataDB.close()
         var success: Bool = true
         var result = false
         var returnTreasuries: Array<TreasuryData> = []

@@ -29,11 +29,13 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
     var fiiRefresh = false
     var treasuryRefresh = false
     var currencyRefresh = false
+    var fixedRefresh = false
     
     var stocks:Array<StockData> = []
     var fiis:Array<FiiData> = []
     var treasuries:Array<TreasuryData> = []
     var currencies:Array<CurrencyData> = []
+    var fixeds:Array<FixedData> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -138,6 +140,17 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
                 view.title = "Tesouro"
                 view.viewControllers = [portfolio, data, soldData, income]
                 break
+            case 1:
+                let portfolio = FixedPortfolioView()
+                let data = FixedDataView()
+                portfolio.tabBarItem.title = ""
+                portfolio.tabBarItem.image =  Utils.makeThumbnailFromText(text: "Visão Geral")
+                data.tabBarItem.title = ""
+                data.tabBarItem.image = Utils.makeThumbnailFromText(text: "Carteira")
+                
+                view.title = "Renda Fixa"
+                view.viewControllers = [portfolio, data]
+                break
             case 2:
                 let portfolio = StockPortfolioView()
                 let data = StockDataView()
@@ -201,6 +214,9 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
         activity.startAnimating()
         let button = UIBarButtonItem.init(customView: activity)
         nav.topViewController?.navigationItem.rightBarButtonItem = button
+        let fixedDB = FixedDataDB()
+        let fixeds = fixedDB.getData()
+        fixedDB.close()
         
         // Stocks
         StockService.updateStockIncomes({(_ error:Bool) -> Void in
@@ -241,10 +257,18 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
                 self.updateView()
             }
         })
+        
+        // FIXED
+        FixedService.updateFixedQuotes({(_ error:Bool) -> Void in
+            self.fixedRefresh = true
+            DispatchQueue.main.async {
+                self.updateView()
+            }
+        })
     }
     
     func updateView(){
-        if(self.stockRefresh && self.fiiRefresh && self.treasuryRefresh && currencyRefresh){
+        if(self.stockRefresh && self.fiiRefresh && self.treasuryRefresh && self.currencyRefresh && self.fixedRefresh){
             // Update and save values
             
             //Stocks
@@ -302,6 +326,25 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
             }
             currencyDB.close()
             Utils.updateCurrencyPortfolio()
+            
+            // Fixed
+            let general = FixedGeneral()
+            let fixedDB = FixedDataDB()
+            let fixeds = fixedDB.getData()
+            var returnFixeds:Array<FixedData> = []
+            fixeds.forEach{ fixed in
+                let fixed = general.updateFixedQuote(fixed)
+                returnFixeds.append(fixed)
+            }
+            returnFixeds.forEach{ fixed in
+                let currentTotal = fixed.currentTotal
+                let totalGain = currentTotal - fixed.buyTotal
+                fixed.currentTotal = currentTotal
+                fixed.totalGain = totalGain
+                fixedDB.save(fixed)
+            }
+            fixedDB.close()
+            Utils.updateFixedPortfolio()
             
             nav.navigationController?.visibleViewController?.viewWillAppear(false)
             nav.topViewController?.viewWillAppear(false)

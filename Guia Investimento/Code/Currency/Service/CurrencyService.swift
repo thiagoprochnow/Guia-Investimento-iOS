@@ -11,6 +11,7 @@ class CurrencyService{
     class func updateCurrencyQuotes(_ callback: @escaping(_ currenciesCallback:Array<CurrencyData>,_ error:Bool) -> Void){
         let currencyDataDB = CurrencyDataDB()
         let currencies = currencyDataDB.getDataByStatus(Constants.Status.ACTIVE)
+        currencyDataDB.close()
         var success: Bool = true
         var result = false
         var returnCurrencies: Array<CurrencyData> = []

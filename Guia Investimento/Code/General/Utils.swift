@@ -72,7 +72,7 @@ class Utils {
         return matches(regex: regex, text: text)
     }
     
-    // Check if inputted selling quantity us valid and there was enough buy, so it will not generate negative quantity value
+    // Check if inputted selling quantity is valid and there was enough buy, so it will not generate negative quantity value
     class func isValidSellStock(quantity:Int, symbol:String) -> Bool{
         let dataDB = StockDataDB()
         let quantityBought = dataDB.getDataBySymbol(symbol)
@@ -83,7 +83,7 @@ class Utils {
         }
     }
     
-    // Check if inputted selling quantity us valid and there was enough buy, so it will not generate negative quantity value
+    // Check if inputted selling quantity is valid and there was enough buy, so it will not generate negative quantity value
     class func isValidSellFii(quantity:Int, symbol:String) -> Bool{
         let dataDB = FiiDataDB()
         let quantityBought = dataDB.getDataBySymbol(symbol)
@@ -94,11 +94,22 @@ class Utils {
         }
     }
     
-    // Check if inputted selling quantity us valid and there was enough buy, so it will not generate negative quantity value
+    // Check if inputted selling quantity is valid and there was enough buy, so it will not generate negative quantity value
     class func isValidSellTreasury(quantity:Double, symbol:String) -> Bool{
         let dataDB = TreasuryDataDB()
         let quantityBought = dataDB.getDataBySymbol(symbol)
         if(quantityBought.quantity >= quantity){
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    // Check if inputted selling quantity is valid and there was enough buy, so it will not generate negative quantity value
+    class func isValidSellFixed(total:Double, symbol:String) -> Bool{
+        let dataDB = FixedDataDB()
+        let quantityBought = dataDB.getDataBySymbol(symbol)
+        if(quantityBought.currentTotal >= total){
             return true
         } else {
             return false
@@ -389,6 +400,43 @@ class Utils {
         portfolio.buyTotal = buyTotal
         portfolio.soldTotal = sellTotal
         portfolio.brokerage = brokerage
+        portfolio.totalGain = totalGain
+        portfolio.currentTotal = mCurrentTotal
+        
+        portfolioDB.save(portfolio)
+        portfolioDB.close()
+    }
+    
+    // Updates fixed income portfolio after fixed data current total has been updated
+    class func updateFixedPortfolio(){
+        var buyTotal: Double = 0.0
+        var totalGain: Double = 0.0
+        var sellTotal: Double = 0.0
+        var mCurrentTotal: Double = 0.0
+        
+        // Fixed Data
+        let fixedDB = FixedDataDB()
+        let fixeds = fixedDB.getData()
+        
+        fixeds.forEach{ fixed in
+            buyTotal += fixed.buyTotal
+            mCurrentTotal += fixed.currentTotal
+            totalGain += fixed.totalGain
+            sellTotal += fixed.sellTotal
+        }
+        
+        // Updates current percent of each fixed data
+        fixeds.forEach{fixed in
+            fixed.currentPercent = fixed.currentTotal/mCurrentTotal*100
+            fixedDB.save(fixed)
+        }
+        
+        fixedDB.close()
+        
+        let portfolioDB = FixedPortfolioDB()
+        let portfolio = portfolioDB.getPortfolio()
+        portfolio.buyTotal = buyTotal
+        portfolio.soldTotal = sellTotal
         portfolio.totalGain = totalGain
         portfolio.currentTotal = mCurrentTotal
         

@@ -106,7 +106,7 @@ class SellFiiForm: UIViewController, UITextFieldDelegate{
                                 
                                 let general = FiiGeneral()
                                 general.updateFiiIncomes(symbol!, timestamp: Int(timestamp))
-                                _ = general.updateFiiData(symbol!, type: Constants.TypeOp.BUY)
+                                _ = general.updateFiiData(symbol!, type: Constants.TypeOp.SELL)
                                 Utils.updateFiiPortfolio()
                                 
                                 // Dismiss current view

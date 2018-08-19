@@ -11,6 +11,7 @@ class StockService{
     class func updateStockQuotes(_ callback: @escaping(_ stocksCallback:Array<StockData>,_ error:Bool) -> Void){
         let stockDataDB = StockDataDB()
         let stocks = stockDataDB.getDataByStatus(Constants.Status.ACTIVE)
+        stockDataDB.close()
         var returnStocks: Array<StockData> = []
         var success: Bool = true
         
@@ -96,12 +97,15 @@ class StockService{
                         callback(returnStocks,false)
                     }
                 }.resume()
+        } else {
+            callback(returnStocks,false)
         }
     }
     
     class func updateStockIncomes(_ callback: @escaping(_ error:Bool) -> Void){
         let stockDataDB = StockDataDB()
         let stocks = stockDataDB.getDataByStatus(Constants.Status.ACTIVE)
+        stockDataDB.close()
         var returnIncomes: Array<StockIncome> = []
         var success: Bool = true
         var result = false
@@ -178,6 +182,8 @@ class StockService{
                     }
                 }.resume()
             }
+        } else {
+            callback(true)
         }
     }
 }

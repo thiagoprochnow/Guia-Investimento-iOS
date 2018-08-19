@@ -106,7 +106,7 @@ class SellStockForm: UIViewController, UITextFieldDelegate{
                                 
                                 let general = StockGeneral()
                                 general.updateStockIncomes(symbol!, timestamp: Int(timestamp))
-                                _ = general.updateStockData(symbol!, type: Constants.TypeOp.BUY)
+                                _ = general.updateStockData(symbol!, type: Constants.TypeOp.SELL)
                                 Utils.updateStockPortfolio()
                                 
                                 // Dismiss current view

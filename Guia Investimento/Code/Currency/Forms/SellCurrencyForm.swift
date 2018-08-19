@@ -121,7 +121,7 @@ class SellCurrencyForm: UIViewController, UITextFieldDelegate, UIPickerViewDeleg
                                 db.close()
                                 
                                 let general = CurrencyGeneral()
-                                _ = general.updateCurrencyData(symbol, type: Constants.TypeOp.BUY)
+                                _ = general.updateCurrencyData(symbol, type: Constants.TypeOp.SELL)
                                 
                                 // Dismiss current view
                                 self.navigationController?.popViewController(animated: true)
