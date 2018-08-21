@@ -114,7 +114,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_____________________________________________________________" textAlignment="natural" lineBreakMode="headTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="xLG-8O-NK3">
-                                <rect key="frame" x="8" y="118" width="327" height="14"/>
+                                <rect key="frame" x="8" y="121" width="327" height="14"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="14" id="PVX-hU-eaE"/>
                                 </constraints>
@@ -163,7 +163,7 @@
                             <constraint firstItem="YiF-i2-cdq" firstAttribute="bottom" secondItem="v1d-EV-gam" secondAttribute="bottom" id="7Ib-VA-lHS"/>
                             <constraint firstItem="K9q-QA-hyd" firstAttribute="top" secondItem="qAC-er-bjO" secondAttribute="top" id="7VM-Gy-OZb"/>
                             <constraint firstItem="xD8-Qf-pey" firstAttribute="top" secondItem="v1d-EV-gam" secondAttribute="bottom" constant="8" id="8Lw-SP-Gb5"/>
-                            <constraint firstItem="xD8-Qf-pey" firstAttribute="top" secondItem="xLG-8O-NK3" secondAttribute="bottom" constant="8" id="8Oz-pf-Q1v"/>
+                            <constraint firstItem="xD8-Qf-pey" firstAttribute="top" secondItem="xLG-8O-NK3" secondAttribute="bottom" constant="5" id="8Oz-pf-Q1v"/>
                             <constraint firstItem="CaI-pD-5fX" firstAttribute="top" secondItem="xD8-Qf-pey" secondAttribute="top" id="CFm-HV-frT"/>
                             <constraint firstItem="VVo-en-d6i" firstAttribute="leading" secondItem="9Rh-9O-ktd" secondAttribute="leading" id="Kbl-E9-o5W"/>
                             <constraint firstItem="yjm-yF-lU3" firstAttribute="top" secondItem="RWC-Po-XjH" secondAttribute="top" id="MAz-gv-9PJ"/>

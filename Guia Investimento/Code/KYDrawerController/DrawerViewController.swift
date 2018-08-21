@@ -36,6 +36,8 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
     var treasuries:Array<TreasuryData> = []
     var currencies:Array<CurrencyData> = []
     var fixeds:Array<FixedData> = []
+    var cdis:Array<Cdi> = []
+    var ipcas:Array<Ipca> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -259,8 +261,10 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
         })
         
         // FIXED
-        FixedService.updateFixedQuotes({(_ error:Bool) -> Void in
+        FixedService.updateFixedQuotes({(_ cdis:Array<Cdi>,ipcas:Array<Ipca>,error:Bool) -> Void in
             self.fixedRefresh = true
+            self.cdis = cdis
+            self.ipcas = ipcas
             DispatchQueue.main.async {
                 self.updateView()
             }
@@ -328,6 +332,19 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
             Utils.updateCurrencyPortfolio()
             
             // Fixed
+            // CDI
+            let cdiDB = CdiDB()
+            cdis.forEach{ cdi in
+                cdiDB.save(cdi)
+            }
+            cdiDB.close()
+            //IPCA
+            let ipcaDB = IpcaDB()
+            ipcas.forEach{ ipca in
+                ipcaDB.save(ipca)
+            }
+            ipcaDB.close()
+            // Fixed Income
             let general = FixedGeneral()
             let fixedDB = FixedDataDB()
             let fixeds = fixedDB.getData()

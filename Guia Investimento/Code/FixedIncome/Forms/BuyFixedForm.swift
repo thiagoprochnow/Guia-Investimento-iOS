@@ -53,6 +53,17 @@ class BuyFixedForm: UIViewController, UITextFieldDelegate, UIPickerViewDelegate,
             symbolTextField.text = prealodedTransaction.symbol
             totalTextField.text = String(prealodedTransaction.boughtTotal)
             gainRateTextField.text = String(prealodedTransaction.gainRate * 100)
+            if(prealodedTransaction.gainType == Constants.FixedType.CDI){
+                indexPicker.selectRow(0, inComponent: 0, animated: false)
+                self.row = 0
+            } else if (prealodedTransaction.gainType == Constants.FixedType.IPCA){
+                indexPicker.selectRow(1, inComponent: 0, animated: false)
+                self.row = 1
+            } else {
+                indexPicker.selectRow(2, inComponent: 0, animated: false)
+                self.row = 2
+            }
+            
             let date = Date(timeIntervalSince1970: TimeInterval(prealodedTransaction.timestamp))
             datePicker.timeZone = TimeZone(abbreviation: "UTC")
             datePicker.setDate(date, animated: false)

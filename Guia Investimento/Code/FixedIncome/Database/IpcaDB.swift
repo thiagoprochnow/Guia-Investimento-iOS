@@ -59,7 +59,7 @@ class IpcaDB{
     // Save or update a Ipca
     func save(_ ipca: Ipca){
         // Insert
-        let sql = "insert or replace into ipca (id,ano,mes,valor,last_update) VALUES (?,?,?,?,?);"
+        let sql = "insert or replace into ipca (_id,ano,mes,valor,last_update) VALUES (?,?,?,?,?);"
             
         let params = [ipca.id,ipca.ano,ipca.mes,ipca.valor,ipca.lastUpdate] as [Any]
         _ = db.execSql(sql, params: params as Array<AnyObject>)

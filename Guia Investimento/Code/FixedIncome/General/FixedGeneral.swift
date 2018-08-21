@@ -156,13 +156,67 @@ class FixedGeneral {
                 }
                 
             } else if (transaction.gainType == Constants.FixedType.IPCA){
+                // IPCA
+                
+                if(transaction.type == Constants.TypeOp.BUY){
+                    currentFixedValue += transaction.boughtTotal
+                    gainRate = transaction.gainRate*100
+                } else {
+                    currentFixedValue -= transaction.boughtTotal
+                }
+                
+                if(cdis.count == 0){
+                    // No CDI for after this transaction timestamp
+                    continue
+                }
+                
+                let ipcaDB = IpcaDB()
+                let ipcas = ipcaDB.getData()
+                ipcaDB.close()
+                
+                if(index < transactions.count - 1){
+                    // Need to check if next transaction is reached because total value is then another
+                    let nextTransaction = transactions[index + 1]
+                    var cdiTimestamp = 0
+                    
+                    repeat{
+                        let cdi = cdis[cdiIndex]
+                        let ipcaGainRate = getIpcaGain(cdiTimestamp,ipcas: ipcas)
+                        let cdiDaily = getCdiDaily(gainRate+ipcaGainRate,gainRate: 1)
+                        
+                        currentFixedValue = currentFixedValue * cdiDaily
+                        
+                        // Get next cdi
+                        cdiIndex = cdiIndex + 1
+                        if(cdiIndex >= cdis.count){
+                            // Transaction timestamp is bigger then last cdi timestamp
+                            break
+                        } else {
+                            cdiTimestamp = cdi.timestamp
+                        }
+                    } while (cdiTimestamp < nextTransaction.timestamp)
+                    
+                } else {
+                    // Last one, only needs to sum or subtract and update until end of CDI
+                    // Last Transaction
+                    repeat{
+                        let cdi = cdis[cdiIndex]
+                        let cdiTimestamp = cdi.timestamp
+                        let ipcaGainRate = getIpcaGain(cdiTimestamp,ipcas: ipcas)
+                        let cdiDaily = getCdiDaily(gainRate+ipcaGainRate, gainRate: 1)
+                        
+                        currentFixedValue = currentFixedValue * cdiDaily
+                        cdiIndex = cdiIndex + 1
+                    } while (cdiIndex < cdis.count)
+                }
                 
             } else if (transaction.gainType == Constants.FixedType.PRE){
-                
+                // PRE FIXADO
             }
         }
         
         fixed.currentTotal = currentFixedValue
+        fixed.updateStatus = Constants.UpdateStatus.UPDATED
         
         return fixed
     }
@@ -171,5 +225,28 @@ class FixedGeneral {
     func getCdiDaily(_ value:Double, gainRate:Double) -> Double{
         let cdiDaily = ((pow((1 + value/100), 1/252))-1)*gainRate + 1
         return cdiDaily
+    }
+    
+    // Get IPCA gainRate from Ipca according to passed timestamp
+    func getIpcaGain(_ cdiTimestamp:Int, ipcas:Array<Ipca>) -> Double{
+        let date = Date(timeIntervalSince1970: TimeInterval(cdiTimestamp))
+        var calendar = Calendar.current
+        
+        let month:Int = calendar.component(.month, from: date)
+        let year:Int = calendar.component(.year, from: date)
+        let yearLimit:Int = year - 1
+        
+        // If a value was found, return it, else return zero
+        if(ipcas.count > 0){
+            // Sums for the hole last twelve month of IPCA. Cannot sum on query because of compost IPCA
+            var ipcaValue = 0.0
+            for ipca in ipcas {
+                if((ipca.mes <= month && ipca.ano == year) || (ipca.mes > month && ipca.ano == yearLimit)){
+                    ipcaValue = ipcaValue + ipca.valor + (ipcaValue * ipca.valor/100)
+                }
+            }
+            return ipcaValue
+        }
+        return 0
     }
 }
