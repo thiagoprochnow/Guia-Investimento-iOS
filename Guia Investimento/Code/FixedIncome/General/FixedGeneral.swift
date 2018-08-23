@@ -212,7 +212,48 @@ class FixedGeneral {
                 
             } else if (transaction.gainType == Constants.FixedType.PRE){
                 // PRE FIXADO
-            }
+                if(transaction.type == Constants.TypeOp.BUY){
+                    currentFixedValue += transaction.boughtTotal
+                    gainRate = transaction.gainRate*100
+                } else {
+                    currentFixedValue -= transaction.boughtTotal
+                }
+                
+                if(cdis.count == 0){
+                    // No CDI for after this transaction timestamp
+                    continue
+                }
+                
+                if(index < transactions.count - 1){
+                    // Need to check if next transaction is reached because total value is then another
+                    let nextTransaction = transactions[index + 1]
+                    var cdiTimestamp = 0
+                    
+                    repeat{
+                        let cdi = cdis[cdiIndex]
+                        let cdiDaily = getCdiDaily(gainRate,gainRate: 1)
+                        
+                        currentFixedValue = currentFixedValue * cdiDaily
+                        
+                        // Get next cdi
+                        cdiIndex = cdiIndex + 1
+                        if(cdiIndex >= cdis.count){
+                            // Transaction timestamp is bigger then last cdi timestamp
+                            break
+                        } else {
+                            cdiTimestamp = cdi.timestamp
+                        }
+                    } while (cdiTimestamp < nextTransaction.timestamp)
+                } else {
+                    repeat{
+                        let cdi = cdis[cdiIndex]
+                        let cdiDaily = getCdiDaily(gainRate, gainRate: 1)
+                        
+                        currentFixedValue = currentFixedValue * cdiDaily
+                        cdiIndex = cdiIndex + 1
+                    } while (cdiIndex < cdis.count)
+                }
+            } 
         }
         
         fixed.currentTotal = currentFixedValue

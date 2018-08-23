@@ -35,6 +35,7 @@ class SellStockForm: UIViewController, UITextFieldDelegate{
         quantityTextField.keyboardType = UIKeyboardType.numberPad
         priceTextField.keyboardType = UIKeyboardType.decimalPad
         brokerageTextField.keyboardType = UIKeyboardType.decimalPad
+        datePicker.timeZone = TimeZone(abbreviation: "UTC")
         
         // Always selling a already bougth stock
         symbolTextField.text = symbol
@@ -48,7 +49,6 @@ class SellStockForm: UIViewController, UITextFieldDelegate{
             priceTextField.text = String(prealodedTransaction.price)
             brokerageTextField.text = String(prealodedTransaction.brokerage)
             let date = Date(timeIntervalSince1970: TimeInterval(prealodedTransaction.timestamp))
-            datePicker.timeZone = TimeZone(abbreviation: "UTC")
             datePicker.setDate(date, animated: false)
             transactionDB.close()
         }

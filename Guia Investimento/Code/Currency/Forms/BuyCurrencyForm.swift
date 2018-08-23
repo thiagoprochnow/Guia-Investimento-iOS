@@ -35,6 +35,7 @@ class BuyCurrencyForm: UIViewController, UITextFieldDelegate, UIPickerViewDelega
         symbolTextField.dataSource = self
         quantityTextField.keyboardType = UIKeyboardType.numberPad
         priceTextField.keyboardType = UIKeyboardType.decimalPad
+        datePicker.timeZone = TimeZone(abbreviation: "UTC")
         
         // Buying a repeated currency, already shows symbol of the new buy
         if(symbol != ""){
@@ -52,7 +53,6 @@ class BuyCurrencyForm: UIViewController, UITextFieldDelegate, UIPickerViewDelega
             quantityTextField.text = String(prealodedTransaction.quantity)
             priceTextField.text = String(prealodedTransaction.price)
             let date = Date(timeIntervalSince1970: TimeInterval(prealodedTransaction.timestamp))
-            datePicker.timeZone = TimeZone(abbreviation: "UTC")
             datePicker.setDate(date, animated: false)
             transactionDB.close()
         }

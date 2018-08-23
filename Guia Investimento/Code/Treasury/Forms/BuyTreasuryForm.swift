@@ -38,6 +38,7 @@ class BuyTreasuryForm: UIViewController, UITextFieldDelegate{
         symbolTextField.theme.bgColor = UIColor (red: 1, green: 1, blue: 1, alpha: 1)
         symbolTextField.maxNumberOfResults = 5
         symbolTextField.theme.font = UIFont.systemFont(ofSize: 14)
+        datePicker.timeZone = TimeZone(abbreviation: "UTC")
         
         // Buying a repeated treasury, already shows symbol of the new buy
         if(symbol != ""){
@@ -52,7 +53,6 @@ class BuyTreasuryForm: UIViewController, UITextFieldDelegate{
             quantityTextField.text = String(prealodedTransaction.quantity)
             priceTextField.text = String(prealodedTransaction.price)
             let date = Date(timeIntervalSince1970: TimeInterval(prealodedTransaction.timestamp))
-            datePicker.timeZone = TimeZone(abbreviation: "UTC")
             datePicker.setDate(date, animated: false)
             transactionDB.close()
         }

@@ -40,6 +40,7 @@ class BuyFixedForm: UIViewController, UITextFieldDelegate, UIPickerViewDelegate,
         indexPicker.dataSource = self
         totalTextField.keyboardType = UIKeyboardType.decimalPad
         gainRateTextField.keyboardType = UIKeyboardType.decimalPad
+        datePicker.timeZone = TimeZone(abbreviation: "UTC")
         
         // Buying a repeated fixed, already shows symbol of the new buy
         if(symbol != ""){
@@ -65,7 +66,6 @@ class BuyFixedForm: UIViewController, UITextFieldDelegate, UIPickerViewDelegate,
             }
             
             let date = Date(timeIntervalSince1970: TimeInterval(prealodedTransaction.timestamp))
-            datePicker.timeZone = TimeZone(abbreviation: "UTC")
             datePicker.setDate(date, animated: false)
             transactionDB.close()
         }

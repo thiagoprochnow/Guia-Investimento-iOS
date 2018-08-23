@@ -34,6 +34,7 @@ class SellCurrencyForm: UIViewController, UITextFieldDelegate, UIPickerViewDeleg
         symbolTextField.dataSource = self
         quantityTextField.keyboardType = UIKeyboardType.numberPad
         priceTextField.keyboardType = UIKeyboardType.decimalPad
+        datePicker.timeZone = TimeZone(abbreviation: "UTC")
         
         // Always selling a already bougth currency
         let row = Utils.getCurrencyPickerIndex(symbol: symbol)
@@ -48,7 +49,6 @@ class SellCurrencyForm: UIViewController, UITextFieldDelegate, UIPickerViewDeleg
             quantityTextField.text = String(prealodedTransaction.quantity)
             priceTextField.text = String(prealodedTransaction.price)
             let date = Date(timeIntervalSince1970: TimeInterval(prealodedTransaction.timestamp))
-            datePicker.timeZone = TimeZone(abbreviation: "UTC")
             datePicker.setDate(date, animated: false)
             transactionDB.close()
         }

@@ -45,6 +45,9 @@ class SoldCurrencyDataView: UIViewController, UITableViewDataSource, UITableView
         // Load all Sold Currency Datas to show on this list
         let dataDB = SoldCurrencyDataDB()
         soldCurrencyDatas = dataDB.getSoldData()
+        var selectedSymbol: String = ""
+        var mediumBuy: String = ""
+        var mediumSell: String = ""
         if (soldCurrencyDatas.isEmpty){
             self.currencyTable.isHidden = true
             self.emptyListView.isHidden = false

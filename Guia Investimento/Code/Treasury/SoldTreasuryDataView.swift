@@ -45,6 +45,9 @@ class SoldTreasuryDataView: UIViewController, UITableViewDataSource, UITableView
         // Load all Sold Treasury Datas to show on this list
         let dataDB = SoldTreasuryDataDB()
         soldTreasuryDatas = dataDB.getSoldData()
+        var selectedSymbol: String = ""
+        var mediumBuy: String = ""
+        var mediumSell: String = ""
         if (soldTreasuryDatas.isEmpty){
             self.treasuryTable.isHidden = true
             self.emptyListView.isHidden = false

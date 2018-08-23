@@ -28,6 +28,7 @@ class SellFixedForm: UIViewController, UITextFieldDelegate{
         symbolTextField.delegate = self
         totalTextField.delegate = self
         totalTextField.keyboardType = UIKeyboardType.numberPad
+        datePicker.timeZone = TimeZone(abbreviation: "UTC")
         
         // Always selling a already bougth fixed
         symbolTextField.text = symbol
@@ -39,7 +40,6 @@ class SellFixedForm: UIViewController, UITextFieldDelegate{
             symbolTextField.text = prealodedTransaction.symbol
             totalTextField.text = String(prealodedTransaction.boughtTotal)
             let date = Date(timeIntervalSince1970: TimeInterval(prealodedTransaction.timestamp))
-            datePicker.timeZone = TimeZone(abbreviation: "UTC")
             datePicker.setDate(date, animated: false)
             transactionDB.close()
         }

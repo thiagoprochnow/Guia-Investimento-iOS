@@ -23,6 +23,7 @@ class StockSplitForm: UIViewController, UITextFieldDelegate{
         let btInsert = UIBarButtonItem(title: "Inserir", style: UIBarButtonItemStyle.plain, target: self, action: #selector(StockSplitForm.insertSplit))
         self.navigationItem.rightBarButtonItem = btInsert
         self.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
+        datePicker.timeZone = TimeZone(abbreviation: "UTC")
         
         // Delegade UITextFieldDelagate to self
         quantityField.delegate = self
@@ -34,7 +35,6 @@ class StockSplitForm: UIViewController, UITextFieldDelegate{
             prealodedTransaction = transactionDB.getTransactionById(id)
             quantityField.text = String(prealodedTransaction.quantity)
             let date = Date(timeIntervalSince1970: TimeInterval(prealodedTransaction.timestamp))
-            datePicker.timeZone = TimeZone(abbreviation: "UTC")
             datePicker.setDate(date, animated: false)
             transactionType = prealodedTransaction.type
             transactionDB.close()

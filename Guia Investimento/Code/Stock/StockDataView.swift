@@ -44,6 +44,9 @@ class StockDataView: UIViewController, UITableViewDataSource, UITableViewDelegat
         // Load all Active Stock Datas to show on this list
         let dataDB = StockDataDB()
         stockDatas = dataDB.getDataByStatus(Constants.Status.ACTIVE)
+        self.selectedSymbol = ""
+        self.mediumBuy = ""
+        self.mediumSell = ""
         if (stockDatas.isEmpty){
             self.stockTable.isHidden = true
             self.emptyListView.isHidden = false

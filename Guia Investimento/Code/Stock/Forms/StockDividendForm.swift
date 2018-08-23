@@ -30,6 +30,7 @@ class StockDividendForm: UIViewController, UITextFieldDelegate{
         symbolTextField.autocapitalizationType = UITextAutocapitalizationType.allCharacters
         perTextField.delegate = self
         perTextField.keyboardType = UIKeyboardType.decimalPad
+        datePicker.timeZone = TimeZone(abbreviation: "UTC")
         
         if(symbol != ""){
             symbolTextField.text = symbol
@@ -42,7 +43,6 @@ class StockDividendForm: UIViewController, UITextFieldDelegate{
             symbolTextField.text = prealodedIncome.symbol
             perTextField.text = String(prealodedIncome.perStock)
             let date = Date(timeIntervalSince1970: TimeInterval(prealodedIncome.exdividendTimestamp))
-            datePicker.timeZone = TimeZone(abbreviation: "UTC")
             datePicker.setDate(date, animated: false)
             incomeType = prealodedIncome.type
             incomeDB.close()

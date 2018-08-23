@@ -27,6 +27,7 @@ class FiiSplitForm: UIViewController, UITextFieldDelegate{
         // Delegade UITextFieldDelagate to self
         quantityField.delegate = self
         quantityField.keyboardType = UIKeyboardType.decimalPad
+        datePicker.timeZone = TimeZone(abbreviation: "UTC")
         
         // It is a Edit mode, preload inserted information to be edited and saved
         if(id != 0){
@@ -34,7 +35,6 @@ class FiiSplitForm: UIViewController, UITextFieldDelegate{
             prealodedTransaction = transactionDB.getTransactionById(id)
             quantityField.text = String(prealodedTransaction.quantity)
             let date = Date(timeIntervalSince1970: TimeInterval(prealodedTransaction.timestamp))
-            datePicker.timeZone = TimeZone(abbreviation: "UTC")
             datePicker.setDate(date, animated: false)
             transactionType = prealodedTransaction.type
             transactionDB.close()

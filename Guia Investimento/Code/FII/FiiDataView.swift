@@ -43,6 +43,9 @@ class FiiDataView: UIViewController, UITableViewDataSource, UITableViewDelegate{
     override func viewWillAppear(_ animated: Bool) {
         // Load all Active Fii Datas to show on this list
         let dataDB = FiiDataDB()
+        var selectedSymbol: String = ""
+        var mediumBuy: String = ""
+        var mediumSell: String = ""
         fiiDatas = dataDB.getDataByStatus(Constants.Status.ACTIVE)
         if (fiiDatas.isEmpty){
             self.fiiTable.isHidden = true

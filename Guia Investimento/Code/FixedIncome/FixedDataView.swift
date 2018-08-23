@@ -46,6 +46,11 @@ class FixedDataView: UIViewController, UITableViewDataSource, UITableViewDelegat
         // Load all Active Fixed Datas to show on this list
         let dataDB = FixedDataDB()
         fixedDatas = dataDB.getData()
+        var selectedSymbol: String = ""
+        var current: String = ""
+        var sold: String = ""
+        var bought: String = ""
+        var gain: String = ""
         if (fixedDatas.isEmpty){
             self.fixedTable.isHidden = true
             self.emptyListView.isHidden = false
