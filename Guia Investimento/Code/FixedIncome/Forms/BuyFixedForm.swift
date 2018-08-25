@@ -178,12 +178,12 @@ class BuyFixedForm: UIViewController, UITextFieldDelegate, UIPickerViewDelegate,
                         }
                 } else {
                     // Show Alert
-                    alert.message = "Quantidade de renda fixa deve conter apenas números e ponto"
+                    alert.message = "Taxa de ganho deve conter apenas números e ponto"
                     alert.show()
                 }
             } else {
                 // Show Alert
-                alert.message = "Taxa de ganho deve conter apenas números e ponto"
+                alert.message = "Quantidade de renda fixa deve conter apenas números e ponto"
                 alert.show()
             }
         } else {
