@@ -30,6 +30,7 @@ class OthersDataDB{
             + ", brokerage real"
             + ", income_total real"
             + ", income_tax real"
+            + ", liquid_income real"
             + ", last_update long"
             + ", UNIQUE (symbol) ON CONFLICT REPLACE);"
         _ = db.execSql(sql)
@@ -55,7 +56,8 @@ class OthersDataDB{
             data.brokerage = db.getDouble(stmt, index: 12)
             data.incomeTotal = db.getDouble(stmt, index: 13)
             data.incomeTax = db.getDouble(stmt, index: 14)
-            data.lastUpdate = db.getInt(stmt, index: 15)
+            data.liquidIncome = db.getDouble(stmt, index: 15)
+            data.lastUpdate = db.getInt(stmt, index: 16)
         }
         db.closeStatement(stmt)
         return data
@@ -96,7 +98,8 @@ class OthersDataDB{
             data.brokerage = db.getDouble(stmt, index: 12)
             data.incomeTotal = db.getDouble(stmt, index: 13)
             data.incomeTax = db.getDouble(stmt, index: 14)
-            data.lastUpdate = db.getInt(stmt, index: 15)
+            data.liquidIncome = db.getDouble(stmt, index: 15)
+            data.lastUpdate = db.getInt(stmt, index: 16)
         }
         db.closeStatement(stmt)
         return data
@@ -124,7 +127,8 @@ class OthersDataDB{
             data.brokerage = db.getDouble(stmt, index: 12)
             data.incomeTotal = db.getDouble(stmt, index: 13)
             data.incomeTax = db.getDouble(stmt, index: 14)
-            data.lastUpdate = db.getInt(stmt, index: 15)
+            data.liquidIncome = db.getDouble(stmt, index: 15)
+            data.lastUpdate = db.getInt(stmt, index: 16)
             othersDatas.append(data)
         }
         db.closeStatement(stmt)
@@ -152,7 +156,8 @@ class OthersDataDB{
             data.brokerage = db.getDouble(stmt, index: 12)
             data.incomeTotal = db.getDouble(stmt, index: 13)
             data.incomeTax = db.getDouble(stmt, index: 14)
-            data.lastUpdate = db.getInt(stmt, index: 15)
+            data.liquidIncome = db.getDouble(stmt, index: 15)
+            data.lastUpdate = db.getInt(stmt, index: 16)
             othersDatas.append(data)
         }
         db.closeStatement(stmt)
@@ -164,14 +169,14 @@ class OthersDataDB{
     func save(_ data: OthersData){
         if(data.id == 0){
             // Insert
-            let sql = "insert or replace into others_data (symbol,buy_value_total,sell_value_total,net_gain,tax,variation,total_gain,objective_percent,current_percent,current_total,status,brokerage,income_total,income_tax,last_update) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);"
+            let sql = "insert or replace into others_data (symbol,buy_value_total,sell_value_total,net_gain,tax,variation,total_gain,objective_percent,current_percent,current_total,status,brokerage,income_total,income_tax,liquid_income,last_update) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);"
             
-            let params = [data.symbol,data.buyTotal,data.sellTotal,data.netGain,data.tax,data.variation,data.totalGain,data.objectivePercent,data.currentPercent,data.currentTotal,data.status,data.brokerage,data.incomeTotal,data.incomeTax,data.lastUpdate] as [Any]
+            let params = [data.symbol,data.buyTotal,data.sellTotal,data.netGain,data.tax,data.variation,data.totalGain,data.objectivePercent,data.currentPercent,data.currentTotal,data.status,data.brokerage,data.incomeTotal,data.incomeTax,data.liquidIncome,data.lastUpdate] as [Any]
             _ = db.execSql(sql, params: params as Array<AnyObject>)
         } else {
             // Update
-            let sql = "update others_data set symbol=?,buy_value_total=?,sell_value_total=?,net_gain=?,tax=?,variation=?,total_gain=?,objective_percent=?,current_percent=?,current_total=?,status=?,brokerage=?,income_total=?,income_tax,last_update=? where _id=?;"
-            let params = [data.symbol,data.buyTotal,data.sellTotal,data.netGain,data.tax,data.variation,data.totalGain,data.objectivePercent,data.currentPercent,data.currentTotal,data.status,data.brokerage,data.incomeTotal,data.incomeTax,data.lastUpdate,data.id] as [Any]
+            let sql = "update others_data set symbol=?,buy_value_total=?,sell_value_total=?,net_gain=?,tax=?,variation=?,total_gain=?,objective_percent=?,current_percent=?,current_total=?,status=?,brokerage=?,income_total=?,income_tax=?,liquid_income=?,last_update=? where _id=?;"
+            let params = [data.symbol,data.buyTotal,data.sellTotal,data.netGain,data.tax,data.variation,data.totalGain,data.objectivePercent,data.currentPercent,data.currentTotal,data.status,data.brokerage,data.incomeTotal,data.incomeTax,data.liquidIncome,data.lastUpdate,data.id] as [Any]
             _ = db.execSql(sql,params: params as Array<AnyObject>)
         }
     }

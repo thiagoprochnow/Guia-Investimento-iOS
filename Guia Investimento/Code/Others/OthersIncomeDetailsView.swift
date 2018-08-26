@@ -1,5 +1,5 @@
 //
-//  TreasuryIncomeDetailsView.swift
+//  OthersIncomeDetailsView.swift
 //  Guia Investimento
 //
 //  Created by Felipe on 11/07/18.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class TreasuryIncomeDetailsView: UIViewController{
+class OthersIncomeDetailsView: UIViewController{
     @IBOutlet var bgView: UIView!
     @IBOutlet var symbolLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
@@ -17,7 +17,7 @@ class TreasuryIncomeDetailsView: UIViewController{
     @IBOutlet var taxLabel: UILabel!
     @IBOutlet var liquidLabel: UILabel!
     
-    var income: TreasuryIncome!
+    var income: OthersIncome!
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -24,6 +24,7 @@ class OthersData {
     var brokerage = 0.0
     var incomeTotal = 0.0
     var incomeTax = 0.0
+    var liquidIncome = 0.0
     var lastUpdate = 0
     var updateStatus = Constants.UpdateStatus.UPDATED
 }

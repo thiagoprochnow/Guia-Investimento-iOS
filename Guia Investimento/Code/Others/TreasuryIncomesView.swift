@@ -1,5 +1,5 @@
 //
-//  TreasuryIncomesView.swift
+//  OthersIncomesView.swift
 //  Guia Investimento
 //
 //  Created by Felipe on 29/06/18.
@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-class TreasuryIncomesView: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class OthersIncomesView: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet var bgView: UIView!
     @IBOutlet var boughtLabel: UILabel!
     @IBOutlet var grossLabel: UILabel!
@@ -20,7 +20,7 @@ class TreasuryIncomesView: UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet var taxPercentLabel: UILabel!
     @IBOutlet var netPercentLabel: UILabel!
     
-    var treasuryIncomes: Array<TreasuryIncome> = []
+    var othersIncomes: Array<OthersIncome> = []
     
     var symbol: String = ""
     override func viewDidLoad() {
@@ -40,31 +40,31 @@ class TreasuryIncomesView: UIViewController, UITableViewDataSource, UITableViewD
         fab.image = fabImg
         // Add action to open buy form when tapped
         fab.isUserInteractionEnabled = true
-        let tapBuyTreasury = UITapGestureRecognizer(target: self, action: #selector(TreasuryDetailsView.incomeMenu))
-        fab.addGestureRecognizer(tapBuyTreasury)
+        let tapBuyOthers = UITapGestureRecognizer(target: self, action: #selector(OthersDetailsView.incomeMenu))
+        fab.addGestureRecognizer(tapBuyOthers)
         
         // Table View
         self.incomeTable.dataSource = self
         self.incomeTable.delegate = self
         self.incomeTable.separatorStyle = .none
-        let xib = UINib(nibName: "TreasuryIncomeCell", bundle: nil)
+        let xib = UINib(nibName: "OthersIncomeCell", bundle: nil)
         self.incomeTable.register(xib, forCellReuseIdentifier: "cell")
         
-        // Load Treasury Incomes values
-        let incomeDB = TreasuryIncomeDB()
-        treasuryIncomes = incomeDB.getIncomesBySymbol(symbol)
+        // Load Others Incomes values
+        let incomeDB = OthersIncomeDB()
+        othersIncomes = incomeDB.getIncomesBySymbol(symbol)
         incomeDB.close()
         
-        // Load Treasury Data
-        let dataDB = TreasuryDataDB()
-        let treasuryData = dataDB.getDataBySymbol(symbol)
+        // Load Others Data
+        let dataDB = OthersDataDB()
+        let othersData = dataDB.getDataBySymbol(symbol)
         dataDB.close()
         let locale = Locale(identifier: "pt_BR")
-        let grossIncome = treasuryData.netIncome + treasuryData.incomeTax
-        let netIncome = treasuryData.netIncome
-        let grossPercent = "(" + String(format: "%.2f", locale: locale, arguments: [grossIncome/treasuryData.buyValue*100]) + "%)"
-        let taxPercent = "(" + String(format: "%.2f", locale: locale, arguments: [treasuryData.incomeTax/treasuryData.buyValue*100]) + "%)"
-        let netPercent = "(" + String(format: "%.2f", locale: locale, arguments: [netIncome/treasuryData.buyValue*100]) + "%)"
+        let grossIncome = othersData.liquidIncome + othersData.incomeTax
+        let netIncome = othersData.liquidIncome
+        let grossPercent = "(" + String(format: "%.2f", locale: locale, arguments: [grossIncome/othersData.buyTotal*100]) + "%)"
+        let taxPercent = "(" + String(format: "%.2f", locale: locale, arguments: [othersData.incomeTax/othersData.buyTotal*100]) + "%)"
+        let netPercent = "(" + String(format: "%.2f", locale: locale, arguments: [netIncome/othersData.buyTotal*100]) + "%)"
         grossPercentLabel.textColor = UIColor(red: 139/255, green: 195/255, blue: 74/255, alpha: 1)
         taxPercentLabel.textColor = UIColor(red: 244/255, green: 67/255, blue: 54/255, alpha: 1)
         netPercentLabel.textColor = UIColor(red: 139/255, green: 195/255, blue: 74/255, alpha: 1)
@@ -74,64 +74,64 @@ class TreasuryIncomesView: UIViewController, UITableViewDataSource, UITableViewD
         grossPercentLabel.text = grossPercent
         taxPercentLabel.text = taxPercent
         netPercentLabel.text = netPercent
-        boughtLabel.text = Utils.doubleToRealCurrency(value: treasuryData.buyValue)
-        grossLabel.text = Utils.doubleToRealCurrency(value: treasuryData.netIncome + treasuryData.incomeTax)
-        taxLabel.text = Utils.doubleToRealCurrency(value: treasuryData.incomeTax)
-        liquidLabel.text = Utils.doubleToRealCurrency(value: treasuryData.netIncome)
+        boughtLabel.text = Utils.doubleToRealCurrency(value: othersData.buyTotal)
+        grossLabel.text = Utils.doubleToRealCurrency(value: othersData.incomeTotal + othersData.incomeTax)
+        taxLabel.text = Utils.doubleToRealCurrency(value: othersData.incomeTax)
+        liquidLabel.text = Utils.doubleToRealCurrency(value: othersData.incomeTotal)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        // Load all Treasury Incomes of a symbol to show on this list
-        let incomeDB = TreasuryIncomeDB()
-        treasuryIncomes = incomeDB.getIncomesBySymbol(symbol)
-        if (treasuryIncomes.isEmpty){
+        // Load all Others Incomes of a symbol to show on this list
+        let incomeDB = OthersIncomeDB()
+        othersIncomes = incomeDB.getIncomesBySymbol(symbol)
+        if (othersIncomes.isEmpty){
             self.incomeTable.isHidden = true
         } else {
             self.incomeTable.isHidden = false
         }
         incomeDB.close()
         
-        // Load Treasury Data
-        let dataDB = TreasuryDataDB()
-        let treasuryData = dataDB.getDataBySymbol(symbol)
+        // Load Others Data
+        let dataDB = OthersDataDB()
+        let othersData = dataDB.getDataBySymbol(symbol)
         dataDB.close()
         let locale = Locale(identifier: "pt_BR")
-        let grossIncome = treasuryData.netIncome + treasuryData.incomeTax
-        let netIncome = treasuryData.netIncome
-        let grossPercent = "(" + String(format: "%.2f", locale: locale, arguments: [grossIncome/treasuryData.buyValue*100]) + "%)"
-        let taxPercent = "(" + String(format: "%.2f", locale: locale, arguments: [treasuryData.incomeTax/treasuryData.buyValue*100]) + "%)"
-        let netPercent = "(" + String(format: "%.2f", locale: locale, arguments: [netIncome/treasuryData.buyValue*100]) + "%)"
+        let grossIncome = othersData.liquidIncome + othersData.incomeTax
+        let netIncome = othersData.liquidIncome
+        let grossPercent = "(" + String(format: "%.2f", locale: locale, arguments: [grossIncome/othersData.buyTotal*100]) + "%)"
+        let taxPercent = "(" + String(format: "%.2f", locale: locale, arguments: [othersData.incomeTax/othersData.buyTotal*100]) + "%)"
+        let netPercent = "(" + String(format: "%.2f", locale: locale, arguments: [netIncome/othersData.buyTotal*100]) + "%)"
         grossPercentLabel.text = grossPercent
         taxPercentLabel.text = taxPercent
         netPercentLabel.text = netPercent
-        boughtLabel.text = Utils.doubleToRealCurrency(value: treasuryData.buyValue)
-        grossLabel.text = Utils.doubleToRealCurrency(value: treasuryData.netIncome + treasuryData.incomeTax)
-        taxLabel.text = Utils.doubleToRealCurrency(value: treasuryData.incomeTax)
-        liquidLabel.text = Utils.doubleToRealCurrency(value: treasuryData.netIncome)
-        // Reload data every time TreasuryDataView is shown
+        boughtLabel.text = Utils.doubleToRealCurrency(value: othersData.buyTotal)
+        grossLabel.text = Utils.doubleToRealCurrency(value: othersData.liquidIncome + othersData.incomeTax)
+        taxLabel.text = Utils.doubleToRealCurrency(value: othersData.incomeTax)
+        liquidLabel.text = Utils.doubleToRealCurrency(value: othersData.liquidIncome)
+        // Reload data every time OthersDataView is shown
         self.incomeTable.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (treasuryIncomes.isEmpty){
+        if (othersIncomes.isEmpty){
             return 0
         } else {
             // +1 to leave a empty field for Floating Button to scroll
-            return treasuryIncomes.count + 1
+            return othersIncomes.count + 1
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let linha = indexPath.row
-        let cell = self.incomeTable.dequeueReusableCell(withIdentifier: "cell") as! TreasuryIncomeCell
+        let cell = self.incomeTable.dequeueReusableCell(withIdentifier: "cell") as! OthersIncomeCell
         // Do not show highlight when selected
         cell.selectionStyle = .none
         
-        if(linha < (treasuryIncomes.count)){
+        if(linha < (othersIncomes.count)){
             // Get Transaction and populat table
-            let income = treasuryIncomes[linha]
-            if(income.type == Constants.IncomeType.TREASURY){
-                cell.type.text = "Cupom Semestral"
+            let income = othersIncomes[linha]
+            if(income.type == Constants.IncomeType.OTHERS){
+                cell.type.text = "Rendimento"
             }
             
             //Get Date
@@ -153,12 +153,12 @@ class TreasuryIncomesView: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // When a treasury income is selected in the table view, it will show menu asking for action
+        // When a others income is selected in the table view, it will show menu asking for action
         // Edit, Delete
         let linha = indexPath.row
-        let income = treasuryIncomes[linha]
+        let income = othersIncomes[linha]
         let alertController = UIAlertController(title: "", message: "", preferredStyle: .alert)
-        if(linha < (treasuryIncomes.count)){
+        if(linha < (othersIncomes.count)){
             let detailsAction = UIAlertAction(title: NSLocalizedString("Mais Detalhes", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
                 self.detailsIncome(income)
             })
@@ -187,44 +187,44 @@ class TreasuryIncomesView: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
-    func editIncome(_ income: TreasuryIncome){
+    func editIncome(_ income: OthersIncome){
         // Sets id of already existing transaction to be edited in BuyForm
-        let dividendForm = TreasuryDividendForm()
+        let dividendForm = OthersDividendForm()
         dividendForm.symbol = income.symbol
         dividendForm.id = income.id
         dividendForm.incomeType = income.type
         self.navigationController?.pushViewController(dividendForm, animated: true)
     }
     
-    // Delete Transaction and update TreasuryData
-    func deleteIncome(_ income: TreasuryIncome){
-        let treasuryGeneral = TreasuryGeneral()
-        treasuryGeneral.deleteTreasuryIncome(String(income.id), symbol: income.symbol)
+    // Delete Transaction and update OthersData
+    func deleteIncome(_ income: OthersIncome){
+        let othersGeneral = OthersGeneral()
+        othersGeneral.deleteOthersIncome(String(income.id), symbol: income.symbol)
         
-        let incomeDB = TreasuryIncomeDB()
-        treasuryIncomes = incomeDB.getIncomesBySymbol(symbol)
-        if (treasuryIncomes.isEmpty){
+        let incomeDB = OthersIncomeDB()
+        othersIncomes = incomeDB.getIncomesBySymbol(symbol)
+        if (othersIncomes.isEmpty){
             self.incomeTable.isHidden = true
         } else {
             self.incomeTable.isHidden = false
         }
         incomeDB.close()
         
-        // Load Treasury Data
-        let dataDB = TreasuryDataDB()
-        let treasuryData = dataDB.getDataBySymbol(symbol)
+        // Load Others Data
+        let dataDB = OthersDataDB()
+        let othersData = dataDB.getDataBySymbol(symbol)
         dataDB.close()
-        boughtLabel.text = Utils.doubleToRealCurrency(value: treasuryData.buyValue)
-        grossLabel.text = Utils.doubleToRealCurrency(value: treasuryData.netIncome + treasuryData.incomeTax)
-        taxLabel.text = Utils.doubleToRealCurrency(value: treasuryData.incomeTax)
-        liquidLabel.text = Utils.doubleToRealCurrency(value: treasuryData.netIncome)
+        boughtLabel.text = Utils.doubleToRealCurrency(value: othersData.buyTotal)
+        grossLabel.text = Utils.doubleToRealCurrency(value: othersData.liquidIncome + othersData.incomeTax)
+        taxLabel.text = Utils.doubleToRealCurrency(value: othersData.incomeTax)
+        liquidLabel.text = Utils.doubleToRealCurrency(value: othersData.liquidIncome)
         
         self.incomeTable.reloadData()
     }
     
     // Show income details
-    func detailsIncome(_ income: TreasuryIncome){
-        let incomeDetails = TreasuryIncomeDetailsView()
+    func detailsIncome(_ income: OthersIncome){
+        let incomeDetails = OthersIncomeDetailsView()
         incomeDetails.income = income
         self.navigationController?.pushViewController(incomeDetails, animated: true)
     }
@@ -232,8 +232,8 @@ class TreasuryIncomesView: UIViewController, UITableViewDataSource, UITableViewD
     //Shows alert yo choose income type
     @IBAction func incomeMenu(){
         let alertController = UIAlertController(title: "", message: "", preferredStyle: .alert)
-        let dividendAction = UIAlertAction(title: NSLocalizedString("Cupom Semestral", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
-            self.addIncome(Constants.IncomeType.TREASURY)
+        let dividendAction = UIAlertAction(title: NSLocalizedString("Rendimento", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
+            self.addIncome(Constants.IncomeType.OTHERS)
         })
         let cancelAction = UIAlertAction(title: NSLocalizedString("Cancelar", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
             
@@ -246,8 +246,8 @@ class TreasuryIncomesView: UIViewController, UITableViewDataSource, UITableViewD
     
     func addIncome(_ type: Int){
         switch (type) {
-        case Constants.IncomeType.TREASURY:
-            let dividendForm = TreasuryDividendForm()
+        case Constants.IncomeType.OTHERS:
+            let dividendForm = OthersDividendForm()
             dividendForm.symbol = symbol
             dividendForm.incomeType = type
             self.navigationController?.pushViewController(dividendForm, animated: true)

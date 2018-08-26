@@ -44,6 +44,8 @@ class FixedGeneral {
             var currentTotal = 0.0
             if(fixedData.id != 0){
                 currentTotal = fixedData.currentTotal
+            } else{
+                currentTotal = buyTotal
             }
             
             if((type == Constants.TypeOp.SELL) && fixedData.id != 0){

@@ -1,5 +1,5 @@
 //
-//  FixedPortfolio.swift
+//  OthersPortfolio.swift
 //  Guia Investimento
 //
 //  Created by Felipe on 31/05/18.
@@ -8,12 +8,12 @@
 
 import UIKit
 
-class FixedPortfolioView: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class OthersPortfolioView: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet var fab: UIImageView!
     @IBOutlet var bgView: UIView!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var emptyListView: UILabel!
-    var portfolio: FixedPortfolio!
+    var portfolio: OthersPortfolio!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +24,8 @@ class FixedPortfolioView: UIViewController, UITableViewDataSource, UITableViewDe
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.separatorStyle = .none
-        let xibPortfolio = UINib(nibName: "FixedPortfolioCell", bundle: nil)
-        let xibPie = UINib(nibName: "FixedPieChartCell", bundle: nil)
+        let xibPortfolio = UINib(nibName: "OthersPortfolioCell", bundle: nil)
+        let xibPie = UINib(nibName: "OthersPieChartCell", bundle: nil)
         self.tableView.register(xibPortfolio, forCellReuseIdentifier: "cellPortfolio")
         self.tableView.register(xibPie, forCellReuseIdentifier: "cellPie")
         
@@ -35,12 +35,12 @@ class FixedPortfolioView: UIViewController, UITableViewDataSource, UITableViewDe
         fab.image = fabImg
         // Add action to open buy form when tapped
         fab.isUserInteractionEnabled = true
-        let tapBuyFixed = UITapGestureRecognizer(target: self, action: #selector(FixedDataView.buyFixed))
-        fab.addGestureRecognizer(tapBuyFixed)
+        let tapBuyOthers = UITapGestureRecognizer(target: self, action: #selector(OthersDataView.buyOthers))
+        fab.addGestureRecognizer(tapBuyOthers)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        let portfolioDB = FixedPortfolioDB()
+        let portfolioDB = OthersPortfolioDB()
         portfolio = portfolioDB.getPortfolio()
         if (portfolio.buyTotal == 0.0){
             self.tableView.isHidden = true
@@ -57,18 +57,35 @@ class FixedPortfolioView: UIViewController, UITableViewDataSource, UITableViewDe
         let linha = indexPath.row
         
         if(linha == 0){
-            // Load Fixed Portfolio information on cell
-            let cell = self.tableView.dequeueReusableCell(withIdentifier: "cellPortfolio") as! FixedPortfolioCell
+            // Load Others Portfolio information on cell
+            let cell = self.tableView.dequeueReusableCell(withIdentifier: "cellPortfolio") as! OthersPortfolioCell
             // Do not show highlight when selected
             cell.selectionStyle = .none
             let locale = Locale(identifier: "pt_BR")
             let buyTotal = portfolio.buyTotal
             let totalGainPercent = "(" + String(format: "%.2f", locale: locale, arguments: [portfolio.totalGain/buyTotal * 100]) + "%)"
+            let incomePercent = "(" + String(format: "%.2f", locale: locale, arguments: [portfolio.incomeTotal/buyTotal * 100]) + "%)"
+            let othersAppreciationPercent = "(" + String(format: "%.2f", locale: locale, arguments: [portfolio.variationTotal/buyTotal * 100]) + "%)"
             cell.currentTotal.text = Utils.doubleToRealCurrency(value: portfolio.currentTotal)
             cell.soldTotal.text = Utils.doubleToRealCurrency(value: portfolio.soldTotal)
             cell.buyTotal.text = Utils.doubleToRealCurrency(value: portfolio.buyTotal)
             cell.totalGain.text = Utils.doubleToRealCurrency(value: portfolio.totalGain)
+            cell.incomeGain.text = Utils.doubleToRealCurrency(value: portfolio.incomeTotal)
+            cell.variationGain.text = Utils.doubleToRealCurrency(value: portfolio.variationTotal)
             cell.totalPercent.text = totalGainPercent
+            cell.variationPercent.text = othersAppreciationPercent
+            cell.incomePercent.text = incomePercent
+            
+            if(portfolio.variationTotal >= 0){
+                cell.variationGain.textColor = UIColor(red: 139/255, green: 195/255, blue: 74/255, alpha: 1)
+                cell.variationPercent.textColor = UIColor(red: 139/255, green: 195/255, blue: 74/255, alpha: 1)
+            } else {
+                cell.variationGain.textColor = UIColor(red: 244/255, green: 67/255, blue: 54/255, alpha: 1)
+                cell.variationPercent.textColor = UIColor(red: 244/255, green: 67/255, blue: 54/255, alpha: 1)
+            }
+            
+            cell.incomeGain.textColor = UIColor(red: 139/255, green: 195/255, blue: 74/255, alpha: 1)
+            cell.incomePercent.textColor = UIColor(red: 139/255, green: 195/255, blue: 74/255, alpha: 1)
             
             if(portfolio.totalGain >= 0){
                 cell.totalGain.textColor = UIColor(red: 139/255, green: 195/255, blue: 74/255, alpha: 1)
@@ -80,7 +97,7 @@ class FixedPortfolioView: UIViewController, UITableViewDataSource, UITableViewDe
             
             return cell
         } else if(linha == 1){
-            let cell = self.tableView.dequeueReusableCell(withIdentifier: "cellPie") as! FixedPieChartCell
+            let cell = self.tableView.dequeueReusableCell(withIdentifier: "cellPie") as! OthersPieChartCell
             // Do not show highlight when selected
             cell.selectionStyle = .none
             return cell
@@ -100,8 +117,8 @@ class FixedPortfolioView: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     // Open form to buy curencies
-    @IBAction func buyFixed(){
-        let buyFixedForm = BuyFixedForm()
-        self.navigationController?.pushViewController(buyFixedForm, animated: true)
+    @IBAction func buyOthers(){
+        let buyOthersForm = BuyOthersForm()
+        self.navigationController?.pushViewController(buyOthersForm, animated: true)
     }
 }

@@ -116,6 +116,16 @@ class Utils {
         }
     }
     
+    // Check if inputted selling quantity is valid and there was enough buy, so it will not generate negative quantity value
+    class func isValidSellOthers(total:Double, symbol:String) -> Bool{
+        let dataDB = OthersDataDB()
+        let quantityBought = dataDB.getDataBySymbol(symbol)
+        if(quantityBought.currentTotal >= total){
+            return true
+        } else {
+            return false
+        }
+    }
     
     // Check if inputted selling quantity us valid and there was enough buy, so it will not generate negative quantity value
     class func isValidSellCurrency(quantity:Double, symbol:String) -> Bool{
@@ -399,6 +409,52 @@ class Utils {
         portfolio.variationTotal = variationTotal
         portfolio.buyTotal = buyTotal
         portfolio.soldTotal = sellTotal
+        portfolio.brokerage = brokerage
+        portfolio.totalGain = totalGain
+        portfolio.currentTotal = mCurrentTotal
+        
+        portfolioDB.save(portfolio)
+        portfolioDB.close()
+    }
+    
+    // Updates others portfolio after treasury data quotes have been updated
+    class func updateOthersPortfolio(){
+        
+        var buyTotal: Double = 0.0
+        var totalGain: Double = 0.0
+        var variationTotal: Double = 0.0
+        var sellTotal: Double = 0.0
+        var brokerage: Double = 0.0
+        var mCurrentTotal: Double = 0.0
+        var incomeTotal: Double = 0.0
+        
+        // Treasury Data
+        let othersDB = OthersDataDB()
+        let others = othersDB.getData()
+        
+        others.forEach{ other in
+            variationTotal += other.variation
+            buyTotal += other.buyTotal
+            incomeTotal += other.liquidIncome
+            mCurrentTotal += other.currentTotal
+            brokerage += other.brokerage
+            totalGain += other.totalGain
+        }
+        
+        // Updates current percent of each treasury data
+        others.forEach{ other in
+            other.currentPercent = other.currentTotal/mCurrentTotal*100
+            othersDB.save(other)
+        }
+        
+        othersDB.close()
+        
+        let portfolioDB = OthersPortfolioDB()
+        let portfolio = portfolioDB.getPortfolio()
+        portfolio.variationTotal = variationTotal
+        portfolio.buyTotal = buyTotal
+        portfolio.soldTotal = sellTotal
+        portfolio.incomeTotal = incomeTotal
         portfolio.brokerage = brokerage
         portfolio.totalGain = totalGain
         portfolio.currentTotal = mCurrentTotal

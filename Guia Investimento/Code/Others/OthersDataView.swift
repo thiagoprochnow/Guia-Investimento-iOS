@@ -1,5 +1,5 @@
 //
-//  FixedData.swift
+//  OthersData.swift
 //  Guia Investimento
 //
 //  Created by Felipe on 01/06/18.
@@ -9,11 +9,11 @@
 import Foundation
 import UIKit
 
-class FixedDataView: UIViewController, UITableViewDataSource, UITableViewDelegate{
-    @IBOutlet var fixedTable: UITableView!
+class OthersDataView: UIViewController, UITableViewDataSource, UITableViewDelegate{
+    @IBOutlet var othersTable: UITableView!
     @IBOutlet var fab: UIImageView!
     @IBOutlet var emptyListView: UILabel!
-    var fixedDatas: Array<FixedData> = []
+    var othersDatas: Array<OthersData> = []
     var selectedSymbol: String = ""
     var current: String = ""
     var sold: String = ""
@@ -26,11 +26,11 @@ class FixedDataView: UIViewController, UITableViewDataSource, UITableViewDelegat
         self.view.backgroundColor = UIColor(red: 237/255, green: 237/255, blue: 237/255, alpha: 1)
         
         // Table View
-        self.fixedTable.dataSource = self
-        self.fixedTable.delegate = self
-        self.fixedTable.separatorStyle = .none
-        let xib = UINib(nibName: "FixedDataCell", bundle: nil)
-        self.fixedTable.register(xib, forCellReuseIdentifier: "cell")
+        self.othersTable.dataSource = self
+        self.othersTable.delegate = self
+        self.othersTable.separatorStyle = .none
+        let xib = UINib(nibName: "OthersDataCell", bundle: nil)
+        self.othersTable.register(xib, forCellReuseIdentifier: "cell")
         
         // Load fab (Floating action button)
         // Set images for each icon
@@ -38,54 +38,58 @@ class FixedDataView: UIViewController, UITableViewDataSource, UITableViewDelegat
         fab.image = fabImg
         // Add action to open buy form when tapped
         fab.isUserInteractionEnabled = true
-        let tapBuyFixed = UITapGestureRecognizer(target: self, action: #selector(FixedDataView.buyFixed))
-        fab.addGestureRecognizer(tapBuyFixed)
+        let tapBuyOthers = UITapGestureRecognizer(target: self, action: #selector(OthersDataView.buyOthers))
+        fab.addGestureRecognizer(tapBuyOthers)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        // Load all Active Fixed Datas to show on this list
-        let dataDB = FixedDataDB()
-        fixedDatas = dataDB.getData()
+        // Load all Active Others Datas to show on this list
+        let dataDB = OthersDataDB()
+        othersDatas = dataDB.getData()
         var selectedSymbol: String = ""
         var current: String = ""
         var sold: String = ""
         var bought: String = ""
         var gain: String = ""
-        if (fixedDatas.isEmpty){
-            self.fixedTable.isHidden = true
+        if (othersDatas.isEmpty){
+            self.othersTable.isHidden = true
             self.emptyListView.isHidden = false
         } else {
-            self.fixedTable.isHidden = false
+            self.othersTable.isHidden = false
             self.emptyListView.isHidden = true
         }
         dataDB.close()
-        // Reload data every time FixedDataView is shown
-        self.fixedTable.reloadData()
+        // Reload data every time OthersDataView is shown
+        self.othersTable.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (fixedDatas.isEmpty){
+        if (othersDatas.isEmpty){
             return 0
         } else {
             // +1 to leave a empty field for Floating Button to scroll
-            return fixedDatas.count + 1
+            return othersDatas.count + 1
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let linha = indexPath.row
-        let cell = self.fixedTable.dequeueReusableCell(withIdentifier: "cell") as! FixedDataCell
+        let cell = self.othersTable.dequeueReusableCell(withIdentifier: "cell") as! OthersDataCell
         // Do not show highlight when selected
         cell.selectionStyle = .none
         
-        if(linha < (fixedDatas.count)){
-            // Load each Fixed Data information on cell
+        if(linha < (othersDatas.count)){
+            // Load each Others Data information on cell
             let locale = Locale(identifier: "pt_BR")
-            let data = fixedDatas[linha]
+            let data = othersDatas[linha]
             let totalGain = data.totalGain
+            let othersAppreciation = data.variation
             let currentTotal = data.currentTotal
+            let totalIncome = data.liquidIncome
             let buyTotal = data.buyTotal
             let sellTotal = data.sellTotal
+            let variationPercent = "(" + String(format: "%.2f", locale: locale, arguments: [othersAppreciation/buyTotal * 100]) + "%)"
+            let netIncomePercent = "(" + String(format: "%.2f", locale: locale, arguments: [totalIncome/buyTotal * 100]) + "%)"
             let totalGainPercent = "(" + String(format: "%.2f", locale: locale, arguments: [totalGain/buyTotal * 100]) + "%)"
             let currentPercent = String(format: "%.2f", locale: locale, arguments: [data.currentPercent]) + "%"
             
@@ -94,6 +98,19 @@ class FixedDataView: UIViewController, UITableViewDataSource, UITableViewDelegat
             cell.boughtLabel.text = Utils.doubleToRealCurrency(value: buyTotal)
             cell.soldLabel.text = Utils.doubleToRealCurrency(value: sellTotal)
             cell.currentPercent.text = currentPercent
+            cell.variationLabel.text = Utils.doubleToRealCurrency(value: othersAppreciation)
+            cell.variationPercent.text = variationPercent
+            if(data.variation >= 0){
+                cell.variationLabel.textColor = UIColor(red: 139/255, green: 195/255, blue: 74/255, alpha: 1)
+                cell.variationPercent.textColor = UIColor(red: 139/255, green: 195/255, blue: 74/255, alpha: 1)
+            } else {
+                cell.variationLabel.textColor = UIColor(red: 244/255, green: 67/255, blue: 54/255, alpha: 1)
+                cell.variationPercent.textColor = UIColor(red: 244/255, green: 67/255, blue: 54/255, alpha: 1)
+            }
+            cell.incomeLabel.text = Utils.doubleToRealCurrency(value: totalIncome)
+            cell.incomeLabel.textColor = UIColor(red: 139/255, green: 195/255, blue: 74/255, alpha: 1)
+            cell.incomePercent.text = netIncomePercent
+            cell.incomePercent.textColor = UIColor(red: 139/255, green: 195/255, blue: 74/255, alpha: 1)
             cell.gainLabel.text = Utils.doubleToRealCurrency(value: totalGain)
             cell.gainPercent.text = totalGainPercent
             if(data.totalGain >= 0){
@@ -117,10 +134,10 @@ class FixedDataView: UIViewController, UITableViewDataSource, UITableViewDelegat
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // When a fixed is selected in the table view, it will show menu asking for action
+        // When a others is selected in the table view, it will show menu asking for action
         // View details, Buy, Sell, Delete
         let linha = indexPath.row
-        let data = fixedDatas[linha]
+        let data = othersDatas[linha]
         selectedSymbol = data.symbol
         current = String(data.currentTotal)
         sold = String(data.sellTotal)
@@ -128,18 +145,18 @@ class FixedDataView: UIViewController, UITableViewDataSource, UITableViewDelegat
         gain = String(data.totalGain)
         
         let alertController = UIAlertController(title: "", message: "", preferredStyle: .alert)
-        if(linha < (fixedDatas.count)){
+        if(linha < (othersDatas.count)){
             let detailAction = UIAlertAction(title: NSLocalizedString("Mais Detalhes", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
-                self.fixedDetails()
+                self.othersDetails()
             })
             let buyAction = UIAlertAction(title: NSLocalizedString("Comprar", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
-                self.buyFixed()
+                self.buyOthers()
             })
             let sellAction = UIAlertAction(title: NSLocalizedString("Vender", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
-                self.sellFixed()
+                self.sellOthers()
             })
             let editAction = UIAlertAction(title: NSLocalizedString("Editar Total Atual", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
-                self.editFixed(fixed: data)
+                self.editOthers(others: data)
             })
             let cancelAction = UIAlertAction(title: NSLocalizedString("Cancelar", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
                 self.selectedSymbol = ""
@@ -149,10 +166,10 @@ class FixedDataView: UIViewController, UITableViewDataSource, UITableViewDelegat
                 self.gain = ""
             })
             let deleteAction = UIAlertAction(title: NSLocalizedString("Deletar", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
-                let deleteAlertController = UIAlertController(title: "Deletar renda fixa da sua carteira?", message: "Se vendeu a renda fixa, escolha Vender no menu de opções. Deletar essa renda fixa irá remover todos os dados sobre ela.", preferredStyle: .alert)
+                let deleteAlertController = UIAlertController(title: "Deletar investimento da sua carteira?", message: "Se vendeu esse investimento, escolha Vender no menu de opções. Deletar irá remover todos os dados sobre ele.", preferredStyle: .alert)
                 let okAction = UIAlertAction(title: NSLocalizedString("Deletar", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
                     self.deleteData(self.selectedSymbol)
-                    self.fixedTable.reloadData()
+                    self.othersTable.reloadData()
                     self.selectedSymbol = ""
                     self.current = ""
                     self.sold = ""
@@ -176,57 +193,57 @@ class FixedDataView: UIViewController, UITableViewDataSource, UITableViewDelegat
         }
     }
     
-    // Open form to buy fixeds
-    @IBAction func buyFixed(){
-        let buyFixedForm = BuyFixedForm()
+    // Open form to buy others
+    @IBAction func buyOthers(){
+        let buyOthersForm = BuyOthersForm()
         if(selectedSymbol != ""){
-            buyFixedForm.symbol = selectedSymbol
+            buyOthersForm.symbol = selectedSymbol
         }
-        self.navigationController?.pushViewController(buyFixedForm, animated: true)
+        self.navigationController?.pushViewController(buyOthersForm, animated: true)
     }
     
-    // Open form to sell fixeds
-    @IBAction func sellFixed(){
-        let sellFixedForm = SellFixedForm()
+    // Open form to sell others
+    @IBAction func sellOthers(){
+        let sellOthersForm = SellOthersForm()
         if(selectedSymbol != ""){
-            sellFixedForm.symbol = selectedSymbol
+            sellOthersForm.symbol = selectedSymbol
         }
-        self.navigationController?.pushViewController(sellFixedForm, animated: true)
+        self.navigationController?.pushViewController(sellOthersForm, animated: true)
     }
     
-    func editFixed(fixed:FixedData){
-        let editFixedForm = FixedEditPriceForm()
-        editFixedForm.prealodedData = fixed
-        self.navigationController?.pushViewController(editFixedForm, animated: true)
+    func editOthers(others:OthersData){
+        let editOthersForm = OthersEditPriceForm()
+        editOthersForm.prealodedData = others
+        self.navigationController?.pushViewController(editOthersForm, animated: true)
     }
     
-    // Delete fixed data, all its transactions and incomes
+    // Delete others data, all its transactions and incomes
     func deleteData(_ symbol: String){
-        let dataDB = FixedDataDB()
-        let transactionDB = FixedTransactionDB()
+        let dataDB = OthersDataDB()
+        let transactionDB = OthersTransactionDB()
         
         dataDB.deleteBySymbol(symbol)
         transactionDB.deleteBySymbol(symbol)
-        fixedDatas = dataDB.getData()
-        Utils.updateFixedPortfolio()
+        othersDatas = dataDB.getData()
+        Utils.updateOthersPortfolio()
         dataDB.close()
         transactionDB.close()
     }
     
-    // Open fixed details view
-    @IBAction func fixedDetails(){
-        let fixedDetails = FixedDetailsView()
+    // Open others details view
+    @IBAction func othersDetails(){
+        let othersDetails = OthersDetailsView()
         let tabController = TabController()
 
-        fixedDetails.tabBarItem.title = ""
-        fixedDetails.tabBarItem.image =  Utils.makeThumbnailFromText(text: "Operações")
+        othersDetails.tabBarItem.title = ""
+        othersDetails.tabBarItem.image =  Utils.makeThumbnailFromText(text: "Operações")
         
         if(selectedSymbol != ""){
-            fixedDetails.symbol = selectedSymbol
-            fixedDetails.current = current
-            fixedDetails.sold = sold
-            fixedDetails.bought = bought
-            fixedDetails.gain = gain
+            othersDetails.symbol = selectedSymbol
+            othersDetails.current = current
+            othersDetails.sold = sold
+            othersDetails.bought = bought
+            othersDetails.gain = gain
             tabController.title = selectedSymbol
         }
         
@@ -234,7 +251,7 @@ class FixedDataView: UIViewController, UITableViewDataSource, UITableViewDelegat
         let backButton = UIBarButtonItem(title: "Voltar", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
         tabController.navigationItem.backBarButtonItem = backButton
         tabController.navigationItem.backBarButtonItem?.tintColor = UIColor.white
-        tabController.viewControllers = [fixedDetails]
+        tabController.viewControllers = [othersDetails]
         
         self.navigationController?.pushViewController(tabController, animated: true)
     }
