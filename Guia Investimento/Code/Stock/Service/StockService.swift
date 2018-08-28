@@ -102,7 +102,7 @@ class StockService{
         }
     }
     
-    class func updateStockIncomes(_ callback: @escaping(_ error:Bool) -> Void){
+    class func updateStockIncomes(_ callback: @escaping(_ incomesCallback:Array<StockIncome>,_ error:Bool) -> Void){
         let stockDataDB = StockDataDB()
         let stocks = stockDataDB.getDataByStatus(Constants.Status.ACTIVE)
         stockDataDB.close()
@@ -131,7 +131,6 @@ class StockService{
                             print(String(data: data, encoding: String.Encoding.utf8))
                             stockIncomes = try JSONSerialization.jsonObject(with: data, options: [JSONSerialization.ReadingOptions.mutableContainers,.allowFragments]) as! Array<NSDictionary>
                             
-                            let incomeDB = StockIncomeDB()
                             stockIncomes.forEach{ income in
                                 var stockIncome = StockIncome()
                                 let perStock = income["valor"] as! Double
@@ -157,16 +156,8 @@ class StockService{
                                 stockIncome.tax = tax
                                 stockIncome.liquidIncome = liquidValue
                                 
-                                let isInserted = incomeDB.isIncomeInserted(stockIncome)
-                                // Check if it not already inserted
-                                if(!isInserted){
-                                    incomeDB.save(stockIncome)
-                                    if(stockIncome.affectedQuantity > 0){
-                                    general.updateStockDataIncome(stockIncome.symbol, valueReceived: stockIncome.liquidIncome, tax: stockIncome.tax)
-                                    }
-                                }
+                                returnIncomes.append(stockIncome)
                             }
-                            incomeDB.close()
                             result = true
                         } catch {
                             print(error)
@@ -178,12 +169,12 @@ class StockService{
                     }
                     // only calls callback for last item
                     if(index == (stocks.count - 1)){
-                        callback(result)
+                        callback(returnIncomes, result)
                     }
                 }.resume()
             }
         } else {
-            callback(true)
+            callback(returnIncomes, true)
         }
     }
 }

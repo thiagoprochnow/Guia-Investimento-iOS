@@ -32,7 +32,9 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
     var fixedRefresh = false
     
     var stocks:Array<StockData> = []
+    var stocksIncomes:Array<StockIncome> = []
     var fiis:Array<FiiData> = []
+    var fiisIncomes:Array<FiiIncome> = []
     var treasuries:Array<TreasuryData> = []
     var currencies:Array<CurrencyData> = []
     var fixeds:Array<FixedData> = []
@@ -235,7 +237,8 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
         fixedDB.close()
         
         // Stocks
-        StockService.updateStockIncomes({(_ error:Bool) -> Void in
+        StockService.updateStockIncomes({(_ stockIncomes:Array<StockIncome>,error:Bool) -> Void in
+            self.stocksIncomes = stockIncomes
             StockService.updateStockQuotes({(_ stocks:Array<StockData>,error:Bool) -> Void in
                 self.stockRefresh = true
                 self.stocks = stocks
@@ -246,7 +249,8 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
         })
         
         // FII
-        FiiService.updateFiiIncomes({(_ error:Bool) -> Void in
+        FiiService.updateFiiIncomes({(_ fiiIncomes:Array<FiiIncome>,error:Bool) -> Void in
+            self.fiisIncomes = fiiIncomes
             FiiService.updateFiiQuotes({(_ fiis:Array<FiiData>,error:Bool) -> Void in
                 self.fiiRefresh = true
                 self.fiis = fiis
@@ -303,6 +307,21 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
             stockDB.close()
             Utils.updateStockPortfolio()
             
+            // Stocks Incomes
+            let incomeDB = StockIncomeDB()
+            let stockGeneral = StockGeneral()
+            stocksIncomes.forEach{ stockIncome in
+                let isInserted = incomeDB.isIncomeInserted(stockIncome)
+                // Check if it not already inserted
+                if(!isInserted){
+                    incomeDB.save(stockIncome)
+                    if(stockIncome.affectedQuantity > 0){
+                        stockGeneral.updateStockDataIncome(stockIncome.symbol, valueReceived: stockIncome.liquidIncome, tax: stockIncome.tax)
+                    }
+                }
+            }
+            incomeDB.close()
+            
             // Fii
             let fiiDB = FiiDataDB()
             fiis.forEach{ fii in
@@ -316,6 +335,21 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
             }
             fiiDB.close()
             Utils.updateFiiPortfolio()
+            
+            // Fii Incomes
+            let fiiIncomeDB = FiiIncomeDB()
+            let fiiGeneral = FiiGeneral()
+            fiisIncomes.forEach{ fiiIncome in
+                let isInserted = fiiIncomeDB.isIncomeInserted(fiiIncome)
+                // Check if it not already inserted
+                if(!isInserted){
+                    fiiIncomeDB.save(fiiIncome)
+                    if(fiiIncome.affectedQuantity > 0){
+                        fiiGeneral.updateFiiDataIncome(fiiIncome.symbol, valueReceived: fiiIncome.liquidIncome, tax: fiiIncome.tax)
+                    }
+                }
+            }
+            fiiIncomeDB.close()
           
             // Treasury
             let treasuryDB = TreasuryDataDB()

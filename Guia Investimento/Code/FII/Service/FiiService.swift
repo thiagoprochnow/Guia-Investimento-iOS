@@ -102,7 +102,7 @@ class FiiService{
         }
     }
     
-    class func updateFiiIncomes(_ callback: @escaping(_ error:Bool) -> Void){
+    class func updateFiiIncomes(_ callback: @escaping(_ fiiIncomes:Array<FiiIncome>, _ error:Bool) -> Void){
         let fiiDataDB = FiiDataDB()
         let fiis = fiiDataDB.getDataByStatus(Constants.Status.ACTIVE)
         fiiDataDB.close()
@@ -131,7 +131,6 @@ class FiiService{
                             print(String(data: data, encoding: String.Encoding.utf8))
                             fiiIncomes = try JSONSerialization.jsonObject(with: data, options: [JSONSerialization.ReadingOptions.mutableContainers,.allowFragments]) as! Array<NSDictionary>
                             
-                            let incomeDB = FiiIncomeDB()
                             fiiIncomes.forEach{ income in
                                 var fiiIncome = FiiIncome()
                                 let perFii = income["valor"] as! Double
@@ -151,16 +150,8 @@ class FiiService{
                                 fiiIncome.tax = tax
                                 fiiIncome.liquidIncome = liquidValue
                                 
-                                let isInserted = incomeDB.isIncomeInserted(fiiIncome)
-                                // Check if it not already inserted
-                                if(!isInserted){
-                                    incomeDB.save(fiiIncome)
-                                    if(fiiIncome.affectedQuantity > 0){
-                                    general.updateFiiDataIncome(fiiIncome.symbol, valueReceived: fiiIncome.liquidIncome, tax: fiiIncome.tax)
-                                    }
-                                }
+                                returnIncomes.append(fiiIncome)
                             }
-                            incomeDB.close()
                             result = true
                         } catch {
                             print(error)
@@ -172,12 +163,12 @@ class FiiService{
                     }
                     // only calls callback for last item
                     if(index == (fiis.count - 1)){
-                        callback(result)
+                        callback(returnIncomes,result)
                     }
                 }.resume()
             }
         } else {
-            callback(true)
+            callback(returnIncomes,true)
         }
     }
 }
