@@ -10,10 +10,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OthresDividendForm">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OthersDividendForm" customModule="Guia_Investimento" customModuleProvider="target">
             <connections>
                 <outlet property="datePicker" destination="8OO-U5-oJ8" id="2lD-ng-vDb"/>
                 <outlet property="symbolTextField" destination="3Ms-ik-b34" id="W9w-fz-tkB"/>
+                <outlet property="taxTextField" destination="jf1-S0-4Wp" id="Qvl-VG-e64"/>
                 <outlet property="totalTextField" destination="Aps-xm-etC" id="OZe-ge-lKc"/>
                 <outlet property="view" destination="iN0-l3-epB" id="ioK-Ww-Jzk"/>
             </connections>
@@ -24,7 +25,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data Recebimento" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MAc-Jg-odP">
-                    <rect key="frame" x="16" y="248" width="164" height="21"/>
+                    <rect key="frame" x="16" y="320" width="141" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -57,7 +58,7 @@
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="8OO-U5-oJ8">
-                    <rect key="frame" x="16" y="277" width="343" height="180"/>
+                    <rect key="frame" x="16" y="349" width="343" height="180"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="180" id="kPz-dn-Rxn"/>
                     </constraints>
@@ -66,24 +67,40 @@
                     </date>
                     <locale key="locale" localeIdentifier="pt_BR"/>
                 </datePicker>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ex. 20.34" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jf1-S0-4Wp">
+                    <rect key="frame" x="16" y="254" width="343" height="30"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Imposto pago no rendimento" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="17V-MV-vlk">
+                    <rect key="frame" x="16" y="225" width="220.5" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="MAc-Jg-odP" firstAttribute="top" secondItem="Aps-xm-etC" secondAttribute="bottom" constant="31" id="0X1-RC-cGk"/>
+                <constraint firstItem="17V-MV-vlk" firstAttribute="top" secondItem="Aps-xm-etC" secondAttribute="bottom" constant="8" id="7jk-w0-F5R"/>
+                <constraint firstItem="MAc-Jg-odP" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="A5g-cD-2hA"/>
                 <constraint firstItem="8OO-U5-oJ8" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="A6u-e1-5af"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="jf1-S0-4Wp" secondAttribute="trailing" constant="16" id="Avc-qh-HA1"/>
                 <constraint firstItem="Aps-xm-etC" firstAttribute="leading" secondItem="pnc-bm-Tnn" secondAttribute="leading" id="Ay1-io-CKF"/>
                 <constraint firstItem="Aps-xm-etC" firstAttribute="trailing" secondItem="3Ms-ik-b34" secondAttribute="trailing" id="C0Z-4P-rCC"/>
+                <constraint firstItem="8OO-U5-oJ8" firstAttribute="top" secondItem="MAc-Jg-odP" secondAttribute="bottom" constant="8" id="FOB-9N-TVl"/>
                 <constraint firstItem="hjA-lA-0jA" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="GPP-bC-VZc"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="pnc-bm-Tnn" secondAttribute="trailing" constant="56" id="Hj2-EA-MfJ"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="8OO-U5-oJ8" secondAttribute="trailing" constant="16" id="HuJ-AF-1zb"/>
-                <constraint firstItem="8OO-U5-oJ8" firstAttribute="top" secondItem="MAc-Jg-odP" secondAttribute="bottom" constant="8" id="JBq-ja-zBq"/>
+                <constraint firstItem="MAc-Jg-odP" firstAttribute="top" secondItem="jf1-S0-4Wp" secondAttribute="bottom" constant="36" id="JWY-dH-vKG"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="3Ms-ik-b34" secondAttribute="trailing" constant="16" id="Jf5-oM-she"/>
-                <constraint firstItem="MAc-Jg-odP" firstAttribute="leading" secondItem="Aps-xm-etC" secondAttribute="leading" id="UDV-eW-zyD"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="MAc-Jg-odP" secondAttribute="trailing" constant="195" id="VbO-lT-A7X"/>
+                <constraint firstItem="17V-MV-vlk" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="Pa1-rl-KeX"/>
                 <constraint firstItem="3Ms-ik-b34" firstAttribute="top" secondItem="hjA-lA-0jA" secondAttribute="bottom" constant="8" id="gwr-2e-TTE"/>
+                <constraint firstItem="jf1-S0-4Wp" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="j14-p1-M8f"/>
                 <constraint firstItem="Aps-xm-etC" firstAttribute="top" secondItem="pnc-bm-Tnn" secondAttribute="bottom" constant="8" symbolic="YES" id="j7h-d5-T7L"/>
                 <constraint firstItem="3Ms-ik-b34" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="oKE-Zw-FEF"/>
                 <constraint firstItem="pnc-bm-Tnn" firstAttribute="top" secondItem="3Ms-ik-b34" secondAttribute="bottom" constant="18" id="pi8-9n-7Jf"/>
+                <constraint firstItem="jf1-S0-4Wp" firstAttribute="top" secondItem="17V-MV-vlk" secondAttribute="bottom" constant="8" id="r46-oM-tdp"/>
                 <constraint firstItem="pnc-bm-Tnn" firstAttribute="leading" secondItem="3Ms-ik-b34" secondAttribute="leading" id="uRg-OO-x2a"/>
                 <constraint firstItem="hjA-lA-0jA" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="17" id="xgo-K2-Sd3"/>
                 <constraint firstItem="3Ms-ik-b34" firstAttribute="top" secondItem="hjA-lA-0jA" secondAttribute="bottom" constant="8" id="yxa-QM-TTM"/>

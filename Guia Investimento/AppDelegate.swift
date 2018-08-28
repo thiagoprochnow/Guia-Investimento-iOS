@@ -151,5 +151,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ipcaDB.createTable()
         ipcaDB.close()
         
+        // OTHERS
+        
+        // OTHERS Portfolio
+        let othersPortfolioDB = OthersPortfolioDB()
+        othersPortfolioDB.createTable()
+        othersPortfolioDB.close()
+        // OTHERS Transaction
+        let othersTransactionDB = OthersTransactionDB()
+        othersTransactionDB.createTable()
+        othersTransactionDB.close()
+        // OTHERS Data
+        let othersDataDB = OthersDataDB()
+        othersDataDB.createTable()
+        othersDataDB.close()
+        // OTHERS Incomes
+        let othersIncomesDB = OthersIncomeDB()
+        othersIncomesDB.createTable()
+        othersIncomesDB.close()
     }
 }

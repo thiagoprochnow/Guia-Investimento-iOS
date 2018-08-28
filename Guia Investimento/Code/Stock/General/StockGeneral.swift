@@ -217,9 +217,11 @@ class StockGeneral {
         let dbTax = stockData.incomeTax
         let totalIncome = dbIncome + valueReceived
         let totalTax = dbTax + tax
+        let totalGain = totalIncome + stockData.variation
         
         stockData.netIncome = totalIncome
         stockData.incomeTax = totalTax
+        stockData.totalGain = totalGain
         
         dataDB.save(stockData)
         

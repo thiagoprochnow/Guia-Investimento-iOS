@@ -408,11 +408,11 @@
 		55F77AF22130B91800CD5EBE /* OthersPortfolioCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55F77AE82130B91700CD5EBE /* OthersPortfolioCell.xib */; };
 		55F77AF32130B91800CD5EBE /* OthersTransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F77AE92130B91700CD5EBE /* OthersTransactionCell.swift */; };
 		55F77AF42130B91800CD5EBE /* OthersTransactionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55F77AEA2130B91700CD5EBE /* OthersTransactionCell.xib */; };
-		55F77AFB2130B94D00CD5EBE /* TreasuryIncomesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55F77AF52130B94200CD5EBE /* TreasuryIncomesView.xib */; };
-		55F77AFC2130B94D00CD5EBE /* TreasuryIncomesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F77AF62130B94500CD5EBE /* TreasuryIncomesView.swift */; };
-		55F77AFE2130B94D00CD5EBE /* TreasuryMainIncomesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F77AF82130B94700CD5EBE /* TreasuryMainIncomesView.swift */; };
+		55F77AFB2130B94D00CD5EBE /* OthersIncomesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55F77AF52130B94200CD5EBE /* OthersIncomesView.xib */; };
+		55F77AFC2130B94D00CD5EBE /* OthersIncomesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F77AF62130B94500CD5EBE /* OthersIncomesView.swift */; };
+		55F77AFE2130B94D00CD5EBE /* OthersMainIncomesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F77AF82130B94700CD5EBE /* OthersMainIncomesView.swift */; };
 		55F77AFF2130B94D00CD5EBE /* OthersIncomeDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F77AF92130B94B00CD5EBE /* OthersIncomeDetailsView.swift */; };
-		55F77B002130B94D00CD5EBE /* TreasuryMainIncomesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55F77AFA2130B94D00CD5EBE /* TreasuryMainIncomesView.xib */; };
+		55F77B002130B94D00CD5EBE /* OthersMainIncomesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55F77AFA2130B94D00CD5EBE /* OthersMainIncomesView.xib */; };
 		55F77B022130B9DA00CD5EBE /* OthersIncomeDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F77B012130B9D800CD5EBE /* OthersIncomeDB.swift */; };
 		55F77B0B2130BA6C00CD5EBE /* FixedPortfolioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F77B032130BA6800CD5EBE /* FixedPortfolioCell.swift */; };
 		55F77B0C2130BA6C00CD5EBE /* FixedPieChartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55F77B042130BA6B00CD5EBE /* FixedPieChartCell.xib */; };
@@ -859,11 +859,11 @@
 		55F77AE82130B91700CD5EBE /* OthersPortfolioCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OthersPortfolioCell.xib; sourceTree = "<group>"; };
 		55F77AE92130B91700CD5EBE /* OthersTransactionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OthersTransactionCell.swift; sourceTree = "<group>"; };
 		55F77AEA2130B91700CD5EBE /* OthersTransactionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OthersTransactionCell.xib; sourceTree = "<group>"; };
-		55F77AF52130B94200CD5EBE /* TreasuryIncomesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TreasuryIncomesView.xib; sourceTree = "<group>"; };
-		55F77AF62130B94500CD5EBE /* TreasuryIncomesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreasuryIncomesView.swift; sourceTree = "<group>"; };
-		55F77AF82130B94700CD5EBE /* TreasuryMainIncomesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreasuryMainIncomesView.swift; sourceTree = "<group>"; };
+		55F77AF52130B94200CD5EBE /* OthersIncomesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OthersIncomesView.xib; sourceTree = "<group>"; };
+		55F77AF62130B94500CD5EBE /* OthersIncomesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OthersIncomesView.swift; sourceTree = "<group>"; };
+		55F77AF82130B94700CD5EBE /* OthersMainIncomesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OthersMainIncomesView.swift; sourceTree = "<group>"; };
 		55F77AF92130B94B00CD5EBE /* OthersIncomeDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OthersIncomeDetailsView.swift; sourceTree = "<group>"; };
-		55F77AFA2130B94D00CD5EBE /* TreasuryMainIncomesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TreasuryMainIncomesView.xib; sourceTree = "<group>"; };
+		55F77AFA2130B94D00CD5EBE /* OthersMainIncomesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OthersMainIncomesView.xib; sourceTree = "<group>"; };
 		55F77B012130B9D800CD5EBE /* OthersIncomeDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OthersIncomeDB.swift; sourceTree = "<group>"; };
 		55F77B032130BA6800CD5EBE /* FixedPortfolioCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixedPortfolioCell.swift; sourceTree = "<group>"; };
 		55F77B042130BA6B00CD5EBE /* FixedPieChartCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FixedPieChartCell.xib; sourceTree = "<group>"; };
@@ -1689,10 +1689,11 @@
 				55F77A38212F7B8000CD5EBE /* OthersPortfolioView.xib */,
 				55F77AF92130B94B00CD5EBE /* OthersIncomeDetailsView.swift */,
 				55F8E4D321332D7500145204 /* OthersIncomeDetailsView.xib */,
-				55F77AF62130B94500CD5EBE /* TreasuryIncomesView.swift */,
-				55F77AF52130B94200CD5EBE /* TreasuryIncomesView.xib */,
-				55F77AF82130B94700CD5EBE /* TreasuryMainIncomesView.swift */,
-				55F77AFA2130B94D00CD5EBE /* TreasuryMainIncomesView.xib */,
+				55F77AF62130B94500CD5EBE /* OthersIncomesView.swift */,
+				55F77AF52130B94200CD5EBE /* OthersIncomesView.xib */,
+				55F77AF82130B94700CD5EBE /* OthersMainIncomesView.swift */,
+				55F77AFA2130B94D00CD5EBE /* OthersMainIncomesView.xib */,
+				55F77AE72130B91700CD5EBE /* OthersIncomeCell.xib */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -1875,7 +1876,6 @@
 				55F77AE92130B91700CD5EBE /* OthersTransactionCell.swift */,
 				55F77AEA2130B91700CD5EBE /* OthersTransactionCell.xib */,
 				55F77AE12130B91300CD5EBE /* OthersIncomeCell.swift */,
-				55F77AE72130B91700CD5EBE /* OthersIncomeCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -2046,7 +2046,7 @@
 				55CCF487210FC8D900D2E95B /* SoldTreasuryDataCell.xib in Resources */,
 				55F77AED2130B91800CD5EBE /* OthersDataCell.xib in Resources */,
 				5512E9E4211CE94700A1FD76 /* FixedDetailsView.xib in Resources */,
-				55F77B002130B94D00CD5EBE /* TreasuryMainIncomesView.xib in Resources */,
+				55F77B002130B94D00CD5EBE /* OthersMainIncomesView.xib in Resources */,
 				5512E9E9211CE94700A1FD76 /* FixedPortfolioView.xib in Resources */,
 				55F77B0F2130BA6C00CD5EBE /* FixedTransactionCell.xib in Resources */,
 				55CCF462210FC8D900D2E95B /* TreasuryDataView.xib in Resources */,
@@ -2070,7 +2070,7 @@
 				5540A85D20BCD3780087498B /* DrawerViewController.xib in Resources */,
 				5521B066210A8D5E00AB6345 /* Info.plist in Resources */,
 				5503A81A20F2A2F70039ACCD /* StockBonificationForm.xib in Resources */,
-				55F77AFB2130B94D00CD5EBE /* TreasuryIncomesView.xib in Resources */,
+				55F77AFB2130B94D00CD5EBE /* OthersIncomesView.xib in Resources */,
 				55F77A7F212F7B8400CD5EBE /* SellOthersForm.xib in Resources */,
 				5501D8F520ED972500C7D4E5 /* StockDividendForm.xib in Resources */,
 				552F5AB221165084002F3C1A /* BuyCurrencyForm.xib in Resources */,
@@ -2316,7 +2316,7 @@
 				5521AFF2210A8D5E00AB6345 /* MarkerView.swift in Sources */,
 				55CCF489210FC8D900D2E95B /* TreasuryIncomeDB.swift in Sources */,
 				55F77AFF2130B94D00CD5EBE /* OthersIncomeDetailsView.swift in Sources */,
-				55F77AFE2130B94D00CD5EBE /* TreasuryMainIncomesView.swift in Sources */,
+				55F77AFE2130B94D00CD5EBE /* OthersMainIncomesView.swift in Sources */,
 				55F77A64212F7B8400CD5EBE /* OthersData.swift in Sources */,
 				5512E9DA211CE94700A1FD76 /* FixedDataView.swift in Sources */,
 				55CCF47C210FC8D900D2E95B /* TreasuryDataCell.swift in Sources */,
@@ -2399,7 +2399,7 @@
 				553397772109428E00798033 /* StockEditPriceForm.swift in Sources */,
 				5521B06A210A8D5E00AB6345 /* Pods-Guia Investimento-dummy.m in Sources */,
 				5521B044210A8D5E00AB6345 /* CombinedChartRenderer.swift in Sources */,
-				55F77AFC2130B94D00CD5EBE /* TreasuryIncomesView.swift in Sources */,
+				55F77AFC2130B94D00CD5EBE /* OthersIncomesView.swift in Sources */,
 				5521B023210A8D5E00AB6345 /* IFillFormatter.swift in Sources */,
 				5521B056210A8D5E00AB6345 /* XAxisRenderer.swift in Sources */,
 				5521B007210A8D5E00AB6345 /* LineChartDataSet.swift in Sources */,

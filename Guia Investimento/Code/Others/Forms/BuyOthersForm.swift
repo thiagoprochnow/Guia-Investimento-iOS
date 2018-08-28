@@ -54,7 +54,6 @@ class BuyOthersForm: UIViewController, UITextFieldDelegate{
     @IBAction func insertOthers(){
         let symbol = symbolTextField.text
         let boughtTotal = totalTextField.text
-        let gainRate = gainRateTextField.text
         
         // Get selected date as 00:00
         let date = datePicker.date
@@ -84,18 +83,6 @@ class BuyOthersForm: UIViewController, UITextFieldDelegate{
                             }
                             othersTransaction.symbol = symbol!
                             othersTransaction.boughtTotal = Double(boughtTotal!)!
-                            othersTransaction.gainRate = Double(gainRate!)!/100
-                            
-                            if(row == 0){
-                                // CDI
-                                othersTransaction.gainType = Constants.OthersType.CDI
-                            } else if(row == 1){
-                                // IPCA
-                                othersTransaction.gainType = Constants.OthersType.IPCA
-                            } else {
-                                // Pré
-                                othersTransaction.gainType = Constants.OthersType.PRE
-                            }
                             
                             othersTransaction.timestamp = Int(timestamp)
                             othersTransaction.type = Constants.TypeOp.BUY

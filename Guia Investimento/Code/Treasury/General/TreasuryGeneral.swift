@@ -160,9 +160,11 @@ class TreasuryGeneral {
         let dbTax = treasuryData.incomeTax
         let totalIncome = dbIncome + valueReceived
         let totalTax = dbTax + tax
+        let totalGain = totalIncome + treasuryData.variation
         
         treasuryData.netIncome = totalIncome
         treasuryData.incomeTax = totalTax
+        treasuryData.totalGain = totalGain
         
         dataDB.save(treasuryData)
         

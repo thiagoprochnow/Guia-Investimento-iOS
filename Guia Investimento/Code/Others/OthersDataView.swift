@@ -184,9 +184,7 @@ class OthersDataView: UIViewController, UITableViewDataSource, UITableViewDelega
             alertController.addAction(detailAction)
             alertController.addAction(buyAction)
             alertController.addAction(sellAction)
-            if(data.updateStatus != Constants.UpdateStatus.UPDATED){
-                alertController.addAction(editAction)
-            }
+            alertController.addAction(editAction)
             alertController.addAction(deleteAction)
             alertController.addAction(cancelAction)
             self.present(alertController, animated: false, completion: nil)
@@ -233,10 +231,13 @@ class OthersDataView: UIViewController, UITableViewDataSource, UITableViewDelega
     // Open others details view
     @IBAction func othersDetails(){
         let othersDetails = OthersDetailsView()
+        let othersIncomes = OthersIncomesView()
         let tabController = TabController()
 
         othersDetails.tabBarItem.title = ""
         othersDetails.tabBarItem.image =  Utils.makeThumbnailFromText(text: "Operações")
+        othersIncomes.tabBarItem.title = ""
+        othersIncomes.tabBarItem.image =  Utils.makeThumbnailFromText(text: "Rendimentos")
         
         if(selectedSymbol != ""){
             othersDetails.symbol = selectedSymbol
@@ -244,6 +245,7 @@ class OthersDataView: UIViewController, UITableViewDataSource, UITableViewDelega
             othersDetails.sold = sold
             othersDetails.bought = bought
             othersDetails.gain = gain
+            othersIncomes.symbol = selectedSymbol
             tabController.title = selectedSymbol
         }
         
@@ -251,7 +253,7 @@ class OthersDataView: UIViewController, UITableViewDataSource, UITableViewDelega
         let backButton = UIBarButtonItem(title: "Voltar", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
         tabController.navigationItem.backBarButtonItem = backButton
         tabController.navigationItem.backBarButtonItem?.tintColor = UIColor.white
-        tabController.viewControllers = [othersDetails]
+        tabController.viewControllers = [othersDetails, othersIncomes]
         
         self.navigationController?.pushViewController(tabController, animated: true)
     }

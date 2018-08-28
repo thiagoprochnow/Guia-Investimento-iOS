@@ -14,7 +14,7 @@
             <connections>
                 <outlet property="emptyListView" destination="L6j-9r-XAB" id="sgN-Pu-k7Q"/>
                 <outlet property="fab" destination="Ozf-3p-U4g" id="ijL-uL-pXj"/>
-                <outlet property="fixedTable" destination="8RB-fv-qyM" id="f7s-N3-GzY"/>
+                <outlet property="othersTable" destination="8RB-fv-qyM" id="SyF-Id-bbA"/>
                 <outlet property="view" destination="iN0-l3-epB" id="wEe-gI-OAx"/>
             </connections>
         </placeholder>

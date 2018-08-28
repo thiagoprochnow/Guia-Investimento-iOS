@@ -205,9 +205,13 @@
                 <outlet property="bgView" destination="3XH-rU-FPE" id="ldb-DA-slT"/>
                 <outlet property="buyTotal" destination="7uT-IA-7hV" id="1GJ-TE-ixd"/>
                 <outlet property="currentTotal" destination="Jg1-al-Ehu" id="ZnK-ig-Kcr"/>
+                <outlet property="incomeGain" destination="F3a-Ua-cAu" id="hma-pm-7DC"/>
+                <outlet property="incomePercent" destination="IjC-0y-9MM" id="zVm-hz-oVh"/>
                 <outlet property="soldTotal" destination="84R-Vd-Sxe" id="3mu-kb-eUt"/>
                 <outlet property="totalGain" destination="gyg-L4-k6o" id="QTJ-37-HoK"/>
                 <outlet property="totalPercent" destination="Qh6-io-l5W" id="Bmd-rY-6W4"/>
+                <outlet property="variationGain" destination="rja-0M-OsA" id="jXe-CH-NCn"/>
+                <outlet property="variationPercent" destination="Bza-Pf-tgd" id="L9r-30-V1S"/>
             </connections>
             <point key="canvasLocation" x="-86" y="158.5"/>
         </tableViewCell>

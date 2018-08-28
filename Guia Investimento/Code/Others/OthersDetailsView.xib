@@ -15,6 +15,7 @@
                 <outlet property="bgView" destination="dHo-xb-cBB" id="h7b-PS-6xe"/>
                 <outlet property="boughtLabel" destination="EOb-T5-erT" id="HIB-Hd-jOS"/>
                 <outlet property="currentLabel" destination="jCw-Hn-BFA" id="tp7-Be-3WV"/>
+                <outlet property="fab" destination="Xb6-2t-Crz" id="dea-2J-cc8"/>
                 <outlet property="gainLabel" destination="wJj-wj-HbJ" id="yN8-yG-VFv"/>
                 <outlet property="soldLabel" destination="mPO-EE-PLv" id="f9Q-5J-G6m"/>
                 <outlet property="transactionTable" destination="p2Y-6R-50o" id="qea-sH-Q3z"/>
@@ -154,6 +155,15 @@
                     <color key="backgroundColor" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="sectionIndexBackgroundColor" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </tableView>
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xb6-2t-Crz">
+                    <rect key="frame" x="284" y="533" width="75" height="75"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="75" id="3uh-ct-jbK"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="75" id="TAm-22-O3u"/>
+                        <constraint firstAttribute="height" constant="75" id="YZf-vP-CXJ"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="75" id="vNX-3n-lRb"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -161,8 +171,10 @@
                 <constraint firstItem="dHo-xb-cBB" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="DgQ-HD-lG2"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="dHo-xb-cBB" secondAttribute="trailing" constant="16" id="LVo-ky-7dW"/>
                 <constraint firstItem="p2Y-6R-50o" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="N0L-z1-oZT"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Xb6-2t-Crz" secondAttribute="bottom" constant="10" id="S1D-AH-Dwo"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="p2Y-6R-50o" secondAttribute="trailing" constant="16" id="fIc-7z-in2"/>
                 <constraint firstAttribute="bottom" secondItem="p2Y-6R-50o" secondAttribute="bottom" id="h2k-Ki-x7H"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Xb6-2t-Crz" secondAttribute="trailing" constant="16" id="jVY-Zz-fOx"/>
                 <constraint firstItem="dHo-xb-cBB" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="jaN-9F-NNe"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>

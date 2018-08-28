@@ -201,6 +201,20 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
                 view.title = "Moedas"
                 view.viewControllers = [portfolio, data, soldData]
                 break
+            case 5:
+                let portfolio = OthersPortfolioView()
+                let data = OthersDataView()
+                let income = OthersMainIncomesView()
+                portfolio.tabBarItem.title = ""
+                portfolio.tabBarItem.image =  Utils.makeThumbnailFromText(text: "Visão Geral")
+                data.tabBarItem.title = ""
+                data.tabBarItem.image = Utils.makeThumbnailFromText(text: "Carteira")
+                income.tabBarItem.title = ""
+                income.tabBarItem.image = Utils.makeThumbnailFromText(text: "Rendimentos")
+                
+                view.title = "Outros"
+                view.viewControllers = [portfolio, data, income]
+                break
             default:
                 view.title = "Carteira Completa"
             }
@@ -362,6 +376,9 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
             }
             fixedDB.close()
             Utils.updateFixedPortfolio()
+            
+            // OTHERS
+            Utils.updateOthersPortfolio()
             
             nav.navigationController?.visibleViewController?.viewWillAppear(false)
             nav.topViewController?.viewWillAppear(false)

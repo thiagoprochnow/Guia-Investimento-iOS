@@ -1,5 +1,5 @@
 //
-//  TreasuryIncomesView.swift
+//  OthersIncomesView.swift
 //  Guia Investimento
 //
 //  Created by Felipe on 29/06/18.
@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-class TreasuryMainIncomesView: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class OthersMainIncomesView: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet var bgView: UIView!
     @IBOutlet var boughtLabel: UILabel!
     @IBOutlet var grossLabel: UILabel!
@@ -21,7 +21,7 @@ class TreasuryMainIncomesView: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet var liquidPercentLabel: UILabel!
     @IBOutlet var emptyListView: UILabel!
     
-    var treasuryIncomes: Array<TreasuryIncome> = []
+    var othersIncomes: Array<OthersIncome> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,37 +40,37 @@ class TreasuryMainIncomesView: UIViewController, UITableViewDataSource, UITableV
         fab.image = fabImg
         // Add action to open buy form when tapped
         fab.isUserInteractionEnabled = true
-        let tapBuyTreasury = UITapGestureRecognizer(target: self, action: #selector(TreasuryDetailsView.incomeMenu))
-        fab.addGestureRecognizer(tapBuyTreasury)
+        let tapBuyOthers = UITapGestureRecognizer(target: self, action: #selector(OthersDetailsView.incomeMenu))
+        fab.addGestureRecognizer(tapBuyOthers)
         
         // Table View
         self.incomeTable.dataSource = self
         self.incomeTable.delegate = self
         self.incomeTable.separatorStyle = .none
-        let xib = UINib(nibName: "TreasuryIncomeCell", bundle: nil)
+        let xib = UINib(nibName: "OthersIncomeCell", bundle: nil)
         self.incomeTable.register(xib, forCellReuseIdentifier: "cell")
         
-        // Load Treasury Incomes values
-        let incomeDB = TreasuryIncomeDB()
-        treasuryIncomes = incomeDB.getIncomes()
+        // Load Others Incomes values
+        let incomeDB = OthersIncomeDB()
+        othersIncomes = incomeDB.getIncomes()
         incomeDB.close()
         
-        // Load Treasury Data
-        let dataDB = TreasuryDataDB()
-        let treasuryDatas = dataDB.getData()
+        // Load Others Data
+        let dataDB = OthersDataDB()
+        let othersDatas = dataDB.getData()
         dataDB.close()
         var tax = 0.0
         
-        treasuryDatas.forEach{treasury in
-            tax += treasury.incomeTax
+        othersDatas.forEach{others in
+            tax += others.incomeTax
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        // Load all Treasury Incomes of a symbol to show on this list
-        let incomeDB = TreasuryIncomeDB()
-        treasuryIncomes = incomeDB.getIncomes()
-        if (treasuryIncomes.isEmpty){
+        // Load all Others Incomes of a symbol to show on this list
+        let incomeDB = OthersIncomeDB()
+        othersIncomes = incomeDB.getIncomes()
+        if (othersIncomes.isEmpty){
             self.incomeTable.isHidden = true
             self.bgView.isHidden = true
             self.emptyListView.isHidden = false
@@ -81,26 +81,26 @@ class TreasuryMainIncomesView: UIViewController, UITableViewDataSource, UITableV
         }
         incomeDB.close()
         
-        // Load Treasury Data
-        let dataDB = TreasuryDataDB()
-        let treasuryDatas = dataDB.getData()
+        // Load Others Data
+        let dataDB = OthersDataDB()
+        let othersDatas = dataDB.getData()
         dataDB.close()
         var tax = 0.0
         
-        treasuryDatas.forEach{treasury in
-            tax += treasury.incomeTax
+        othersDatas.forEach{others in
+            tax += others.incomeTax
         }
         
-        // Load Treasury Portfolio
-        let portfolioDB = TreasuryPortfolioDB()
-        let treasuryPortfolio = portfolioDB.getPortfolio()
+        // Load Others Portfolio
+        let portfolioDB = OthersPortfolioDB()
+        let othersPortfolio = portfolioDB.getPortfolio()
         portfolioDB.close()
         let locale = Locale(identifier: "pt_BR")
-        let grossIncome = treasuryPortfolio.incomeTotal + tax
-        let netIncome = treasuryPortfolio.incomeTotal
-        let grossPercent = "(" + String(format: "%.2f", locale: locale, arguments: [grossIncome/treasuryPortfolio.buyTotal*100]) + "%)"
-        let taxPercent = "(" + String(format: "%.2f", locale: locale, arguments: [tax/treasuryPortfolio.buyTotal*100]) + "%)"
-        let netPercent = "(" + String(format: "%.2f", locale: locale, arguments: [netIncome/treasuryPortfolio.buyTotal*100]) + "%)"
+        let grossIncome = othersPortfolio.incomeTotal + tax
+        let netIncome = othersPortfolio.incomeTotal
+        let grossPercent = "(" + String(format: "%.2f", locale: locale, arguments: [grossIncome/othersPortfolio.buyTotal*100]) + "%)"
+        let taxPercent = "(" + String(format: "%.2f", locale: locale, arguments: [tax/othersPortfolio.buyTotal*100]) + "%)"
+        let netPercent = "(" + String(format: "%.2f", locale: locale, arguments: [netIncome/othersPortfolio.buyTotal*100]) + "%)"
         grossPercentLabel.textColor = UIColor(red: 139/255, green: 195/255, blue: 74/255, alpha: 1)
         taxPercentLabel.textColor = UIColor(red: 244/255, green: 67/255, blue: 54/255, alpha: 1)
         liquidPercentLabel.textColor = UIColor(red: 139/255, green: 195/255, blue: 74/255, alpha: 1)
@@ -110,35 +110,35 @@ class TreasuryMainIncomesView: UIViewController, UITableViewDataSource, UITableV
         grossPercentLabel.text = grossPercent
         taxPercentLabel.text = taxPercent
         liquidPercentLabel.text = netPercent
-        boughtLabel.text = Utils.doubleToRealCurrency(value: treasuryPortfolio.buyTotal)
-        grossLabel.text = Utils.doubleToRealCurrency(value: treasuryPortfolio.incomeTotal + tax)
+        boughtLabel.text = Utils.doubleToRealCurrency(value: othersPortfolio.buyTotal)
+        grossLabel.text = Utils.doubleToRealCurrency(value: othersPortfolio.incomeTotal + tax)
         taxLabel.text = Utils.doubleToRealCurrency(value: tax)
-        liquidLabel.text = Utils.doubleToRealCurrency(value: treasuryPortfolio.incomeTotal)
+        liquidLabel.text = Utils.doubleToRealCurrency(value: othersPortfolio.incomeTotal)
         
-        // Load Treasury Portfolio
-        // Reload data every time TreasuryDataView is shown
+        // Load Others Portfolio
+        // Reload data every time OthersDataView is shown
         self.incomeTable.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (treasuryIncomes.isEmpty){
+        if (othersIncomes.isEmpty){
             return 0
         } else {
             // +1 to leave a empty field for Floating Button to scroll
-            return treasuryIncomes.count + 1
+            return othersIncomes.count + 1
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let linha = indexPath.row
-        let cell = self.incomeTable.dequeueReusableCell(withIdentifier: "cell") as! TreasuryIncomeCell
+        let cell = self.incomeTable.dequeueReusableCell(withIdentifier: "cell") as! OthersIncomeCell
         // Do not show highlight when selected
         cell.selectionStyle = .none
         
-        if(linha < (treasuryIncomes.count)){
+        if(linha < (othersIncomes.count)){
             // Get Transaction and populat table
-            let income = treasuryIncomes[linha]
-            if(income.type == Constants.IncomeType.TREASURY){
+            let income = othersIncomes[linha]
+            if(income.type == Constants.IncomeType.OTHERS){
                 cell.type.text = "Cupom Semestral"
             }
             
@@ -161,12 +161,12 @@ class TreasuryMainIncomesView: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // When a treasury income is selected in the table view, it will show menu asking for action
+        // When a others income is selected in the table view, it will show menu asking for action
         // Edit, Delete
         let linha = indexPath.row
-        let income = treasuryIncomes[linha]
+        let income = othersIncomes[linha]
         let alertController = UIAlertController(title: "", message: "", preferredStyle: .alert)
-        if(linha < (treasuryIncomes.count)){
+        if(linha < (othersIncomes.count)){
             let detailsAction = UIAlertAction(title: NSLocalizedString("Mais Detalhes", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
                 self.detailsIncome(income)
             })
@@ -195,36 +195,36 @@ class TreasuryMainIncomesView: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
-    func editIncome(_ income: TreasuryIncome){
+    func editIncome(_ income: OthersIncome){
         // Sets id of already existing transaction to be edited in BuyForm
-        let dividendForm = TreasuryDividendForm()
+        let dividendForm = OthersDividendForm()
         dividendForm.symbol = income.symbol
         dividendForm.id = income.id
         dividendForm.incomeType = income.type
         self.navigationController?.pushViewController(dividendForm, animated: true)
     }
     
-    // Delete Transaction and update TreasuryData
-    func deleteIncome(_ income: TreasuryIncome){
-        let treasuryGeneral = TreasuryGeneral()
-        treasuryGeneral.deleteTreasuryIncome(String(income.id), symbol: income.symbol)
+    // Delete Transaction and update OthersData
+    func deleteIncome(_ income: OthersIncome){
+        let othersGeneral = OthersGeneral()
+        othersGeneral.deleteOthersIncome(String(income.id), symbol: income.symbol)
         
-        let incomeDB = TreasuryIncomeDB()
-        treasuryIncomes = incomeDB.getIncomes()
-        if (treasuryIncomes.isEmpty){
+        let incomeDB = OthersIncomeDB()
+        othersIncomes = incomeDB.getIncomes()
+        if (othersIncomes.isEmpty){
             self.incomeTable.isHidden = true
         } else {
             self.incomeTable.isHidden = false
         }
         incomeDB.close()
         
-        // Load Treasury Portfolio
+        // Load Others Portfolio
         self.incomeTable.reloadData()
     }
     
     // Show income details
-    func detailsIncome(_ income: TreasuryIncome){
-        let incomeDetails = TreasuryIncomeDetailsView()
+    func detailsIncome(_ income: OthersIncome){
+        let incomeDetails = OthersIncomeDetailsView()
         incomeDetails.income = income
         self.navigationController?.pushViewController(incomeDetails, animated: true)
     }
@@ -233,7 +233,7 @@ class TreasuryMainIncomesView: UIViewController, UITableViewDataSource, UITableV
     @IBAction func incomeMenu(){
         let alertController = UIAlertController(title: "", message: "", preferredStyle: .alert)
         let dividendAction = UIAlertAction(title: NSLocalizedString("Cupom Semestral", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
-            self.addIncome(Constants.IncomeType.TREASURY)
+            self.addIncome(Constants.IncomeType.OTHERS)
         })
         let cancelAction = UIAlertAction(title: NSLocalizedString("Cancelar", comment: ""), style: .default, handler: {(action: UIAlertAction) -> Void in
             
@@ -246,8 +246,8 @@ class TreasuryMainIncomesView: UIViewController, UITableViewDataSource, UITableV
     
     func addIncome(_ type: Int){
         switch (type) {
-        case Constants.IncomeType.TREASURY:
-            let dividendForm = TreasuryDividendForm()
+        case Constants.IncomeType.OTHERS:
+            let dividendForm = OthersDividendForm()
             dividendForm.incomeType = type
             self.navigationController?.pushViewController(dividendForm, animated: true)
             break

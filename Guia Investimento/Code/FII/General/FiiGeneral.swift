@@ -214,9 +214,11 @@ class FiiGeneral {
         let dbTax = fiiData.incomeTax
         let totalIncome = dbIncome + valueReceived
         let totalTax = dbTax + tax
+        let totalGain = totalIncome + fiiData.variation
         
         fiiData.netIncome = totalIncome
         fiiData.incomeTax = totalTax
+        fiiData.totalGain = totalGain
         
         dataDB.save(fiiData)
         

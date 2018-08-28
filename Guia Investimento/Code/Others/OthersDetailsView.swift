@@ -15,6 +15,7 @@ class OthersDetailsView: UIViewController, UITableViewDataSource, UITableViewDel
     @IBOutlet var soldLabel: UILabel!
     @IBOutlet var boughtLabel: UILabel!
     @IBOutlet var gainLabel: UILabel!
+    @IBOutlet var fab: UIImageView!
     
     var symbol: String = ""
     var current: String = ""
@@ -33,6 +34,15 @@ class OthersDetailsView: UIViewController, UITableViewDataSource, UITableViewDel
         bgView.layer.shadowOpacity = 0.5
         bgView.layer.shadowOffset = CGSize(width: -1, height: 1)
         bgView.layer.shadowRadius = 5
+        
+        // Load fab (Floating action button)
+        // Set images for each icon
+        let fabImg = UIImage(named: "fab")
+        fab.image = fabImg
+        // Add action to open buy form when tapped
+        fab.isUserInteractionEnabled = true
+        let tapBuyOthers = UITapGestureRecognizer(target: self, action: #selector(OthersDetailsView.incomeMenu))
+        fab.addGestureRecognizer(tapBuyOthers)
         
         // Overview
         if(current != ""){
@@ -209,7 +219,7 @@ class OthersDetailsView: UIViewController, UITableViewDataSource, UITableViewDel
     func addIncome(_ type: Int){
         switch (type) {
         case Constants.IncomeType.OTHERS:
-            let dividendForm = TreasuryDividendForm()
+            let dividendForm = OthersDividendForm()
             dividendForm.symbol = symbol
             dividendForm.incomeType = type
             self.navigationController?.pushViewController(dividendForm, animated: true)

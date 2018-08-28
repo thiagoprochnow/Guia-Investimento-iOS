@@ -32,7 +32,7 @@ class OthersEditPriceForm: UIViewController, UITextFieldDelegate{
         let currentTotal = Double(totalField.text!)!
         let totalBuy = prealodedData.buyTotal
         let sellTotal = prealodedData.sellTotal
-        let totalGain = currentTotal + prealodedData.netIncome + sellTotal - totalBuy
+        let totalGain = currentTotal + prealodedData.liquidIncome + sellTotal - totalBuy
         prealodedData.currentTotal = currentTotal
         prealodedData.totalGain = totalGain
         othersDB.save(prealodedData)

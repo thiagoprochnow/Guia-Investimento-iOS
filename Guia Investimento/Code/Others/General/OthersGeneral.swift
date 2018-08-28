@@ -80,6 +80,7 @@ class OthersGeneral {
             
             dataDB.save(othersData)
             dataDB.close()
+            Utils.updateOthersPortfolio()
             return true
         } else {
             dataDB.close()
@@ -95,14 +96,25 @@ class OthersGeneral {
         let dbTax = othersData.incomeTax
         let totalIncome = dbIncome + valueReceived
         let totalTax = dbTax + tax
+        let totalGain = othersData.variation + totalIncome
         
         othersData.liquidIncome = totalIncome
         othersData.incomeTax = totalTax
         othersData.incomeTotal = totalIncome + totalTax
+        othersData.totalGain = totalGain
         
         dataDB.save(othersData)
         
         dataDB.close()
+    }
+    
+    // Delete others income from table by using its id
+    // symbol is used to update Others Data table
+    func deleteOthersIncome(_ id:String, symbol:String){
+        let incomeDB = OthersIncomeDB()
+        incomeDB.deleteById(Int(id)!)
+        incomeDB.close()
+        _ = updateOthersData(symbol, type: -1)
     }
     
     // Delete others data, all its transactions and incomes

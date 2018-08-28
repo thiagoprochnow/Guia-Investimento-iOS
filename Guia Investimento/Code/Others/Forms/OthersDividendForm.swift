@@ -11,6 +11,7 @@ import UIKit
 class OthersDividendForm: UIViewController, UITextFieldDelegate{
     @IBOutlet var symbolTextField: UITextField!
     @IBOutlet var totalTextField: UITextField!
+    @IBOutlet var taxTextField: UITextField!
     @IBOutlet var datePicker: UIDatePicker!
     var symbol: String = ""
     var incomeType: Int = -1
@@ -29,6 +30,8 @@ class OthersDividendForm: UIViewController, UITextFieldDelegate{
         symbolTextField.delegate = self
         totalTextField.delegate = self
         totalTextField.keyboardType = UIKeyboardType.decimalPad
+        taxTextField.delegate = self
+        taxTextField.keyboardType = UIKeyboardType.decimalPad
         datePicker.timeZone = TimeZone(abbreviation: "UTC")
         
         if(symbol != ""){
@@ -41,6 +44,7 @@ class OthersDividendForm: UIViewController, UITextFieldDelegate{
             prealodedIncome = incomeDB.getIncomesById(id)
             symbolTextField.text = prealodedIncome.symbol
             totalTextField.text = String(prealodedIncome.grossIncome)
+            taxTextField.text = String(prealodedIncome.tax)
             let date = Date(timeIntervalSince1970: TimeInterval(prealodedIncome.exdividendTimestamp))
             datePicker.setDate(date, animated: false)
             incomeType = prealodedIncome.type
@@ -51,6 +55,7 @@ class OthersDividendForm: UIViewController, UITextFieldDelegate{
     @IBAction func insertIncome(){
         let gross = totalTextField.text
         let othersSymbol = symbolTextField.text
+        let tax = taxTextField.text
         
         // Get selected date as 00:00
         let date = datePicker.date
@@ -70,40 +75,48 @@ class OthersDividendForm: UIViewController, UITextFieldDelegate{
         if(isValidSymbol){
             let isValidPer = Utils.isValidDouble(text: gross!)
             if(isValidPer){
-                // Sucesso em todos os casos, inserir o provento
-                let othersIncome = OthersIncome()
-                // In case it is editing to update othersTransaction
-                if(id != 0){
-                    othersIncome.id = id
+                let isValidTax = Utils.isValidDouble(text: tax!)
+                if(isValidTax){
+                    // Sucesso em todos os casos, inserir o provento
+                    let othersIncome = OthersIncome()
+                    // In case it is editing to update othersTransaction
+                    if(id != 0){
+                        othersIncome.id = id
+                    }
+
+                    var grossIncome: Double = 0.0
+                    var liquidIncome: Double = 0.0
+                    grossIncome = Double(gross!)!
+                    let incomeTax = Double(tax!)!
+                    othersIncome.symbol = othersSymbol!
+                    liquidIncome = grossIncome - incomeTax
+                    othersIncome.grossIncome = grossIncome
+                    othersIncome.tax = incomeTax
+                    othersIncome.liquidIncome = liquidIncome
+                    othersIncome.exdividendTimestamp = Int(timestamp)
+                    othersIncome.type = Constants.IncomeType.TREASURY
+                    
+                    // Save OthersIncome
+                    let db = OthersIncomeDB()
+                    db.save(othersIncome)
+                    db.close()
+                    
+                    let general = OthersGeneral()
+                    general.updateOthersDataIncome(symbol, valueReceived: liquidIncome, tax: incomeTax)
+                    Utils.updateOthersPortfolio()
+                    
+                    // Dismiss current view
+                    self.navigationController?.popViewController(animated: true)
+                    // Show Alert
+                    alert.title = ""
+                    alert.message = "Rendimento inserido com sucesso"
+
+                    alert.show()
+                } else {
+                    // Show Alert
+                    alert.message = "Valor do imposto deve conter apenas números e ponto"
+                    alert.show()
                 }
-
-                var grossIncome: Double = 0.0
-                var liquidIncome: Double = 0.0
-                grossIncome = Double(gross!)!
-                othersIncome.symbol = othersSymbol!
-                let tax = grossIncome * 0.15
-                liquidIncome = grossIncome - tax
-                othersIncome.grossIncome = grossIncome
-                othersIncome.tax = tax
-                othersIncome.liquidIncome = liquidIncome
-                othersIncome.exdividendTimestamp = Int(timestamp)
-                othersIncome.type = Constants.IncomeType.TREASURY
-                
-                // Save OthersIncome
-                let db = OthersIncomeDB()
-                db.save(othersIncome)
-                db.close()
-                
-                let general = OthersGeneral()
-                general.updateOthersDataIncome(symbol, valueReceived: liquidIncome, tax: tax)
-                
-                // Dismiss current view
-                self.navigationController?.popViewController(animated: true)
-                // Show Alert
-                alert.title = ""
-                alert.message = "Rendimento inserido com sucesso"
-
-                alert.show()
             } else {
                 // Show Alert
                 alert.message = "Valor do rendimento deve conter apenas números e ponto"
@@ -120,5 +133,15 @@ class OthersDividendForm: UIViewController, UITextFieldDelegate{
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         totalTextField.resignFirstResponder()
+        taxTextField.resignFirstResponder()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if(textField == totalTextField){
+            taxTextField.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
+        return true
     }
 }
