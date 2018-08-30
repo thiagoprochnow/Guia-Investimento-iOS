@@ -53,7 +53,7 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
     
     // Number of Table View cells, number of Main Menu itens
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return 9
     }
     
     // Creates the Main Menu itens
@@ -87,11 +87,11 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
             cell.textLabel?.textAlignment = .left
             return cell
         case 6:
-            cell.textLabel!.text = "Versão Premium"
+            cell.textLabel!.text = "─────────────"
             cell.textLabel?.textAlignment = .left
             return cell
         case 7:
-            cell.textLabel!.text = "Copia e Restauração"
+            cell.textLabel!.text = "Versão Premium"
             cell.textLabel?.textAlignment = .left
             return cell
         case 8:
@@ -217,12 +217,17 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
                 view.title = "Outros"
                 view.viewControllers = [portfolio, data, income]
                 break
-            default:
+            case 6:
                 view.title = "Carteira Completa"
+                break
+            default:
+                break
             }
             
-            nav = drawerController.mainViewController as! UINavigationController
-            nav.pushViewController(view, animated: true)
+            if(linha != 6){
+                nav = drawerController.mainViewController as! UINavigationController
+                nav.pushViewController(view, animated: true)
+            }
         }
     }
     
@@ -414,10 +419,15 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
             // OTHERS
             Utils.updateOthersPortfolio()
             
+            // PORTFOLIO
+            Utils.updatePortfolio()
+            
             nav.navigationController?.visibleViewController?.viewWillAppear(false)
             nav.topViewController?.viewWillAppear(false)
             nav.navigationController?.topViewController?.viewWillAppear(false)
             nav.visibleViewController?.viewWillAppear(false)
+            navigationController?.topViewController?.viewWillAppear(false)
+            navigationController?.viewWillAppear(false)
             
             // Place Button back after finish loading in place of loading view
             let updateBtn = UIBarButtonItem(title: "Atualizar", style: UIBarButtonItemStyle.plain, target: self, action: #selector(DrawerViewController.updateQuotes))

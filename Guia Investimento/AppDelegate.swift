@@ -12,26 +12,34 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var portfolioMain: PortfolioMainController!
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         
         Utils.changeStatusBar()
         
         // Load PortfolioMain Controller as initial view
-        let portfolioMain = PortfolioMainController(nibName: "PortfolioMainController", bundle: nil)
+        portfolioMain = PortfolioMainController(nibName: "PortfolioMainController", bundle: nil)
         
         // Load Navigation Drawer as Navigation Controller
         let drawerViewController = DrawerViewController()
+        
         let drawerController     = KYDrawerController(drawerDirection: .left, drawerWidth: 300)
         drawerController.mainViewController = UINavigationController(
             rootViewController: portfolioMain
         )
+        drawerViewController.nav = drawerController.mainViewController as! UINavigationController
         drawerController.drawerViewController = drawerViewController
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = drawerController
         window?.makeKeyAndVisible()
+        
+        // Update portfolio button
+        let updateBtn = UIBarButtonItem(title: "Atualizar", style: UIBarButtonItemStyle.plain, target: self, action: #selector(AppDelegate.updateQuotes))
+        portfolioMain.navigationItem.rightBarButtonItem = updateBtn
+        portfolioMain.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
         
         // Initialize Database
         initializeDB()
@@ -39,7 +47,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    @objc func updateQuotes(){
+        let drawerController = window?.rootViewController as! KYDrawerController
+        let drawerViewController = drawerController.drawerViewController as! DrawerViewController
+        drawerViewController.updateQuotes()
+    }
+    
     func initializeDB(){
+        // Portfolio
+        let portfolioDB = PortfolioDB()
+        portfolioDB.createTable()
+        portfolioDB.close()
+        
         // Stock
         
         // Stock Portfolio

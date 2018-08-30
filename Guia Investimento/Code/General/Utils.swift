@@ -435,6 +435,7 @@ class Utils {
         others.forEach{ other in
             variationTotal += other.variation
             buyTotal += other.buyTotal
+            sellTotal += other.sellTotal
             incomeTotal += other.liquidIncome
             mCurrentTotal += other.currentTotal
             brokerage += other.brokerage
@@ -495,6 +496,72 @@ class Utils {
         portfolio.soldTotal = sellTotal
         portfolio.totalGain = totalGain
         portfolio.currentTotal = mCurrentTotal
+        
+        portfolioDB.save(portfolio)
+        portfolioDB.close()
+    }
+    
+    // Updates portfolio after all other portfolios have been updated
+    class func updatePortfolio(){
+        // Treasury
+        let treasuryDB = TreasuryPortfolioDB()
+        let treasury = treasuryDB.getPortfolio()
+        treasuryDB.close()
+        
+        // Fixed
+        let fixedDB = FixedPortfolioDB()
+        let fixed = fixedDB.getPortfolio()
+        fixedDB.close()
+        
+        // Others
+        let othersDB = OthersPortfolioDB()
+        let others = othersDB.getPortfolio()
+        othersDB.close()
+        
+        // Stock
+        let stockDB = StockPortfolioDB()
+        let stock = stockDB.getPortfolio()
+        stockDB.close()
+        
+        // Fii
+        let fiiDB = FiiPortfolioDB()
+        let fii = fiiDB.getPortfolio()
+        fiiDB.close()
+        
+        // Currency
+        let currencyDB = CurrencyPortfolioDB()
+        let currency = currencyDB.getPortfolio()
+        currencyDB.close()
+        
+        let portfolioBuy = treasury.buyTotal + fixed.buyTotal + stock.buyTotal + fii.buyTotal + currency.buyTotal + others.buyTotal
+        let portfolioSold = treasury.soldTotal + fixed.soldTotal + stock.soldTotal + fii.soldTotal + currency.soldTotal + others.soldTotal
+        let portfolioCurrent = treasury.currentTotal + fixed.currentTotal + stock.currentTotal + fii.currentTotal + currency.currentTotal + others.currentTotal
+        let portfolioVariation = treasury.variationTotal + fixed.totalGain + stock.variationTotal + fii.variationTotal + currency.variationTotal + others.variationTotal
+        let portfolioIncome = treasury.incomeTotal + stock.incomeTotal + fii.incomeTotal + others.incomeTotal
+        let portfolioBrokerage = stock.brokerage + fii.brokerage
+        let portfolioGain = treasury.totalGain + fixed.totalGain + stock.totalGain + fii.totalGain + currency.totalGain + others.totalGain
+        let treasuryPercent = treasury.currentTotal/portfolioCurrent*100
+        let fixedPercent = fixed.currentTotal/portfolioCurrent*100
+        let stockPercent = stock.currentTotal/portfolioCurrent*100
+        let fiiPercent = fii.currentTotal/portfolioCurrent*100
+        let currencyPercent = currency.currentTotal/portfolioCurrent*100
+        let othersPercent = others.currentTotal/portfolioCurrent*100
+        
+        let portfolioDB = PortfolioDB()
+        let portfolio = portfolioDB.getPortfolio()
+        portfolio.buyTotal = portfolioBuy
+        portfolio.soldTotal = portfolioSold
+        portfolio.currentTotal = portfolioCurrent
+        portfolio.variationTotal = portfolioVariation
+        portfolio.incomeTotal = portfolioIncome
+        portfolio.brokerage = portfolioBrokerage
+        portfolio.totalGain = portfolioGain
+        portfolio.treasuryPercent = treasuryPercent
+        portfolio.fixedPercent = fixedPercent
+        portfolio.stockPercent = stockPercent
+        portfolio.fiiPercent = fiiPercent
+        portfolio.currencyPercent = currencyPercent
+        portfolio.othersPercent = othersPercent
         
         portfolioDB.save(portfolio)
         portfolioDB.close()

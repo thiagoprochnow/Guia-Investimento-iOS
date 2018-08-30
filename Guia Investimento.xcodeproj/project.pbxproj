@@ -15,6 +15,13 @@
 		5503A81620F24C510039ACCD /* StockIncomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5503A81420F24C510039ACCD /* StockIncomeCell.swift */; };
 		5503A81920F2A2F70039ACCD /* StockBonificationForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5503A81720F2A2F70039ACCD /* StockBonificationForm.swift */; };
 		5503A81A20F2A2F70039ACCD /* StockBonificationForm.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5503A81820F2A2F70039ACCD /* StockBonificationForm.xib */; };
+		5509C1922136113200EBF22A /* PortfolioDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5509C1912136113100EBF22A /* PortfolioDB.swift */; };
+		5509C195213611B500EBF22A /* Portfolio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5509C194213611B400EBF22A /* Portfolio.swift */; };
+		5509C19B2138A4F700EBF22A /* PortfolioPieChartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5509C1972138A4F400EBF22A /* PortfolioPieChartCell.xib */; };
+		5509C19C2138A4F700EBF22A /* PortfolioPieChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5509C1982138A4F700EBF22A /* PortfolioPieChartCell.swift */; };
+		5509C19D2138A4F700EBF22A /* PortfolioCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5509C1992138A4F700EBF22A /* PortfolioCell.xib */; };
+		5509C19E2138A4F700EBF22A /* PortfolioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5509C19A2138A4F700EBF22A /* PortfolioCell.swift */; };
+		5509C1A22138A86700EBF22A /* PortfolioMainController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5509C1A12138A86600EBF22A /* PortfolioMainController.xib */; };
 		550FCBF2210CF62F006E3FB8 /* SoldFiiDataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 550FCBB6210CF62A006E3FB8 /* SoldFiiDataView.xib */; };
 		550FCBF3210CF62F006E3FB8 /* SoldFiiDataDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550FCBBA210CF62B006E3FB8 /* SoldFiiDataDB.swift */; };
 		550FCBF4210CF62F006E3FB8 /* FiiDataDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550FCBBB210CF62B006E3FB8 /* FiiDataDB.swift */; };
@@ -248,7 +255,6 @@
 		552D940A20BB22E90041872B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552D940920BB22E90041872B /* AppDelegate.swift */; };
 		552D941120BB22F30041872B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 552D941020BB22F30041872B /* Assets.xcassets */; };
 		552D941F20BB2B9F0041872B /* PortfolioMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552D941E20BB2B9F0041872B /* PortfolioMainController.swift */; };
-		552D942120BB2BB20041872B /* PortfolioMainController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 552D942020BB2BB20041872B /* PortfolioMainController.xib */; };
 		552F5A9221165084002F3C1A /* SoldCurrencyDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552F5A5B21165081002F3C1A /* SoldCurrencyDataView.swift */; };
 		552F5A9321165084002F3C1A /* SoldCurrencyDataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 552F5A5E21165082002F3C1A /* SoldCurrencyDataView.xib */; };
 		552F5A9521165084002F3C1A /* CurrencyDataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 552F5A6021165082002F3C1A /* CurrencyDataView.xib */; };
@@ -457,6 +463,13 @@
 		5503A81420F24C510039ACCD /* StockIncomeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockIncomeCell.swift; sourceTree = "<group>"; };
 		5503A81720F2A2F70039ACCD /* StockBonificationForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockBonificationForm.swift; sourceTree = "<group>"; };
 		5503A81820F2A2F70039ACCD /* StockBonificationForm.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StockBonificationForm.xib; sourceTree = "<group>"; };
+		5509C1912136113100EBF22A /* PortfolioDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioDB.swift; sourceTree = "<group>"; };
+		5509C194213611B400EBF22A /* Portfolio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Portfolio.swift; sourceTree = "<group>"; };
+		5509C1972138A4F400EBF22A /* PortfolioPieChartCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PortfolioPieChartCell.xib; sourceTree = "<group>"; };
+		5509C1982138A4F700EBF22A /* PortfolioPieChartCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioPieChartCell.swift; sourceTree = "<group>"; };
+		5509C1992138A4F700EBF22A /* PortfolioCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PortfolioCell.xib; sourceTree = "<group>"; };
+		5509C19A2138A4F700EBF22A /* PortfolioCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioCell.swift; sourceTree = "<group>"; };
+		5509C1A12138A86600EBF22A /* PortfolioMainController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PortfolioMainController.xib; sourceTree = "<group>"; };
 		550FCBB6210CF62A006E3FB8 /* SoldFiiDataView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SoldFiiDataView.xib; sourceTree = "<group>"; };
 		550FCBBA210CF62B006E3FB8 /* SoldFiiDataDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoldFiiDataDB.swift; sourceTree = "<group>"; };
 		550FCBBB210CF62B006E3FB8 /* FiiDataDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiiDataDB.swift; sourceTree = "<group>"; };
@@ -698,7 +711,6 @@
 		552D941020BB22F30041872B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		552D941520BB22F30041872B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		552D941E20BB2B9F0041872B /* PortfolioMainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioMainController.swift; sourceTree = "<group>"; };
-		552D942020BB2BB20041872B /* PortfolioMainController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PortfolioMainController.xib; sourceTree = "<group>"; };
 		552F5A5B21165081002F3C1A /* SoldCurrencyDataView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoldCurrencyDataView.swift; sourceTree = "<group>"; };
 		552F5A5E21165082002F3C1A /* SoldCurrencyDataView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SoldCurrencyDataView.xib; sourceTree = "<group>"; };
 		552F5A6021165082002F3C1A /* CurrencyDataView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CurrencyDataView.xib; sourceTree = "<group>"; };
@@ -893,6 +905,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5509C18F21360FA600EBF22A /* Portfolio */ = {
+			isa = PBXGroup;
+			children = (
+				5509C1962138A4A200EBF22A /* Cell */,
+				5509C1932136116D00EBF22A /* Object */,
+				5509C190213610D200EBF22A /* Database */,
+				552D941E20BB2B9F0041872B /* PortfolioMainController.swift */,
+				5509C1A12138A86600EBF22A /* PortfolioMainController.xib */,
+			);
+			path = Portfolio;
+			sourceTree = "<group>";
+		};
+		5509C190213610D200EBF22A /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				5509C1912136113100EBF22A /* PortfolioDB.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		5509C1932136116D00EBF22A /* Object */ = {
+			isa = PBXGroup;
+			children = (
+				5509C194213611B400EBF22A /* Portfolio.swift */,
+			);
+			path = Object;
+			sourceTree = "<group>";
+		};
+		5509C1962138A4A200EBF22A /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				5509C1982138A4F700EBF22A /* PortfolioPieChartCell.swift */,
+				5509C1972138A4F400EBF22A /* PortfolioPieChartCell.xib */,
+				5509C19A2138A4F700EBF22A /* PortfolioCell.swift */,
+				5509C1992138A4F700EBF22A /* PortfolioCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		550FCBB9210CF62B006E3FB8 /* Database */ = {
 			isa = PBXGroup;
 			children = (
@@ -1437,8 +1488,7 @@
 				559F12F620C03828006BC844 /* Others */,
 				559F12F820C0383C006BC844 /* Currency */,
 				559F12F720C0382F006BC844 /* Treasury */,
-				552D942020BB2BB20041872B /* PortfolioMainController.xib */,
-				552D941E20BB2B9F0041872B /* PortfolioMainController.swift */,
+				5509C18F21360FA600EBF22A /* Portfolio */,
 			);
 			path = Code;
 			sourceTree = "<group>";
@@ -2022,7 +2072,7 @@
 				554E16EC20E4459B006B864D /* SoldStockDataView.xib in Resources */,
 				5521AF1D210A8D4A00AB6345 /* StockPieChartCell.xib in Resources */,
 				550FCC0C210CF62F006E3FB8 /* FiiPieChartCell.xib in Resources */,
-				552D942120BB2BB20041872B /* PortfolioMainController.xib in Resources */,
+				5509C1A22138A86700EBF22A /* PortfolioMainController.xib in Resources */,
 				552F5AA221165084002F3C1A /* CurrencyDetailsView.xib in Resources */,
 				5512E9C1211CE94700A1FD76 /* FixedDataView.xib in Resources */,
 				5521AFDB210A8D5E00AB6345 /* README.md in Resources */,
@@ -2074,6 +2124,7 @@
 				55F77A7F212F7B8400CD5EBE /* SellOthersForm.xib in Resources */,
 				5501D8F520ED972500C7D4E5 /* StockDividendForm.xib in Resources */,
 				552F5AB221165084002F3C1A /* BuyCurrencyForm.xib in Resources */,
+				5509C19B2138A4F700EBF22A /* PortfolioPieChartCell.xib in Resources */,
 				55CCF47D210FC8D900D2E95B /* TreasuryDataCell.xib in Resources */,
 				5521B068210A8D5E00AB6345 /* Pods-Guia Investimento-acknowledgements.markdown in Resources */,
 				552F5AAE21165084002F3C1A /* CurrencyTransactionCell.xib in Resources */,
@@ -2095,6 +2146,7 @@
 				55F77B112130BA6C00CD5EBE /* FixedPortfolioCell.xib in Resources */,
 				550FCC18210CF62F006E3FB8 /* SellFiiForm.xib in Resources */,
 				550FCC06210CF62F006E3FB8 /* SoldFiiDataCell.xib in Resources */,
+				5509C19D2138A4F700EBF22A /* PortfolioCell.xib in Resources */,
 				5521B06D210A8D5E00AB6345 /* Pods-Guia Investimento.debug.xcconfig in Resources */,
 				55F77AF12130B91800CD5EBE /* OthersIncomeCell.xib in Resources */,
 				5540A85B20BCC6E00087498B /* Main.storyboard in Resources */,
@@ -2170,9 +2222,11 @@
 				550FCBFD210CF62F006E3FB8 /* SoldFiiData.swift in Sources */,
 				55CCF467210FC8D900D2E95B /* SoldTreasuryData.swift in Sources */,
 				55CCF484210FC8D900D2E95B /* TreasuryTransactionCell.swift in Sources */,
+				5509C19C2138A4F700EBF22A /* PortfolioPieChartCell.swift in Sources */,
 				552F5AAF21165084002F3C1A /* CurrencyPortfolioView.swift in Sources */,
 				5503A81020F1048D0039ACCD /* StockIncome.swift in Sources */,
 				5512E9DB211CE94700A1FD76 /* FixedService.swift in Sources */,
+				5509C19E2138A4F700EBF22A /* PortfolioCell.swift in Sources */,
 				55F77A79212F7B8400CD5EBE /* OthersGeneral.swift in Sources */,
 				5521B000210A8D5E00AB6345 /* CandleChartDataSet.swift in Sources */,
 				55F77A7E212F7B8400CD5EBE /* SellOthersForm.swift in Sources */,
@@ -2254,6 +2308,7 @@
 				551D525D20E7282E00B4A37F /* StockTransactionCell.swift in Sources */,
 				552F5A9621165084002F3C1A /* CurrencyDetailsView.swift in Sources */,
 				5521B025210A8D5E00AB6345 /* IValueFormatter.swift in Sources */,
+				5509C195213611B500EBF22A /* Portfolio.swift in Sources */,
 				5518597020EAEE2900BFB445 /* SellStockForm.swift in Sources */,
 				550FCC0F210CF62F006E3FB8 /* FiiTransactionCell.swift in Sources */,
 				5521B04C210A8D5E00AB6345 /* Renderer.swift in Sources */,
@@ -2346,6 +2401,7 @@
 				55F77A7A212F7B8400CD5EBE /* BuyOthersForm.swift in Sources */,
 				5521B05E210A8D5E00AB6345 /* Fill.swift in Sources */,
 				5568A71220C1CCF000689EBA /* StockDataView.swift in Sources */,
+				5509C1922136113200EBF22A /* PortfolioDB.swift in Sources */,
 				55CCF45D210FC8D900D2E95B /* TreasuryGeneral.swift in Sources */,
 				55F77B102130BA6C00CD5EBE /* FixedDataCell.swift in Sources */,
 				552D940A20BB22E90041872B /* AppDelegate.swift in Sources */,
