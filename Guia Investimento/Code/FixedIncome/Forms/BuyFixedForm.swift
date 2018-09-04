@@ -165,6 +165,43 @@ class BuyFixedForm: UIViewController, UITextFieldDelegate, UIPickerViewDelegate,
                             _ = general.updateFixedData(symbol!, type: Constants.TypeOp.BUY)
                             _ = Utils.updateFixedPortfolio()
                             
+                            let fixedDB = FixedDataDB()
+                            let currentFixed = fixedDB.getDataBySymbol(symbol!)
+                            fixedDB.close()
+                            var returnFixeds:Array<FixedData> = []
+                            returnFixeds.append(currentFixed)
+                            
+                            // Update Fixed Quotes
+                            FixedService.updateFixedQuotes({(_ cdis:Array<Cdi>,ipcas:Array<Ipca>,error:Bool) -> Void in
+                                // Fixed
+                                // CDI
+                                let cdiDB = CdiDB()
+                                cdis.forEach{ cdi in
+                                    cdiDB.save(cdi)
+                                }
+                                cdiDB.close()
+                                //IPCA
+                                let ipcaDB = IpcaDB()
+                                ipcas.forEach{ ipca in
+                                    ipcaDB.save(ipca)
+                                }
+                                ipcaDB.close()
+                                // Fixed Income
+                                let general = FixedGeneral()
+                                let fixedDB = FixedDataDB()
+                                returnFixeds.forEach{ fixed in
+                                    var updatedFixed = general.updateFixedQuote(fixed)
+                                    let currentTotal = updatedFixed.currentTotal
+                                    let totalGain = currentTotal - updatedFixed.buyTotal
+                                    updatedFixed.currentTotal = currentTotal
+                                    updatedFixed.totalGain = totalGain
+                                    fixedDB.save(updatedFixed)
+                                }
+                                fixedDB.close()
+                                Utils.updateFixedPortfolio()
+                                Utils.updatePortfolio()
+                            })
+                            
                             // Dismiss current view
                             self.navigationController?.popViewController(animated: true)
                             // Show Alert

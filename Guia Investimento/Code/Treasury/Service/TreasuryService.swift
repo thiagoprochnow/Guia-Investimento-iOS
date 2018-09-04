@@ -8,9 +8,14 @@
 
 import Foundation
 class TreasuryService{
-    class func updateTreasuryQuotes(_ callback: @escaping(_ treasuriesCallback:Array<TreasuryData>,_ error:Bool) -> Void){
+    class func updateTreasuryQuotes(_ updateTreasury:Array<TreasuryData>, callback: @escaping(_ treasuriesCallback:Array<TreasuryData>,_ error:Bool) -> Void){
         let treasuryDataDB = TreasuryDataDB()
-        let treasuries = treasuryDataDB.getDataByStatus(Constants.Status.ACTIVE)
+        var treasuries:Array<TreasuryData> = []
+        if(updateTreasury.count == 0){
+            treasuries = treasuryDataDB.getDataByStatus(Constants.Status.ACTIVE)
+        } else {
+            treasuries = updateTreasury
+        }
         treasuryDataDB.close()
         var success: Bool = true
         var result = false

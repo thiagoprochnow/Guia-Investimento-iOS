@@ -114,9 +114,32 @@ class BuyStockForm: UIViewController, UITextFieldDelegate{
                             let general = StockGeneral()
                             general.updateStockIncomes(symbol!, timestamp: Int(timestamp))
                             _ = general.updateStockData(symbol!, type: Constants.TypeOp.BUY)
+                            let stockDB = StockDataDB()
+                            let stock = stockDB.getDataBySymbol(symbol!)
+                            stockDB.close()
+                            var updateStocks:Array<StockData> = []
+                            updateStocks.append(stock)
                             
                             // Dismiss current view
                             self.navigationController?.popViewController(animated: true)
+                            
+                            // updateQuote
+                            StockService.updateStockQuotes(updateStocks, callback: {(_ stocks:Array<StockData>,error:Bool) -> Void in
+                                let stockDB = StockDataDB()
+                                stocks.forEach{ stock in
+                                    let currentTotal = Double(stock.quantity) * stock.currentPrice
+                                    let variation = currentTotal - stock.buyValue
+                                    let totalGain = currentTotal + stock.netIncome - stock.buyValue - stock.brokerage
+                                    stock.currentTotal = currentTotal
+                                    stock.variation = variation
+                                    stock.totalGain = totalGain
+                                    stockDB.save(stock)
+                                }
+                                stockDB.close()
+                                Utils.updateStockPortfolio()
+                                Utils.updatePortfolio()
+                            })
+                            
                             // Show Alert
                             alert.title = ""
                             alert.message = "Ação comprada com sucesso"

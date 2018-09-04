@@ -124,6 +124,29 @@ class BuyCurrencyForm: UIViewController, UITextFieldDelegate, UIPickerViewDelega
                             let general = CurrencyGeneral()
                             _ = general.updateCurrencyData(symbol, type: Constants.TypeOp.BUY)
                             
+                            let currencyDB = CurrencyDataDB()
+                            let currency = currencyDB.getDataBySymbol(symbol)
+                            currencyDB.close()
+                            var updateCurrencies:Array<CurrencyData> = []
+                            updateCurrencies.append(currency)
+                            
+                            // Update Quote
+                            CurrencyService.updateCurrencyQuotes(updateCurrencies, callback: {(_ currencies:Array<CurrencyData>,error:Bool) -> Void in
+                                let currencyDB = CurrencyDataDB()
+                                currencies.forEach{ currency in
+                                    let currentTotal = currency.quantity * currency.currentPrice
+                                    let variation = currentTotal - currency.buyValue
+                                    let totalGain = currentTotal - currency.buyValue
+                                    currency.currentTotal = currentTotal
+                                    currency.variation = variation
+                                    currency.totalGain = totalGain
+                                    currencyDB.save(currency)
+                                }
+                                currencyDB.close()
+                                Utils.updateCurrencyPortfolio()
+                                Utils.updatePortfolio()
+                            })
+                            
                             // Dismiss current view
                             self.navigationController?.popViewController(animated: true)
                             // Show Alert

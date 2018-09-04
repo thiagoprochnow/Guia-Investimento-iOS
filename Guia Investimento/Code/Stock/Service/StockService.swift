@@ -8,9 +8,14 @@
 
 import Foundation
 class StockService{
-    class func updateStockQuotes(_ callback: @escaping(_ stocksCallback:Array<StockData>,_ error:Bool) -> Void){
+    class func updateStockQuotes(_ updateStocks:Array<StockData>, callback: @escaping(_ stocksCallback:Array<StockData>,_ error:Bool) -> Void){
         let stockDataDB = StockDataDB()
-        let stocks = stockDataDB.getDataByStatus(Constants.Status.ACTIVE)
+        var stocks:Array<StockData> = []
+        if(updateStocks.count == 0){
+            stocks = stockDataDB.getDataByStatus(Constants.Status.ACTIVE)
+        } else{
+            stocks = updateStocks
+        }
         stockDataDB.close()
         var returnStocks: Array<StockData> = []
         var success: Bool = true

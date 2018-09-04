@@ -8,9 +8,14 @@
 
 import Foundation
 class CurrencyService{
-    class func updateCurrencyQuotes(_ callback: @escaping(_ currenciesCallback:Array<CurrencyData>,_ error:Bool) -> Void){
+    class func updateCurrencyQuotes(_ updateCurrencies:Array<CurrencyData>, callback: @escaping(_ currenciesCallback:Array<CurrencyData>,_ error:Bool) -> Void){
         let currencyDataDB = CurrencyDataDB()
-        let currencies = currencyDataDB.getDataByStatus(Constants.Status.ACTIVE)
+        var currencies: Array<CurrencyData> = []
+        if(updateCurrencies.count == 0){
+            currencies = currencyDataDB.getDataByStatus(Constants.Status.ACTIVE)
+        } else {
+            currencies = updateCurrencies
+        }
         currencyDataDB.close()
         var success: Bool = true
         var result = false

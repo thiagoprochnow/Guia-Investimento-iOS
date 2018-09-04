@@ -53,7 +53,7 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
     
     // Number of Table View cells, number of Main Menu itens
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 9
+        return 8
     }
     
     // Creates the Main Menu itens
@@ -87,14 +87,10 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
             cell.textLabel?.textAlignment = .left
             return cell
         case 6:
-            cell.textLabel!.text = "─────────────"
-            cell.textLabel?.textAlignment = .left
-            return cell
-        case 7:
             cell.textLabel!.text = "Versão Premium"
             cell.textLabel?.textAlignment = .left
             return cell
-        case 8:
+        case 7:
             cell.textLabel!.text = "Sobre"
             cell.textLabel?.textAlignment = .left
             return cell
@@ -224,10 +220,8 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
                 break
             }
             
-            if(linha != 6){
-                nav = drawerController.mainViewController as! UINavigationController
-                nav.pushViewController(view, animated: true)
-            }
+            nav = drawerController.mainViewController as! UINavigationController
+            nav.pushViewController(view, animated: true)
         }
     }
     
@@ -244,7 +238,7 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
         // Stocks
         StockService.updateStockIncomes({(_ stockIncomes:Array<StockIncome>,error:Bool) -> Void in
             self.stocksIncomes = stockIncomes
-            StockService.updateStockQuotes({(_ stocks:Array<StockData>,error:Bool) -> Void in
+            StockService.updateStockQuotes([], callback: {(_ stocks:Array<StockData>,error:Bool) -> Void in
                 self.stockRefresh = true
                 self.stocks = stocks
                 DispatchQueue.main.async {
@@ -256,7 +250,7 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
         // FII
         FiiService.updateFiiIncomes({(_ fiiIncomes:Array<FiiIncome>,error:Bool) -> Void in
             self.fiisIncomes = fiiIncomes
-            FiiService.updateFiiQuotes({(_ fiis:Array<FiiData>,error:Bool) -> Void in
+            FiiService.updateFiiQuotes([], callback: {(_ fiis:Array<FiiData>,error:Bool) -> Void in
                 self.fiiRefresh = true
                 self.fiis = fiis
                 DispatchQueue.main.async {
@@ -266,7 +260,7 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
         })
         
         // TREASURY
-        TreasuryService.updateTreasuryQuotes({(_ treasuries:Array<TreasuryData>,error:Bool) -> Void in
+        TreasuryService.updateTreasuryQuotes([], callback: {(_ treasuries:Array<TreasuryData>,error:Bool) -> Void in
             self.treasuryRefresh = true
             self.treasuries = treasuries
             DispatchQueue.main.async {
@@ -275,7 +269,7 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
         })
         
         // CURRENCY
-        CurrencyService.updateCurrencyQuotes({(_ currencies:Array<CurrencyData>,error:Bool) -> Void in
+        CurrencyService.updateCurrencyQuotes([], callback: {(_ currencies:Array<CurrencyData>,error:Bool) -> Void in
             self.currencyRefresh = true
             self.currencies = currencies
             DispatchQueue.main.async {

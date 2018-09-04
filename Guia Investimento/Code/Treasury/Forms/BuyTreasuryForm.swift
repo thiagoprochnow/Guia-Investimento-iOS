@@ -106,6 +106,29 @@ class BuyTreasuryForm: UIViewController, UITextFieldDelegate{
                             let general = TreasuryGeneral()
                             _ = general.updateTreasuryData(symbol!, type: Constants.TypeOp.BUY)
                             
+                            let treasuryDB = TreasuryDataDB()
+                            let treasury = treasuryDB.getDataBySymbol(symbol!)
+                            treasuryDB.close()
+                            var updateTreasuries:Array<TreasuryData> = []
+                            updateTreasuries.append(treasury)
+                            
+                            // TREASURY
+                            TreasuryService.updateTreasuryQuotes(updateTreasuries, callback: {(_ treasuries:Array<TreasuryData>,error:Bool) -> Void in
+                                let treasuryDB = TreasuryDataDB()
+                                treasuries.forEach{ treasury in
+                                    let currentTotal = treasury.quantity * treasury.currentPrice
+                                    let variation = currentTotal - treasury.buyValue
+                                    let totalGain = currentTotal + treasury.netIncome - treasury.buyValue - treasury.brokerage
+                                    treasury.currentTotal = currentTotal
+                                    treasury.variation = variation
+                                    treasury.totalGain = totalGain
+                                    treasuryDB.save(treasury)
+                                }
+                                treasuryDB.close()
+                                Utils.updateTreasuryPortfolio()
+                                Utils.updatePortfolio()
+                            })
+                            
                             // Dismiss current view
                             self.navigationController?.popViewController(animated: true)
                             // Show Alert

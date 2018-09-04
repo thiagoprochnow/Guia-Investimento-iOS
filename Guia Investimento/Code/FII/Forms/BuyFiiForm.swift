@@ -115,6 +115,30 @@ class BuyFiiForm: UIViewController, UITextFieldDelegate{
                             general.updateFiiIncomes(symbol!, timestamp: Int(timestamp))
                             _ = general.updateFiiData(symbol!, type: Constants.TypeOp.BUY)
                             
+                            let fiiDB = FiiDataDB()
+                            let fii = fiiDB.getDataBySymbol(symbol!)
+                            fiiDB.close()
+                            var updateFiis:Array<FiiData> = []
+                            updateFiis.append(fii)
+                            
+                            // FII
+                            FiiService.updateFiiQuotes(updateFiis, callback: {(_ fiis:Array<FiiData>,error:Bool) -> Void in
+                                // Fii
+                                let fiiDB = FiiDataDB()
+                                fiis.forEach{ fii in
+                                    let currentTotal = Double(fii.quantity) * fii.currentPrice
+                                    let variation = currentTotal - fii.buyValue
+                                    let totalGain = currentTotal + fii.netIncome - fii.buyValue - fii.brokerage
+                                    fii.currentTotal = currentTotal
+                                    fii.variation = variation
+                                    fii.totalGain = totalGain
+                                    fiiDB.save(fii)
+                                }
+                                fiiDB.close()
+                                Utils.updateFiiPortfolio()
+                                Utils.updatePortfolio()
+                            })
+                            
                             // Dismiss current view
                             self.navigationController?.popViewController(animated: true)
                             // Show Alert

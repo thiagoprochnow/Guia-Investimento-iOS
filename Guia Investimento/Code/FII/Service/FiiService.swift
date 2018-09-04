@@ -8,9 +8,14 @@
 
 import Foundation
 class FiiService{
-    class func updateFiiQuotes(_ callback: @escaping(_ fiisCallback:Array<FiiData>,_ error:Bool) -> Void){
+    class func updateFiiQuotes(_ updateFiis:Array<FiiData>, callback: @escaping(_ fiisCallback:Array<FiiData>,_ error:Bool) -> Void){
         let fiiDataDB = FiiDataDB()
-        let fiis = fiiDataDB.getDataByStatus(Constants.Status.ACTIVE)
+        var fiis:Array<FiiData> = []
+        if(updateFiis.count == 0){
+            fiis = fiiDataDB.getDataByStatus(Constants.Status.ACTIVE)
+        } else {
+            fiis = updateFiis
+        }
         fiiDataDB.close()
         var returnFiis: Array<FiiData> = []
         var success: Bool = true
