@@ -53,7 +53,7 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
     
     // Number of Table View cells, number of Main Menu itens
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+        return 9
     }
     
     // Creates the Main Menu itens
@@ -92,6 +92,10 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
             return cell
         case 7:
             cell.textLabel!.text = "Sobre"
+            cell.textLabel?.textAlignment = .left
+            return cell
+        case 8:
+            cell.textLabel!.text = "Perguntas Frequentes"
             cell.textLabel?.textAlignment = .left
             return cell
         default:
@@ -214,7 +218,28 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
                 view.viewControllers = [portfolio, data, income]
                 break
             case 6:
-                view.title = "Carteira Completa"
+                view.title = "Assine o Premium"
+                let premium = SignPremium()
+                premium.tabBarItem.title = ""
+                premium.tabBarItem.image = Utils.makeThumbnailFromText(text: "Premium")
+                
+                view.viewControllers = [premium]
+                break
+            case 7:
+                view.title = "Sobre"
+                let about = About()
+                about.tabBarItem.title = ""
+                about.tabBarItem.image = Utils.makeThumbnailFromText(text: "Sobre")
+                
+                view.viewControllers = [about]
+                break
+            case 8:
+                view.title = "Perguntas Frequentes"
+                let faq = Faq()
+                faq.tabBarItem.title = ""
+                faq.tabBarItem.image = Utils.makeThumbnailFromText(text: "Perguntas Frequentes")
+                
+                view.viewControllers = [faq]
                 break
             default:
                 break

@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="1633" id="hU3-UV-nyM" customClass="FaqCell" customModule="Guia_Investimento" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="1633"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hU3-UV-nyM" id="lgT-pd-sdx">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="1632.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="WGC-y6-F3u">
+                        <rect key="frame" x="16" y="22" width="343" height="172"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="172" id="pwb-47-QEw"/>
+                        </constraints>
+                        <string key="text">1 - Meus titulos do tesouro não estão atualizando automaticamente.
+2 - Não encontrei a minha ação ou fundo imobiliário ao inserir um novo ativo pelo aplicativo.
+3 - De que empresa é o aplicativo?
+4 - Porque o aplicativo é pago
+5 - Não achei a solução do meu problema e/ou tenho sugestões para o aplicativo.</string>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="w45-w0-TZl">
+                        <rect key="frame" x="16" y="211" width="343" height="57"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="57" id="Myl-vM-YCS"/>
+                        </constraints>
+                        <string key="text">1 - Meus titulos do tesouro não estão atualizando automaticamente.
+
+</string>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HkV-cq-P26">
+                        <rect key="frame" x="16" y="202" width="343" height="1"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="1bR-1f-dje"/>
+                        </constraints>
+                    </view>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="kUB-to-s7R">
+                        <rect key="frame" x="16" y="267" width="343" height="200"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="200" id="LOd-aP-Bbp"/>
+                        </constraints>
+                        <mutableString key="text">Para que os seus titulos do tesouro sejam atualizados automaticamente, é necessario que o nome seja exatamente como o sugerido pelo app na hora de inserir. Quando começar a digitar o nome, comece por "Tesouro..." que logo o app ira sugerir o nome de todos os titulos disponiveis. Se não encontrar o seu, entre em contato para que possamos adiciona-lo. Se você inserir nomes como NTNB 2024 ou LFT 2023, o app não conseguirá pegar as cotações automaticamente, mas você poderá atualiza-las manualmente caso deseje.
+
+</mutableString>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="Lk7-zw-vbY">
+                        <rect key="frame" x="16" y="571" width="343" height="217"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="217" id="dI3-X9-4mR"/>
+                        </constraints>
+                        <mutableString key="text">Quando você começar a digitar para inserir uma ação ou fundo imobiliario, o app ira sugerir o código baseado em uma lista que tem de códigos disponíveis. Entretanto, essa é apenas uma sugestão e pode ser que o seu ativo seja novo no mercado e ainda não tenha na base do aplicativo, mas isso não quer dizer que se você tentar inserir, o aplicativo não deixará. Se o ativo existe, é pra você conseguir inserir ele e o aplicativo deverá atulizar seus dados automaticamente de forma normal. Caso isso não aconteca, por favor entre em contato para que eu possa verificar.</mutableString>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UAv-tA-XKu">
+                        <rect key="frame" x="16" y="482" width="343" height="1"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="C4L-WJ-juV"/>
+                        </constraints>
+                    </view>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="2 - Não encontrei a minha ação ou fundo imobiliário ao inserir um novo ativo pelo aplicativo." textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="6tK-w1-ZdH">
+                        <rect key="frame" x="16" y="498" width="343" height="71"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="71" id="cJQ-0K-lu9"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8i9-Ou-lpa">
+                        <rect key="frame" x="16" y="795" width="343" height="1"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="14x-DW-MR9"/>
+                        </constraints>
+                    </view>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="9Xq-jy-AJt">
+                        <rect key="frame" x="16" y="841" width="343" height="167"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="167" id="rKg-mY-ANH"/>
+                        </constraints>
+                        <string key="text">O aplicativo Guia Investimento é feito por um desenvolvedor independente que gosta muito da area de investimento e viu a necessidade de um aplicativo para controlar e ver seus ganhos de sua carteira. Sei que ainda tem muitas melhorias e aguns pequenos bugs a serem resolvidos, mas com a sua contribuição e sugestões, aos poucos o aplicativo vai ficando cada vez melhor e com mais funcionalidades.</string>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IYq-wu-jQe">
+                        <rect key="frame" x="16" y="1015" width="343" height="1"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="NDe-N7-wye"/>
+                        </constraints>
+                    </view>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="WYZ-dg-m5S">
+                        <rect key="frame" x="16" y="1067" width="343" height="262"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="262" id="BMK-fi-2Kq"/>
+                        </constraints>
+                        <mutableString key="text">O desenvolvimento do aplicativo tem um custo mensal moderado para pegar as cotações da Bovespa. Infelizmente a bovespa não oferece um serviço para ler cotações grátis, nem mesmo com atraso de 15 minutos. O custo é relativamente alto para um desenvolvedor independente. Hoje, ainda com as assinaturas ativas, ainda estou pagando pagando para manter e desenvolver o app. Com isso eu limitei a atualização automática a 5 ações, 3 fundos imobiliarios e 1 tesouro para a versão grátis. Assim, pequenos desenvolvedores conseguem usar o aplicativo sem problema, e conforme forem crescendo, vão poder ter condições de assinar a versão paga e contribuir com o app.</mutableString>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0e4-o4-BtQ">
+                        <rect key="frame" x="16" y="1337" width="343" height="1"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="GMz-5G-zFi"/>
+                        </constraints>
+                    </view>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="5 - Não achei a solução do meu problema e/ou tenho sugestões para o aplicativo." textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="Eip-2D-Zgf">
+                        <rect key="frame" x="16" y="1352" width="343" height="55"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="55" id="BI2-xa-ya4"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="EH4-Vw-Zy8">
+                        <rect key="frame" x="16" y="1409" width="343" height="200"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="200" id="mBf-kD-Cnr"/>
+                        </constraints>
+                        <string key="text">Se você está com algum problema, duvida ou tem alguma sugestão do app, e não consegue achar a solução, fique a contade em me mandar um email, tento ajudar assim como eu puder. Normalmente respondo em no máximo 1-2 dias com uma resposta completa de como você poderá resolver seu problema. Sugestões também são sempre bem vindas.
+
+Entre em contato por:
+contato@guiainvestimento.com.br</string>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 - De que empresa é o aplicativo?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o3p-Qj-JC1">
+                        <rect key="frame" x="21" y="808" width="236" height="17"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c5M-FM-CfF">
+                        <rect key="frame" x="21" y="1032" width="205" height="17"/>
+                        <string key="text">4 - Porque o aplicativo é pago
+</string>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="6tK-w1-ZdH" firstAttribute="top" secondItem="UAv-tA-XKu" secondAttribute="bottom" constant="15" id="0QJ-bu-umL"/>
+                    <constraint firstItem="kUB-to-s7R" firstAttribute="top" secondItem="w45-w0-TZl" secondAttribute="bottom" constant="-1" id="0jS-Qk-H5j"/>
+                    <constraint firstItem="IYq-wu-jQe" firstAttribute="leading" secondItem="lgT-pd-sdx" secondAttribute="leadingMargin" id="1AH-Kw-6zE"/>
+                    <constraint firstItem="EH4-Vw-Zy8" firstAttribute="top" secondItem="Eip-2D-Zgf" secondAttribute="bottom" constant="2" id="4C7-oL-bBo"/>
+                    <constraint firstItem="o3p-Qj-JC1" firstAttribute="leading" secondItem="lgT-pd-sdx" secondAttribute="leadingMargin" constant="5" id="5GN-DK-AEL"/>
+                    <constraint firstItem="WGC-y6-F3u" firstAttribute="leading" secondItem="lgT-pd-sdx" secondAttribute="leading" constant="16" id="7WM-2I-dVI"/>
+                    <constraint firstItem="UAv-tA-XKu" firstAttribute="trailing" secondItem="lgT-pd-sdx" secondAttribute="trailingMargin" id="8iD-w1-YRX"/>
+                    <constraint firstItem="w45-w0-TZl" firstAttribute="top" secondItem="HkV-cq-P26" secondAttribute="bottom" constant="8" id="92b-Lb-0Ke"/>
+                    <constraint firstItem="8i9-Ou-lpa" firstAttribute="top" secondItem="Lk7-zw-vbY" secondAttribute="bottom" constant="7" id="A3s-lz-BCG"/>
+                    <constraint firstItem="8i9-Ou-lpa" firstAttribute="trailing" secondItem="lgT-pd-sdx" secondAttribute="trailingMargin" id="Arm-OJ-NcR"/>
+                    <constraint firstItem="kUB-to-s7R" firstAttribute="trailing" secondItem="lgT-pd-sdx" secondAttribute="trailingMargin" id="DVL-AH-PNe"/>
+                    <constraint firstItem="Lk7-zw-vbY" firstAttribute="top" secondItem="6tK-w1-ZdH" secondAttribute="bottom" constant="2" id="GfI-NT-gX1"/>
+                    <constraint firstItem="9Xq-jy-AJt" firstAttribute="trailing" secondItem="lgT-pd-sdx" secondAttribute="trailingMargin" id="HWh-5J-bIw"/>
+                    <constraint firstItem="c5M-FM-CfF" firstAttribute="top" secondItem="IYq-wu-jQe" secondAttribute="bottom" constant="16" id="ITi-Nq-f6A"/>
+                    <constraint firstItem="Eip-2D-Zgf" firstAttribute="top" secondItem="0e4-o4-BtQ" secondAttribute="bottom" constant="14" id="LZg-hP-VCE"/>
+                    <constraint firstItem="6tK-w1-ZdH" firstAttribute="top" secondItem="UAv-tA-XKu" secondAttribute="bottom" constant="15" id="MS9-vj-NCo"/>
+                    <constraint firstItem="HkV-cq-P26" firstAttribute="trailing" secondItem="lgT-pd-sdx" secondAttribute="trailingMargin" id="MlU-rB-znr"/>
+                    <constraint firstItem="UAv-tA-XKu" firstAttribute="top" secondItem="kUB-to-s7R" secondAttribute="bottom" constant="15" id="MsP-wP-EM4"/>
+                    <constraint firstItem="HkV-cq-P26" firstAttribute="leading" secondItem="lgT-pd-sdx" secondAttribute="leadingMargin" id="N67-FR-UBY"/>
+                    <constraint firstItem="EH4-Vw-Zy8" firstAttribute="leading" secondItem="lgT-pd-sdx" secondAttribute="leadingMargin" id="N8b-IW-KFH"/>
+                    <constraint firstAttribute="trailing" secondItem="WGC-y6-F3u" secondAttribute="trailing" constant="16" id="NEe-tx-jcQ"/>
+                    <constraint firstItem="o3p-Qj-JC1" firstAttribute="top" secondItem="8i9-Ou-lpa" secondAttribute="bottom" constant="12" id="Qcd-k8-ej5"/>
+                    <constraint firstItem="Lk7-zw-vbY" firstAttribute="trailing" secondItem="lgT-pd-sdx" secondAttribute="trailingMargin" id="RLj-7G-7oj"/>
+                    <constraint firstItem="HkV-cq-P26" firstAttribute="top" secondItem="WGC-y6-F3u" secondAttribute="bottom" constant="8" id="RdX-mG-5DB"/>
+                    <constraint firstItem="WGC-y6-F3u" firstAttribute="top" secondItem="lgT-pd-sdx" secondAttribute="top" constant="22" id="Rtv-vy-vBm"/>
+                    <constraint firstItem="EH4-Vw-Zy8" firstAttribute="trailing" secondItem="lgT-pd-sdx" secondAttribute="trailingMargin" id="SgJ-Xb-Bm7"/>
+                    <constraint firstItem="kUB-to-s7R" firstAttribute="leading" secondItem="lgT-pd-sdx" secondAttribute="leadingMargin" id="TGm-Bg-dPc"/>
+                    <constraint firstItem="EH4-Vw-Zy8" firstAttribute="top" secondItem="Eip-2D-Zgf" secondAttribute="bottom" constant="2" id="TZE-ra-Ieu"/>
+                    <constraint firstItem="9Xq-jy-AJt" firstAttribute="leading" secondItem="lgT-pd-sdx" secondAttribute="leadingMargin" id="X47-UW-S7b"/>
+                    <constraint firstItem="w45-w0-TZl" firstAttribute="trailing" secondItem="lgT-pd-sdx" secondAttribute="trailingMargin" id="aGY-sE-ZuM"/>
+                    <constraint firstItem="WYZ-dg-m5S" firstAttribute="top" secondItem="c5M-FM-CfF" secondAttribute="bottom" constant="18" id="aYv-ZB-SgC"/>
+                    <constraint firstItem="0e4-o4-BtQ" firstAttribute="trailing" secondItem="lgT-pd-sdx" secondAttribute="trailingMargin" id="bck-fb-l4g"/>
+                    <constraint firstItem="c5M-FM-CfF" firstAttribute="leading" secondItem="lgT-pd-sdx" secondAttribute="leadingMargin" constant="5" id="dqf-qN-ZJe"/>
+                    <constraint firstItem="UAv-tA-XKu" firstAttribute="top" secondItem="kUB-to-s7R" secondAttribute="bottom" constant="15" id="eQe-98-lB5"/>
+                    <constraint firstItem="0e4-o4-BtQ" firstAttribute="top" secondItem="WYZ-dg-m5S" secondAttribute="bottom" constant="8" id="erC-Fk-Exb"/>
+                    <constraint firstItem="0e4-o4-BtQ" firstAttribute="top" secondItem="WYZ-dg-m5S" secondAttribute="bottom" constant="8" id="f6F-38-Pvv"/>
+                    <constraint firstItem="w45-w0-TZl" firstAttribute="top" secondItem="HkV-cq-P26" secondAttribute="bottom" constant="8" id="g3I-bE-GF8"/>
+                    <constraint firstItem="Eip-2D-Zgf" firstAttribute="trailing" secondItem="lgT-pd-sdx" secondAttribute="trailingMargin" id="gWU-gL-orY"/>
+                    <constraint firstItem="0e4-o4-BtQ" firstAttribute="leading" secondItem="lgT-pd-sdx" secondAttribute="leadingMargin" id="hSC-Co-zZ6"/>
+                    <constraint firstItem="HkV-cq-P26" firstAttribute="top" secondItem="WGC-y6-F3u" secondAttribute="bottom" constant="8" id="idx-hA-g7r"/>
+                    <constraint firstItem="Lk7-zw-vbY" firstAttribute="top" secondItem="6tK-w1-ZdH" secondAttribute="bottom" constant="2" id="igC-Wt-3Sm"/>
+                    <constraint firstItem="IYq-wu-jQe" firstAttribute="top" secondItem="9Xq-jy-AJt" secondAttribute="bottom" constant="7" id="itX-jf-ZOO"/>
+                    <constraint firstItem="WYZ-dg-m5S" firstAttribute="trailing" secondItem="lgT-pd-sdx" secondAttribute="trailingMargin" id="jfS-Go-f4o"/>
+                    <constraint firstItem="6tK-w1-ZdH" firstAttribute="trailing" secondItem="lgT-pd-sdx" secondAttribute="trailingMargin" id="kOX-B9-Pde"/>
+                    <constraint firstItem="Lk7-zw-vbY" firstAttribute="leading" secondItem="lgT-pd-sdx" secondAttribute="leadingMargin" id="mQW-c1-OeX"/>
+                    <constraint firstItem="kUB-to-s7R" firstAttribute="top" secondItem="w45-w0-TZl" secondAttribute="bottom" constant="-1" id="oWV-fS-IFo"/>
+                    <constraint firstItem="8i9-Ou-lpa" firstAttribute="leading" secondItem="lgT-pd-sdx" secondAttribute="leadingMargin" id="pbU-9i-Mj3"/>
+                    <constraint firstItem="UAv-tA-XKu" firstAttribute="leading" secondItem="lgT-pd-sdx" secondAttribute="leadingMargin" id="rPU-yD-W1k"/>
+                    <constraint firstItem="w45-w0-TZl" firstAttribute="leading" secondItem="lgT-pd-sdx" secondAttribute="leadingMargin" id="smL-tz-y7c"/>
+                    <constraint firstItem="IYq-wu-jQe" firstAttribute="top" secondItem="9Xq-jy-AJt" secondAttribute="bottom" constant="7" id="txZ-3I-1TR"/>
+                    <constraint firstItem="9Xq-jy-AJt" firstAttribute="top" secondItem="o3p-Qj-JC1" secondAttribute="bottom" constant="16" id="uI7-J7-2zh"/>
+                    <constraint firstItem="Eip-2D-Zgf" firstAttribute="leading" secondItem="lgT-pd-sdx" secondAttribute="leadingMargin" id="uWv-zO-gJK"/>
+                    <constraint firstItem="Eip-2D-Zgf" firstAttribute="top" secondItem="0e4-o4-BtQ" secondAttribute="bottom" constant="14" id="usS-sd-Nj8"/>
+                    <constraint firstItem="8i9-Ou-lpa" firstAttribute="top" secondItem="Lk7-zw-vbY" secondAttribute="bottom" constant="7" id="vy9-bT-PwH"/>
+                    <constraint firstItem="WYZ-dg-m5S" firstAttribute="leading" secondItem="lgT-pd-sdx" secondAttribute="leadingMargin" id="w3f-Hz-aSS"/>
+                    <constraint firstItem="IYq-wu-jQe" firstAttribute="trailing" secondItem="lgT-pd-sdx" secondAttribute="trailingMargin" id="x1s-eq-1LL"/>
+                    <constraint firstItem="6tK-w1-ZdH" firstAttribute="leading" secondItem="lgT-pd-sdx" secondAttribute="leadingMargin" id="xx3-OZ-mnQ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
+            <point key="canvasLocation" x="-7.5" y="790.5"/>
+        </tableViewCell>
+    </objects>
+</document>
