@@ -24,13 +24,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data Ex Dividendo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MAc-Jg-odP">
-                    <rect key="frame" x="16" y="248" width="149" height="21"/>
+                    <rect key="frame" x="16" y="248" width="140" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Valor Recebido por Ação" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pnc-bm-Tnn">
-                    <rect key="frame" x="16" y="158" width="213" height="21"/>
+                    <rect key="frame" x="16" y="158" width="188" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -74,18 +74,20 @@
                 <constraint firstItem="Aps-xm-etC" firstAttribute="leading" secondItem="pnc-bm-Tnn" secondAttribute="leading" id="Ay1-io-CKF"/>
                 <constraint firstItem="Aps-xm-etC" firstAttribute="trailing" secondItem="3Ms-ik-b34" secondAttribute="trailing" id="C0Z-4P-rCC"/>
                 <constraint firstItem="hjA-lA-0jA" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="GPP-bC-VZc"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="pnc-bm-Tnn" secondAttribute="trailing" constant="146" id="Hj2-EA-MfJ"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="8OO-U5-oJ8" secondAttribute="trailing" constant="16" id="HuJ-AF-1zb"/>
+                <constraint firstItem="MAc-Jg-odP" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="ICf-Dh-K7i"/>
                 <constraint firstItem="8OO-U5-oJ8" firstAttribute="top" secondItem="MAc-Jg-odP" secondAttribute="bottom" constant="8" id="JBq-ja-zBq"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="3Ms-ik-b34" secondAttribute="trailing" constant="16" id="Jf5-oM-she"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Aps-xm-etC" secondAttribute="trailing" constant="16" id="TYu-I7-UXp"/>
                 <constraint firstItem="MAc-Jg-odP" firstAttribute="leading" secondItem="Aps-xm-etC" secondAttribute="leading" id="UDV-eW-zyD"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="MAc-Jg-odP" secondAttribute="trailing" constant="210" id="VbO-lT-A7X"/>
                 <constraint firstItem="3Ms-ik-b34" firstAttribute="top" secondItem="hjA-lA-0jA" secondAttribute="bottom" constant="8" id="gwr-2e-TTE"/>
                 <constraint firstItem="Aps-xm-etC" firstAttribute="top" secondItem="pnc-bm-Tnn" secondAttribute="bottom" constant="8" symbolic="YES" id="j7h-d5-T7L"/>
+                <constraint firstItem="Aps-xm-etC" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="lq6-pu-PzZ"/>
                 <constraint firstItem="3Ms-ik-b34" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="oKE-Zw-FEF"/>
                 <constraint firstItem="pnc-bm-Tnn" firstAttribute="top" secondItem="3Ms-ik-b34" secondAttribute="bottom" constant="18" id="pi8-9n-7Jf"/>
                 <constraint firstItem="pnc-bm-Tnn" firstAttribute="leading" secondItem="3Ms-ik-b34" secondAttribute="leading" id="uRg-OO-x2a"/>
                 <constraint firstItem="hjA-lA-0jA" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="17" id="xgo-K2-Sd3"/>
+                <constraint firstItem="pnc-bm-Tnn" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="y2B-F9-tIX"/>
                 <constraint firstItem="3Ms-ik-b34" firstAttribute="top" secondItem="hjA-lA-0jA" secondAttribute="bottom" constant="8" id="yxa-QM-TTM"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>

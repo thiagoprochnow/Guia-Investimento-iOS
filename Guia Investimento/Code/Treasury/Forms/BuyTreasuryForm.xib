@@ -26,7 +26,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Código do Titulo do Tesouro" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MAc-Jg-odP">
-                    <rect key="frame" x="16" y="104" width="252" height="21"/>
+                    <rect key="frame" x="16" y="104" width="216.5" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -42,7 +42,7 @@
                     <textInputTraits key="textInputTraits" returnKeyType="next"/>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quantidade" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VaA-6F-DuX">
-                    <rect key="frame" x="16" y="204" width="126" height="21"/>
+                    <rect key="frame" x="16" y="204" width="89" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -58,7 +58,7 @@
                     <textInputTraits key="textInputTraits" returnKeyType="next"/>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preço de compra " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pnc-bm-Tnn">
-                    <rect key="frame" x="16" y="304" width="172" height="21"/>
+                    <rect key="frame" x="16" y="304" width="135.5" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -95,20 +95,26 @@
                 <constraint firstItem="5kk-cl-iGT" firstAttribute="top" secondItem="VaA-6F-DuX" secondAttribute="bottom" constant="8" symbolic="YES" id="16i-vU-UC5"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="8OO-U5-oJ8" secondAttribute="trailing" constant="16" id="2LW-vg-c4g"/>
                 <constraint firstItem="8OO-U5-oJ8" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="4fr-zv-QZY"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="pnc-bm-Tnn" secondAttribute="trailing" constant="187" id="9vH-36-0XN"/>
+                <constraint firstItem="2cG-CG-CIB" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="7Zk-Ed-SdK"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Aps-xm-etC" secondAttribute="trailing" constant="16" id="86H-p2-dmF"/>
+                <constraint firstItem="5kk-cl-iGT" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="8Am-Cb-oIM"/>
+                <constraint firstItem="pnc-bm-Tnn" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="9Q0-cg-t7m"/>
+                <constraint firstItem="VaA-6F-DuX" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="9lD-cv-l8Z"/>
                 <constraint firstItem="MAc-Jg-odP" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="ASm-kX-hdz"/>
                 <constraint firstItem="MAc-Jg-odP" firstAttribute="leading" secondItem="5kk-cl-iGT" secondAttribute="leading" id="Aso-bf-Wom"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="5kk-cl-iGT" secondAttribute="trailing" constant="16" id="CBG-Zu-6gA"/>
                 <constraint firstItem="2cG-CG-CIB" firstAttribute="top" secondItem="MAc-Jg-odP" secondAttribute="bottom" constant="8" symbolic="YES" id="GsE-kB-wy9"/>
                 <constraint firstItem="LMg-1g-RDo" firstAttribute="top" secondItem="Aps-xm-etC" secondAttribute="bottom" constant="47" id="OMO-Hb-M4S"/>
                 <constraint firstItem="LMg-1g-RDo" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="Sgn-EN-e85"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="VaA-6F-DuX" secondAttribute="trailing" constant="233" id="TLs-gE-1ww"/>
                 <constraint firstItem="pnc-bm-Tnn" firstAttribute="leading" secondItem="Aps-xm-etC" secondAttribute="leading" id="XpX-2r-ZPF"/>
                 <constraint firstItem="8OO-U5-oJ8" firstAttribute="top" secondItem="LMg-1g-RDo" secondAttribute="bottom" constant="8" id="YSa-yx-WbB"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="2cG-CG-CIB" secondAttribute="trailing" constant="16" id="ZOo-hz-OLz"/>
                 <constraint firstItem="VaA-6F-DuX" firstAttribute="leading" secondItem="5kk-cl-iGT" secondAttribute="leading" id="ffh-DX-Fzf"/>
                 <constraint firstItem="8OO-U5-oJ8" firstAttribute="top" secondItem="LMg-1g-RDo" secondAttribute="bottom" constant="8" id="fx9-n3-OJY"/>
                 <constraint firstItem="MAc-Jg-odP" firstAttribute="leading" secondItem="2cG-CG-CIB" secondAttribute="leading" id="h3c-2j-GAI"/>
                 <constraint firstItem="pnc-bm-Tnn" firstAttribute="top" secondItem="5kk-cl-iGT" secondAttribute="bottom" constant="41" id="hn0-cE-WAR"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="MAc-Jg-odP" secondAttribute="trailing" constant="107" id="pWN-O7-psn"/>
+                <constraint firstItem="Aps-xm-etC" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="hte-Pe-c9r"/>
+                <constraint firstItem="MAc-Jg-odP" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="nKL-fS-6Tb"/>
                 <constraint firstItem="VaA-6F-DuX" firstAttribute="top" secondItem="2cG-CG-CIB" secondAttribute="bottom" constant="41" id="qQR-la-K4I"/>
                 <constraint firstItem="MAc-Jg-odP" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="40" id="sb3-gm-dtg"/>
                 <constraint firstItem="MAc-Jg-odP" firstAttribute="leading" secondItem="Aps-xm-etC" secondAttribute="leading" id="uUs-3b-26M"/>

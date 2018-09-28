@@ -35,9 +35,8 @@
                     <view clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Td2-xi-DG0">
                         <rect key="frame" x="16" y="5" width="343" height="20"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Alocação de Ativos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sis-LX-mfw">
-                                <rect key="frame" x="0.0" y="0.0" width="343" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alocação de Ativos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sis-LX-mfw">
+                                <rect key="frame" x="0.0" y="0.0" width="343" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -45,7 +44,11 @@
                         </subviews>
                         <color key="backgroundColor" red="0.2470588235" green="0.31764705879999999" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Sis-LX-mfw" secondAttribute="trailing" id="46U-og-3dU"/>
                             <constraint firstAttribute="height" constant="20" id="76V-5K-rwh"/>
+                            <constraint firstAttribute="bottom" secondItem="Sis-LX-mfw" secondAttribute="bottom" id="7xW-rn-N5D"/>
+                            <constraint firstItem="Sis-LX-mfw" firstAttribute="top" secondItem="Td2-xi-DG0" secondAttribute="top" id="Vso-fI-Rit"/>
+                            <constraint firstItem="Sis-LX-mfw" firstAttribute="leading" secondItem="Td2-xi-DG0" secondAttribute="leading" id="dCz-cI-1C7"/>
                         </constraints>
                     </view>
                 </subviews>

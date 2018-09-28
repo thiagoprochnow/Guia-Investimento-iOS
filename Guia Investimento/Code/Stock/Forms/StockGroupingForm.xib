@@ -24,13 +24,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data do Grupamento" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MAc-Jg-odP">
-                    <rect key="frame" x="16" y="104" width="194" height="21"/>
+                    <rect key="frame" x="16" y="104" width="160" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quantidade" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pnc-bm-Tnn">
-                    <rect key="frame" x="16" y="255" width="213" height="21"/>
+                    <rect key="frame" x="16" y="255" width="89" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -72,7 +72,6 @@
             <constraints>
                 <constraint firstItem="8OO-U5-oJ8" firstAttribute="top" secondItem="MAc-Jg-odP" secondAttribute="bottom" constant="8" id="5BB-Tg-7CW"/>
                 <constraint firstItem="pnc-bm-Tnn" firstAttribute="top" secondItem="8OO-U5-oJ8" secondAttribute="bottom" constant="8" id="8ab-nF-Iw7"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="pnc-bm-Tnn" secondAttribute="trailing" constant="146" id="9vH-36-0XN"/>
                 <constraint firstItem="MAc-Jg-odP" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="ASm-kX-hdz"/>
                 <constraint firstItem="bve-Ad-qBE" firstAttribute="centerY" secondItem="Aps-xm-etC" secondAttribute="centerY" id="GKK-Mz-Zth"/>
                 <constraint firstItem="pnc-bm-Tnn" firstAttribute="leading" secondItem="Aps-xm-etC" secondAttribute="leading" id="XpX-2r-ZPF"/>
@@ -80,12 +79,13 @@
                 <constraint firstItem="pJa-82-1Nx" firstAttribute="leading" secondItem="bve-Ad-qBE" secondAttribute="trailing" constant="-51" id="eDa-bA-xop"/>
                 <constraint firstItem="bve-Ad-qBE" firstAttribute="baseline" secondItem="pJa-82-1Nx" secondAttribute="baseline" id="oYA-ZQ-f9E"/>
                 <constraint firstItem="pnc-bm-Tnn" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="255" id="p0r-kh-Ied"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="MAc-Jg-odP" secondAttribute="trailing" constant="165" id="pWN-O7-psn"/>
                 <constraint firstItem="pnc-bm-Tnn" firstAttribute="top" secondItem="8OO-U5-oJ8" secondAttribute="bottom" constant="8" id="rBj-ch-lOS"/>
                 <constraint firstItem="MAc-Jg-odP" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="40" id="sb3-gm-dtg"/>
                 <constraint firstItem="Aps-xm-etC" firstAttribute="top" secondItem="pnc-bm-Tnn" secondAttribute="bottom" constant="8" id="tPx-NO-VRm"/>
                 <constraint firstItem="MAc-Jg-odP" firstAttribute="leading" secondItem="Aps-xm-etC" secondAttribute="leading" id="uUs-3b-26M"/>
+                <constraint firstItem="pnc-bm-Tnn" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="vnD-oq-JjJ"/>
                 <constraint firstItem="pnc-bm-Tnn" firstAttribute="leading" secondItem="8OO-U5-oJ8" secondAttribute="leading" id="wVS-K4-nEC"/>
+                <constraint firstItem="MAc-Jg-odP" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="wdh-R2-KP4"/>
                 <constraint firstItem="Aps-xm-etC" firstAttribute="top" secondItem="pnc-bm-Tnn" secondAttribute="bottom" constant="8" symbolic="YES" id="wqc-PI-WTZ"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
