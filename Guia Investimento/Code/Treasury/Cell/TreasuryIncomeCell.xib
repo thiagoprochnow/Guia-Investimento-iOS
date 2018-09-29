@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -29,10 +28,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R$2368,00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8o-f3-Adz">
-                        <rect key="frame" x="232" y="37" width="135" height="17"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="135" id="nCx-m5-jL4"/>
-                        </constraints>
+                        <rect key="frame" x="286" y="37" width="73" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -47,10 +43,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25/03/2018" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c3Y-G9-ad6">
-                        <rect key="frame" x="9" y="37" width="115" height="17"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="115" id="llu-Qb-KkU"/>
-                        </constraints>
+                        <rect key="frame" x="9" y="37" width="75.5" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -65,20 +58,19 @@
                 <color key="backgroundColor" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
                     <constraint firstItem="z2m-6M-Av2" firstAttribute="bottom" secondItem="Tki-xO-AZ2" secondAttribute="bottomMargin" id="0F7-FD-Oaa"/>
-                    <constraint firstItem="c3Y-G9-ad6" firstAttribute="trailing" secondItem="V8o-f3-Adz" secondAttribute="trailing" constant="-243" id="1hf-cA-6hN"/>
+                    <constraint firstItem="c3Y-G9-ad6" firstAttribute="leading" secondItem="Tki-xO-AZ2" secondAttribute="leading" constant="9" id="0FT-pd-ne6"/>
+                    <constraint firstItem="cf7-Wi-U6u" firstAttribute="trailing" secondItem="V8o-f3-Adz" secondAttribute="trailing" id="1za-UM-sJE"/>
                     <constraint firstAttribute="trailing" secondItem="z2m-6M-Av2" secondAttribute="trailing" constant="8" id="6Bb-lD-hNr"/>
                     <constraint firstItem="cf7-Wi-U6u" firstAttribute="top" secondItem="Hph-wX-iCH" secondAttribute="top" id="6qg-2a-P6p"/>
                     <constraint firstItem="Hph-wX-iCH" firstAttribute="top" secondItem="Tki-xO-AZ2" secondAttribute="top" constant="7" id="Bar-nv-0b1"/>
-                    <constraint firstItem="z2m-6M-Av2" firstAttribute="trailing" secondItem="V8o-f3-Adz" secondAttribute="trailing" id="Jp9-u0-Sv4"/>
-                    <constraint firstItem="V8o-f3-Adz" firstAttribute="top" secondItem="c3Y-G9-ad6" secondAttribute="top" id="MAY-K0-dQB"/>
+                    <constraint firstItem="Hph-wX-iCH" firstAttribute="leading" secondItem="Tki-xO-AZ2" secondAttribute="leading" constant="9" id="E7w-RA-fGB"/>
                     <constraint firstItem="Hph-wX-iCH" firstAttribute="leading" secondItem="Tki-xO-AZ2" secondAttribute="leading" constant="9" id="VW6-fg-Zi9"/>
                     <constraint firstAttribute="trailing" secondItem="cf7-Wi-U6u" secondAttribute="trailing" constant="16" id="XnI-qW-56N"/>
                     <constraint firstItem="cf7-Wi-U6u" firstAttribute="top" secondItem="Tki-xO-AZ2" secondAttribute="top" constant="7" id="Zz1-Iy-l3e"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="V8o-f3-Adz" secondAttribute="trailing" constant="-8" id="aTc-d1-WBT"/>
                     <constraint firstItem="z2m-6M-Av2" firstAttribute="leading" secondItem="Tki-xO-AZ2" secondAttribute="leading" constant="9" id="d85-P5-c8q"/>
                     <constraint firstItem="cf7-Wi-U6u" firstAttribute="bottom" secondItem="Hph-wX-iCH" secondAttribute="bottom" id="dq0-CB-qwm"/>
-                    <constraint firstItem="V8o-f3-Adz" firstAttribute="top" secondItem="cf7-Wi-U6u" secondAttribute="bottom" constant="3" id="fXR-9y-ulh"/>
-                    <constraint firstItem="V8o-f3-Adz" firstAttribute="top" secondItem="Hph-wX-iCH" secondAttribute="bottom" constant="3" id="tyn-CD-6hT"/>
+                    <constraint firstItem="c3Y-G9-ad6" firstAttribute="top" secondItem="Hph-wX-iCH" secondAttribute="bottom" constant="3" id="efN-a8-NVQ"/>
+                    <constraint firstItem="V8o-f3-Adz" firstAttribute="top" secondItem="cf7-Wi-U6u" secondAttribute="bottom" constant="3" id="kqR-c9-HBB"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -87,7 +79,7 @@
                 <outlet property="total" destination="V8o-f3-Adz" id="hnr-Ui-fhc"/>
                 <outlet property="type" destination="Hph-wX-iCH" id="drH-Pz-Abd"/>
             </connections>
-            <point key="canvasLocation" x="-2.5" y="86.5"/>
+            <point key="canvasLocation" x="-4" y="85.907046476761622"/>
         </tableViewCell>
     </objects>
 </document>

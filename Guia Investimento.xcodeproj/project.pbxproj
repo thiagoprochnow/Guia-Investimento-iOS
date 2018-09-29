@@ -243,8 +243,6 @@
 		5521B063210A8D5E00AB6345 /* Manifest.lock in Resources */ = {isa = PBXBuildFile; fileRef = 5521AFBD210A8D5E00AB6345 /* Manifest.lock */; };
 		5521B064210A8D5E00AB6345 /* Charts-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5521AFC3210A8D5E00AB6345 /* Charts-dummy.m */; };
 		5521B065210A8D5E00AB6345 /* Charts.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5521AFC7210A8D5E00AB6345 /* Charts.xcconfig */; };
-		5521B066210A8D5E00AB6345 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5521AFC8210A8D5E00AB6345 /* Info.plist */; };
-		5521B067210A8D5E00AB6345 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5521AFCA210A8D5E00AB6345 /* Info.plist */; };
 		5521B068210A8D5E00AB6345 /* Pods-Guia Investimento-acknowledgements.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 5521AFCB210A8D5E00AB6345 /* Pods-Guia Investimento-acknowledgements.markdown */; };
 		5521B069210A8D5E00AB6345 /* Pods-Guia Investimento-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5521AFCC210A8D5E00AB6345 /* Pods-Guia Investimento-acknowledgements.plist */; };
 		5521B06A210A8D5E00AB6345 /* Pods-Guia Investimento-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5521AFCD210A8D5E00AB6345 /* Pods-Guia Investimento-dummy.m */; };
@@ -2136,7 +2134,6 @@
 				5512E9D8211CE94700A1FD76 /* FixedEditPriceForm.xib in Resources */,
 				550FCC10210CF62F006E3FB8 /* FiiTransactionCell.xib in Resources */,
 				5521B06C210A8D5E00AB6345 /* Pods-Guia Investimento-resources.sh in Resources */,
-				5521B067210A8D5E00AB6345 /* Info.plist in Resources */,
 				550FCC16210CF62F006E3FB8 /* BuyFiiForm.xib in Resources */,
 				552F5AB421165084002F3C1A /* SellCurrencyForm.xib in Resources */,
 				552F5AA621165084002F3C1A /* CurrencyDataCell.xib in Resources */,
@@ -2169,7 +2166,6 @@
 				550FCC0A210CF62F006E3FB8 /* FiiIncomeCell.xib in Resources */,
 				55CCF47A210FC8D900D2E95B /* TreasuryDetailsView.xib in Resources */,
 				5540A85D20BCD3780087498B /* DrawerViewController.xib in Resources */,
-				5521B066210A8D5E00AB6345 /* Info.plist in Resources */,
 				5503A81A20F2A2F70039ACCD /* StockBonificationForm.xib in Resources */,
 				55F77AFB2130B94D00CD5EBE /* OthersIncomesView.xib in Resources */,
 				55F77A7F212F7B8400CD5EBE /* SellOthersForm.xib in Resources */,

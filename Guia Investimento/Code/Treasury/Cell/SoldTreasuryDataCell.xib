@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -26,24 +25,26 @@
                                 <rect key="frame" x="0.0" y="0.0" width="343" height="20"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="|" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rO6-9k-cCN">
-                                        <rect key="frame" x="49" y="-1" width="5" height="21"/>
+                                        <rect key="frame" x="43" y="-1" width="5" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PETR3" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cPi-D3-uXh">
-                                        <rect key="frame" x="4" y="2" width="44" height="17"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <rect key="frame" x="4" y="2" width="38" height="14.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="170" id="byR-AC-tqg"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QUANTIDADE: 3000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZDd-LI-ecw">
-                                        <rect key="frame" x="145" y="0.0" width="190" height="20"/>
+                                        <rect key="frame" x="219.5" y="-0.5" width="115.5" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="jdI-MY-REh"/>
-                                            <constraint firstAttribute="width" constant="190" id="mHw-c3-kTn"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -110,8 +111,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="(500,00%)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RHJ-61-Swc">
-                                <rect key="frame" x="250" y="103" width="85" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(500,00%)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RHJ-61-Swc">
+                                <rect key="frame" x="250" y="103" width="68.5" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -138,6 +139,7 @@
                             <constraint firstItem="LKf-h8-zmu" firstAttribute="top" secondItem="Ul8-iJ-NEj" secondAttribute="top" id="LQG-HR-Z8U"/>
                             <constraint firstItem="g2x-Wy-2QM" firstAttribute="bottom" secondItem="Uyv-hr-79y" secondAttribute="bottom" id="N8K-fD-4HO"/>
                             <constraint firstAttribute="bottom" secondItem="Uyv-hr-79y" secondAttribute="bottom" constant="21" id="NMk-zO-Gis"/>
+                            <constraint firstItem="RHJ-61-Swc" firstAttribute="leading" secondItem="g2x-Wy-2QM" secondAttribute="trailing" constant="3" id="PYj-ud-Oca"/>
                             <constraint firstItem="fvF-F8-Al5" firstAttribute="top" secondItem="fqG-05-ADO" secondAttribute="bottom" constant="8" id="QHP-KZ-pva"/>
                             <constraint firstItem="RHJ-61-Swc" firstAttribute="bottom" secondItem="Uyv-hr-79y" secondAttribute="bottom" id="VxU-cW-xf0"/>
                             <constraint firstItem="g2x-Wy-2QM" firstAttribute="top" secondItem="Uyv-hr-79y" secondAttribute="top" id="WMj-2O-4NN"/>
