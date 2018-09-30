@@ -119,10 +119,10 @@
                     <color key="sectionIndexBackgroundColor" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </tableView>
                 <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WL9-D6-tQ9">
-                    <rect key="frame" x="284" y="533" width="75" height="75"/>
+                    <rect key="frame" x="284" y="527" width="75" height="75"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="75" id="6OV-rT-YXh"/>
-                        <constraint firstAttribute="height" constant="75" id="GbK-os-cKA"/>
+                        <constraint firstAttribute="width" constant="75" id="5ah-ov-Q0r"/>
+                        <constraint firstAttribute="height" constant="75" id="xlM-59-Sd8"/>
                     </constraints>
                 </imageView>
             </subviews>
@@ -133,10 +133,10 @@
                 <constraint firstItem="dHo-xb-cBB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="Fb2-HN-jks"/>
                 <constraint firstAttribute="bottom" secondItem="p2Y-6R-50o" secondAttribute="bottom" id="L95-xk-Iv5"/>
                 <constraint firstItem="p2Y-6R-50o" firstAttribute="top" secondItem="dHo-xb-cBB" secondAttribute="bottom" constant="15" id="LUF-gp-gH2"/>
-                <constraint firstItem="WL9-D6-tQ9" firstAttribute="trailing" secondItem="p2Y-6R-50o" secondAttribute="trailing" id="ZmX-XA-Avc"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="WL9-D6-tQ9" secondAttribute="bottom" constant="16" id="ZBa-Le-hiR"/>
                 <constraint firstItem="dHo-xb-cBB" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailingMargin" id="eEi-wc-cN8"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="WL9-D6-tQ9" secondAttribute="bottom" constant="10" id="eTZ-Cd-t4o"/>
                 <constraint firstItem="p2Y-6R-50o" firstAttribute="centerX" secondItem="dHo-xb-cBB" secondAttribute="centerX" id="fw5-rA-ngO"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="WL9-D6-tQ9" secondAttribute="trailing" constant="16" id="jMM-RL-agf"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>

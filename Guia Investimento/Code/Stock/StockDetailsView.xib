@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -75,7 +74,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R$0,00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jCw-Hn-BFA">
-                            <rect key="frame" x="201" y="25" width="134" height="20"/>
+                            <rect key="frame" x="201" y="25.5" width="134" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="134" id="yKx-fo-cHE"/>
                             </constraints>
@@ -84,7 +83,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R$0,00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mPO-EE-PLv">
-                            <rect key="frame" x="201" y="53" width="134" height="20"/>
+                            <rect key="frame" x="201" y="53.5" width="134" height="20"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -116,10 +115,10 @@
                     <color key="sectionIndexBackgroundColor" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </tableView>
                 <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WL9-D6-tQ9">
-                    <rect key="frame" x="284" y="533" width="75" height="75"/>
+                    <rect key="frame" x="284" y="527" width="75" height="75"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="75" id="6OV-rT-YXh"/>
-                        <constraint firstAttribute="height" constant="75" id="GbK-os-cKA"/>
+                        <constraint firstAttribute="width" constant="75" id="EjL-oL-Mc1"/>
+                        <constraint firstAttribute="height" constant="75" id="eQV-5Q-VvV"/>
                     </constraints>
                 </imageView>
             </subviews>
@@ -130,10 +129,10 @@
                 <constraint firstItem="dHo-xb-cBB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="Fb2-HN-jks"/>
                 <constraint firstAttribute="bottom" secondItem="p2Y-6R-50o" secondAttribute="bottom" id="L95-xk-Iv5"/>
                 <constraint firstItem="p2Y-6R-50o" firstAttribute="top" secondItem="dHo-xb-cBB" secondAttribute="bottom" constant="15" id="LUF-gp-gH2"/>
-                <constraint firstItem="WL9-D6-tQ9" firstAttribute="trailing" secondItem="p2Y-6R-50o" secondAttribute="trailing" id="ZmX-XA-Avc"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="WL9-D6-tQ9" secondAttribute="bottom" constant="16" id="eEb-fo-Qy2"/>
                 <constraint firstItem="dHo-xb-cBB" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailingMargin" id="eEi-wc-cN8"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="WL9-D6-tQ9" secondAttribute="bottom" constant="10" id="eTZ-Cd-t4o"/>
                 <constraint firstItem="p2Y-6R-50o" firstAttribute="centerX" secondItem="dHo-xb-cBB" secondAttribute="centerX" id="fw5-rA-ngO"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="WL9-D6-tQ9" secondAttribute="trailing" constant="16" id="mIW-JG-QEe"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>

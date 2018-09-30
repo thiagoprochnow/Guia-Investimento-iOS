@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -29,10 +29,10 @@
                     <color key="sectionIndexBackgroundColor" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </tableView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8FC-rZ-QuG">
-                    <rect key="frame" x="284" y="531" width="75" height="75"/>
+                    <rect key="frame" x="284" y="527" width="75" height="75"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="75" id="7I0-F7-r4X"/>
-                        <constraint firstAttribute="width" constant="75" id="uwj-Vg-Vgk"/>
+                        <constraint firstAttribute="height" constant="75" id="hDP-8O-qPZ"/>
+                        <constraint firstAttribute="width" constant="75" id="lEI-KU-UTB"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sem itens para exibir" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jWR-bx-bqb">
@@ -45,12 +45,12 @@
             <color key="backgroundColor" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="5IN-rW-5OY" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="0bZ-VJ-8mo"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="8FC-rZ-QuG" secondAttribute="trailing" constant="16" id="8D5-wL-l7J"/>
                 <constraint firstItem="jWR-bx-bqb" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="EaY-ME-Q3L"/>
                 <constraint firstItem="jWR-bx-bqb" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="N2o-ig-2KV"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="8FC-rZ-QuG" secondAttribute="bottom" constant="12" id="Z9K-hx-UFP"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="8FC-rZ-QuG" secondAttribute="bottom" constant="16" id="XhD-3U-Dp1"/>
                 <constraint firstItem="jWR-bx-bqb" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="aFH-3p-Kgt"/>
                 <constraint firstAttribute="trailing" secondItem="5IN-rW-5OY" secondAttribute="trailing" id="cfC-Bl-l7h"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="8FC-rZ-QuG" secondAttribute="trailing" constant="16" id="dPB-eS-XQX"/>
                 <constraint firstAttribute="bottom" secondItem="5IN-rW-5OY" secondAttribute="bottom" id="r79-fu-Ynr"/>
                 <constraint firstItem="5IN-rW-5OY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="xs8-0C-PhC"/>
                 <constraint firstItem="jWR-bx-bqb" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="y3X-NF-uBI"/>
