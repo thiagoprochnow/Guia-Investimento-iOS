@@ -329,7 +329,6 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
                 stockDB.save(stock)
             }
             stockDB.close()
-            Utils.updateStockPortfolio()
             
             // Stocks Incomes
             let incomeDB = StockIncomeDB()
@@ -345,6 +344,7 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
                 }
             }
             incomeDB.close()
+            Utils.updateStockPortfolio()
             
             // Fii
             let fiiDB = FiiDataDB()
@@ -358,7 +358,6 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
                 fiiDB.save(fii)
             }
             fiiDB.close()
-            Utils.updateFiiPortfolio()
             
             // Fii Incomes
             let fiiIncomeDB = FiiIncomeDB()
@@ -374,6 +373,7 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
                 }
             }
             fiiIncomeDB.close()
+            Utils.updateFiiPortfolio()
           
             // Treasury
             let treasuryDB = TreasuryDataDB()
