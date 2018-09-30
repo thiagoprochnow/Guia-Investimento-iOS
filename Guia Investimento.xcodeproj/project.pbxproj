@@ -1789,7 +1789,6 @@
 				55F77AF52130B94200CD5EBE /* OthersIncomesView.xib */,
 				55F77AF82130B94700CD5EBE /* OthersMainIncomesView.swift */,
 				55F77AFA2130B94D00CD5EBE /* OthersMainIncomesView.xib */,
-				55F77AE72130B91700CD5EBE /* OthersIncomeCell.xib */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -1972,6 +1971,7 @@
 				55F77AE92130B91700CD5EBE /* OthersTransactionCell.swift */,
 				55F77AEA2130B91700CD5EBE /* OthersTransactionCell.xib */,
 				55F77AE12130B91300CD5EBE /* OthersIncomeCell.swift */,
+				55F77AE72130B91700CD5EBE /* OthersIncomeCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
