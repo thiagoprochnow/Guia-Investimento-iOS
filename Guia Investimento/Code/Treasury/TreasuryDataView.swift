@@ -90,8 +90,9 @@ class TreasuryDataView: UIViewController, UITableViewDataSource, UITableViewDele
             let currentPercent = String(format: "%.2f", locale: locale, arguments: [data.currentPercent]) + "%"
             
             cell.symbolLabel.text = data.symbol
-            let totalValue = data.currentPrice * Double(data.quantity)
-            cell.quantityLabel.text = "Quantidade: " + String(data.quantity)
+            let quantity = Double(round(data.quantity * 100) / 100)
+            let totalValue = data.currentPrice * Double(quantity)
+            cell.quantityLabel.text = "Quantidade: " + String(quantity)
             cell.currentLabel.text = Utils.doubleToRealCurrency(value: totalValue)
             cell.boughtLabel.text = Utils.doubleToRealCurrency(value: buyTotal)
             cell.variationLabel.text = Utils.doubleToRealCurrency(value: treasuryAppreciation)

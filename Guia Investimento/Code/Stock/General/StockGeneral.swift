@@ -235,6 +235,7 @@ class StockGeneral {
     func updateStockIncomes(_ symbol:String, timestamp:Int){
         let incomeDB = StockIncomeDB()
         let stockIncomes = incomeDB.getIncomesByTimestamp(symbol, timestamp: timestamp)
+        incomeDB.close()
         
         stockIncomes.forEach{ income in
             let incomeTimestamp = income.exdividendTimestamp
@@ -253,9 +254,10 @@ class StockGeneral {
                 income.tax = tax
                 income.liquidIncome = receiveLiquid
             }
+            let incomeDB = StockIncomeDB()
             incomeDB.save(income)
+            incomeDB.close()
         }
-        incomeDB.close()
     }
     
     // Delete stock income from table by using its id

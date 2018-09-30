@@ -232,6 +232,7 @@ class FiiGeneral {
     func updateFiiIncomes(_ symbol:String, timestamp:Int){
         let incomeDB = FiiIncomeDB()
         let fiiIncomes = incomeDB.getIncomesByTimestamp(symbol, timestamp: timestamp)
+        incomeDB.close()
         
         fiiIncomes.forEach{ income in
             let incomeTimestamp = income.exdividendTimestamp
@@ -243,9 +244,10 @@ class FiiGeneral {
             income.affectedQuantity = Int(quantity)
             income.grossIncome = receiveTotal
             income.liquidIncome = receiveTotal
+            let incomeDB = FiiIncomeDB()
             incomeDB.save(income)
+            incomeDB.close()
         }
-        incomeDB.close()
     }
     
     // Delete fii income from table by using its id

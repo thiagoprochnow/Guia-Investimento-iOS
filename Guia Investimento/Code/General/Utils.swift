@@ -216,12 +216,14 @@ class Utils {
         let stocks = stockDB.getData()
         
         stocks.forEach{ stock in
-            variationTotal += stock.variation
-            buyTotal += stock.buyValue
-            incomeTotal += stock.netIncome
-            mCurrentTotal += stock.currentTotal
-            brokerage += stock.brokerage
-            totalGain += stock.totalGain
+            if(stock.status == Constants.Status.ACTIVE){
+                variationTotal += stock.variation
+                buyTotal += stock.buyValue
+                incomeTotal += stock.netIncome
+                mCurrentTotal += stock.currentTotal
+                brokerage += stock.brokerage
+                totalGain += stock.totalGain
+            }
         }
         
         // Updates current percent of each stock data
@@ -274,12 +276,14 @@ class Utils {
         let fiis = fiiDB.getData()
         
         fiis.forEach{ fii in
-            variationTotal += fii.variation
-            buyTotal += fii.buyValue
-            incomeTotal += fii.netIncome
-            mCurrentTotal += fii.currentTotal
-            brokerage += fii.brokerage
-            totalGain += fii.totalGain
+            if(fii.status == Constants.Status.ACTIVE){
+                variationTotal += fii.variation
+                buyTotal += fii.buyValue
+                incomeTotal += fii.netIncome
+                mCurrentTotal += fii.currentTotal
+                brokerage += fii.brokerage
+                totalGain += fii.totalGain
+            }
         }
         
         // Updates current percent of each fii data
@@ -332,12 +336,14 @@ class Utils {
         let treasuries = treasuryDB.getData()
         
         treasuries.forEach{ treasury in
-            variationTotal += treasury.variation
-            buyTotal += treasury.buyValue
-            incomeTotal += treasury.netIncome
-            mCurrentTotal += treasury.currentTotal
-            brokerage += treasury.brokerage
-            totalGain += treasury.totalGain
+            if(treasury.status == Constants.Status.ACTIVE){
+                variationTotal += treasury.variation
+                buyTotal += treasury.buyValue
+                incomeTotal += treasury.netIncome
+                mCurrentTotal += treasury.currentTotal
+                brokerage += treasury.brokerage
+                totalGain += treasury.totalGain
+            }
         }
         
         // Updates current percent of each treasury data
@@ -389,11 +395,13 @@ class Utils {
         let currencies = currencyDB.getData()
         
         currencies.forEach{ currency in
-            variationTotal += currency.variation
-            buyTotal += currency.buyValue
-            mCurrentTotal += currency.currentTotal
-            brokerage += currency.brokerage
-            totalGain += currency.totalGain
+            if(currency.status == Constants.Status.ACTIVE){
+                variationTotal += currency.variation
+                buyTotal += currency.buyValue
+                mCurrentTotal += currency.currentTotal
+                brokerage += currency.brokerage
+                totalGain += currency.totalGain
+            }
         }
         
         // Updates current percent of each currency data

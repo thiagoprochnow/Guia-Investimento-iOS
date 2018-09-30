@@ -120,6 +120,7 @@ class StockService{
         let password = "user1133"
         let loginData = String(format: "%@:%@", username, password).data(using: String.Encoding.utf8)!
         let base64LoginData = loginData.base64EncodedString()
+        var count = 0
         
         if(stocks.count > 0){
             let general = StockGeneral()
@@ -172,8 +173,9 @@ class StockService{
                         // Return fail to main thread
                         result = false
                     }
+                    count = count + 1
                     // only calls callback for last item
-                    if(index == (stocks.count - 1)){
+                    if(count == (stocks.count)){
                         callback(returnIncomes, result)
                     }
                 }.resume()

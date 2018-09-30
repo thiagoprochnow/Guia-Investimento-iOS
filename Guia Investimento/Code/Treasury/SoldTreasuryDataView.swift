@@ -81,8 +81,9 @@ class SoldTreasuryDataView: UIViewController, UITableViewDataSource, UITableView
             let locale = Locale(identifier: "pt_BR")
             let sellGainPercent = "(" + String(format: "%.2f", locale: locale, arguments: [data.sellGain/data.buyValue * 100]) + "%)"
             cell.symbolLabel.text = data.symbol
-            let totalValue = data.mediumPrice * Double(data.quantity)
-            cell.quantityLabel.text = "Quantidade: " + String(data.quantity)
+            let quantity = Double(round(data.quantity * 100) / 100)
+            let totalValue = data.mediumPrice * quantity
+            cell.quantityLabel.text = "Quantidade: " + String(quantity)
             cell.soldLabel.text = Utils.doubleToRealCurrency(value: data.currentTotal)
             cell.boughtLabel.text = Utils.doubleToRealCurrency(value: data.buyValue)
             cell.brokerageLabel.text = Utils.doubleToRealCurrency(value: data.brokerage)

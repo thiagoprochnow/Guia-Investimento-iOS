@@ -31,7 +31,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2gL-DE-u5Z">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2gL-DE-u5Z">
                     <rect key="frame" x="16" y="224" width="343" height="431"/>
                     <color key="backgroundColor" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
                     <color key="sectionIndexBackgroundColor" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
@@ -192,6 +192,7 @@
             </subviews>
             <color key="backgroundColor" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="2gL-DE-u5Z" firstAttribute="trailing" secondItem="WNK-Ph-OsK" secondAttribute="trailing" id="23M-Df-Vog"/>
                 <constraint firstAttribute="bottom" secondItem="2gL-DE-u5Z" secondAttribute="bottom" constant="12" id="4sv-sY-cnH"/>
                 <constraint firstItem="ClH-B0-u0m" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="7pv-3d-iBB"/>
                 <constraint firstItem="2gL-DE-u5Z" firstAttribute="top" secondItem="5zz-ys-W5S" secondAttribute="bottom" constant="16" id="V8d-sp-BSU"/>
