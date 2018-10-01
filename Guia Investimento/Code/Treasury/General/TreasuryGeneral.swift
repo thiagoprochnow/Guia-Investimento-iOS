@@ -202,6 +202,7 @@ class TreasuryGeneral {
     func getLastIncomeTime(_ symbol:String) -> String {
         let incomeDB = TreasuryIncomeDB()
         let income = incomeDB.getLastIncome(symbol)
+        incomeDB.close()
         return String(income.exdividendTimestamp)
     }
 }

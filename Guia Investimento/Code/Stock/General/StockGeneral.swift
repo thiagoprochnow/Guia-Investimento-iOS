@@ -291,6 +291,7 @@ class StockGeneral {
     func getLastIncomeTime(_ symbol:String) -> String {
         let incomeDB = StockIncomeDB()
         let income = incomeDB.getLastIncome(symbol)
+        incomeDB.close()
         return String(income.exdividendTimestamp)
     }
 }

@@ -281,6 +281,7 @@ class FiiGeneral {
     func getLastIncomeTime(_ symbol:String) -> String {
         let incomeDB = FiiIncomeDB()
         let income = incomeDB.getLastIncome(symbol)
+        incomeDB.close()
         return String(income.exdividendTimestamp)
     }
 }
