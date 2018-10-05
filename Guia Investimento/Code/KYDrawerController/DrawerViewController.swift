@@ -46,7 +46,7 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
         self.view.backgroundColor = UIColor.white
         self.mainMenu.dataSource = self
         self.mainMenu.delegate = self
-        self.mainMenu.rowHeight = 65
+        self.mainMenu.rowHeight = 50
         self.mainMenu.register(UITableViewCell.self, forCellReuseIdentifier: "mainMenu")
         self.mainMenu.separatorStyle = UITableViewCellSeparatorStyle.none
     }
@@ -60,6 +60,8 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let linha = indexPath.row
         let cell = self.mainMenu.dequeueReusableCell(withIdentifier: "mainMenu")!
+        let font = UIFont.init(name: "Arial", size: 13)
+        cell.textLabel?.font = font
         // Main Menu Structure
         switch linha {
         case 0:
@@ -116,11 +118,14 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
         
         // Create custom Back Button
         let backButton = UIBarButtonItem(title: "Voltar", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
+        let font = UIFont.init(name: "Arial", size: 14)
+        backButton.setTitleTextAttributes([NSAttributedStringKey.font: font], for: .normal)
         view.navigationItem.backBarButtonItem = backButton
         view.navigationItem.backBarButtonItem?.tintColor = UIColor.white
         
         // Update portfolio button
         let updateBtn = UIBarButtonItem(title: "Atualizar", style: UIBarButtonItemStyle.plain, target: self, action: #selector(DrawerViewController.updateQuotes))
+        updateBtn.setTitleTextAttributes([NSAttributedStringKey.font: font], for: .normal)
         view.navigationItem.rightBarButtonItem = updateBtn
         view.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
         
@@ -450,6 +455,8 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
             
             // Place Button back after finish loading in place of loading view
             let updateBtn = UIBarButtonItem(title: "Atualizar", style: UIBarButtonItemStyle.plain, target: self, action: #selector(DrawerViewController.updateQuotes))
+            let font = UIFont.init(name: "Arial", size: 14)
+            updateBtn.setTitleTextAttributes([NSAttributedStringKey.font: font], for: .normal)
             nav.topViewController?.navigationItem.rightBarButtonItem = updateBtn
             nav.topViewController?.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
             

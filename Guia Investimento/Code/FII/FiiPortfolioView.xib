@@ -29,10 +29,10 @@
                     <color key="sectionIndexBackgroundColor" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </tableView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8FC-rZ-QuG">
-                    <rect key="frame" x="284" y="527" width="75" height="75"/>
+                    <rect key="frame" x="299" y="542" width="60" height="60"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="75" id="fkK-ji-xd0"/>
-                        <constraint firstAttribute="height" constant="75" id="vtN-ia-OSW"/>
+                        <constraint firstAttribute="width" constant="60" id="fkK-ji-xd0"/>
+                        <constraint firstAttribute="height" constant="60" id="vtN-ia-OSW"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sem itens para exibir" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jWR-bx-bqb">

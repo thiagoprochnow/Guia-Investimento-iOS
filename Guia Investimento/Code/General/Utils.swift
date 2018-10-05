@@ -17,7 +17,7 @@ class Utils {
         
         navigationBarAppearace.tintColor = UIColor(red: 63/255, green: 81/255, blue: 181/255, alpha: 1)
         navigationBarAppearace.barTintColor = UIColor(red: 63/255, green: 81/255, blue: 181/255, alpha: 1)
-        navigationBarAppearace.titleTextAttributes =  [NSAttributedStringKey.foregroundColor: UIColor.white]
+        navigationBarAppearace.titleTextAttributes =  [NSAttributedStringKey.foregroundColor: UIColor.white,NSAttributedStringKey.font: UIFont.init(name: "Arial", size: 15)]
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
     }
     

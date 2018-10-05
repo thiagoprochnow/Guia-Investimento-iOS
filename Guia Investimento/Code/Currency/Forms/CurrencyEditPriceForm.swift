@@ -17,6 +17,8 @@ class CurrencyEditPriceForm: UIViewController, UITextFieldDelegate{
         
         // Add Dividend button added on the right side of the bar menu
         let btInsert = UIBarButtonItem(title: "Inserir", style: UIBarButtonItemStyle.plain, target: self, action: #selector(CurrencyEditPriceForm.editPrice))
+        let font = UIFont.init(name: "Arial", size: 14)
+        btInsert.setTitleTextAttributes([NSAttributedStringKey.font: font], for: .normal)
         self.navigationItem.rightBarButtonItem = btInsert
         self.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
         

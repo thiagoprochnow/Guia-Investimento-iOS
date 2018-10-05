@@ -37,10 +37,10 @@
                     <color key="sectionIndexBackgroundColor" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
                 </tableView>
                 <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WNK-Ph-OsK">
-                    <rect key="frame" x="284" y="527" width="75" height="75"/>
+                    <rect key="frame" x="299" y="542" width="60" height="60"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="75" id="86b-y8-Gup"/>
-                        <constraint firstAttribute="height" constant="75" id="Kan-k1-pkv"/>
+                        <constraint firstAttribute="width" constant="60" id="86b-y8-Gup"/>
+                        <constraint firstAttribute="height" constant="60" id="Kan-k1-pkv"/>
                     </constraints>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5zz-ys-W5S">

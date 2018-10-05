@@ -156,10 +156,10 @@
                     <color key="sectionIndexBackgroundColor" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </tableView>
                 <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xb6-2t-Crz">
-                    <rect key="frame" x="284" y="527" width="75" height="75"/>
+                    <rect key="frame" x="299" y="542" width="60" height="60"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="75" id="LTH-HB-k6f"/>
-                        <constraint firstAttribute="width" constant="75" id="TdW-t8-AJG"/>
+                        <constraint firstAttribute="height" constant="60" id="LTH-HB-k6f"/>
+                        <constraint firstAttribute="width" constant="60" id="TdW-t8-AJG"/>
                     </constraints>
                 </imageView>
             </subviews>

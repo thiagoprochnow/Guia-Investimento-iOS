@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Load Navigation Drawer as Navigation Controller
         let drawerViewController = DrawerViewController()
         
-        let drawerController     = KYDrawerController(drawerDirection: .left, drawerWidth: 300)
+        let drawerController     = KYDrawerController(drawerDirection: .left, drawerWidth: 200)
         drawerController.mainViewController = UINavigationController(
             rootViewController: portfolioMain
         )
@@ -38,6 +38,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Update portfolio button
         let updateBtn = UIBarButtonItem(title: "Atualizar", style: UIBarButtonItemStyle.plain, target: self, action: #selector(AppDelegate.updateQuotes))
+        
+        let font = UIFont.init(name: "Arial", size: 14)
+        updateBtn.setTitleTextAttributes([NSAttributedStringKey.font: font], for: .normal)
+        
         portfolioMain.navigationItem.rightBarButtonItem = updateBtn
         portfolioMain.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
         

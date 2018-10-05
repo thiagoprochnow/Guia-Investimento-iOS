@@ -29,16 +29,22 @@ class PortfolioMainController: UIViewController, UITableViewDataSource, UITableV
         self.tableView.register(xibPortfolio, forCellReuseIdentifier: "cellPortfolio")
         self.tableView.register(xibPie, forCellReuseIdentifier: "cellPie")
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(
+        let menuButton = UIBarButtonItem(
             title: "Menu",
             style: UIBarButtonItemStyle.plain,
             target: self,
             action: #selector(didTapOpenButton)
         )
+        
+        let font = UIFont.init(name: "Arial", size: 14)
+        menuButton.setTitleTextAttributes([NSAttributedStringKey.font: font], for: .normal)
+        
+        navigationItem.leftBarButtonItem = menuButton
         navigationItem.leftBarButtonItem?.tintColor = UIColor.white
         
         // Create custom Back Button
         let backButton = UIBarButtonItem(title: "Voltar", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
+        backButton.setTitleTextAttributes([NSAttributedStringKey.font: font], for: .normal)
         navigationItem.backBarButtonItem = backButton
         navigationItem.backBarButtonItem?.tintColor = UIColor.white
     }

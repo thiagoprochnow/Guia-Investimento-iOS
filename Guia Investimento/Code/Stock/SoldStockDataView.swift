@@ -201,6 +201,8 @@ class SoldStockDataView: UIViewController, UITableViewDataSource, UITableViewDel
         
         // Create custom Back Button
         let backButton = UIBarButtonItem(title: "Voltar", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
+        let font = UIFont.init(name: "Arial", size: 14)
+        backButton.setTitleTextAttributes([NSAttributedStringKey.font: font], for: .normal)
         tabController.navigationItem.backBarButtonItem = backButton
         tabController.navigationItem.backBarButtonItem?.tintColor = UIColor.white
         tabController.viewControllers = [stockDetails, stockIncomes]
