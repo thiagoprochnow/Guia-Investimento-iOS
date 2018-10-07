@@ -12,6 +12,7 @@ class SellFixedForm: UIViewController, UITextFieldDelegate{
     @IBOutlet var symbolTextField: UITextField!
     @IBOutlet var totalTextField: UITextField!
     @IBOutlet var datePicker: UIDatePicker!
+    @IBOutlet var scrollView: UIScrollView!
     var symbol: String = ""
     var id: Int = 0
     var prealodedTransaction: FixedTransaction!
@@ -29,7 +30,7 @@ class SellFixedForm: UIViewController, UITextFieldDelegate{
         // Delegade UITextFieldDelagate to self
         symbolTextField.delegate = self
         totalTextField.delegate = self
-        totalTextField.keyboardType = UIKeyboardType.numberPad
+        totalTextField.keyboardType = UIKeyboardType.numbersAndPunctuation
         datePicker.timeZone = TimeZone(abbreviation: "UTC")
         
         // Always selling a already bougth fixed
@@ -130,5 +131,21 @@ class SellFixedForm: UIViewController, UITextFieldDelegate{
             textField.resignFirstResponder()
         }
         return true
+    }
+    
+    @objc func keyboardWillShow(notification:NSNotification){
+        //give room at the bottom of the scroll view, so it doesn't cover up anything the user needs to tap
+        var userInfo = notification.userInfo!
+        var keyboardFrame:CGRect = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
+        
+        var contentInset:UIEdgeInsets = self.scrollView.contentInset
+        contentInset.bottom = keyboardFrame.size.height
+        scrollView.contentInset = contentInset
+    }
+    
+    @objc func keyboardWillHide(notification:NSNotification){
+        let contentInset:UIEdgeInsets = UIEdgeInsets.zero
+        scrollView.contentInset = contentInset
     }
 }

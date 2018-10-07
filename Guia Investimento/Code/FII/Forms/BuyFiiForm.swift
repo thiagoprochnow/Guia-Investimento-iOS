@@ -15,6 +15,7 @@ class BuyFiiForm: UIViewController, UITextFieldDelegate{
     @IBOutlet var priceTextField: UITextField!
     @IBOutlet var brokerageTextField: UITextField!
     @IBOutlet var datePicker: UIDatePicker!
+    @IBOutlet var scrollView: UIScrollView!
     var symbol: String = ""
     var id: Int = 0
     var prealodedTransaction: FiiTransaction!
@@ -36,8 +37,8 @@ class BuyFiiForm: UIViewController, UITextFieldDelegate{
         brokerageTextField.delegate = self
         symbolTextField.autocapitalizationType = UITextAutocapitalizationType.allCharacters
         quantityTextField.keyboardType = UIKeyboardType.numberPad
-        priceTextField.keyboardType = UIKeyboardType.decimalPad
-        brokerageTextField.keyboardType = UIKeyboardType.decimalPad
+        priceTextField.keyboardType = UIKeyboardType.numbersAndPunctuation
+        brokerageTextField.keyboardType = UIKeyboardType.numbersAndPunctuation
         
         // Insert Autocomplete
         symbolTextField.filterStrings(Constants.Symbols.FII)
@@ -45,6 +46,9 @@ class BuyFiiForm: UIViewController, UITextFieldDelegate{
         symbolTextField.maxNumberOfResults = 5
         symbolTextField.theme.font = UIFont.systemFont(ofSize: 14)
         datePicker.timeZone = TimeZone(abbreviation: "UTC")
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:NSNotification.Name.UIKeyboardWillHide, object: nil)
         
         // Buying a repeated fii, already shows symbol of the new buy
         if(symbol != ""){
@@ -194,5 +198,21 @@ class BuyFiiForm: UIViewController, UITextFieldDelegate{
             textField.resignFirstResponder()
         }
         return true
+    }
+    
+    @objc func keyboardWillShow(notification:NSNotification){
+        //give room at the bottom of the scroll view, so it doesn't cover up anything the user needs to tap
+        var userInfo = notification.userInfo!
+        var keyboardFrame:CGRect = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
+        
+        var contentInset:UIEdgeInsets = self.scrollView.contentInset
+        contentInset.bottom = keyboardFrame.size.height
+        scrollView.contentInset = contentInset
+    }
+    
+    @objc func keyboardWillHide(notification:NSNotification){
+        let contentInset:UIEdgeInsets = UIEdgeInsets.zero
+        scrollView.contentInset = contentInset
     }
 }

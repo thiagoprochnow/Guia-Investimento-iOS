@@ -24,7 +24,7 @@ class OthersEditPriceForm: UIViewController, UITextFieldDelegate{
         
         // Delegade UITextFieldDelagate to self
         totalField.delegate = self
-        totalField.keyboardType = UIKeyboardType.decimalPad
+        totalField.keyboardType = UIKeyboardType.numbersAndPunctuation
         
         totalField.text = String(prealodedData.currentTotal)
     }

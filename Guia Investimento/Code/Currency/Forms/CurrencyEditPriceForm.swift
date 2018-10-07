@@ -24,7 +24,7 @@ class CurrencyEditPriceForm: UIViewController, UITextFieldDelegate{
         
         // Delegade UITextFieldDelagate to self
         priceField.delegate = self
-        priceField.keyboardType = UIKeyboardType.decimalPad
+        priceField.keyboardType = UIKeyboardType.numbersAndPunctuation
         
         priceField.text = String(prealodedData.currentPrice)
     }

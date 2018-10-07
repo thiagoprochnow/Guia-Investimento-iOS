@@ -12,6 +12,7 @@ class FiiDividendForm: UIViewController, UITextFieldDelegate{
     @IBOutlet var symbolTextField: UITextField!
     @IBOutlet var perTextField: UITextField!
     @IBOutlet var datePicker: UIDatePicker!
+    @IBOutlet var scrollView: UIScrollView!
     var symbol: String = ""
     var incomeType: Int = -1
     var id: Int = 0
@@ -31,8 +32,11 @@ class FiiDividendForm: UIViewController, UITextFieldDelegate{
         symbolTextField.delegate = self
         symbolTextField.autocapitalizationType = UITextAutocapitalizationType.allCharacters
         perTextField.delegate = self
-        perTextField.keyboardType = UIKeyboardType.decimalPad
+        perTextField.keyboardType = UIKeyboardType.numbersAndPunctuation
         datePicker.timeZone = TimeZone(abbreviation: "UTC")
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:NSNotification.Name.UIKeyboardWillHide, object: nil)
         
         if(symbol != ""){
             symbolTextField.text = symbol
@@ -125,5 +129,21 @@ class FiiDividendForm: UIViewController, UITextFieldDelegate{
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         perTextField.resignFirstResponder()
+    }
+    
+    @objc func keyboardWillShow(notification:NSNotification){
+        //give room at the bottom of the scroll view, so it doesn't cover up anything the user needs to tap
+        var userInfo = notification.userInfo!
+        var keyboardFrame:CGRect = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
+        
+        var contentInset:UIEdgeInsets = self.scrollView.contentInset
+        contentInset.bottom = keyboardFrame.size.height
+        scrollView.contentInset = contentInset
+    }
+    
+    @objc func keyboardWillHide(notification:NSNotification){
+        let contentInset:UIEdgeInsets = UIEdgeInsets.zero
+        scrollView.contentInset = contentInset
     }
 }

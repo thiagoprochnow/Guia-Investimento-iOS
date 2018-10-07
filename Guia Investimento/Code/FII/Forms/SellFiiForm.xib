@@ -16,6 +16,7 @@
                 <outlet property="datePicker" destination="8OO-U5-oJ8" id="2lD-ng-vDb"/>
                 <outlet property="priceTextField" destination="Aps-xm-etC" id="Bbb-hU-3gF"/>
                 <outlet property="quantityTextField" destination="5kk-cl-iGT" id="UzK-W9-t2M"/>
+                <outlet property="scrollView" destination="JvF-fU-bGA" id="aAO-eK-X1e"/>
                 <outlet property="symbolTextField" destination="2cG-CG-CIB" id="DxF-1R-9xN"/>
                 <outlet property="view" destination="iN0-l3-epB" id="ioK-Ww-Jzk"/>
             </connections>
@@ -29,7 +30,7 @@
                     <rect key="frame" x="0.0" y="84" width="375" height="583"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ex: KNRI11" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2cG-CG-CIB">
-                            <rect key="frame" x="20" y="49" width="343" height="30"/>
+                            <rect key="frame" x="20" y="46" width="343" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="idz-Qr-GkC"/>
                             </constraints>
@@ -38,13 +39,13 @@
                             <textInputTraits key="textInputTraits" returnKeyType="next"/>
                         </textField>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Código da Ação" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MAc-Jg-odP">
-                            <rect key="frame" x="20" y="20" width="122" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <rect key="frame" x="20" y="20" width="108.5" height="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ex: 10" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5kk-cl-iGT">
-                            <rect key="frame" x="20" y="149" width="343" height="30"/>
+                            <rect key="frame" x="20" y="143" width="343" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="9AH-2O-qPe"/>
                             </constraints>
@@ -53,19 +54,19 @@
                             <textInputTraits key="textInputTraits" returnKeyType="next"/>
                         </textField>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quantidade" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VaA-6F-DuX">
-                            <rect key="frame" x="20" y="120" width="89" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <rect key="frame" x="20" y="117" width="79.5" height="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preço de venda" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pnc-bm-Tnn">
-                            <rect key="frame" x="20" y="220" width="119" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <rect key="frame" x="20" y="214" width="106.5" height="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ex: 123.75" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Aps-xm-etC">
-                            <rect key="frame" x="20" y="249" width="343" height="30"/>
+                            <rect key="frame" x="20" y="240" width="343" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="x7d-pJ-TUA"/>
                             </constraints>
@@ -74,13 +75,13 @@
                             <textInputTraits key="textInputTraits" returnKeyType="next"/>
                         </textField>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Corretagem" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o8u-8D-mFu">
-                            <rect key="frame" x="20" y="320" width="92" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <rect key="frame" x="20" y="311" width="82" height="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ex: 18.50" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ywr-CG-zmx">
-                            <rect key="frame" x="20" y="349" width="343" height="30"/>
+                            <rect key="frame" x="20" y="337" width="343" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="S9G-e3-5kM"/>
                             </constraints>
@@ -89,7 +90,7 @@
                             <textInputTraits key="textInputTraits" returnKeyType="done"/>
                         </textField>
                         <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="8OO-U5-oJ8">
-                            <rect key="frame" x="28" y="449" width="319" height="114"/>
+                            <rect key="frame" x="28" y="434" width="319" height="114"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="114" id="zST-jv-XZI"/>
                             </constraints>
@@ -99,8 +100,8 @@
                             <locale key="locale" localeIdentifier="pt_BR"/>
                         </datePicker>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data da venda" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LMg-1g-RDo">
-                            <rect key="frame" x="20" y="420" width="122" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <rect key="frame" x="20" y="408" width="108.5" height="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>

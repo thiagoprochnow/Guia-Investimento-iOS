@@ -14,6 +14,7 @@ class SellStockForm: UIViewController, UITextFieldDelegate{
     @IBOutlet var priceTextField: UITextField!
     @IBOutlet var brokerageTextField: UITextField!
     @IBOutlet var datePicker: UIDatePicker!
+    @IBOutlet var scrollView: UIScrollView!
     var symbol: String = ""
     var id: Int = 0
     var prealodedTransaction: StockTransaction!
@@ -35,12 +36,15 @@ class SellStockForm: UIViewController, UITextFieldDelegate{
         brokerageTextField.delegate = self
         symbolTextField.autocapitalizationType = UITextAutocapitalizationType.allCharacters
         quantityTextField.keyboardType = UIKeyboardType.numberPad
-        priceTextField.keyboardType = UIKeyboardType.decimalPad
-        brokerageTextField.keyboardType = UIKeyboardType.decimalPad
+        priceTextField.keyboardType = UIKeyboardType.numbersAndPunctuation
+        brokerageTextField.keyboardType = UIKeyboardType.numbersAndPunctuation
         datePicker.timeZone = TimeZone(abbreviation: "UTC")
         
         // Always selling a already bougth stock
         symbolTextField.text = symbol
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:NSNotification.Name.UIKeyboardWillHide, object: nil)
         
         // It is a Edit mode, preload inserted information to be edited and saved
         if(id != 0){
@@ -169,5 +173,21 @@ class SellStockForm: UIViewController, UITextFieldDelegate{
             textField.resignFirstResponder()
         }
         return true
+    }
+    
+    @objc func keyboardWillShow(notification:NSNotification){
+        //give room at the bottom of the scroll view, so it doesn't cover up anything the user needs to tap
+        var userInfo = notification.userInfo!
+        var keyboardFrame:CGRect = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
+        
+        var contentInset:UIEdgeInsets = self.scrollView.contentInset
+        contentInset.bottom = keyboardFrame.size.height
+        scrollView.contentInset = contentInset
+    }
+    
+    @objc func keyboardWillHide(notification:NSNotification){
+        let contentInset:UIEdgeInsets = UIEdgeInsets.zero
+        scrollView.contentInset = contentInset
     }
 }

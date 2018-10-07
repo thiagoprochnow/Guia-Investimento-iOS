@@ -28,7 +28,7 @@ class StockGroupingForm: UIViewController, UITextFieldDelegate{
         
         // Delegade UITextFieldDelagate to self
         quantityField.delegate = self
-        quantityField.keyboardType = UIKeyboardType.decimalPad
+        quantityField.keyboardType = UIKeyboardType.numbersAndPunctuation
         datePicker.timeZone = TimeZone(abbreviation: "UTC")
         
         // It is a Edit mode, preload inserted information to be edited and saved

@@ -29,7 +29,7 @@ class StockSplitForm: UIViewController, UITextFieldDelegate{
         
         // Delegade UITextFieldDelagate to self
         quantityField.delegate = self
-        quantityField.keyboardType = UIKeyboardType.decimalPad
+        quantityField.keyboardType = UIKeyboardType.numbersAndPunctuation
         
         // It is a Edit mode, preload inserted information to be edited and saved
         if(id != 0){

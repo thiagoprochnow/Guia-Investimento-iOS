@@ -14,6 +14,7 @@ class BuyCurrencyForm: UIViewController, UITextFieldDelegate, UIPickerViewDelega
     @IBOutlet var quantityTextField: UITextField!
     @IBOutlet var priceTextField: UITextField!
     @IBOutlet var datePicker: UIDatePicker!
+    @IBOutlet var scrollView: UIScrollView!
     var symbol: String = "USD"
     var id: Int = 0
     var prealodedTransaction: CurrencyTransaction!
@@ -35,9 +36,12 @@ class BuyCurrencyForm: UIViewController, UITextFieldDelegate, UIPickerViewDelega
         priceTextField.delegate = self
         symbolTextField.delegate = self
         symbolTextField.dataSource = self
-        quantityTextField.keyboardType = UIKeyboardType.numberPad
-        priceTextField.keyboardType = UIKeyboardType.decimalPad
+        quantityTextField.keyboardType = UIKeyboardType.numbersAndPunctuation
+        priceTextField.keyboardType = UIKeyboardType.numbersAndPunctuation
         datePicker.timeZone = TimeZone(abbreviation: "UTC")
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:NSNotification.Name.UIKeyboardWillHide, object: nil)
         
         // Buying a repeated currency, already shows symbol of the new buy
         if(symbol != ""){
@@ -189,5 +193,21 @@ class BuyCurrencyForm: UIViewController, UITextFieldDelegate, UIPickerViewDelega
             textField.resignFirstResponder()
         }
         return true
+    }
+    
+    @objc func keyboardWillShow(notification:NSNotification){
+        //give room at the bottom of the scroll view, so it doesn't cover up anything the user needs to tap
+        var userInfo = notification.userInfo!
+        var keyboardFrame:CGRect = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
+        
+        var contentInset:UIEdgeInsets = self.scrollView.contentInset
+        contentInset.bottom = keyboardFrame.size.height
+        scrollView.contentInset = contentInset
+    }
+    
+    @objc func keyboardWillHide(notification:NSNotification){
+        let contentInset:UIEdgeInsets = UIEdgeInsets.zero
+        scrollView.contentInset = contentInset
     }
 }

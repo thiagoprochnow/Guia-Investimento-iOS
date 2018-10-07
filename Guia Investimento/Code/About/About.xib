@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,11 +21,8 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="U0x-ss-2gq">
-                    <rect key="frame" x="16" y="45" width="343" height="428"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="428" id="3jd-dT-soH"/>
-                    </constraints>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U0x-ss-2gq">
+                    <rect key="frame" x="16" y="83" width="343" height="300.5"/>
                     <mutableString key="text">Guia investimento é um aplicativo para controle e organização da sua cartira de investimento no Brasil. Com ele você poderá facilmente monitorar:
 
 - Tesouro: Papéis e cupons do tesouro direto.
@@ -35,14 +32,12 @@
 - Moedas: Investimento em câmbio e criptomoedas.
 - Outros: Outros investimentos que deseje adicionar e organizar na sua cateira.
 
- O objetivo é que você consiga organizar sua carteira e consultar os rendimentos e valorização de cada papel e da carteira como um todo.
-
 E-mail: contato@guiainvestimento.com.br</mutableString>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Versão:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Veg-sk-QoR">
-                    <rect key="frame" x="21" y="481" width="338" height="18"/>
+                    <rect key="frame" x="18" y="391.5" width="338" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -50,15 +45,17 @@ E-mail: contato@guiainvestimento.com.br</mutableString>
             </subviews>
             <color key="backgroundColor" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="Veg-sk-QoR" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="21" id="B6g-fD-9pi"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Veg-sk-QoR" secondAttribute="trailing" constant="16" id="PW2-Fd-Fht"/>
-                <constraint firstItem="Veg-sk-QoR" firstAttribute="top" secondItem="U0x-ss-2gq" secondAttribute="bottom" constant="8" id="Y5e-Da-vPK"/>
-                <constraint firstItem="U0x-ss-2gq" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="25" id="hYR-XN-zcS"/>
-                <constraint firstItem="U0x-ss-2gq" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="ihC-3e-VM5"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="U0x-ss-2gq" secondAttribute="trailing" constant="16" id="o5p-hU-jaX"/>
+                <constraint firstItem="Veg-sk-QoR" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="18" id="5kP-t8-KGL"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Veg-sk-QoR" secondAttribute="trailing" constant="19" id="9sW-vm-gZB"/>
+                <constraint firstItem="U0x-ss-2gq" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="GvF-Nx-QA4"/>
+                <constraint firstItem="U0x-ss-2gq" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="19" id="RxQ-At-5eh"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="U0x-ss-2gq" secondAttribute="trailing" constant="16" id="dws-fC-5K1"/>
+                <constraint firstItem="Veg-sk-QoR" firstAttribute="top" secondItem="U0x-ss-2gq" secondAttribute="bottom" constant="8" id="qth-qI-Z34"/>
             </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+            <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="32.5" y="105.5"/>
+            <point key="canvasLocation" x="31.199999999999999" y="104.7976011994003"/>
         </view>
     </objects>
 </document>

@@ -21,14 +21,17 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3XH-rU-FPE" customClass="PieChartView" customModule="Guia_Investimento" customModuleProvider="target">
                         <rect key="frame" x="16" y="24" width="343" height="423"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Hl0-rB-hFh">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Hl0-rB-hFh">
                                 <rect key="frame" x="258" y="114" width="77" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Hl0-rB-hFh" firstAttribute="trailing" secondItem="3XH-rU-FPE" secondAttribute="trailingMargin" id="66Z-hW-Lcf"/>
                             <constraint firstAttribute="height" constant="423" id="G0s-bT-BeB"/>
+                            <constraint firstAttribute="bottom" secondItem="Hl0-rB-hFh" secondAttribute="bottom" constant="291" id="LUi-GQ-Zzx"/>
+                            <constraint firstItem="Hl0-rB-hFh" firstAttribute="leading" secondItem="3XH-rU-FPE" secondAttribute="leading" constant="258" id="eVY-Qp-arW"/>
+                            <constraint firstItem="Hl0-rB-hFh" firstAttribute="top" secondItem="3XH-rU-FPE" secondAttribute="top" constant="114" id="od5-mR-JrZ"/>
                         </constraints>
                     </view>
                     <view clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Td2-xi-DG0">
@@ -36,7 +39,7 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alocação de Ativos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sis-LX-mfw">
                                 <rect key="frame" x="0.0" y="0.0" width="343" height="20"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
