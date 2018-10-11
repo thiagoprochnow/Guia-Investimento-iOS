@@ -10,9 +10,28 @@ import Foundation
 import UIKit
 
 class SignPremium: UIViewController {
+    var subscription = SubscriptionService()
+    @IBOutlet var mensalButton: UIView!
+    @IBOutlet var semestralButton: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Background Color
+        
+        subscription.fetchAvailableProducts()
+        
+        mensalButton.isUserInteractionEnabled = true
+        semestralButton.isUserInteractionEnabled = true
+        let mensalGesture = UITapGestureRecognizer(target: self, action: #selector(SignPremium.assinarMensal))
+        let semestralGesture = UITapGestureRecognizer(target: self, action: #selector(SignPremium.assinarSemestral))
+        mensalButton.addGestureRecognizer(mensalGesture)
+        semestralButton.addGestureRecognizer(semestralGesture)
+    }
+    
+    @IBAction func assinarMensal(){
+        print("mensal")
+    }
+    
+    @IBAction func assinarSemestral(){
+        print("semestral")
     }
 }

@@ -303,6 +303,7 @@
 		553397772109428E00798033 /* StockEditPriceForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553397752109428D00798033 /* StockEditPriceForm.swift */; };
 		553397782109428E00798033 /* StockEditPriceForm.xib in Resources */ = {isa = PBXBuildFile; fileRef = 553397762109428D00798033 /* StockEditPriceForm.xib */; };
 		5533977A21094C3B00798033 /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5533977921094C3900798033 /* SearchTextField.swift */; };
+		553676AE216C263500DA5659 /* SubscriptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553676AD216C263500DA5659 /* SubscriptionService.swift */; };
 		5540A85320BCC2BB0087498B /* KYDrawerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5540A84E20BCC2BB0087498B /* KYDrawerController.swift */; };
 		5540A85420BCC2BB0087498B /* KYEmbedDrawerControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5540A84F20BCC2BB0087498B /* KYEmbedDrawerControllerSegue.swift */; };
 		5540A85520BCC2BB0087498B /* KYEmbedMainControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5540A85020BCC2BB0087498B /* KYEmbedMainControllerSegue.swift */; };
@@ -767,6 +768,7 @@
 		553397752109428D00798033 /* StockEditPriceForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockEditPriceForm.swift; sourceTree = "<group>"; };
 		553397762109428D00798033 /* StockEditPriceForm.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StockEditPriceForm.xib; sourceTree = "<group>"; };
 		5533977921094C3900798033 /* SearchTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
+		553676AD216C263500DA5659 /* SubscriptionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionService.swift; sourceTree = "<group>"; };
 		5540A84E20BCC2BB0087498B /* KYDrawerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KYDrawerController.swift; sourceTree = "<group>"; };
 		5540A84F20BCC2BB0087498B /* KYEmbedDrawerControllerSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KYEmbedDrawerControllerSegue.swift; sourceTree = "<group>"; };
 		5540A85020BCC2BB0087498B /* KYEmbedMainControllerSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KYEmbedMainControllerSegue.swift; sourceTree = "<group>"; };
@@ -1513,6 +1515,7 @@
 		552E1ACF21480A120043A03B /* Premium */ = {
 			isa = PBXGroup;
 			children = (
+				553676AA216C25C800DA5659 /* Service */,
 				552E1AD221480A740043A03B /* SignPremium.swift */,
 				552E1AD421480A9A0043A03B /* SignPremium.xib */,
 			);
@@ -1605,6 +1608,14 @@
 				552F5A8F21165084002F3C1A /* CurrencyTransaction.swift */,
 			);
 			path = Object;
+			sourceTree = "<group>";
+		};
+		553676AA216C25C800DA5659 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				553676AD216C263500DA5659 /* SubscriptionService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		5540A84C20BCC2BB0087498B /* KYDrawerController */ = {
@@ -2512,6 +2523,7 @@
 				5521B007210A8D5E00AB6345 /* LineChartDataSet.swift in Sources */,
 				55F77AEF2130B91800CD5EBE /* OthersPieChartCell.swift in Sources */,
 				5521B032210A8D5E00AB6345 /* BubbleChartDataProvider.swift in Sources */,
+				553676AE216C263500DA5659 /* SubscriptionService.swift in Sources */,
 				5521B01E210A8D5E00AB6345 /* DataApproximator.swift in Sources */,
 				5521B05B210A8D5E00AB6345 /* YAxisRendererRadarChart.swift in Sources */,
 				55F77A7C212F7B8400CD5EBE /* OthersEditPriceForm.swift in Sources */,
