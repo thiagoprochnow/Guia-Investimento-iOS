@@ -94,11 +94,19 @@ class StockService{
                             }.resume()
                         } else {
                             // Return fail to main thread
+                            stocks.forEach{ stock in
+                                stock.updateStatus = Constants.UpdateStatus.NOT_UPDATED
+                                returnStocks.append(stock)
+                            }
                             callback(returnStocks,false)
                         }
                     }
                     if let error = error {
                         // Return fail to main thread
+                        stocks.forEach{ stock in
+                            stock.updateStatus = Constants.UpdateStatus.NOT_UPDATED
+                            returnStocks.append(stock)
+                        }
                         callback(returnStocks,false)
                     }
                 }.resume()

@@ -93,12 +93,20 @@ class FiiService{
                                 }
                             }.resume()
                         } else {
+                            fiis.forEach{ fii in
+                                fii.updateStatus = Constants.UpdateStatus.NOT_UPDATED
+                                returnFiis.append(fii)
+                            }
                             // Return fail to main thread
                             callback(returnFiis,false)
                         }
                     }
                     if let error = error {
                         // Return fail to main thread
+                        fiis.forEach{ fii in
+                            fii.updateStatus = Constants.UpdateStatus.NOT_UPDATED
+                            returnFiis.append(fii)
+                        }
                         callback(returnFiis,false)
                     }
                 }.resume()

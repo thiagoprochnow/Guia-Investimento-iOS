@@ -10,14 +10,15 @@ import Foundation
 import UIKit
 
 class SignPremium: UIViewController {
-    var subscription = SubscriptionService()
+    var subscription: SubscriptionService!
     @IBOutlet var mensalButton: UIView!
     @IBOutlet var semestralButton: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        subscription.fetchAvailableProducts()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let subscription = appDelegate.subscription
         
         mensalButton.isUserInteractionEnabled = true
         semestralButton.isUserInteractionEnabled = true
@@ -29,6 +30,8 @@ class SignPremium: UIViewController {
     
     @IBAction func assinarMensal(){
         print("mensal")
+        let mensal = subscription.mensal
+        subscription.purchaseProduct(product: mensal)
     }
     
     @IBAction func assinarSemestral(){

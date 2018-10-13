@@ -13,6 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var portfolioMain: PortfolioMainController!
+    var subscription: SubscriptionService!
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow(frame: UIScreen.main.bounds)
@@ -47,6 +48,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Initialize Database
         initializeDB()
+        
+        subscription = SubscriptionService()
+        subscription.fetchAvailableProducts()
         
         return true
     }
