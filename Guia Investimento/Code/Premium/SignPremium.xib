@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignPremium" customModule="Guia_Investimento" customModuleProvider="target">
             <connections>
                 <outlet property="mensalButton" destination="iVC-2J-zdT" id="sKh-ax-88b"/>
+                <outlet property="restoreButton" destination="QuS-NO-CEi" id="nqW-eq-CMD"/>
                 <outlet property="semestralButton" destination="QdJ-Ar-pS6" id="pFd-8w-FWy"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Qju-Yl-sXg"/>
             </connections>
@@ -71,27 +72,6 @@
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s2y-pI-Alk">
                     <rect key="frame" x="0.0" y="139" width="375" height="528"/>
                     <subviews>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="S8I-7w-tvT">
-                            <rect key="frame" x="16" y="234" width="341" height="151"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="151" id="0gZ-aS-zwP"/>
-                            </constraints>
-                            <string key="text">- Aceso ilimitado as atualizações automáticas do portfólio.
-- Rendimentos automáticos para ações e fundos imobiliários.
-- Acesso ao controle de fundos de invesitmentos para sua carteira.
-- Acesso a novos recursos assim que forem desenvolvidos.</string>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                        </textView>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="*Pagamento é feito pelo Apple Pay, nenhuma informação financeira é passada para o aplicativo." translatesAutoresizingMaskIntoConstraints="NO" id="HGQ-Oh-HrK">
-                            <rect key="frame" x="16" y="178" width="341" height="48"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="48" id="Lpl-oe-XKp"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                        </textView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QdJ-Ar-pS6">
                             <rect key="frame" x="41" y="115" width="291" height="55"/>
                             <subviews>
@@ -136,15 +116,56 @@
                             <color key="textColor" red="0.2470588235" green="0.31764705879999999" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="*Pagamento é feito pelo Apple Pay, nenhuma informação financeira é passada para o aplicativo." translatesAutoresizingMaskIntoConstraints="NO" id="HGQ-Oh-HrK">
+                            <rect key="frame" x="17" y="253" width="341" height="48"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="48" id="Lpl-oe-XKp"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QuS-NO-CEi">
+                            <rect key="frame" x="41" y="182" width="291" height="55"/>
+                            <subviews>
+                                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurar Compra!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fIj-r1-jNj">
+                                    <rect key="frame" x="0.0" y="0.0" width="291" height="55"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" red="1" green="0.5515136719" blue="0.23304578989999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstItem="fIj-r1-jNj" firstAttribute="top" secondItem="QuS-NO-CEi" secondAttribute="top" id="Agj-2e-JGa"/>
+                                <constraint firstAttribute="height" constant="55" id="NSO-LB-YLo"/>
+                                <constraint firstAttribute="trailing" secondItem="fIj-r1-jNj" secondAttribute="trailing" id="aoR-Su-yya"/>
+                                <constraint firstItem="fIj-r1-jNj" firstAttribute="leading" secondItem="QuS-NO-CEi" secondAttribute="leading" id="k0Y-dy-cOo"/>
+                                <constraint firstAttribute="bottom" secondItem="fIj-r1-jNj" secondAttribute="bottom" id="pB4-r8-E9Q"/>
+                            </constraints>
+                        </view>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="S8I-7w-tvT">
+                            <rect key="frame" x="17" y="299" width="341" height="151"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="151" id="0gZ-aS-zwP"/>
+                            </constraints>
+                            <string key="text">- Aceso ilimitado as atualizações automáticas do portfólio.
+- Rendimentos automáticos para ações e fundos imobiliários.
+- Acesso ao controle de fundos de invesitmentos para sua carteira.
+- Acesso a novos recursos assim que forem desenvolvidos.</string>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
                     </subviews>
                     <constraints>
                         <constraint firstItem="XRy-uP-csS" firstAttribute="leading" secondItem="s2y-pI-Alk" secondAttribute="leading" id="0gb-Hu-5Bi"/>
                         <constraint firstItem="XRy-uP-csS" firstAttribute="centerX" secondItem="iVC-2J-zdT" secondAttribute="centerX" constant="1" id="30n-VH-q5h"/>
-                        <constraint firstItem="HGQ-Oh-HrK" firstAttribute="top" secondItem="QdJ-Ar-pS6" secondAttribute="bottom" constant="8" symbolic="YES" id="99A-3Q-uWl"/>
+                        <constraint firstItem="HGQ-Oh-HrK" firstAttribute="top" secondItem="QdJ-Ar-pS6" secondAttribute="bottom" constant="83" id="99A-3Q-uWl"/>
                         <constraint firstAttribute="width" constant="375" id="9XW-Nf-8aA"/>
-                        <constraint firstItem="QdJ-Ar-pS6" firstAttribute="centerX" secondItem="HGQ-Oh-HrK" secondAttribute="centerX" id="Afv-Xw-WhD"/>
-                        <constraint firstItem="S8I-7w-tvT" firstAttribute="top" secondItem="HGQ-Oh-HrK" secondAttribute="bottom" constant="8" symbolic="YES" id="HS0-Y1-NMY"/>
-                        <constraint firstItem="HGQ-Oh-HrK" firstAttribute="leading" secondItem="s2y-pI-Alk" secondAttribute="leading" constant="16" id="MlE-u9-jhm"/>
+                        <constraint firstItem="QdJ-Ar-pS6" firstAttribute="centerX" secondItem="HGQ-Oh-HrK" secondAttribute="centerX" constant="-1" id="Afv-Xw-WhD"/>
+                        <constraint firstItem="S8I-7w-tvT" firstAttribute="top" secondItem="HGQ-Oh-HrK" secondAttribute="bottom" constant="-2" id="HS0-Y1-NMY"/>
+                        <constraint firstItem="QuS-NO-CEi" firstAttribute="leading" secondItem="QdJ-Ar-pS6" secondAttribute="leading" id="KRK-hA-GxC"/>
+                        <constraint firstItem="HGQ-Oh-HrK" firstAttribute="leading" secondItem="s2y-pI-Alk" secondAttribute="leading" constant="17" id="MlE-u9-jhm"/>
                         <constraint firstItem="iVC-2J-zdT" firstAttribute="leading" secondItem="s2y-pI-Alk" secondAttribute="leading" constant="41" id="N5l-km-BJ2"/>
                         <constraint firstItem="iVC-2J-zdT" firstAttribute="top" secondItem="XRy-uP-csS" secondAttribute="bottom" constant="21" id="P9S-db-APh"/>
                         <constraint firstAttribute="trailing" secondItem="XRy-uP-csS" secondAttribute="trailing" id="TcK-sw-FG8"/>
@@ -153,13 +174,15 @@
                         <constraint firstItem="HGQ-Oh-HrK" firstAttribute="leading" secondItem="S8I-7w-tvT" secondAttribute="leading" id="WVS-2H-s3O"/>
                         <constraint firstItem="iVC-2J-zdT" firstAttribute="trailing" secondItem="QdJ-Ar-pS6" secondAttribute="trailing" id="Xhs-Qq-uyY"/>
                         <constraint firstItem="XRy-uP-csS" firstAttribute="top" secondItem="s2y-pI-Alk" secondAttribute="top" constant="7" id="apz-eM-vQ0"/>
-                        <constraint firstAttribute="bottom" secondItem="S8I-7w-tvT" secondAttribute="bottom" constant="143" id="c00-uO-LyL"/>
+                        <constraint firstAttribute="bottom" secondItem="S8I-7w-tvT" secondAttribute="bottom" constant="78" id="c00-uO-LyL"/>
                         <constraint firstItem="iVC-2J-zdT" firstAttribute="centerX" secondItem="s2y-pI-Alk" secondAttribute="centerX" constant="-1" id="foE-Hm-Vih"/>
                         <constraint firstItem="iVC-2J-zdT" firstAttribute="top" secondItem="XRy-uP-csS" secondAttribute="bottom" constant="21" id="iFe-dn-T51"/>
                         <constraint firstItem="XRy-uP-csS" firstAttribute="top" secondItem="s2y-pI-Alk" secondAttribute="top" constant="7" id="nEe-ui-EgQ"/>
                         <constraint firstItem="iVC-2J-zdT" firstAttribute="leading" secondItem="QdJ-Ar-pS6" secondAttribute="leading" id="rIT-qj-sre"/>
+                        <constraint firstItem="QuS-NO-CEi" firstAttribute="top" secondItem="QdJ-Ar-pS6" secondAttribute="bottom" constant="12" id="sW6-af-zxf"/>
                         <constraint firstItem="XRy-uP-csS" firstAttribute="leading" secondItem="s2y-pI-Alk" secondAttribute="leading" id="sdr-ar-gvx"/>
                         <constraint firstItem="QdJ-Ar-pS6" firstAttribute="top" secondItem="iVC-2J-zdT" secondAttribute="bottom" constant="11" id="v11-yr-je9"/>
+                        <constraint firstItem="QuS-NO-CEi" firstAttribute="trailing" secondItem="QdJ-Ar-pS6" secondAttribute="trailing" id="vsK-sU-62B"/>
                     </constraints>
                 </scrollView>
             </subviews>
