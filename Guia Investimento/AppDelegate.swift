@@ -56,6 +56,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        subscription.receiptValidation()
+    }
+    
     @objc func updateQuotes(){
         let drawerController = window?.rootViewController as! KYDrawerController
         let drawerViewController = drawerController.drawerViewController as! DrawerViewController

@@ -8,7 +8,7 @@ class SubscriptionService: NSObject, SKProductsRequestDelegate, SKPaymentTransac
     var productsRequest = SKProductsRequest()
     var mensal = SKProduct()
     var semestral = SKProduct()
-    var isPremium = true
+    var isPremium = false
     
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         if(response.products.count > 0){
@@ -63,7 +63,7 @@ class SubscriptionService: NSObject, SKProductsRequestDelegate, SKPaymentTransac
     }
     
     func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
-        print("aaa")
+        receiptValidation()
     }
     
     func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
@@ -103,6 +103,7 @@ class SubscriptionService: NSObject, SKProductsRequestDelegate, SKPaymentTransac
     func receiptValidation() {
         let SUBSCRIPTION_SECRET = "34ed2f6ff7d1498eac992c2406ecdde6"
         let receiptPath = Bundle.main.appStoreReceiptURL?.path
+        self.isPremium = false
         if FileManager.default.fileExists(atPath: receiptPath!){
             var receiptData:NSData?
             do{
@@ -113,10 +114,7 @@ class SubscriptionService: NSObject, SKProductsRequestDelegate, SKPaymentTransac
             }
             //let receiptString = receiptData?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
             let base64encodedReceipt = receiptData?.base64EncodedString(options: NSData.Base64EncodingOptions.endLineWithCarriageReturn)
-            
-            print(base64encodedReceipt!)
-            
-            
+
             let requestDictionary = ["receipt-data":base64encodedReceipt!,"password":SUBSCRIPTION_SECRET]
             
             guard JSONSerialization.isValidJSONObject(requestDictionary) else {  print("requestDictionary is not valid JSON");  return }
@@ -131,23 +129,42 @@ class SubscriptionService: NSObject, SKProductsRequestDelegate, SKPaymentTransac
                 let task = session.uploadTask(with: request, from: requestData) { (data, response, error) in
                     if let data = data , error == nil {
                         do {
-                            let appReceiptJSON = try JSONSerialization.jsonObject(with: data)
-                            print("success. here is the json representation of the app receipt: \(appReceiptJSON)")
+                            let appReceiptJSON = try JSONSerialization.jsonObject(with: data, options:[])
+                            let receiptDictionary = appReceiptJSON as? [String: Any]
+                            let receipt = receiptDictionary!["receipt"] as? [String: Any]
+                            let inApps = receipt!["in_app"] as? [Any]
+                            var foundPremium = false
+                            let timestamp = Int(Date().timeIntervalSince1970 * 1000)
+                            inApps?.forEach{ inApp in
+                                let subscription = inApp as! NSDictionary
+                                let expires = Int(subscription["expires_date_ms"] as! String)
+                                if(expires! > timestamp){
+                                    foundPremium = true
+                                }
+                            }
+                            // Sets isPremium variable to true to enable premium contents
+                            if(foundPremium){
+                                self.isPremium = true
+                            } else {
+                                self.isPremium = false
+                            }
+                            print("Premium: " + String(self.isPremium))
+                            //print("success. here is the json representation of the app receipt: \(appReceiptJSON)")
                             // if you are using your server this will be a json representation of whatever your server provided
                         } catch let error as NSError {
                             print("json serialization failed with error: \(error)")
+                            self.isPremium = true
                         }
                     } else {
                         print("the upload task returned an error: \(error)")
+                        self.isPremium = true
                     }
                 }
                 task.resume()
             } catch let error as NSError {
                 print("json serialization failed with error: \(error)")
+                self.isPremium = true
             }
-            
-            
-            
         }
     }
 }
