@@ -33,19 +33,16 @@ class SignPremium: UIViewController {
     }
     
     @IBAction func assinarMensal(){
-        print("mensal")
         let mensal = subscription.mensal
         subscription.purchaseProduct(product: mensal)
     }
     
     @IBAction func assinarSemestral(){
-        print("semestral")
         let semestral = subscription.semestral
         subscription.purchaseProduct(product: semestral)
     }
     
     @IBAction func restaurarAssinatura(){
-        print("restaurar")
         subscription.restorePurchases()
     }
 }

@@ -22,7 +22,7 @@ class SubscriptionService: NSObject, SKProductsRequestDelegate, SKPaymentTransac
     }
     
     func request(_ request: SKRequest, didFailWithError error: Error) {
-        print("Subscription Error: " + error.localizedDescription)
+
     }
   
     func fetchAvailableProducts() {
@@ -42,6 +42,13 @@ class SubscriptionService: NSObject, SKProductsRequestDelegate, SKPaymentTransac
             SKPaymentQueue.default().add(self)
             SKPaymentQueue.default().add(payment)
             productID = product.productIdentifier //also show loader
+        } else {
+            let alert = UIAlertView()
+            alert.title = "Você não pode fazer essa compra"
+            alert.delegate = self
+            alert.addButton(withTitle: "OK")
+            alert.message = "Alguma configuração da sua conta não te permite efetuar essa compra. Por favor verifique suas configurações."
+            alert.show()
         }
     }
     
@@ -50,45 +57,67 @@ class SubscriptionService: NSObject, SKProductsRequestDelegate, SKPaymentTransac
             switch transaction.transactionState {
             case .purchasing:
                 handlePurchasingState(for: transaction, in: queue)
+                break
             case .purchased:
                 handlePurchasedState(for: transaction, in: queue)
+                break
             case .restored:
                 handleRestoredState(for: transaction, in: queue)
+                break
             case .failed:
                 handleFailedState(for: transaction, in: queue)
+                break
             case .deferred:
                 handleDeferredState(for: transaction, in: queue)
+                break
             }
         }
     }
     
     func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
         receiptValidation()
+        let alert = UIAlertView()
+        alert.title = "Restauração feito com sucesso!"
+        alert.delegate = self
+        alert.addButton(withTitle: "OK")
+        alert.message = "Se você já efetuou a assinatura do app para esse Apple ID e ela ainda for válida, você deve conseguir acessar o conteúdo premium normalmente."
+        alert.show()
     }
     
     func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
-        print("Error: " + error.localizedDescription)
+        receiptValidation()
+        let alert = UIAlertView()
+        alert.title = "Restauração falhou!"
+        alert.delegate = self
+        alert.addButton(withTitle: "OK")
+        alert.message = "Não foi possivel fazer a restauração da sua assinatura no momento. Por favor tente novamente mais tarde."
+        alert.show()
     }
     
     func handlePurchasingState(for transaction: SKPaymentTransaction, in queue: SKPaymentQueue) {
-        print("User is attempting to purchase product id: \(transaction.payment.productIdentifier)")
     }
     
     func handlePurchasedState(for transaction: SKPaymentTransaction, in queue: SKPaymentQueue) {
-        print("User purchased product id: \(transaction.payment.productIdentifier)")
+        queue.finishTransaction(transaction)
+        self.isPremium = true
+        let alert = UIAlertView()
+        alert.title = "Obrigado por assinar Guia Investimento"
+        alert.delegate = self
+        alert.addButton(withTitle: "OK")
+        alert.message = "O conteúdo premium já está liberado!"
+        alert.show()
     }
     
     func handleRestoredState(for transaction: SKPaymentTransaction, in queue: SKPaymentQueue) {
-        print("Purchase restored for product id: \(transaction.payment.productIdentifier)")
+        queue.finishTransaction(transaction)
     }
     
     func handleFailedState(for transaction: SKPaymentTransaction, in queue: SKPaymentQueue) {
-        print("Purchase failed for product id: \(transaction.payment.productIdentifier)")
-        print("Error: " + transaction.error!.localizedDescription)
+        queue.finishTransaction(transaction)
     }
     
     func handleDeferredState(for transaction: SKPaymentTransaction, in queue: SKPaymentQueue) {
-        print("Purchase deferred for product id: \(transaction.payment.productIdentifier)")
+        queue.finishTransaction(transaction)
     }
     
     func restorePurchases() {

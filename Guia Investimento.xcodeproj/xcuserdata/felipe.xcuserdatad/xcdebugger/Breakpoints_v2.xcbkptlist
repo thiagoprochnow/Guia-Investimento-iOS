@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Guia Investimento/Code/Premium/Service/SubscriptionService.swift"
-            timestampString = "561520851.992715"
+            timestampString = "561602544.587535"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
             landmarkName = "receiptValidation()"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Guia Investimento/Code/Premium/Service/SubscriptionService.swift"
-            timestampString = "561520851.993502"
+            timestampString = "561602544.588006"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
             landmarkName = "receiptValidation()"
             landmarkType = "7">
             <Locations>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Guia Investimento/Code/Premium/Service/SubscriptionService.swift"
-            timestampString = "561520851.993861"
+            timestampString = "561602544.588331"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
             landmarkName = "receiptValidation()"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Guia Investimento/Code/Premium/Service/SubscriptionService.swift"
-            timestampString = "561520851.9941911"
+            timestampString = "561602544.588653"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
             landmarkName = "receiptValidation()"
             landmarkType = "7">
          </BreakpointContent>
@@ -106,12 +106,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Guia Investimento/Code/Premium/Service/SubscriptionService.swift"
-            timestampString = "561520851.994512"
+            timestampString = "561602544.588969"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
             landmarkName = "receiptValidation()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Guia Investimento/Code/Premium/Service/SubscriptionService.swift"
+            timestampString = "561602544.589286"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "paymentQueue(_:updatedTransactions:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Guia Investimento/Code/Premium/Service/SubscriptionService.swift"
+            timestampString = "561602544.5895931"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "handlePurchasedState(for:in:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
