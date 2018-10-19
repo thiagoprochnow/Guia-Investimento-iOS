@@ -31,7 +31,7 @@ class OthersIncomeDB{
     // Load all Incomes of a specific Others Symbol
     func getIncomesBySymbol(_ symbol: String) -> Array<OthersIncome> {
         var othersIncomes : Array<OthersIncome> = []
-        let stmt = db.query("SELECT * FROM others_incomes where symbol = ?",params: [symbol])
+        let stmt = db.query("SELECT * FROM others_incomes where symbol = ? ORDER BY timestamp DESC",params: [symbol])
         while (db.nextRow(stmt)){
             let income = OthersIncome()
             income.id = db.getInt(stmt, index: 0)
@@ -110,7 +110,7 @@ class OthersIncomeDB{
     // Load all Incomes of a specific Others Symbol
     func getIncomes() -> Array<OthersIncome> {
         var othersIncomes : Array<OthersIncome> = []
-        let stmt = db.query("SELECT * FROM others_incomes")
+        let stmt = db.query("SELECT * FROM others_incomes ORDER BY timestamp DESC")
         while (db.nextRow(stmt)){
             let income = OthersIncome()
             income.id = db.getInt(stmt, index: 0)

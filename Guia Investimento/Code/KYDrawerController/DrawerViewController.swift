@@ -265,17 +265,33 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
         let fixeds = fixedDB.getData()
         fixedDB.close()
         
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        var subscription = appDelegate.subscription
+        
         // Stocks
-        StockService.updateStockIncomes({(_ stockIncomes:Array<StockIncome>,error:Bool) -> Void in
-            self.stocksIncomes = stockIncomes
-            StockService.updateStockQuotes([], callback: {(_ stocks:Array<StockData>,error:Bool) -> Void in
+        if(subscription!.isPremium == false){
+            // Not Premium
+            self.stocksIncomes = []
+            StockService.updateStockQuotes([], callback: {(_ stocks:Array<StockData>,error:String) -> Void in
                 self.stockRefresh = true
                 self.stocks = stocks
                 DispatchQueue.main.async {
                     self.updateView()
                 }
             })
-        })
+        } else {
+            // Premium
+            StockService.updateStockIncomes({(_ stockIncomes:Array<StockIncome>,error:Bool) -> Void in
+                self.stocksIncomes = stockIncomes
+                StockService.updateStockQuotes([], callback: {(_ stocks:Array<StockData>,error:String) -> Void in
+                    self.stockRefresh = true
+                    self.stocks = stocks
+                    DispatchQueue.main.async {
+                        self.updateView()
+                    }
+                })
+            })
+        }
         
         // FII
         FiiService.updateFiiIncomes({(_ fiiIncomes:Array<FiiIncome>,error:Bool) -> Void in

@@ -31,7 +31,7 @@ class TreasuryIncomeDB{
     // Load all Incomes of a specific Treasury Symbol
     func getIncomesBySymbol(_ symbol: String) -> Array<TreasuryIncome> {
         var treasuryIncomes : Array<TreasuryIncome> = []
-        let stmt = db.query("SELECT * FROM treasury_incomes where symbol = ?",params: [symbol])
+        let stmt = db.query("SELECT * FROM treasury_incomes where symbol = ? ORDER BY timestamp DESC",params: [symbol])
         while (db.nextRow(stmt)){
             let income = TreasuryIncome()
             income.id = db.getInt(stmt, index: 0)
@@ -110,7 +110,7 @@ class TreasuryIncomeDB{
     // Load all Incomes of a specific Treasury Symbol
     func getIncomes() -> Array<TreasuryIncome> {
         var treasuryIncomes : Array<TreasuryIncome> = []
-        let stmt = db.query("SELECT * FROM treasury_incomes")
+        let stmt = db.query("SELECT * FROM treasury_incomes ORDER BY timestamp DESC")
         while (db.nextRow(stmt)){
             let income = TreasuryIncome()
             income.id = db.getInt(stmt, index: 0)

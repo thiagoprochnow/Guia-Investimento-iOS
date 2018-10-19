@@ -130,7 +130,7 @@ class BuyStockForm: UIViewController, UITextFieldDelegate{
                             self.navigationController?.popViewController(animated: true)
                             
                             // updateQuote
-                            StockService.updateStockQuotes(updateStocks, callback: {(_ stocks:Array<StockData>,error:Bool) -> Void in
+                            StockService.updateStockQuotes(updateStocks, callback: {(_ stocks:Array<StockData>,error:String) -> Void in
                                 let stockDB = StockDataDB()
                                 stocks.forEach{ stock in
                                     let currentTotal = Double(stock.quantity) * stock.currentPrice

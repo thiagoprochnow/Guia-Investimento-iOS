@@ -33,7 +33,7 @@ class FiiIncomeDB{
     // Load all Incomes of a specific Fii Symbol
     func getIncomesBySymbol(_ symbol: String) -> Array<FiiIncome> {
         var fiiIncomes : Array<FiiIncome> = []
-        let stmt = db.query("SELECT * FROM fii_incomes where symbol = ? AND affected_quantity > 0",params: [symbol])
+        let stmt = db.query("SELECT * FROM fii_incomes where symbol = ? AND affected_quantity > 0 ORDER BY timestamp DESC",params: [symbol])
         while (db.nextRow(stmt)){
             let income = FiiIncome()
             income.id = db.getInt(stmt, index: 0)
@@ -120,7 +120,7 @@ class FiiIncomeDB{
     // Load all Incomes of a specific Fii Symbol
     func getIncomes() -> Array<FiiIncome> {
         var fiiIncomes : Array<FiiIncome> = []
-        let stmt = db.query("SELECT * FROM fii_incomes WHERE affected_quantity > 0")
+        let stmt = db.query("SELECT * FROM fii_incomes WHERE affected_quantity > 0 ORDER BY timestamp DESC")
         while (db.nextRow(stmt)){
             let income = FiiIncome()
             income.id = db.getInt(stmt, index: 0)

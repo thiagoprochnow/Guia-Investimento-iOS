@@ -6,11 +6,16 @@
 //  Copyright © 2018 Thiago. All rights reserved.
 //
 
+import UIKit
 import Foundation
 class StockService{
-    class func updateStockQuotes(_ updateStocks:Array<StockData>, callback: @escaping(_ stocksCallback:Array<StockData>,_ error:Bool) -> Void){
+    class func updateStockQuotes(_ updateStocks:Array<StockData>, callback: @escaping(_ stocksCallback:Array<StockData>,_ error:String) -> Void){
         let stockDataDB = StockDataDB()
         var stocks:Array<StockData> = []
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        var subscription = appDelegate.subscription
+        
         if(updateStocks.count == 0){
             stocks = stockDataDB.getDataByStatus(Constants.Status.ACTIVE)
         } else{
@@ -20,6 +25,9 @@ class StockService{
         var returnStocks: Array<StockData> = []
         var success: Bool = true
         
+        var limit = 0
+        var size = 0
+        
         if(stocks.count > 0){
             // Prepare http request to webservice
             let http = URLSession.shared
@@ -28,7 +36,13 @@ class StockService{
             
             var symbolsURL:String = ""
             stocks.forEach{ stock in
-                symbolsURL += "/" + stock.symbol.lowercased()
+                if(limit < 5){
+                    symbolsURL += "/" + stock.symbol.lowercased()
+                }
+                // count for free version
+                if(subscription!.isPremium == false){
+                    limit = limit + 1
+                }
             }
             
             postRequest.httpMethod = "POST"
@@ -78,12 +92,15 @@ class StockService{
                                                 }
                                             }
                                             if(found == false){
-                                                stock.closingPrice = 0.0
                                                 stock.updateStatus = Constants.UpdateStatus.NOT_UPDATED
                                             }
                                             returnStocks.append(stock)
                                         }
-                                        callback(returnStocks, true)
+                                        if(limit >= 5){
+                                            callback(returnStocks, "limit")
+                                        } else {
+                                            callback(returnStocks, "true")
+                                        }
                                     }catch {
                                         print(error)
                                     }
@@ -98,7 +115,7 @@ class StockService{
                                 stock.updateStatus = Constants.UpdateStatus.NOT_UPDATED
                                 returnStocks.append(stock)
                             }
-                            callback(returnStocks,false)
+                            callback(returnStocks,"false")
                         }
                     }
                     if let error = error {
@@ -107,11 +124,11 @@ class StockService{
                             stock.updateStatus = Constants.UpdateStatus.NOT_UPDATED
                             returnStocks.append(stock)
                         }
-                        callback(returnStocks,false)
+                        callback(returnStocks,"false")
                     }
                 }.resume()
         } else {
-            callback(returnStocks,false)
+            callback(returnStocks,"false")
         }
     }
     

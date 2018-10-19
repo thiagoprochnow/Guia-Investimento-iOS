@@ -33,7 +33,7 @@ class StockIncomeDB{
     // Load all Incomes of a specific Stock Symbol
     func getIncomesBySymbol(_ symbol: String) -> Array<StockIncome> {
         var stockIncomes : Array<StockIncome> = []
-        let stmt = db.query("SELECT * FROM stock_incomes where symbol = ? AND affected_quantity > 0",params: [symbol])
+        let stmt = db.query("SELECT * FROM stock_incomes where symbol = ? AND affected_quantity > 0 ORDER BY timestamp DESC",params: [symbol])
         while (db.nextRow(stmt)){
             let income = StockIncome()
             income.id = db.getInt(stmt, index: 0)
@@ -120,7 +120,7 @@ class StockIncomeDB{
     // Load all Incomes of a specific Stock Symbol
     func getIncomes() -> Array<StockIncome> {
         var stockIncomes : Array<StockIncome> = []
-        let stmt = db.query("SELECT * FROM stock_incomes WHERE affected_quantity > 0")
+        let stmt = db.query("SELECT * FROM stock_incomes WHERE affected_quantity > 0 ORDER BY timestamp DESC")
         while (db.nextRow(stmt)){
             let income = StockIncome()
             income.id = db.getInt(stmt, index: 0)
