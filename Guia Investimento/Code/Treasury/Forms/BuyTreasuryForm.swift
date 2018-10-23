@@ -39,7 +39,7 @@ class BuyTreasuryForm: UIViewController, UITextFieldDelegate{
         // Insert Autocomplete
         symbolTextField.filterStrings(Constants.Symbols.TREASURY)
         symbolTextField.theme.bgColor = UIColor (red: 1, green: 1, blue: 1, alpha: 1)
-        symbolTextField.maxNumberOfResults = 5
+        symbolTextField.maxNumberOfResults = 20
         symbolTextField.theme.font = UIFont.systemFont(ofSize: 14)
         datePicker.timeZone = TimeZone(abbreviation: "UTC")
         
@@ -119,7 +119,7 @@ class BuyTreasuryForm: UIViewController, UITextFieldDelegate{
                             updateTreasuries.append(treasury)
                             
                             // TREASURY
-                            TreasuryService.updateTreasuryQuotes(updateTreasuries, callback: {(_ treasuries:Array<TreasuryData>,error:Bool) -> Void in
+                            TreasuryService.updateTreasuryQuotes(updateTreasuries, callback: {(_ treasuries:Array<TreasuryData>,error:String) -> Void in
                                 let treasuryDB = TreasuryDataDB()
                                 treasuries.forEach{ treasury in
                                     let currentTotal = treasury.quantity * treasury.currentPrice

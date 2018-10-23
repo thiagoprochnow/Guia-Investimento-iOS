@@ -7,10 +7,15 @@
 //
 
 import Foundation
+import UIKit
 class FiiService{
-    class func updateFiiQuotes(_ updateFiis:Array<FiiData>, callback: @escaping(_ fiisCallback:Array<FiiData>,_ error:Bool) -> Void){
+    class func updateFiiQuotes(_ updateFiis:Array<FiiData>, callback: @escaping(_ fiisCallback:Array<FiiData>,_ error:String) -> Void){
         let fiiDataDB = FiiDataDB()
         var fiis:Array<FiiData> = []
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        var subscription = appDelegate.subscription
+        
         if(updateFiis.count == 0){
             fiis = fiiDataDB.getDataByStatus(Constants.Status.ACTIVE)
         } else {
@@ -20,6 +25,9 @@ class FiiService{
         var returnFiis: Array<FiiData> = []
         var success: Bool = true
         
+        var limit = 0
+        var size = 0
+        
         if(fiis.count > 0){
             // Prepare http request to webservice
             let http = URLSession.shared
@@ -28,7 +36,13 @@ class FiiService{
             
             var symbolsURL:String = ""
             fiis.forEach{ fii in
-                symbolsURL += "/" + fii.symbol.lowercased()
+                if(limit  < 3){
+                    symbolsURL += "/" + fii.symbol.lowercased()
+                }
+                // count for free version
+                if(subscription!.isPremium == false){
+                    limit = limit + 1
+                }
             }
             
             postRequest.httpMethod = "POST"
@@ -78,12 +92,15 @@ class FiiService{
                                                 }
                                             }
                                             if(found == false){
-                                                fii.closingPrice = 0.0
                                                 fii.updateStatus = Constants.UpdateStatus.NOT_UPDATED
                                             }
                                             returnFiis.append(fii)
                                         }
-                                        callback(returnFiis, true)
+                                        if(limit > 3){
+                                            callback(returnFiis, "limit")
+                                        } else {
+                                            callback(returnFiis, "true")
+                                        }
                                     }catch {
                                         print(error)
                                     }
@@ -98,7 +115,7 @@ class FiiService{
                                 returnFiis.append(fii)
                             }
                             // Return fail to main thread
-                            callback(returnFiis,false)
+                            callback(returnFiis,"false")
                         }
                     }
                     if let error = error {
@@ -107,11 +124,11 @@ class FiiService{
                             fii.updateStatus = Constants.UpdateStatus.NOT_UPDATED
                             returnFiis.append(fii)
                         }
-                        callback(returnFiis,false)
+                        callback(returnFiis,"false")
                     }
                 }.resume()
         } else {
-            callback(returnFiis,false)
+            callback(returnFiis,"")
         }
     }
     

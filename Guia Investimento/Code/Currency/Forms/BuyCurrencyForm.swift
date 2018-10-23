@@ -137,7 +137,7 @@ class BuyCurrencyForm: UIViewController, UITextFieldDelegate, UIPickerViewDelega
                             updateCurrencies.append(currency)
                             
                             // Update Quote
-                            CurrencyService.updateCurrencyQuotes(updateCurrencies, callback: {(_ currencies:Array<CurrencyData>,error:Bool) -> Void in
+                            CurrencyService.updateCurrencyQuotes(updateCurrencies, callback: {(_ currencies:Array<CurrencyData>,error:String) -> Void in
                                 let currencyDB = CurrencyDataDB()
                                 currencies.forEach{ currency in
                                     let currentTotal = currency.quantity * currency.currentPrice

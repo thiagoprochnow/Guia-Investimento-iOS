@@ -96,7 +96,7 @@ class StockService{
                                             }
                                             returnStocks.append(stock)
                                         }
-                                        if(limit >= 5){
+                                        if(limit > 5){
                                             callback(returnStocks, "limit")
                                         } else {
                                             callback(returnStocks, "true")
@@ -128,7 +128,7 @@ class StockService{
                     }
                 }.resume()
         } else {
-            callback(returnStocks,"false")
+            callback(returnStocks,"")
         }
     }
     

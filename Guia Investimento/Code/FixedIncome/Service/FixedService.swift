@@ -8,7 +8,7 @@
 
 import Foundation
 class FixedService{
-    class func updateFixedQuotes(_ callback: @escaping(_ cdiCallback:Array<Cdi>, _ ipcaCallback:Array<Ipca>,_ error:Bool) -> Void){
+    class func updateFixedQuotes(_ callback: @escaping(_ cdiCallback:Array<Cdi>, _ ipcaCallback:Array<Ipca>,_ error:String) -> Void){
         var success: Bool = true
         var resultCDI = false
         var resultIPCA = false
@@ -52,14 +52,14 @@ class FixedService{
 
                     resultCDI = true
                     if(resultIPCA == true){
-                        callback(cdiCallback,ipcaCallback,true)
+                        callback(cdiCallback,ipcaCallback,"true")
                     }
                 } catch {
                     print(error)
                 }
             }
             if let error = error {
-                callback(cdiCallback,ipcaCallback,false)
+                callback(cdiCallback,ipcaCallback,"false")
             }
             }.resume()
         
@@ -87,7 +87,7 @@ class FixedService{
                     
                     resultIPCA = true
                     if(resultCDI == true){
-                        callback(cdiCallback,ipcaCallback,true)
+                        callback(cdiCallback,ipcaCallback,"true")
                     }
                 } catch {
                     print(error)
@@ -95,7 +95,7 @@ class FixedService{
             }
             
             if let errorIpca = errorIpca {
-                callback(cdiCallback,ipcaCallback,false)
+                callback(cdiCallback,ipcaCallback,"false")
             }
             }.resume()
     }

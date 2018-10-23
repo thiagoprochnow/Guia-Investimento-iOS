@@ -41,6 +41,15 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
     var cdis:Array<Cdi> = []
     var ipcas:Array<Ipca> = []
     
+    var stockUpdated = ""
+    var stockInUpdated = false
+    var fiiUpdated = ""
+    var fiiInUpdated = false
+    var treasuryUpdated = ""
+    var fixedUpdated = ""
+    var currencyUpdated = ""
+    var isPremium = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
@@ -268,6 +277,8 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         var subscription = appDelegate.subscription
         
+        self.isPremium = subscription!.isPremium
+        
         // Stocks
         if(subscription!.isPremium == false){
             // Not Premium
@@ -275,17 +286,20 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
             StockService.updateStockQuotes([], callback: {(_ stocks:Array<StockData>,error:String) -> Void in
                 self.stockRefresh = true
                 self.stocks = stocks
+                self.stockUpdated = error
                 DispatchQueue.main.async {
                     self.updateView()
                 }
             })
         } else {
             // Premium
-            StockService.updateStockIncomes({(_ stockIncomes:Array<StockIncome>,error:Bool) -> Void in
+            StockService.updateStockIncomes({(_ stockIncomes:Array<StockIncome>,incomeError:Bool) -> Void in
                 self.stocksIncomes = stockIncomes
+                self.stockInUpdated = incomeError
                 StockService.updateStockQuotes([], callback: {(_ stocks:Array<StockData>,error:String) -> Void in
                     self.stockRefresh = true
                     self.stocks = stocks
+                    self.stockUpdated = error
                     DispatchQueue.main.async {
                         self.updateView()
                     }
@@ -294,40 +308,58 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
         }
         
         // FII
-        FiiService.updateFiiIncomes({(_ fiiIncomes:Array<FiiIncome>,error:Bool) -> Void in
-            self.fiisIncomes = fiiIncomes
-            FiiService.updateFiiQuotes([], callback: {(_ fiis:Array<FiiData>,error:Bool) -> Void in
+        if(subscription!.isPremium == false){
+            self.fiisIncomes = []
+            FiiService.updateFiiQuotes([], callback: {(_ fiis:Array<FiiData>,error:String) -> Void in
                 self.fiiRefresh = true
                 self.fiis = fiis
+                self.fiiUpdated = error
                 DispatchQueue.main.async {
                     self.updateView()
                 }
             })
-        })
+        } else {
+            // Premium
+            FiiService.updateFiiIncomes({(_ fiiIncomes:Array<FiiIncome>,incomeError:Bool) -> Void in
+                self.fiisIncomes = fiiIncomes
+                self.fiiInUpdated = incomeError
+                FiiService.updateFiiQuotes([], callback: {(_ fiis:Array<FiiData>,error:String) -> Void in
+                    self.fiiRefresh = true
+                    self.fiis = fiis
+                    self.fiiUpdated = error
+                    DispatchQueue.main.async {
+                        self.updateView()
+                    }
+                })
+            })
+        }
         
         // TREASURY
-        TreasuryService.updateTreasuryQuotes([], callback: {(_ treasuries:Array<TreasuryData>,error:Bool) -> Void in
+        TreasuryService.updateTreasuryQuotes([], callback: {(_ treasuries:Array<TreasuryData>,error:String) -> Void in
             self.treasuryRefresh = true
             self.treasuries = treasuries
+            self.treasuryUpdated = error
             DispatchQueue.main.async {
                 self.updateView()
             }
         })
         
         // CURRENCY
-        CurrencyService.updateCurrencyQuotes([], callback: {(_ currencies:Array<CurrencyData>,error:Bool) -> Void in
+        CurrencyService.updateCurrencyQuotes([], callback: {(_ currencies:Array<CurrencyData>,error:String) -> Void in
             self.currencyRefresh = true
             self.currencies = currencies
+            self.currencyUpdated = error
             DispatchQueue.main.async {
                 self.updateView()
             }
         })
         
         // FIXED
-        FixedService.updateFixedQuotes({(_ cdis:Array<Cdi>,ipcas:Array<Ipca>,error:Bool) -> Void in
+        FixedService.updateFixedQuotes({(_ cdis:Array<Cdi>,ipcas:Array<Ipca>,error:String) -> Void in
             self.fixedRefresh = true
             self.cdis = cdis
             self.ipcas = ipcas
+            self.fixedUpdated = error
             DispatchQueue.main.async {
                 self.updateView()
             }
@@ -442,6 +474,11 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
             let fixedDB = FixedDataDB()
             let fixeds = fixedDB.getData()
             var returnFixeds:Array<FixedData> = []
+            
+            
+            if(fixeds.count == 0){
+                self.fixedUpdated = ""
+            }
             fixeds.forEach{ fixed in
                 let fixed = general.updateFixedQuote(fixed)
                 returnFixeds.append(fixed)
@@ -481,7 +518,66 @@ class DrawerViewController: UIViewController, UITableViewDataSource, UITableView
             alert.addButton(withTitle: "OK")
             // Show Alert
             alert.title = ""
-            alert.message = "Atualização feita com sucesso"
+            var message = ""
+            
+            // Stock
+            if(stockUpdated == "true"){
+                message += "Ações atualizadas com sucesso\n\n"
+            } else if(stockUpdated == "false"){
+                message += "Erro ao atualizar ações, por favor tente novamente mais tarde\n\n"
+            } else if(stockUpdated == "limit"){
+                message += "Limite de atualização automática de 5 ações atingido. Atualize manualmente ou assine a versão PREMIUM para atualizações ilimitadas.\n\n"
+            }
+            
+            if(stockUpdated != "" && stockInUpdated == true){
+                message += "Proventos de ações atualizados com sucesso\n\n"
+            } else if(stockUpdated != "" && stockInUpdated == false){
+                if(isPremium == false){
+                    message += "Proventos de ações apenas são atualizados automaticamente na versão PREMIUM, assine agora ou insira-os manualmente.\n\n"
+                }
+            }
+            
+            // FII
+            if(fiiUpdated == "true"){
+                message += "Fundos Imobiliários atualizados com sucesso\n\n"
+            } else if(fiiUpdated == "false"){
+                message += "Erro ao atualizar fundos imobiliários, por favor tente novamente mais tarde\n\n"
+            } else if(fiiUpdated == "limit"){
+                message += "Limite de atualização automática de 3 fundos imobiliários atingido. Atualize manualmente ou assine a versão PREMIUM para atualizações ilimitadas.\n\n"
+            }
+            
+            if(fiiUpdated != "" && fiiInUpdated == true){
+                message += "Rendimentos de fundos imobiliários atualizados com sucesso\n\n"
+            } else if(fiiUpdated != "" && fiiInUpdated == false){
+                if(isPremium == false){
+                    message += "Rendimentos de fundos imobiliários apenas são atualizados automaticamente na versão PREMIUM, assine agora ou insira-os manualmente.\n\n"
+                }
+            }
+            
+            // Treasury
+            if(treasuryUpdated == "true"){
+                message += "Tesouro atualizado com sucesso\n\n"
+            } else if(treasuryUpdated == "false"){
+                message += "Erro ao atualizar tesouro, por favor tente novamente mais tarde\n\n"
+            } else if(treasuryUpdated == "limit"){
+                message += "Limite de atualização automática de 2 tesouros atingido. Atualize manualmente ou assine a versão PREMIUM para atualizações ilimitadas.\n\n"
+            }
+            
+            // Fixed
+            if(fixedUpdated == "true"){
+                message += "Renda Fixa atualizada com sucesso\n\n"
+            } else if(fixedUpdated == "false"){
+                message += "Erro ao atualizar renda fixa, por favor tente novamente mais tarde\n\n"
+            }
+            
+            // Moedas
+            if(currencyUpdated == "true"){
+                message += "Moedas atualizadas com sucesso\n\n"
+            } else if(currencyUpdated == "false"){
+                message += "Erro ao atualizar moedas, por favor tente novamente mais tarde\n\n"
+            }
+            
+            alert.message = message
             alert.show()
             
             // Reset refresh status

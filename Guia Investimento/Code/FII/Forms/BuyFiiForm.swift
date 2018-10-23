@@ -128,7 +128,7 @@ class BuyFiiForm: UIViewController, UITextFieldDelegate{
                             updateFiis.append(fii)
                             
                             // FII
-                            FiiService.updateFiiQuotes(updateFiis, callback: {(_ fiis:Array<FiiData>,error:Bool) -> Void in
+                            FiiService.updateFiiQuotes(updateFiis, callback: {(_ fiis:Array<FiiData>,error:String) -> Void in
                                 // Fii
                                 let fiiDB = FiiDataDB()
                                 fiis.forEach{ fii in

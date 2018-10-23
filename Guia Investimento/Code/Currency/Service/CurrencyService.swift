@@ -8,7 +8,7 @@
 
 import Foundation
 class CurrencyService{
-    class func updateCurrencyQuotes(_ updateCurrencies:Array<CurrencyData>, callback: @escaping(_ currenciesCallback:Array<CurrencyData>,_ error:Bool) -> Void){
+    class func updateCurrencyQuotes(_ updateCurrencies:Array<CurrencyData>, callback: @escaping(_ currenciesCallback:Array<CurrencyData>,_ error:String) -> Void){
         let currencyDataDB = CurrencyDataDB()
         var currencies: Array<CurrencyData> = []
         if(updateCurrencies.count == 0){
@@ -18,7 +18,7 @@ class CurrencyService{
         }
         currencyDataDB.close()
         var success: Bool = true
-        var result = false
+        var result = "false"
         var returnCurrencies: Array<CurrencyData> = []
         
         let http = URLSession.shared
@@ -44,7 +44,7 @@ class CurrencyService{
                                 currency.currentPrice = valor as! Double
                                 currency.updateStatus = Constants.UpdateStatus.UPDATED
                                 returnCurrencies.append(currency)
-                                result = true
+                                result = "true"
                             } catch {
                                 currency.updateStatus = Constants.UpdateStatus.NOT_UPDATED
                                 returnCurrencies.append(currency)
@@ -58,7 +58,7 @@ class CurrencyService{
                             // Return fail to main thread
                             currency.updateStatus = Constants.UpdateStatus.NOT_UPDATED
                             returnCurrencies.append(currency)
-                            result = false
+                            result = "false"
                         }
                         // only calls callback for last item
                         if(count == (currencies.count)){
@@ -81,7 +81,7 @@ class CurrencyService{
                                 currency.currentPrice = Double(last)!
                                 currency.updateStatus = Constants.UpdateStatus.UPDATED
                                 returnCurrencies.append(currency)
-                                result = true
+                                result = "true"
                             } catch {
                                 currency.updateStatus = Constants.UpdateStatus.NOT_UPDATED
                                 returnCurrencies.append(currency)
@@ -95,7 +95,7 @@ class CurrencyService{
                             // Return fail to main thread
                             currency.updateStatus = Constants.UpdateStatus.NOT_UPDATED
                             returnCurrencies.append(currency)
-                            result = false
+                            result = "false"
                         }
                         // only calls callback for last item
                         if(count == (currencies.count)){
@@ -105,7 +105,7 @@ class CurrencyService{
                 }
             }
         } else {
-            callback(returnCurrencies,false)
+            callback(returnCurrencies,"")
         }
     }
 }

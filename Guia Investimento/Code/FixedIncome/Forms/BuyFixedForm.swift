@@ -178,7 +178,7 @@ class BuyFixedForm: UIViewController, UITextFieldDelegate, UIPickerViewDelegate,
                             returnFixeds.append(currentFixed)
                             
                             // Update Fixed Quotes
-                            FixedService.updateFixedQuotes({(_ cdis:Array<Cdi>,ipcas:Array<Ipca>,error:Bool) -> Void in
+                            FixedService.updateFixedQuotes({(_ cdis:Array<Cdi>,ipcas:Array<Ipca>,error:String) -> Void in
                                 // Fixed
                                 // CDI
                                 let cdiDB = CdiDB()

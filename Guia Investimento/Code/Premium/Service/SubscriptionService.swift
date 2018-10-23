@@ -99,13 +99,7 @@ class SubscriptionService: NSObject, SKProductsRequestDelegate, SKPaymentTransac
     
     func handlePurchasedState(for transaction: SKPaymentTransaction, in queue: SKPaymentQueue) {
         queue.finishTransaction(transaction)
-        self.isPremium = true
-        let alert = UIAlertView()
-        alert.title = "Obrigado por assinar Guia Investimento"
-        alert.delegate = self
-        alert.addButton(withTitle: "OK")
-        alert.message = "O conteúdo premium já está liberado!"
-        alert.show()
+        receiptValidation()
     }
     
     func handleRestoredState(for transaction: SKPaymentTransaction, in queue: SKPaymentQueue) {
@@ -177,7 +171,7 @@ class SubscriptionService: NSObject, SKProductsRequestDelegate, SKPaymentTransac
                             } else {
                                 self.isPremium = false
                             }
-                            print("Premium: " + String(self.isPremium))
+                            //print("Premium: " + String(self.isPremium))
                             //print("success. here is the json representation of the app receipt: \(appReceiptJSON)")
                             // if you are using your server this will be a json representation of whatever your server provided
                         } catch let error as NSError {
