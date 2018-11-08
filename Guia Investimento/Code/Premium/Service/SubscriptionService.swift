@@ -144,8 +144,6 @@ class SubscriptionService: NSObject, SKProductsRequestDelegate, SKPaymentTransac
             do {
                 let requestData = try JSONSerialization.data(withJSONObject: requestDictionary)
                 var validationURLString = "https://buy.itunes.apple.com/verifyReceipt"
-                validationURLString = "https://sandbox.itunes.apple.com/verifyReceipt"  // this works but as noted above it's best to use your own trusted server
-                validationURLString = "https://buy.itunes.apple.com/verifyReceipt"
                 guard let validationURL = URL(string: validationURLString) else { print("the validation url could not be created, unlikely error"); return }
                 let session = URLSession(configuration: URLSessionConfiguration.default)
                 var request = URLRequest(url: validationURL)
@@ -156,33 +154,125 @@ class SubscriptionService: NSObject, SKProductsRequestDelegate, SKPaymentTransac
                         do {
                             let appReceiptJSON = try JSONSerialization.jsonObject(with: data, options:[])
                             let receiptDictionary = appReceiptJSON as? [String: Any]
+                            let statusCode = receiptDictionary!["status"] as? Int
                             let receipt = receiptDictionary!["receipt"] as? [String: Any]
-                            let inApps = receipt!["in_app"] as? [Any]
-                            var foundPremium = false
-                            let timestamp = Int(Date().timeIntervalSince1970 * 1000)
-                            inApps?.forEach{ inApp in
-                                let subscription = inApp as! NSDictionary
-                                let expires = Int(subscription["expires_date_ms"] as! String)
-                                if(expires! > timestamp){
-                                    foundPremium = true
+                            if(receipt != nil && statusCode == 0){
+                                let inApps = receipt!["in_app"] as? [Any]
+                                var foundPremium = false
+                                let timestamp = Int(Date().timeIntervalSince1970 * 1000)
+                                inApps?.forEach{ inApp in
+                                    let subscription = inApp as! NSDictionary
+                                    let expires = Int(subscription["expires_date_ms"] as! String)
+                                    if(expires! > timestamp){
+                                        foundPremium = true
+                                    }
                                 }
-                            }
-                            // Sets isPremium variable to true to enable premium contents
-                            if(foundPremium){
-                                self.isPremium = true
+                                // Sets isPremium variable to true to enable premium contents
+                                if(foundPremium){
+                                    self.isPremium = true
+                                } else {
+                                    self.isPremium = false
+                                }
+                                //print("Premium: " + String(self.isPremium))
                             } else {
-                                self.isPremium = false
+                                // Not found receipt in Production, test on Sandbox
+                                validationURLString = "https://sandbox.itunes.apple.com/verifyReceipt"
+                                let session = URLSession(configuration: URLSessionConfiguration.default)
+                                guard let validationURL = URL(string: validationURLString) else { print("the validation url could not be created, unlikely error"); return }
+                                var request = URLRequest(url: validationURL)
+                                request.httpMethod = "POST"
+                                request.cachePolicy = URLRequest.CachePolicy.reloadIgnoringCacheData
+                                let task = session.uploadTask(with: request, from: requestData) { (data, response, error) in
+                                    if let data = data , error == nil {
+                                        do {
+                                            let appReceiptJSON = try JSONSerialization.jsonObject(with: data, options:[])
+                                            let receiptDictionary = appReceiptJSON as? [String: Any]
+                                            let statusCode = receiptDictionary!["status"] as? Int
+                                            let receipt = receiptDictionary!["receipt"] as? [String: Any]
+                                            if(receipt != nil && statusCode == 0){
+                                                let inApps = receipt!["in_app"] as? [Any]
+                                                var foundPremium = false
+                                                let timestamp = Int(Date().timeIntervalSince1970 * 1000)
+                                                inApps?.forEach{ inApp in
+                                                    let subscription = inApp as! NSDictionary
+                                                    let expires = Int(subscription["expires_date_ms"] as! String)
+                                                    if(expires! > timestamp){
+                                                        foundPremium = true
+                                                    }
+                                                }
+                                                // Sets isPremium variable to true to enable premium contents
+                                                if(foundPremium){
+                                                    self.isPremium = true
+                                                } else {
+                                                    self.isPremium = false
+                                                }
+                                                //print("Premium: " + String(self.isPremium))
+                                            } else {
+                                                // Not found receipt in Sandbox either
+                                                self.isPremium = false
+                                            }
+                                        } catch let error as NSError {
+                                            print("json serialization failed with error: \(error)")
+                                            self.isPremium = true
+                                        }
+                                    } else {
+                                        print("the upload task returned an error: \(error)")
+                                        self.isPremium = true
+                                    }
+                                }
+                                task.resume()
                             }
-                            //print("Premium: " + String(self.isPremium))
-                            //print("success. here is the json representation of the app receipt: \(appReceiptJSON)")
-                            // if you are using your server this will be a json representation of whatever your server provided
                         } catch let error as NSError {
                             print("json serialization failed with error: \(error)")
                             self.isPremium = true
                         }
                     } else {
-                        print("the upload task returned an error: \(error)")
-                        self.isPremium = true
+                        // Not found receipt in Production, test on Sandbox
+                        validationURLString = "https://sandbox.itunes.apple.com/verifyReceipt"
+                        let session = URLSession(configuration: URLSessionConfiguration.default)
+                        guard let validationURL = URL(string: validationURLString) else { print("the validation url could not be created, unlikely error"); return }
+                        var request = URLRequest(url: validationURL)
+                        request.httpMethod = "POST"
+                        request.cachePolicy = URLRequest.CachePolicy.reloadIgnoringCacheData
+                        let task = session.uploadTask(with: request, from: requestData) { (data, response, error) in
+                            if let data = data , error == nil {
+                                do {
+                                    let appReceiptJSON = try JSONSerialization.jsonObject(with: data, options:[])
+                                    let receiptDictionary = appReceiptJSON as? [String: Any]
+                                    let statusCode = receiptDictionary!["status"] as? Int
+                                    let receipt = receiptDictionary!["receipt"] as? [String: Any]
+                                    if(receipt != nil && statusCode == 0){
+                                        let inApps = receipt!["in_app"] as? [Any]
+                                        var foundPremium = false
+                                        let timestamp = Int(Date().timeIntervalSince1970 * 1000)
+                                        inApps?.forEach{ inApp in
+                                            let subscription = inApp as! NSDictionary
+                                            let expires = Int(subscription["expires_date_ms"] as! String)
+                                            if(expires! > timestamp){
+                                                foundPremium = true
+                                            }
+                                        }
+                                        // Sets isPremium variable to true to enable premium contents
+                                        if(foundPremium){
+                                            self.isPremium = true
+                                        } else {
+                                            self.isPremium = false
+                                        }
+                                        //print("Premium: " + String(self.isPremium))
+                                    } else {
+                                        // Not found receipt in Sandbox either
+                                        self.isPremium = false
+                                    }
+                                } catch let error as NSError {
+                                    print("json serialization failed with error: \(error)")
+                                    self.isPremium = true
+                                }
+                            } else {
+                                print("the upload task returned an error: \(error)")
+                                self.isPremium = true
+                            }
+                        }
+                        task.resume()
                     }
                 }
                 task.resume()

@@ -24,7 +24,6 @@ class SQLiteHelper :NSObject {
     func getFilePath(_ nome: String) -> String {
         // Caminho com o arquivo
         let path = NSHomeDirectory() + "/Documents/" + nome
-        print("Database: \(path)")
         return path
     }
     
@@ -37,7 +36,7 @@ class SQLiteHelper :NSObject {
         let cPath = StringUtils.toCString(path)
         let result = sqlite3_open(path, &db);
         if(result != SQLITE_OK) {
-            print("Não foi possível abrir o banco de dados SQLite \(result)")
+            //print("Não foi possível abrir o banco de dados SQLite \(result)")
             return nil
         } else {
             //println("SQLite OK")
@@ -64,7 +63,7 @@ class SQLiteHelper :NSObject {
         if (result != SQLITE_OK && result != SQLITE_DONE) {
             sqlite3_finalize(stmt)
             let msg = "Erro ao executar SQL\n\(sql)\nError: \(lastSQLError())"
-            print(msg)
+            //print(msg)
             return -1
         } else {
             //println("SQL [\(sql)]")
@@ -131,9 +130,9 @@ class SQLiteHelper :NSObject {
         if (result != SQLITE_OK) {
             sqlite3_finalize(stmt)
             let msg = "Erro ao preparar SQL\n\(sql)\nError: \(lastSQLError())"
-            print("SQLite ERROR \(msg)")
+            //print("SQLite ERROR \(msg)")
         } else {
-            print("SQL [\(sql)], params: \(params)")
+            //print("SQL [\(sql)], params: \(params)")
         }
         
         // Bind Values (?,?,?)

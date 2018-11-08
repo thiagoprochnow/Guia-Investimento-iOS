@@ -37,7 +37,7 @@ class FixedService{
             if let data = data {
                 do{
                     var cdis: Array<NSDictionary> = []
-                    print(String(data: data, encoding: String.Encoding.utf8))
+                    //print(String(data: data, encoding: String.Encoding.utf8))
                     cdis = try JSONSerialization.jsonObject(with: data, options: [JSONSerialization.ReadingOptions.mutableContainers,.allowFragments]) as! Array<NSDictionary>
                     
                     cdis.forEach{ cdiValue in
@@ -72,7 +72,7 @@ class FixedService{
             if let dataIpca = dataIpca {
                 do{
                     var ipcas: Array<NSDictionary> = []
-                    print(String(data: dataIpca, encoding: String.Encoding.utf8))
+                    //print(String(data: dataIpca, encoding: String.Encoding.utf8))
                     ipcas = try JSONSerialization.jsonObject(with: dataIpca, options: [JSONSerialization.ReadingOptions.mutableContainers,.allowFragments]) as! Array<NSDictionary>
                     
                     ipcas.forEach{ ipcaValue in

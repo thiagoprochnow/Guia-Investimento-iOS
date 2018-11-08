@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Guia Investimento/Code/Premium/Service/SubscriptionService.swift"
-            timestampString = "563327367.490363"
+            timestampString = "563412114.565612"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
             landmarkName = "receiptValidation()"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,59 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Guia Investimento/Code/Premium/Service/SubscriptionService.swift"
-            timestampString = "563327367.490455"
+            timestampString = "563412114.565944"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "178"
-            endingLineNumber = "178"
-            landmarkName = "receiptValidation()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Guia_Investimento.SubscriptionService.receiptValidation() -&gt; ()"
-                  moduleName = "Guia Investimento"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/felipe/Desktop/iOS/Guia%20Investimento/Guia%20Investimento/Code/Premium/Service/SubscriptionService.swift"
-                  timestampString = "561515452.8799599"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "138"
-                  endingLineNumber = "138"
-                  offsetFromSymbolStart = "1076">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Guia_Investimento.SubscriptionService.receiptValidation() -&gt; ()"
-                  moduleName = "Guia Investimento"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/felipe/Desktop/iOS/Guia%20Investimento/Guia%20Investimento/Code/Premium/Service/SubscriptionService.swift"
-                  timestampString = "561515452.883526"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "138"
-                  endingLineNumber = "138"
-                  offsetFromSymbolStart = "2044">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Guia Investimento/Code/Premium/Service/SubscriptionService.swift"
-            timestampString = "563327367.4905241"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
             landmarkName = "receiptValidation()"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,125 +42,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Guia Investimento/Code/Premium/Service/SubscriptionService.swift"
-            timestampString = "563327367.490593"
+            timestampString = "563412114.5660141"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
             landmarkName = "receiptValidation()"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Guia Investimento/Code/Premium/Service/SubscriptionService.swift"
-            timestampString = "563327367.490652"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "166"
-            endingLineNumber = "166"
-            landmarkName = "receiptValidation()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Guia Investimento/Code/Premium/Service/SubscriptionService.swift"
-            timestampString = "563327367.490712"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
-            landmarkName = "paymentQueue(_:updatedTransactions:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Guia Investimento/Code/KYDrawerController/DrawerViewController.swift"
-            timestampString = "561951546.281878"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "407"
-            endingLineNumber = "407"
-            landmarkName = "updateView()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Guia Investimento/Code/General/Utils.swift"
-            timestampString = "561951644.550513"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "285"
-            endingLineNumber = "285"
-            landmarkName = "updateFiiPortfolio()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Guia Investimento/Code/General/Utils.swift"
-            timestampString = "561951668.273635"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "278"
-            endingLineNumber = "278"
-            landmarkName = "updateFiiPortfolio()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static Guia_Investimento.Utils.updateFiiPortfolio() -&gt; ()"
-                  moduleName = "Guia Investimento"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/felipe/Desktop/iOS/Guia%20Investimento/Guia%20Investimento/Code/General/Utils.swift"
-                  timestampString = "561951670.927137"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "278"
-                  endingLineNumber = "278"
-                  offsetFromSymbolStart = "560">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (Guia_Investimento.FiiData) -&gt; () in static Guia_Investimento.Utils.updateFiiPortfolio() -&gt; ()"
-                  moduleName = "Guia Investimento"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/felipe/Desktop/iOS/Guia%20Investimento/Guia%20Investimento/Code/General/Utils.swift"
-                  timestampString = "561951670.9315259"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "279"
-                  endingLineNumber = "279"
-                  offsetFromSymbolStart = "76">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
