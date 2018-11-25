@@ -53,10 +53,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         subscription.fetchAvailableProducts()
         subscription.receiptValidation()
         
-        // Update Fixed CDI and IPCA tables
-        FixedService.updateFixedQuotes({(_ cdis:Array<Cdi>,ipcas:Array<Ipca>,error:String) -> Void in
-        })
-        
         return true
     }
     
