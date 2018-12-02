@@ -126,7 +126,6 @@ class SubscriptionService: NSObject, SKProductsRequestDelegate, SKPaymentTransac
     func receiptValidation() {
         let SUBSCRIPTION_SECRET = "34ed2f6ff7d1498eac992c2406ecdde6"
         let receiptPath = Bundle.main.appStoreReceiptURL?.path
-        self.isPremium = false
         if FileManager.default.fileExists(atPath: receiptPath!){
             var receiptData:NSData?
             do{
