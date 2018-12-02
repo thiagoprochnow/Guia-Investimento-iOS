@@ -80,7 +80,13 @@ class StockService{
                                                 // Matching symbols
                                                 if(symbol == quoteSymbol){
                                                     if(quote["lastTrade"] != nil){
-                                                        let lastTrade = quote["lastTrade"] as! Double
+                                                        var lastTrade = 0.0
+                                                        
+                                                        if(quote["lastTrade"] as! Double > 0){
+                                                            lastTrade = quote["lastTrade"] as! Double
+                                                        } else {
+                                                            lastTrade = quote["previous"] as! Double
+                                                        }
                                                         stock.currentPrice = lastTrade
                                                         stock.closingPrice = quote["previous"] as! Double
                                                         stock.updateStatus = Constants.UpdateStatus.UPDATED
