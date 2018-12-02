@@ -29,6 +29,8 @@ class BuyTreasuryForm: UIViewController, UITextFieldDelegate{
         self.navigationItem.rightBarButtonItem = btInsert
         self.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
         
+        scrollView.contentOffset.x = 0
+        
         // Delegade UITextFieldDelagate to self
         symbolTextField.delegate = self
         quantityTextField.delegate = self
