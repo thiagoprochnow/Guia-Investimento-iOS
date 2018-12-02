@@ -10,22 +10,6 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Guia Investimento/Code/Premium/Service/SubscriptionService.swift"
-            timestampString = "563412114.565612"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
-            landmarkName = "receiptValidation()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Guia Investimento/Code/Premium/Service/SubscriptionService.swift"
             timestampString = "563412114.565944"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
