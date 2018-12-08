@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="1633" id="hU3-UV-nyM" customClass="FaqCell" customModule="Guia_Investimento" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="1633"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="1682" id="hU3-UV-nyM" customClass="FaqCell" customModule="Guia_Investimento" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="1682"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hU3-UV-nyM" id="lgT-pd-sdx">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="1632.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="1681.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="WGC-y6-F3u">
@@ -55,9 +54,9 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="200" id="LOd-aP-Bbp"/>
                         </constraints>
-                        <mutableString key="text">Para que os seus titulos do tesouro sejam atualizados automaticamente, é necessario que o nome seja exatamente como o sugerido pelo app na hora de inserir. Quando começar a digitar o nome, comece por "Tesouro..." que logo o app ira sugerir o nome de todos os titulos disponiveis. Se não encontrar o seu, entre em contato para que possamos adiciona-lo. Se você inserir nomes como NTNB 2024 ou LFT 2023, o app não conseguirá pegar as cotações automaticamente, mas você poderá atualiza-las manualmente caso deseje.
+                        <string key="text">Para que os seus titulos do tesouro sejam atualizados automaticamente, é necessario que o nome seja exatamente como o sugerido pelo app na hora de inserir. Quando começar a digitar o nome, comece por "Tesouro..." que logo o app ira sugerir o nome de todos os titulos disponiveis. Se não encontrar o seu, entre em contato para que possamos adiciona-lo. Se você inserir nomes como NTNB 2024 ou LFT 2023, o app não conseguirá pegar as cotações automaticamente, mas você poderá atualiza-las manualmente caso deseje.
 
-</mutableString>
+</string>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
@@ -66,7 +65,7 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="217" id="dI3-X9-4mR"/>
                         </constraints>
-                        <mutableString key="text">Quando você começar a digitar para inserir uma ação ou fundo imobiliario, o app ira sugerir o código baseado em uma lista que tem de códigos disponíveis. Entretanto, essa é apenas uma sugestão e pode ser que o seu ativo seja novo no mercado e ainda não tenha na base do aplicativo, mas isso não quer dizer que se você tentar inserir, o aplicativo não deixará. Se o ativo existe, é pra você conseguir inserir ele e o aplicativo deverá atulizar seus dados automaticamente de forma normal. Caso isso não aconteca, por favor entre em contato para que eu possa verificar.</mutableString>
+                        <string key="text">Quando você começar a digitar para inserir uma ação ou fundo imobiliario, o app ira sugerir o código baseado em uma lista que tem de códigos disponíveis. Entretanto, essa é apenas uma sugestão e pode ser que o seu ativo seja novo no mercado e ainda não tenha na base do aplicativo, mas isso não quer dizer que se você tentar inserir, o aplicativo não deixará. Se o ativo existe, é pra você conseguir inserir ele e o aplicativo deverá atulizar seus dados automaticamente de forma normal. Caso isso não aconteca, por favor entre em contato para que eu possa verificar.</string>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
@@ -113,7 +112,7 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="262" id="BMK-fi-2Kq"/>
                         </constraints>
-                        <mutableString key="text">O desenvolvimento do aplicativo tem um custo mensal moderado para pegar as cotações da Bovespa. Infelizmente a bovespa não oferece um serviço para ler cotações grátis, nem mesmo com atraso de 15 minutos. O custo é relativamente alto para um desenvolvedor independente. Hoje, ainda com as assinaturas ativas, ainda estou pagando pagando para manter e desenvolver o app. Com isso eu limitei a atualização automática a 5 ações, 3 fundos imobiliarios e 1 tesouro para a versão grátis. Assim, pequenos desenvolvedores conseguem usar o aplicativo sem problema, e conforme forem crescendo, vão poder ter condições de assinar a versão paga e contribuir com o app.</mutableString>
+                        <string key="text">O desenvolvimento do aplicativo tem um custo mensal moderado para pegar as cotações da Bovespa. Infelizmente a bovespa não oferece um serviço para ler cotações grátis, nem mesmo com atraso de 15 minutos. O custo é relativamente alto para um desenvolvedor independente. Hoje, ainda com as assinaturas ativas, ainda estou pagando pagando para manter e desenvolver o app. Com isso eu limitei a atualização automática a 5 ações, 3 fundos imobiliarios e 1 tesouro para a versão grátis. Assim, pequenos desenvolvedores conseguem usar o aplicativo sem problema, e conforme forem crescendo, vão poder ter condições de assinar a versão paga e contribuir com o app.</string>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
@@ -133,14 +132,13 @@
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="EH4-Vw-Zy8">
-                        <rect key="frame" x="16" y="1409" width="343" height="200"/>
+                        <rect key="frame" x="16" y="1409" width="343" height="262"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="200" id="mBf-kD-Cnr"/>
+                            <constraint firstAttribute="height" constant="262" id="mBf-kD-Cnr"/>
                         </constraints>
-                        <string key="text">Se você está com algum problema, duvida ou tem alguma sugestão do app, e não consegue achar a solução, fique a contade em me mandar um email, tento ajudar assim como eu puder. Normalmente respondo em no máximo 1-2 dias com uma resposta completa de como você poderá resolver seu problema. Sugestões também são sempre bem vindas.
+                        <mutableString key="text">Se você está com algum problema, duvida ou tem alguma sugestão do app, e não consegue achar a solução, fique a contade em me mandar um email, tento ajudar assim como eu puder. Normalmente respondo em no máximo 1-2 dias com uma resposta completa de como você poderá resolver seu problema. Sugestões também são sempre bem vindas.
 
-Entre em contato por:
-contato@guiainvestimento.com.br</string>
+Entre em contato por:  contato@guiainvestimento.com.br</mutableString>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
@@ -220,7 +218,7 @@ contato@guiainvestimento.com.br</string>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
-            <point key="canvasLocation" x="-7.5" y="790.5"/>
+            <point key="canvasLocation" x="-8.8000000000000007" y="812.29385307346331"/>
         </tableViewCell>
     </objects>
 </document>
