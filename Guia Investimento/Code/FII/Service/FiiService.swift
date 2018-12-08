@@ -165,7 +165,7 @@ class FiiService{
                     if let data = data {
                         var fiiIncomes: Array<NSDictionary> = []
                         do{
-                            print(String(data: data, encoding: String.Encoding.utf8))
+                            //print(String(data: data, encoding: String.Encoding.utf8))
                             fiiIncomes = try JSONSerialization.jsonObject(with: data, options: [JSONSerialization.ReadingOptions.mutableContainers,.allowFragments]) as! Array<NSDictionary>
                             
                             fiiIncomes.forEach{ income in

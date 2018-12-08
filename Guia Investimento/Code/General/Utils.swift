@@ -38,7 +38,7 @@ class Utils {
     
     // Check if inputted symbol is correct FII symbol
     class func isValidFiiSymbol(symbol: String) -> Bool{
-        let regex = "^[A-Z0-9]{4}([0-9]|[0-9][A-Z]|[0-9][0-9])$"
+        let regex = "^[A-Z0-9]{4}([0-9][0-9][A-Z]|[0-9][0-9])$"
         return matches(regex: regex, text: symbol)
     }
     

@@ -165,7 +165,7 @@ class StockService{
                     if let data = data {
                         var stockIncomes: Array<NSDictionary> = []
                         do{
-                            print(String(data: data, encoding: String.Encoding.utf8))
+                            //print(String(data: data, encoding: String.Encoding.utf8))
                             stockIncomes = try JSONSerialization.jsonObject(with: data, options: [JSONSerialization.ReadingOptions.mutableContainers,.allowFragments]) as! Array<NSDictionary>
                             
                             stockIncomes.forEach{ income in

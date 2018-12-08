@@ -55,7 +55,7 @@ class TreasuryService{
                             if let data = data {
                                 var treasuryIncomes: Array<NSDictionary> = []
                                 do{
-                                    print(String(data: data, encoding: String.Encoding.utf8))
+                                    //print(String(data: data, encoding: String.Encoding.utf8))
                                     let treasuryQuote = try JSONSerialization.jsonObject(with: data, options: [JSONSerialization.ReadingOptions.mutableContainers,.allowFragments]) as! NSDictionary
                                     treasury.currentPrice = treasuryQuote["valor"] as! Double
                                     treasury.updateStatus = Constants.UpdateStatus.UPDATED

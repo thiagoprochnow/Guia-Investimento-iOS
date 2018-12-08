@@ -36,7 +36,7 @@ class CurrencyService{
                         count = count + 1
                         if let data = data {
                             do{
-                                print(String(data: data, encoding: String.Encoding.utf8))
+                                //print(String(data: data, encoding: String.Encoding.utf8))
                                 let currencyQuote = try JSONSerialization.jsonObject(with: data, options: [JSONSerialization.ReadingOptions.mutableContainers,.allowFragments]) as! NSDictionary
                                 let valores = currencyQuote["valores"] as! NSDictionary
                                 let moeda = valores[symbol] as! NSDictionary
@@ -74,7 +74,7 @@ class CurrencyService{
                         count = count + 1
                         if let data = data {
                             do{
-                                print(String(data: data, encoding: String.Encoding.utf8))
+                                //print(String(data: data, encoding: String.Encoding.utf8))
                                 let currencyQuote = try JSONSerialization.jsonObject(with: data, options: [JSONSerialization.ReadingOptions.mutableContainers,.allowFragments]) as! NSDictionary
                                 let ticker = currencyQuote["ticker"] as! NSDictionary
                                 let last = ticker["last"] as! String
