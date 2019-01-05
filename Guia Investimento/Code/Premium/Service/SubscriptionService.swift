@@ -76,16 +76,9 @@ class SubscriptionService: NSObject, SKProductsRequestDelegate, SKPaymentTransac
     
     func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
         receiptValidation()
-        let alert = UIAlertView()
-        alert.title = "Restauração feito com sucesso!"
-        alert.delegate = self
-        alert.addButton(withTitle: "OK")
-        alert.message = "Se você já efetuou a assinatura do app para esse Apple ID e ela ainda for válida, você deve conseguir acessar o conteúdo premium normalmente."
-        alert.show()
     }
     
     func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
-        receiptValidation()
         let alert = UIAlertView()
         alert.title = "Restauração falhou!"
         alert.delegate = self
@@ -99,7 +92,7 @@ class SubscriptionService: NSObject, SKProductsRequestDelegate, SKPaymentTransac
     
     func handlePurchasedState(for transaction: SKPaymentTransaction, in queue: SKPaymentQueue) {
         queue.finishTransaction(transaction)
-        receiptValidation()
+        restorePurchases()
     }
     
     func handleRestoredState(for transaction: SKPaymentTransaction, in queue: SKPaymentQueue) {

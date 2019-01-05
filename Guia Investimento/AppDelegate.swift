@@ -51,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         subscription = SubscriptionService()
         subscription.fetchAvailableProducts()
-        subscription.receiptValidation()
+        subscription.restorePurchases()
         
         return true
     }
