@@ -18,8 +18,8 @@ class BuyCurrencyForm: UIViewController, UITextFieldDelegate, UIPickerViewDelega
     var symbol: String = "USD"
     var id: Int = 0
     var prealodedTransaction: CurrencyTransaction!
-    let symbolKeys = ["USD","EUR","BTC","LTC"]
-    let symbolValues = ["Dolar","Euro","Bitcoin","Litecoin"]
+    let symbolKeys = ["USD","EUR","BTC","LTC","ETH"]
+    let symbolValues = ["Dolar","Euro","Bitcoin","Litecoin","Etherium"]
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -168,6 +168,8 @@ class Utils {
             return 2
         } else if(symbol == "LTC"){
             return 3
+        } else if(symbol == "ETH"){
+            return 4
         }
         //Default
         return 0
@@ -183,6 +185,8 @@ class Utils {
             return "Bitcoin"
         } else if(symbol == "LTC"){
             return "Litecoin"
+        } else if(symbol == "ETH"){
+            return "Etherium"
         }
         //Default
         return "Dolar"

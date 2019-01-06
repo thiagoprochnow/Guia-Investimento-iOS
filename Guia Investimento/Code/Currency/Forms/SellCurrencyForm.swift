@@ -14,8 +14,8 @@ class SellCurrencyForm: UIViewController, UITextFieldDelegate, UIPickerViewDeleg
     @IBOutlet var priceTextField: UITextField!
     @IBOutlet var datePicker: UIDatePicker!
     @IBOutlet var scrollView: UIScrollView!
-    let symbolKeys = ["USD","EUR","BTC","LTC"]
-    let symbolValues = ["Dolar","Euro","Bitcoin","Litecoin"]
+    let symbolKeys = ["USD","EUR","BTC","LTC","ETH"]
+    let symbolValues = ["Dolar","Euro","Bitcoin","Litecoin","Etherium"]
     var symbol: String = "USD"
     var id: Int = 0
     var prealodedTransaction: CurrencyTransaction!
