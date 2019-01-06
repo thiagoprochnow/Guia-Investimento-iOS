@@ -20,6 +20,7 @@ class CurrencyService{
         var success: Bool = true
         var result = "false"
         var returnCurrencies: Array<CurrencyData> = []
+        var alphaKey = "FXVK1K9EYIJHIOEX"
         
         let http = URLSession.shared
         var count = 0
@@ -29,7 +30,7 @@ class CurrencyService{
                 let symbol = currency.symbol
                 // Dolar e Euro
                 if(symbol == "USD" || symbol == "EUR"){
-                    let url = URL(string: "http://api.promasters.net.br/cotacao/v1/valores?moedas=" + symbol+"&alt=json")!
+                    let url = URL(string: "https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=" + symbol + "&to_currency=BRL&apikey=" + alphaKey)!
                     var request = URLRequest(url: url)
                     request.httpMethod = "GET"
                     http.dataTask(with: request){(data, response, error) in
@@ -37,14 +38,20 @@ class CurrencyService{
                         if let data = data {
                             do{
                                 //print(String(data: data, encoding: String.Encoding.utf8))
-                                let currencyQuote = try JSONSerialization.jsonObject(with: data, options: [JSONSerialization.ReadingOptions.mutableContainers,.allowFragments]) as! NSDictionary
-                                let valores = currencyQuote["valores"] as! NSDictionary
-                                let moeda = valores[symbol] as! NSDictionary
-                                let valor = moeda["valor"]
-                                currency.currentPrice = valor as! Double
-                                currency.updateStatus = Constants.UpdateStatus.UPDATED
-                                returnCurrencies.append(currency)
-                                result = "true"
+                                let currencyQuote = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions(rawValue: 0)) as! NSDictionary
+                                let note = currencyQuote["Note"] as! String!
+                                if(note == nil){
+                                    let valores = currencyQuote["Realtime Currency Exchange Rate"] as! NSDictionary!
+                                    let valor = valores?["5. Exchange Rate"] as! String
+                                    currency.currentPrice = Double(valor) ?? 0
+                                    currency.updateStatus = Constants.UpdateStatus.UPDATED
+                                    returnCurrencies.append(currency)
+                                    result = "true"
+                                } else {
+                                    currency.updateStatus = Constants.UpdateStatus.NOT_UPDATED
+                                    returnCurrencies.append(currency)
+                                    result = "false"
+                                }
                             } catch {
                                 currency.updateStatus = Constants.UpdateStatus.NOT_UPDATED
                                 returnCurrencies.append(currency)
@@ -52,7 +59,7 @@ class CurrencyService{
                             }
                         }
                         if let response = response{
-                            print(response)
+                            //print(response)
                         }
                         if let error = error {
                             // Return fail to main thread
