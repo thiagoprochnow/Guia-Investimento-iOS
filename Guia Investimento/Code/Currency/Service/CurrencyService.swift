@@ -96,7 +96,7 @@ class CurrencyService{
                             }
                         }
                         if let response = response{
-                            print(response)
+                            //print(response)
                         }
                         if let error = error {
                             // Return fail to main thread

@@ -170,6 +170,10 @@ class Utils {
             return 3
         } else if(symbol == "ETH"){
             return 4
+        } else if(symbol == "BCH"){
+            return 5
+        } else if(symbol == "XRP"){
+            return 6
         }
         //Default
         return 0
@@ -187,6 +191,10 @@ class Utils {
             return "Litecoin"
         } else if(symbol == "ETH"){
             return "Etherium"
+        } else if(symbol == "BCH"){
+            return "BCash"
+        } else if(symbol == "XRP"){
+            return "Ripple"
         }
         //Default
         return "Dolar"
