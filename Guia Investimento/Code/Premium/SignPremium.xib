@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -142,12 +142,12 @@
                                 <constraint firstAttribute="height" constant="594" id="TCH-7d-xCO"/>
                             </constraints>
                             <mutableString key="text">Premium Content/Conteudo Premium  • Unlimited access to all automatic updates on the portfolio.
-• Automatic incomes for all your stocks and fiis.  Terms:  • Monthly/Mensal: Your subscription will be valid for 1 month and will be auto renewed until you cancel it. • Semester/Semestral: Your subscription will be valid for 6 months and will be auto renewed until you cancel it.
+• Automatic incomes for all your stocks and fiis.   • Monthly/Mensal (R$4,90): Your subscription will be valid for 1 month and will be auto renewed until you cancel it. • Semester/Semestral (R$19,90): Your subscription will be valid for 6 months and will be auto renewed until you cancel it.
 • Payment will be charged to iTunes Account at confirmation of purchase
 • Subscription automatically renews unless auto-renew is turned off at least 24-hours before the end of the current period
 • Account will be charged for renewal within 24-hours prior to the end of the current period, and identify the cost of the renewal
 • Subscriptions may be managed by the user and auto-renewal may be turned off by going to the user's Account Settings after purchase
-• Any unused portion of a free trial period, if offered, will be forfeited when the user purchases a subscription to that publication, where applicable.</mutableString>
+• Any unused portion of a free trial period, if offered, will be forfeited when the user purchases a subscription to that publication, where applicable.  Terms of Use: http://www.guiainvestimento.com.br/terms_use.html</mutableString>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
