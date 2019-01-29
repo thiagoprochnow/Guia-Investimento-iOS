@@ -13,8 +13,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignPremium" customModule="Guia_Investimento" customModuleProvider="target">
             <connections>
                 <outlet property="mensalButton" destination="iVC-2J-zdT" id="sKh-ax-88b"/>
+                <outlet property="privacy" destination="2Eo-Xy-SJH" id="mev-oO-H3O"/>
                 <outlet property="restoreButton" destination="QuS-NO-CEi" id="nqW-eq-CMD"/>
                 <outlet property="semestralButton" destination="QdJ-Ar-pS6" id="pFd-8w-FWy"/>
+                <outlet property="terms" destination="Fxe-T1-8v8" id="Rce-dZ-7fN"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Qju-Yl-sXg"/>
             </connections>
         </placeholder>
@@ -135,11 +137,11 @@
                                 <constraint firstAttribute="bottom" secondItem="fIj-r1-jNj" secondAttribute="bottom" id="pB4-r8-E9Q"/>
                             </constraints>
                         </view>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="S8I-7w-tvT">
-                            <rect key="frame" x="16" y="245" width="341" height="594"/>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="S8I-7w-tvT">
+                            <rect key="frame" x="16" y="245" width="341" height="486"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="594" id="TCH-7d-xCO"/>
+                                <constraint firstAttribute="height" constant="486" id="TCH-7d-xCO"/>
                             </constraints>
                             <mutableString key="text">Premium Content/Conteudo Premium  • Unlimited access to all automatic updates on the portfolio.
 • Automatic incomes for all your stocks and fiis.   • Monthly/Mensal (R$4,90): Your subscription will be valid for 1 month and will be auto renewed until you cancel it. • Semester/Semestral (R$19,90): Your subscription will be valid for 6 months and will be auto renewed until you cancel it.
@@ -147,15 +149,34 @@
 • Subscription automatically renews unless auto-renew is turned off at least 24-hours before the end of the current period
 • Account will be charged for renewal within 24-hours prior to the end of the current period, and identify the cost of the renewal
 • Subscriptions may be managed by the user and auto-renewal may be turned off by going to the user's Account Settings after purchase
-• Any unused portion of a free trial period, if offered, will be forfeited when the user purchases a subscription to that publication, where applicable.  Terms of Use: http://www.guiainvestimento.com.br/terms_use.html</mutableString>
+• Any unused portion of a free trial period, if offered, will be forfeited when the user purchases a subscription to that publication, where applicable. </mutableString>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="Terms of Use" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Fxe-T1-8v8">
+                            <rect key="frame" x="16" y="739" width="343" height="27"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="27" id="KIb-rS-NjH"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                        </textView>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="Privacy Policy" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2Eo-Xy-SJH">
+                            <rect key="frame" x="16" y="774" width="343" height="27"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="27" id="lUp-3p-EWW"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            <dataDetectorType key="dataDetectorTypes" link="YES"/>
                         </textView>
                     </subviews>
                     <constraints>
                         <constraint firstItem="XRy-uP-csS" firstAttribute="leading" secondItem="s2y-pI-Alk" secondAttribute="leading" id="0gb-Hu-5Bi"/>
                         <constraint firstItem="XRy-uP-csS" firstAttribute="centerX" secondItem="iVC-2J-zdT" secondAttribute="centerX" constant="1" id="30n-VH-q5h"/>
                         <constraint firstAttribute="width" constant="375" id="9XW-Nf-8aA"/>
+                        <constraint firstItem="2Eo-Xy-SJH" firstAttribute="top" secondItem="Fxe-T1-8v8" secondAttribute="bottom" constant="8" id="KK9-5b-vKo"/>
                         <constraint firstItem="QuS-NO-CEi" firstAttribute="leading" secondItem="QdJ-Ar-pS6" secondAttribute="leading" id="KRK-hA-GxC"/>
                         <constraint firstItem="iVC-2J-zdT" firstAttribute="leading" secondItem="s2y-pI-Alk" secondAttribute="leading" constant="41" id="N5l-km-BJ2"/>
                         <constraint firstItem="iVC-2J-zdT" firstAttribute="top" secondItem="XRy-uP-csS" secondAttribute="bottom" constant="21" id="P9S-db-APh"/>
@@ -164,16 +185,21 @@
                         <constraint firstAttribute="trailing" secondItem="XRy-uP-csS" secondAttribute="trailing" id="VnB-Yd-vqP"/>
                         <constraint firstItem="iVC-2J-zdT" firstAttribute="trailing" secondItem="QdJ-Ar-pS6" secondAttribute="trailing" id="Xhs-Qq-uyY"/>
                         <constraint firstItem="XRy-uP-csS" firstAttribute="top" secondItem="s2y-pI-Alk" secondAttribute="top" constant="7" id="apz-eM-vQ0"/>
+                        <constraint firstItem="2Eo-Xy-SJH" firstAttribute="leading" secondItem="s2y-pI-Alk" secondAttribute="leading" constant="16" id="bIl-zT-JEY"/>
                         <constraint firstItem="iVC-2J-zdT" firstAttribute="centerX" secondItem="s2y-pI-Alk" secondAttribute="centerX" constant="-1" id="foE-Hm-Vih"/>
                         <constraint firstItem="iVC-2J-zdT" firstAttribute="top" secondItem="XRy-uP-csS" secondAttribute="bottom" constant="21" id="iFe-dn-T51"/>
+                        <constraint firstItem="Fxe-T1-8v8" firstAttribute="leading" secondItem="s2y-pI-Alk" secondAttribute="leading" constant="16" id="lRq-E8-QtE"/>
                         <constraint firstItem="XRy-uP-csS" firstAttribute="top" secondItem="s2y-pI-Alk" secondAttribute="top" constant="7" id="nEe-ui-EgQ"/>
+                        <constraint firstAttribute="trailing" secondItem="Fxe-T1-8v8" secondAttribute="trailing" constant="16" id="p87-vO-s0k"/>
                         <constraint firstItem="S8I-7w-tvT" firstAttribute="top" secondItem="QuS-NO-CEi" secondAttribute="bottom" constant="8" id="q5t-As-Lhv"/>
                         <constraint firstItem="iVC-2J-zdT" firstAttribute="leading" secondItem="QdJ-Ar-pS6" secondAttribute="leading" id="rIT-qj-sre"/>
                         <constraint firstItem="QuS-NO-CEi" firstAttribute="top" secondItem="QdJ-Ar-pS6" secondAttribute="bottom" constant="12" id="sW6-af-zxf"/>
                         <constraint firstItem="XRy-uP-csS" firstAttribute="leading" secondItem="s2y-pI-Alk" secondAttribute="leading" id="sdr-ar-gvx"/>
+                        <constraint firstItem="Fxe-T1-8v8" firstAttribute="top" secondItem="S8I-7w-tvT" secondAttribute="bottom" constant="8" id="uin-cY-9hf"/>
                         <constraint firstItem="QdJ-Ar-pS6" firstAttribute="top" secondItem="iVC-2J-zdT" secondAttribute="bottom" constant="11" id="v11-yr-je9"/>
-                        <constraint firstAttribute="bottom" secondItem="S8I-7w-tvT" secondAttribute="bottom" constant="77" id="vV7-49-vtO"/>
+                        <constraint firstAttribute="bottom" secondItem="S8I-7w-tvT" secondAttribute="bottom" constant="185" id="vV7-49-vtO"/>
                         <constraint firstItem="QuS-NO-CEi" firstAttribute="trailing" secondItem="QdJ-Ar-pS6" secondAttribute="trailing" id="vsK-sU-62B"/>
+                        <constraint firstAttribute="trailing" secondItem="2Eo-Xy-SJH" secondAttribute="trailing" constant="16" id="vsi-qL-BNt"/>
                         <constraint firstItem="S8I-7w-tvT" firstAttribute="leading" secondItem="s2y-pI-Alk" secondAttribute="leading" constant="16" id="ywf-ul-2Sa"/>
                     </constraints>
                 </scrollView>
