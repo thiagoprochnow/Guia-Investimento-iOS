@@ -13,6 +13,9 @@ class StockService{
         let stockDataDB = StockDataDB()
         var stocks:Array<StockData> = []
         
+        let apiKey = "FXVK1K9EYIJHIOEX";
+        let function = "TIME_SERIES_DAILY";
+        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         var subscription = appDelegate.subscription
         
@@ -24,117 +27,74 @@ class StockService{
         stockDataDB.close()
         var returnStocks: Array<StockData> = []
         var success: Bool = true
+        var result = "true"
         
         var limit = 0
         var size = 0
+        var count = 0
         
         if(stocks.count > 0){
             // Prepare http request to webservice
             let http = URLSession.shared
-            let postURL = URL(string: "http://webfeeder.cedrofinances.com.br/SignIn?login=thiprochnow&password=4schGOS")
-            var postRequest = URLRequest(url: postURL!)
             
-            var symbolsURL:String = ""
-            stocks.forEach{ stock in
+            var stockQuotes: Array<NSDictionary> = []
+            
+            for (index, stock) in stocks.enumerated() {
                 if(limit < 5){
-                    symbolsURL += "/" + stock.symbol.lowercased()
-                }
-                // count for free version
-                if(subscription!.isPremium == false){
-                    limit = limit + 1
-                }
-            }
-            
-            postRequest.httpMethod = "POST"
-            http.dataTask(with: postRequest) { (data, response, error) in
-                    // Return from POST
-                    if let data = data {
-                        let postResult = String(data: data, encoding: String.Encoding.utf8)!
-                        // Success on authentication
-                        if(postResult == "true"){
-                            // Success on authentication
-                            let getURL = URL(string: "http://webfeeder.cedrofinances.com.br/services/quotes/quote"+symbolsURL)
-                            // Get quotes
-                            var getRequest = URLRequest(url: getURL!)
-                            getRequest.httpMethod = "GET"
-                            http.dataTask(with: getRequest) { (getData, getResponse, getError) in
-                                // Return from GET
-                                if let getData = getData {
-                                    do {
-                                        var stockQuotes: Array<NSDictionary> = []
+                    let getURL = URL(string: "http://www.alphavantage.co/query?function="+function+"&symbol="+stock.symbol+".SA&apikey="+apiKey)
+                    // Get quotes
+                    var getRequest = URLRequest(url: getURL!)
+                    getRequest.httpMethod = "GET"
+                    http.dataTask(with: getRequest) { (getData, getResponse, getError) in
+                        // Return from GET
+                        count = count + 1
+                        if let getData = getData {
+                            do {
+                                // Needed because the return is different in case of one stock or many stocks
+                                let responseObj = try JSONSerialization.jsonObject(with: getData, options: [JSONSerialization.ReadingOptions.mutableContainers,.allowFragments]) as! NSDictionary
+                                if(responseObj.count > 1){
+                                    let quotes = responseObj["Time Series (Daily)"] as! [String:NSDictionary]
+                                    let sortedQuotes = quotes.sorted(by: {$0.key > $1.key})
+                                    let firstQuote = sortedQuotes[0].value
+                                    let previousQuote = sortedQuotes[1].value
+                                    
+                                    if(firstQuote["4. close"] != nil){
+                                        var lastTrade = firstQuote["4. close"] as! String
+                                        var previousTrade = previousQuote["4. close"] as! String
                                         
-                                        // Needed because the return is different in case of one stock or many stocks
-                                        if(stocks.count > 1){
-                                        stockQuotes = try JSONSerialization.jsonObject(with: getData, options: [JSONSerialization.ReadingOptions.mutableContainers,.allowFragments]) as! Array<NSDictionary>
-                                        } else {
-                                            let quote = try JSONSerialization.jsonObject(with: getData, options: [JSONSerialization.ReadingOptions.mutableContainers,.allowFragments]) as! NSDictionary
-                                            stockQuotes.append(quote)
-                                        }
-                                        stocks.forEach{ stock in
-                                            let symbol = stock.symbol.lowercased()
-                                            var found:Bool = false
-                                            stockQuotes.forEach{ quote in
-                                                var quoteSymbol:String = quote["symbol"] as! String
-                                                quoteSymbol = quoteSymbol.lowercased()
-                                                
-                                                // Matching symbols
-                                                if(symbol == quoteSymbol){
-                                                    if(quote["lastTrade"] != nil){
-                                                        var lastTrade = 0.0
-                                                        
-                                                        if(quote["lastTrade"] as! Double > 0){
-                                                            lastTrade = quote["lastTrade"] as! Double
-                                                        } else {
-                                                            lastTrade = quote["previous"] as! Double
-                                                        }
-                                                        stock.currentPrice = lastTrade
-                                                        stock.closingPrice = quote["previous"] as! Double
-                                                        stock.updateStatus = Constants.UpdateStatus.UPDATED
-                                                        found = true
-                                                    } else {
-                                                        stock.closingPrice = 0.0
-                                                        stock.updateStatus = Constants.UpdateStatus.NOT_UPDATED
-                                                    }
-                                                }
-                                            }
-                                            if(found == false){
-                                                stock.updateStatus = Constants.UpdateStatus.NOT_UPDATED
-                                            }
-                                            returnStocks.append(stock)
-                                        }
-                                        if(limit > 5){
-                                            callback(returnStocks, "limit")
-                                        } else {
-                                            callback(returnStocks, "true")
-                                        }
-                                    }catch {
-                                        print(error)
+                                        stock.currentPrice = Double(lastTrade)!
+                                        stock.closingPrice = Double(previousTrade)!
+                                        stock.updateStatus = Constants.UpdateStatus.UPDATED
+                                    } else {
+                                        stock.closingPrice = 0.0
+                                        stock.updateStatus = Constants.UpdateStatus.NOT_UPDATED
                                     }
+                                } else {
+                                    stock.updateStatus = Constants.UpdateStatus.NOT_UPDATED
                                 }
-                                if let getError = getError {
-                                    success = false
-                                }
-                            }.resume()
-                        } else {
-                            // Return fail to main thread
-                            stocks.forEach{ stock in
+                                returnStocks.append(stock)
+                            }catch {
+                                print(error)
                                 stock.updateStatus = Constants.UpdateStatus.NOT_UPDATED
                                 returnStocks.append(stock)
+                                result = "false"
                             }
-                            callback(returnStocks,"false")
                         }
-                    }
-                    if let error = error {
-                        // Return fail to main thread
-                        stocks.forEach{ stock in
-                            stock.updateStatus = Constants.UpdateStatus.NOT_UPDATED
-                            returnStocks.append(stock)
+                        if let getError = getError {
+                            success = false
                         }
-                        callback(returnStocks,"false")
-                    }
-                }.resume()
-        } else {
-            callback(returnStocks,"")
+                        
+                        // only calls callback for last item
+                        if(count == (stocks.count)){
+                            callback(returnStocks,result)
+                        }
+                    }.resume()
+                } else {
+                    stock.updateStatus = Constants.UpdateStatus.NOT_UPDATED
+                    returnStocks.append(stock)
+                    result = "limit"
+                }
+            }
         }
     }
     
@@ -209,7 +169,7 @@ class StockService{
                     if(count == (stocks.count)){
                         callback(returnIncomes, result)
                     }
-                }.resume()
+                    }.resume()
             }
         } else {
             callback(returnIncomes, true)
