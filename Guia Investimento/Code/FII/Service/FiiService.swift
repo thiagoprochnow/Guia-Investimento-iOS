@@ -14,7 +14,7 @@ class FiiService{
         var fiis:Array<FiiData> = []
         
         let apiKey = "XT5MYEQ27BZ6LXYC";
-        let function = "TIME_SERIES_DAILY";
+        let function = "GLOBAL_QUOTE";
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         var subscription = appDelegate.subscription
@@ -50,15 +50,12 @@ class FiiService{
                             do {
                                 // Needed because the return is different in case of one stock or many stocks
                                 let responseObj = try JSONSerialization.jsonObject(with: getData, options: [JSONSerialization.ReadingOptions.mutableContainers,.allowFragments]) as! NSDictionary
-                                if(responseObj.count > 1){
-                                    let quotes = responseObj["Time Series (Daily)"] as! [String:NSDictionary]
-                                    let sortedQuotes = quotes.sorted(by: {$0.key > $1.key})
-                                    let firstQuote = sortedQuotes[0].value
-                                    let previousQuote = sortedQuotes[1].value
+                                if(responseObj["Global Quote"] != nil){
+                                    let quotes = responseObj["Global Quote"] as! NSDictionary
                                     
-                                    if(firstQuote["4. close"] != nil){
-                                        let lastTrade = firstQuote["4. close"] as! String
-                                        let previousTrade = previousQuote["4. close"] as! String
+                                    if(quotes["05. price"] != nil){
+                                        let lastTrade = quotes["05. price"] as! String
+                                        let previousTrade = quotes["08. previous close"] as! String
                                         
                                         fii.currentPrice = Double(lastTrade)!
                                         fii.closingPrice = Double(previousTrade)!
