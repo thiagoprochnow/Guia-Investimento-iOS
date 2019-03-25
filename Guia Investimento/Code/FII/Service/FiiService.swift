@@ -13,6 +13,9 @@ class FiiService{
         let fiiDataDB = FiiDataDB()
         var fiis:Array<FiiData> = []
         
+        let apiKey = "XT5MYEQ27BZ6LXYC";
+        let function = "TIME_SERIES_DAILY";
+        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         var subscription = appDelegate.subscription
         
@@ -24,117 +27,82 @@ class FiiService{
         fiiDataDB.close()
         var returnFiis: Array<FiiData> = []
         var success: Bool = true
+        var result = "true"
         
         var limit = 0
         var size = 0
+        var count = 0
         
         if(fiis.count > 0){
             // Prepare http request to webservice
             let http = URLSession.shared
-            let postURL = URL(string: "http://webfeeder.cedrofinances.com.br/SignIn?login=thiprochnow&password=4schGOS")
-            var postRequest = URLRequest(url: postURL!)
             
-            var symbolsURL:String = ""
-            fiis.forEach{ fii in
-                if(limit  < 3){
-                    symbolsURL += "/" + fii.symbol.lowercased()
-                }
-                // count for free version
-                if(subscription!.isPremium == false){
-                    limit = limit + 1
-                }
-            }
-            
-            postRequest.httpMethod = "POST"
-            http.dataTask(with: postRequest) { (data, response, error) in
-                    // Return from POST
-                    if let data = data {
-                        let postResult = String(data: data, encoding: String.Encoding.utf8)!
-                        // Success on authentication
-                        if(postResult == "true"){
-                            // Success on authentication
-                            let getURL = URL(string: "http://webfeeder.cedrofinances.com.br/services/quotes/quote"+symbolsURL)
-                            // Get quotes
-                            var getRequest = URLRequest(url: getURL!)
-                            getRequest.httpMethod = "GET"
-                            http.dataTask(with: getRequest) { (getData, getResponse, getError) in
-                                // Return from GET
-                                if let getData = getData {
-                                    do {
-                                        var fiiQuotes: Array<NSDictionary> = []
+            for (index, fii) in fiis.enumerated() {
+                if(limit < 3){
+                    let getURL = URL(string: "http://www.alphavantage.co/query?function="+function+"&symbol="+fii.symbol+".SA&apikey="+apiKey)
+                    // Get quotes
+                    var getRequest = URLRequest(url: getURL!)
+                    getRequest.httpMethod = "GET"
+                    http.dataTask(with: getRequest) { (getData, getResponse, getError) in
+                        // Return from GET
+                        count = count + 1
+                        if let getData = getData {
+                            do {
+                                // Needed because the return is different in case of one stock or many stocks
+                                let responseObj = try JSONSerialization.jsonObject(with: getData, options: [JSONSerialization.ReadingOptions.mutableContainers,.allowFragments]) as! NSDictionary
+                                if(responseObj.count > 1){
+                                    let quotes = responseObj["Time Series (Daily)"] as! [String:NSDictionary]
+                                    let sortedQuotes = quotes.sorted(by: {$0.key > $1.key})
+                                    let firstQuote = sortedQuotes[0].value
+                                    let previousQuote = sortedQuotes[1].value
+                                    
+                                    if(firstQuote["4. close"] != nil){
+                                        let lastTrade = firstQuote["4. close"] as! String
+                                        let previousTrade = previousQuote["4. close"] as! String
                                         
-                                        // Needed because the return is different in case of one fii or many fiis
-                                        if(fiis.count > 1){
-                                        fiiQuotes = try JSONSerialization.jsonObject(with: getData, options: [JSONSerialization.ReadingOptions.mutableContainers,.allowFragments]) as! Array<NSDictionary>
-                                        } else {
-                                            let quote = try JSONSerialization.jsonObject(with: getData, options: [JSONSerialization.ReadingOptions.mutableContainers,.allowFragments]) as! NSDictionary
-                                            fiiQuotes.append(quote)
-                                        }
-                                        fiis.forEach{ fii in
-                                            let symbol = fii.symbol.lowercased()
-                                            var found:Bool = false
-                                            fiiQuotes.forEach{ quote in
-                                                var quoteSymbol:String = quote["symbol"] as! String
-                                                quoteSymbol = quoteSymbol.lowercased()
-                                                
-                                                // Matching symbols
-                                                if(symbol == quoteSymbol){
-                                                    if(quote["lastTrade"] != nil){
-                                                        var lastTrade = 0.0
-                                                        
-                                                        if(quote["lastTrade"] as! Double > 0){
-                                                            lastTrade = quote["lastTrade"] as! Double
-                                                        } else {
-                                                            lastTrade = quote["previous"] as! Double
-                                                        }
-                                                        fii.currentPrice = lastTrade
-                                                        fii.closingPrice = quote["previous"] as! Double
-                                                        fii.updateStatus = Constants.UpdateStatus.UPDATED
-                                                        found = true
-                                                    } else {
-                                                        fii.closingPrice = 0.0
-                                                        fii.updateStatus = Constants.UpdateStatus.NOT_UPDATED
-                                                    }
-                                                }
-                                            }
-                                            if(found == false){
-                                                fii.updateStatus = Constants.UpdateStatus.NOT_UPDATED
-                                            }
-                                            returnFiis.append(fii)
-                                        }
-                                        if(limit > 3){
-                                            callback(returnFiis, "limit")
-                                        } else {
-                                            callback(returnFiis, "true")
-                                        }
-                                    }catch {
-                                        print(error)
+                                        fii.currentPrice = Double(lastTrade)!
+                                        fii.closingPrice = Double(previousTrade)!
+                                        fii.updateStatus = Constants.UpdateStatus.UPDATED
+                                        
+                                    } else {
+                                        fii.closingPrice = 0.0
+                                        fii.updateStatus = Constants.UpdateStatus.NOT_UPDATED
                                     }
+                                } else {
+                                    fii.updateStatus = Constants.UpdateStatus.NOT_UPDATED
                                 }
-                                if let getError = getError {
-                                    success = false
-                                }
-                            }.resume()
-                        } else {
-                            fiis.forEach{ fii in
+                                returnFiis.append(fii)
+                            }catch {
+                                print(error)
                                 fii.updateStatus = Constants.UpdateStatus.NOT_UPDATED
                                 returnFiis.append(fii)
+                                result = "false"
                             }
-                            // Return fail to main thread
-                            callback(returnFiis,"false")
                         }
-                    }
-                    if let error = error {
-                        // Return fail to main thread
-                        fiis.forEach{ fii in
-                            fii.updateStatus = Constants.UpdateStatus.NOT_UPDATED
-                            returnFiis.append(fii)
+                        if let getError = getError {
+                            success = false
                         }
-                        callback(returnFiis,"false")
+                        
+                        // only calls callback for last item
+                        if(count == (fiis.count)){
+                            callback(returnFiis,result)
+                        }
+                    }.resume()
+                    
+                    if(subscription!.isPremium == false){
+                        limit = limit + 1
                     }
-                }.resume()
-        } else {
-            callback(returnFiis,"")
+                } else {
+                    fii.updateStatus = Constants.UpdateStatus.NOT_UPDATED
+                    returnFiis.append(fii)
+                    result = "limit"
+                    count = count + 1
+                    // only calls callback for last item
+                    if(count == (fiis.count)){
+                        callback(returnFiis,result)
+                    }
+                }
+            }
         }
     }
     

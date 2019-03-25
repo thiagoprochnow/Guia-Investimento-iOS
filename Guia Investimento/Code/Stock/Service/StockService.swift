@@ -13,7 +13,7 @@ class StockService{
         let stockDataDB = StockDataDB()
         var stocks:Array<StockData> = []
         
-        let apiKey = "FXVK1K9EYIJHIOEX";
+        let apiKey = "XT5MYEQ27BZ6LXYC";
         let function = "TIME_SERIES_DAILY";
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -37,8 +37,6 @@ class StockService{
             // Prepare http request to webservice
             let http = URLSession.shared
             
-            var stockQuotes: Array<NSDictionary> = []
-            
             for (index, stock) in stocks.enumerated() {
                 if(limit < 5){
                     let getURL = URL(string: "http://www.alphavantage.co/query?function="+function+"&symbol="+stock.symbol+".SA&apikey="+apiKey)
@@ -59,12 +57,13 @@ class StockService{
                                     let previousQuote = sortedQuotes[1].value
                                     
                                     if(firstQuote["4. close"] != nil){
-                                        var lastTrade = firstQuote["4. close"] as! String
-                                        var previousTrade = previousQuote["4. close"] as! String
+                                        let lastTrade = firstQuote["4. close"] as! String
+                                        let previousTrade = previousQuote["4. close"] as! String
                                         
                                         stock.currentPrice = Double(lastTrade)!
                                         stock.closingPrice = Double(previousTrade)!
                                         stock.updateStatus = Constants.UpdateStatus.UPDATED
+                                        
                                     } else {
                                         stock.closingPrice = 0.0
                                         stock.updateStatus = Constants.UpdateStatus.NOT_UPDATED
@@ -89,10 +88,19 @@ class StockService{
                             callback(returnStocks,result)
                         }
                     }.resume()
+                    
+                    if(subscription!.isPremium == false){
+                        limit = limit + 1
+                    }
                 } else {
                     stock.updateStatus = Constants.UpdateStatus.NOT_UPDATED
                     returnStocks.append(stock)
                     result = "limit"
+                    count = count + 1
+                    // only calls callback for last item
+                    if(count == (stocks.count)){
+                        callback(returnStocks,result)
+                    }
                 }
             }
         }
