@@ -100,6 +100,8 @@ class FiiService{
                     }
                 }
             }
+        } else {
+            callback(returnFiis,"")
         }
     }
     

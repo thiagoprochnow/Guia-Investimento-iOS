@@ -101,6 +101,9 @@ class StockService{
                 }
             }
         }
+        else {
+            callback(returnStocks,"")
+        }
     }
     
     class func updateStockIncomes(_ callback: @escaping(_ incomesCallback:Array<StockIncome>,_ error:Bool) -> Void){
